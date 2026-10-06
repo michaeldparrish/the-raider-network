@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Raider Network — ARC Raiders Loot Intel, Maps, Hunts & Trading</title>
+<meta name="description" content="Independent ARC Raiders community and intelligence hub: loot intel, map guides, loot hunts, trade board and Raider connections.">
+<meta name="theme-color" content="#071014">
+<link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body data-page="home">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader" class="site-header"></header>
+<main id="main">
+<section class="home-hero">
+  <div class="home-hero__art"><img src="assets/images/heroes/home-hero-overlook.webp" alt="A Raider overlooking a ruined city beneath a giant ring structure at sunset"></div>
+  <div class="home-hero__shade"></div>
+  <div class="home-hero__inner">
+    <div class="home-hero__copy">
+      <span class="eyebrow">THE RAIDER NETWORK</span>
+      <h1>Find it. <span>Hunt it.</span><br>Trade it. <span class="teal">Extract.</span></h1>
+      <p>Loot intelligence, map guides, Raider connections, community hunts, and extraction knowledge.</p>
+      <form class="hero-search" id="homeSearchForm" role="search">
+        <svg class="svg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="homeSearch" autocomplete="off" placeholder="What are you looking for, Raider?" aria-label="Search items, maps, projects and quests">
+        <button class="btn btn-primary" type="submit">Search Loot</button>
+      </form>
+      <div class="hero-actions"><a class="btn btn-primary btn-lg" href="loot.html"><svg class="svg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg> Search Loot</a><a class="btn btn-ghost btn-lg" href="hunts.html"><img class="ico" src="assets/images/ui/icon-squad.png" alt="" aria-hidden="true"> Browse Hunts</a></div>
+      <div class="hero-metrics"><div><strong id="statItemsHero">—</strong><span>Item records</span></div><div><strong id="statHuntsHero">—</strong><span>Open hunts</span></div><div><strong id="statTradesHero">—</strong><span>Trade requests</span></div><div><strong>6</strong><span>Maps</span></div></div>
+    </div>
+    <nav class="hero-quick" aria-label="Quick access">
+      <a href="loot.html"><img class="ico" src="assets/images/ui/icon-loot-intel.png" alt="" aria-hidden="true"><span><strong>Loot Intel</strong><small>Know what to keep</small></span></a>
+      <a href="maps.html#routes"><img class="ico" src="assets/images/ui/icon-route.png" alt="" aria-hidden="true"><span><strong>Map Routes</strong><small>Plan smarter runs</small></span></a>
+      <a href="trade.html"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"><span><strong>Trade Board</strong><small>Find what you need</small></span></a>
+      <a href="hunts.html"><img class="ico" src="assets/images/ui/icon-squad.png" alt="" aria-hidden="true"><span><strong>Loot Hunts</strong><small>Squad up by objective</small></span></a>
+    </nav>
+  </div>
+</section>
+
+<div class="dashboard">
+  <section class="dash-card dash-popular" aria-labelledby="hPopular">
+    <header class="dash-head"><h2 id="hPopular"><i></i>Popular Loot Hunts</h2><a href="loot.html">View all <svg class="svg-ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></header>
+    <div class="item-grid item-grid--4" id="popularLoot"></div>
+  </section>
+  <section class="dash-card dash-route" aria-labelledby="hRoute">
+    <header class="dash-head"><h2 id="hRoute"><i></i>Featured Route</h2><a href="maps.html#routes">All routes</a></header>
+    <div id="featuredRoute"></div>
+  </section>
+  <section class="dash-card dash-trades" aria-labelledby="hTrades">
+    <header class="dash-head"><h2 id="hTrades"><i></i>Trade Board</h2><a href="trade.html">View all</a></header>
+    <div id="homeTrades" class="trade-rows"></div>
+    <a class="btn btn-outline btn-block" href="trade.html"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> Browse Trades</a>
+  </section>
+  <section class="dash-card dash-maps" aria-labelledby="hMaps">
+    <header class="dash-head"><h2 id="hMaps"><i></i>Maps &amp; Quick Access</h2><a href="maps.html">View all maps</a></header>
+    <div class="map-grid map-grid--6" id="homeMaps"></div>
+  </section>
+  <section class="dash-card dash-conditions" id="conditions" aria-labelledby="hCond">
+    <header class="dash-head"><h2 id="hCond"><i></i>Map Conditions</h2><span class="demo-pill">DEMO FEED</span></header>
+    <div id="homeConditions" class="cond-list"></div>
+    <div class="cond-foot"><img src="assets/images/raiders/gear-comms-dish.webp" alt=""><p class="small-note">Placeholder schedule. Condition names come from community data; a live feed is planned.</p></div>
+  </section>
+  <section class="dash-card dash-projects" aria-labelledby="hProj">
+    <header class="dash-head"><h2 id="hProj"><i></i>Current Projects</h2><a href="projects.html">All projects</a></header>
+    <div id="homeProjects" class="project-mini-grid"></div>
+  </section>
+  <section class="dash-card dash-stats" aria-labelledby="hStats">
+    <header class="dash-head"><h2 id="hStats"><i></i>Community Stats</h2></header>
+    <div id="homeStats" class="stat-grid"></div>
+  </section>
+  <section class="dash-card dash-roles" aria-labelledby="hRoles">
+    <header class="dash-head"><h2 id="hRoles"><i></i>Different Skills. Same Extraction.</h2><a href="hunts.html">Find a squad</a></header>
+    <div class="role-strip">
+      <a href="hunts.html" class="role-card"><img src="assets/images/raiders/raider-solo-scout.webp" alt="" loading="lazy"><span><strong>Solo Scout</strong><small>Recon &amp; intel</small></span></a>
+      <a href="hunts.html" class="role-card"><img src="assets/images/raiders/raider-heavy-looter.webp" alt="" loading="lazy"><span><strong>Heavy Looter</strong><small>Salvage &amp; supply</small></span></a>
+      <a href="hunts.html" class="role-card"><img src="assets/images/raiders/raider-tech-specialist.webp" alt="" loading="lazy"><span><strong>Tech Specialist</strong><small>Tools &amp; systems</small></span></a>
+      <a href="hunts.html" class="role-card"><img src="assets/images/raiders/raider-mountain-runner.webp" alt="" loading="lazy"><span><strong>Mountain Runner</strong><small>Mobility &amp; access</small></span></a>
+      <a href="hunts.html" class="role-card"><img src="assets/images/raiders/raider-medic-support.webp" alt="" loading="lazy"><span><strong>Medic / Support</strong><small>Heal &amp; sustain</small></span></a>
+      <a href="hunts.html" class="role-card"><img src="assets/images/raiders/raider-stealth-raider.webp" alt="" loading="lazy"><span><strong>Stealth Raider</strong><small>Infiltration</small></span></a>
+    </div>
+  </section>
+</div>
+
+<section class="feature-band feature-band--v5">
+  <img src="assets/images/raiders/raider-squad-lineup.webp" alt="A squad of three Raiders in front of a ruined city">
+  <div>
+    <span class="eyebrow">A DIFFERENT KIND OF LFG</span>
+    <h2>Start with the loot.</h2>
+    <p>Instead of posting “LFG” into a flood of messages, tell the network what you are hunting, where you want to run, and when you are available.</p>
+    <ol class="steps-inline"><li><b>01</b> Search the item</li><li><b>02</b> Join or post a hunt</li><li><b>03</b> Coordinate privately</li></ol>
+    <a class="btn btn-primary" href="hunts.html?new=">Start a Loot Hunt</a>
+  </div>
+</section>
+</main>
+<footer id="siteFooter" class="site-footer"></footer>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="assets/config.js"></script>
+<script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/data.js"></script>
+<script defer src="assets/js/auth.js"></script>
+<script defer src="assets/js/loot.js"></script>
+<script defer src="assets/js/maps.js"></script>
+<script defer src="assets/js/projects.js"></script>
+<script defer src="assets/js/hunts.js"></script>
+<script defer src="assets/js/trades.js"></script>
+<script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

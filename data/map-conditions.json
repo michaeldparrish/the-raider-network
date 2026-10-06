@@ -1,0 +1,120 @@
+{
+ "meta": {
+  "note": "Map condition names come from community data; the schedule below is DEMO data."
+ },
+ "eventTypes": [
+  {
+   "id": "hurricane",
+   "name": "Hurricane",
+   "category": "major"
+  },
+  {
+   "id": "night-raid",
+   "name": "Night Raid",
+   "category": "major"
+  },
+  {
+   "id": "electromagnetic-storm",
+   "name": "Electromagnetic Storm",
+   "category": "major"
+  },
+  {
+   "id": "cold-snap",
+   "name": "Cold Snap",
+   "category": "major"
+  },
+  {
+   "id": "locked-gate",
+   "name": "Locked Gate",
+   "category": "major"
+  },
+  {
+   "id": "hidden-bunker",
+   "name": "Hidden Bunker",
+   "category": "major"
+  },
+  {
+   "id": "matriarch",
+   "name": "Matriarch",
+   "category": "minor"
+  },
+  {
+   "id": "harvester",
+   "name": "Harvester",
+   "category": "minor"
+  },
+  {
+   "id": "lush-blooms",
+   "name": "Lush Blooms",
+   "category": "minor"
+  },
+  {
+   "id": "prospecting-probes",
+   "name": "Prospecting Probes",
+   "category": "minor"
+  },
+  {
+   "id": "husk-graveyard",
+   "name": "Husk Graveyard",
+   "category": "minor"
+  },
+  {
+   "id": "uncovered-caches",
+   "name": "Uncovered Caches",
+   "category": "minor"
+  },
+  {
+   "id": "launch-tower-loot",
+   "name": "Launch Tower Loot",
+   "category": "minor"
+  },
+  {
+   "id": "bird-city",
+   "name": "Bird City",
+   "category": "minor"
+  },
+  {
+   "id": "beachcombing",
+   "name": "Beachcombing",
+   "category": "minor"
+  }
+ ],
+ "demoSchedule": [
+  {
+   "mapId": "dam-battlegrounds",
+   "condition": "Matriarch",
+   "window": "Now",
+   "severity": "high-threat"
+  },
+  {
+   "mapId": "buried-city",
+   "condition": "Night Raid",
+   "window": "Now",
+   "severity": "risky"
+  },
+  {
+   "mapId": "spaceport",
+   "condition": "Electromagnetic Storm",
+   "window": "Next rotation",
+   "severity": "weather"
+  },
+  {
+   "mapId": "stella-montis",
+   "condition": "Prospecting Probes",
+   "window": "Now",
+   "severity": "safe"
+  },
+  {
+   "mapId": "the-blue-gate",
+   "condition": "Harvester",
+   "window": "Next rotation",
+   "severity": "hazard"
+  },
+  {
+   "mapId": "riven-tides",
+   "condition": "Hurricane",
+   "window": "Later today",
+   "severity": "weather"
+  }
+ ]
+}

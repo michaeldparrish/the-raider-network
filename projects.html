@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projects — The Raider Network</title>
+<meta name="description" content="Active, ending-soon and historical ARC Raiders projects with required items linked to Loot Intel.">
+<meta name="theme-color" content="#071014">
+<link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body data-page="projects">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader" class="site-header"></header>
+<main id="main">
+<section class="page-banner page-banner--projects">
+  <img src="assets/images/heroes/ring-city-strip.webp" alt="">
+  <div class="page-banner__shade"></div>
+  <div class="page-banner__copy"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-project.png" alt="" aria-hidden="true"> PROJECT WATCH</span><h1>Projects &amp; current item demand</h1><p>Every project stays searchable after it ends, because old requirements reveal recurring high-value loot. Status is calculated from the project dates.</p></div>
+  <img class="banner-side-art" src="assets/images/raiders/raider-engineer.webp" alt="">
+</section>
+<div class="page-shell">
+  <div class="tab-row">
+    <button class="tab-btn active" data-status="">All <b>0</b></button>
+    <button class="tab-btn" data-status="ACTIVE">Active <b>0</b></button>
+    <button class="tab-btn" data-status="ENDING SOON">Ending Soon <b>0</b></button>
+    <button class="tab-btn" data-status="HISTORICAL">Historical <b>0</b></button>
+    <div class="search-field"><svg class="svg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="projectSearch" class="input" placeholder="Search projects or required items…" aria-label="Search projects"></div>
+  </div>
+  <div id="projectList" class="project-list"></div>
+</div>
+</main>
+<footer id="siteFooter" class="site-footer"></footer>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="assets/config.js"></script>
+<script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/data.js"></script>
+<script defer src="assets/js/auth.js"></script>
+<script defer src="assets/js/loot.js"></script>
+<script defer src="assets/js/maps.js"></script>
+<script defer src="assets/js/projects.js"></script>
+<script defer src="assets/js/hunts.js"></script>
+<script defer src="assets/js/trades.js"></script>
+<script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

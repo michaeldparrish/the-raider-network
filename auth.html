@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Join — The Raider Network</title>
+<meta name="description" content="Create a Raider profile.">
+<meta name="theme-color" content="#071014">
+<link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body data-page="auth">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader" class="site-header"></header>
+<main id="main">
+<section class="auth-shell">
+  <div class="auth-art">
+    <img class="auth-art__bg" src="assets/images/raiders/raider-squad-lineup.webp" alt="">
+    <div class="auth-art__copy"><span class="eyebrow">ENTER THE NETWORK</span><h1>Your Raider identity.<br>Your hunts.<br>Your community.</h1><p>Create a simple Raider profile so people know who they are running with. Your login email is never displayed, and your Raider tag stays private until you share it.</p>
+    <div class="quote-card">“Hunting: Rotary Encoder<br>Stella Montis · Tonight<br>NA East · Cross-platform”</div></div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-tabs"><button id="loginTab" class="active" type="button">Log in</button><button id="registerTab" type="button">Register</button></div>
+    <form id="loginForm" class="stack"><label>Email<input class="input" type="email" name="email" required autocomplete="email"></label><label>Password<input class="input" type="password" name="password" required minlength="8" autocomplete="current-password"></label><button class="btn btn-primary" type="submit">Log in</button><p class="form-note" id="loginMsg" role="status"></p></form>
+    <form id="registerForm" class="stack hidden"><label>Email <span class="muted-label">(private)</span><input class="input" type="email" name="email" required autocomplete="email"></label><label>Password<input class="input" type="password" name="password" required minlength="8" autocomplete="new-password"></label><label>Raider Name<input class="input" name="display_name" required maxlength="30" placeholder="Your in-game Raider name"></label><label>Raider Tag / ID <span class="muted-label">(kept private)</span><input class="input" name="raider_tag" required maxlength="50" placeholder="Share it later in private messages"></label><div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div><fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset><button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status"></p></form>
+    <p class="small-note">Demo Mode: accounts are stored only in this browser. Don't reuse a real password here.</p>
+  </div>
+</section>
+</main>
+<footer id="siteFooter" class="site-footer"></footer>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="assets/config.js"></script>
+<script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/data.js"></script>
+<script defer src="assets/js/auth.js"></script>
+<script defer src="assets/js/loot.js"></script>
+<script defer src="assets/js/maps.js"></script>
+<script defer src="assets/js/projects.js"></script>
+<script defer src="assets/js/hunts.js"></script>
+<script defer src="assets/js/trades.js"></script>
+<script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+ "_note": "Public Raider profiles. v5.1: real accounts only \u2014 no fictional Raiders. Private data (email, Raider tag) is never stored here.",
+ "regions": [
+  "NA East",
+  "NA Central",
+  "NA West",
+  "South America",
+  "Europe",
+  "Asia",
+  "Oceania"
+ ],
+ "platforms": [
+  "Cross-platform",
+  "PC",
+  "PlayStation",
+  "Xbox"
+ ],
+ "badges": [
+  {
+   "id": "trusted-raider",
+   "name": "Trusted Raider",
+   "status": "planned"
+  },
+  {
+   "id": "loot-hunter",
+   "name": "Loot Hunter",
+   "status": "planned"
+  },
+  {
+   "id": "route-scout",
+   "name": "Route Scout",
+   "status": "planned"
+  },
+  {
+   "id": "project-specialist",
+   "name": "Project Specialist",
+   "status": "planned"
+  }
+ ],
+ "users": [
+  {
+   "id": "perisher",
+   "displayName": "Perisher",
+   "platform": "Cross-platform",
+   "region": "NA East",
+   "avatar": "raiders/raider-veteran-trader.webp",
+   "archetype": "Veteran Trader",
+   "joined": "2026-10-05",
+   "completedHunts": 0,
+   "reputation": null,
+   "badges": [],
+   "real": true
+  }
+ ],
+ "communityStats": {
+  "_note": "Intentional pre-launch values (v5.2). 'Founding Raiders' = launch roster, not live online users. Open hunts / open trades / item records / maps are computed from data.",
+  "tradesCompleted": 0,
+  "foundingRaiders": 10
+ }
+}

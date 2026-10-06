@@ -1,0 +1,255 @@
+{
+ "_note": "REAL Trade Board listings (v5.1) \u2014 all owned by Perisher. No payments, no real-money trades.",
+ "fairPlay": "No payments, no real-money trades. Check current Embark rules before acting on any listing.",
+ "trades": [
+  {
+   "id": "pt1",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "wolfpack-blueprint",
+     "name": "Wolfpack Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [
+    {
+     "inventoryKey": "kinetic-converter",
+     "itemId": "kinetic-converter",
+     "name": "Kinetic Converter",
+     "quantity": 1,
+     "fromInventory": true
+    }
+   ],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Top priority. Offering a Kinetic Converter, or pick something else from my trade inventory.",
+   "status": "open",
+   "minutesAgo": 6
+  },
+  {
+   "id": "pt2",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": null,
+     "name": "Silencer III Blueprint",
+     "quantity": 1,
+     "note": "Not in the Loot Intel snapshot \u2014 free-text request."
+    }
+   ],
+   "offering": [
+    {
+     "inventoryKey": "snap-hook",
+     "itemId": "snap-hook",
+     "name": "Snap Hook",
+     "quantity": 1,
+     "fromInventory": true
+    }
+   ],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Priority want. Snap Hook reserved for this one; open to other combinations from my inventory.",
+   "status": "open",
+   "minutesAgo": 14
+  },
+  {
+   "id": "pt3",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "matriarch-reactor",
+     "name": "Matriarch Reactor",
+     "quantity": 1
+    }
+   ],
+   "offering": [
+    {
+     "inventoryKey": "queen-reactor",
+     "itemId": "queen-reactor",
+     "name": "Queen Reactor",
+     "quantity": 1,
+     "fromInventory": true
+    }
+   ],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Reactor for reactor \u2014 Queen Reactor reserved for this trade.",
+   "status": "open",
+   "minutesAgo": 22
+  },
+  {
+   "id": "pt4",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "tempest-blueprint",
+     "name": "Tempest Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [
+    {
+     "inventoryKey": "snap-hook",
+     "itemId": "snap-hook",
+     "name": "Snap Hook",
+     "quantity": 1,
+     "fromInventory": true
+    }
+   ],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Priority want. Snap Hook reserved; other inventory items negotiable.",
+   "status": "open",
+   "minutesAgo": 35
+  },
+  {
+   "id": "pt5",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "aphelion-blueprint",
+     "name": "Aphelion Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [
+    {
+     "inventoryKey": "kinetic-converter",
+     "itemId": "kinetic-converter",
+     "name": "Kinetic Converter",
+     "quantity": 1,
+     "fromInventory": true
+    }
+   ],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Priority want. Kinetic Converter reserved for this one.",
+   "status": "open",
+   "minutesAgo": 48
+  },
+  {
+   "id": "pt6",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "jupiter-blueprint",
+     "name": "Jupiter Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [
+    {
+     "inventoryKey": "queen-reactor",
+     "itemId": "queen-reactor",
+     "name": "Queen Reactor",
+     "quantity": 1,
+     "fromInventory": true
+    }
+   ],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Priority want. Queen Reactor reserved for this one.",
+   "status": "open",
+   "minutesAgo": 61
+  },
+  {
+   "id": "pt7",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "bobcat-blueprint",
+     "name": "Bobcat Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Open to offers from my available trade inventory.",
+   "status": "open",
+   "minutesAgo": 75
+  },
+  {
+   "id": "pt8",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "bettina-blueprint",
+     "name": "Bettina Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Open to offers from my available trade inventory.",
+   "status": "open",
+   "minutesAgo": 90
+  },
+  {
+   "id": "pt9",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "anvil-blueprint",
+     "name": "Anvil Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Open to offers from my available trade inventory.",
+   "status": "open",
+   "minutesAgo": 110
+  },
+  {
+   "id": "pt10",
+   "userId": "perisher",
+   "lookingFor": [
+    {
+     "itemId": "equalizer-blueprint",
+     "name": "Equalizer Blueprint",
+     "quantity": 1
+    }
+   ],
+   "offering": [],
+   "offerFromPool": true,
+   "openToOffers": true,
+   "region": "NA East",
+   "platform": "Cross-platform",
+   "desiredTime": "Flexible",
+   "notes": "Open to offers from my available trade inventory.",
+   "status": "open",
+   "minutesAgo": 130
+  }
+ ]
+}

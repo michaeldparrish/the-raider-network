@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loot Hunts — The Raider Network</title>
+<meta name="description" content="Find Raiders chasing the same ARC Raiders item and coordinate the run privately.">
+<meta name="theme-color" content="#071014">
+<link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body data-page="hunts">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader" class="site-header"></header>
+<main id="main">
+<section class="page-banner page-banner--hunts">
+  <img src="assets/images/heroes/loot-hunt-squad.webp" alt="">
+  <div class="page-banner__shade"></div>
+  <div class="page-banner__copy"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-squad.png" alt="" aria-hidden="true"> COMMUNITY RUN BOARD</span><h1>Loot Hunts</h1><p>Find Raiders chasing the same item or objective, then coordinate the run through private messages.</p>
+    <div class="btn-row"><button class="btn btn-primary btn-lg" id="openHuntModal">+ Start a Loot Hunt</button></div>
+    <div class="banner-stats"><span><b id="statOpenHunts">—</b> open hunts</span><span><b id="statSlots">—</b> open squad slots</span><span><b id="statHuntItems">—</b> items targeted</span></div></div>
+  <img class="banner-side-art" src="assets/images/raiders/raider-squad-lineup.webp" alt="">
+</section>
+<div class="page-shell">
+  <section class="toolbar hunts-toolbar">
+    <div class="search-wrap"><svg class="svg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="huntSearch" class="input" placeholder="Search items, maps, or Raider names" aria-label="Search hunts"></div>
+    <select id="mapFilter" class="input" aria-label="Map"></select>
+    <select id="regionFilter" class="input" aria-label="Region"></select>
+    <select id="platformFilter" class="input" aria-label="Platform"></select>
+    <select id="statusFilter" class="input" aria-label="Status"><option value="">Any status</option><option value="open" selected>Open</option><option value="full">Full</option><option value="completed">Completed</option></select>
+  </section>
+  <p class="muted" id="itemFilterNote"></p>
+  <p class="result-line"><b id="huntCount">0</b> hunts shown</p>
+  <section id="huntGrid" class="hunt-grid"></section>
+  <div id="huntEmpty" class="empty-state hidden"><img src="assets/images/raiders/gear-rusher-helmet.webp" alt="" class="empty-art"><strong>No hunts match.</strong><span>Start the first one for this objective.</span></div>
+</div>
+<div class="modal hidden" id="huntModal" role="dialog" aria-modal="true" aria-labelledby="huntModalTitle"><div class="modal-card">
+  <button class="modal-close" id="closeHuntModal" aria-label="Close">×</button>
+  <span class="eyebrow">NEW HUNT</span><h2 id="huntModalTitle">Start a Loot Hunt</h2>
+  <form id="huntForm" class="form-grid">
+    <label class="full">What are you hunting?<input class="input" name="itemName" list="itemNames" required maxlength="100" placeholder="Start typing — e.g. Rotary Encoder" autocomplete="off"></label>
+    <datalist id="itemNames"></datalist>
+    <div class="full item-preview" id="huntItemPreview"></div>
+    <label>Map<select class="input" name="mapId" required></select></label>
+    <label>Desired time<input class="input" name="desiredTime" maxlength="80" placeholder="Tonight after 8 PM"></label>
+    <label>Region<select class="input" name="region" required></select></label>
+    <label>Platform<select class="input" name="platform" required></select></label>
+    <label>Squad size<select class="input" name="squadSize"><option value="2">2 Raiders</option><option value="3" selected>3 Raiders</option></select></label>
+    <label class="full">Hunt notes<textarea class="input" name="description" rows="3" maxlength="500" placeholder="Route, experience level, mic preference, timing…"></textarea></label>
+    <button class="btn btn-primary full" type="submit">Publish Loot Hunt</button>
+    <p class="form-note full" id="huntFormMsg" role="status"></p>
+  </form>
+</div></div>
+</main>
+<footer id="siteFooter" class="site-footer"></footer>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="assets/config.js"></script>
+<script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/data.js"></script>
+<script defer src="assets/js/auth.js"></script>
+<script defer src="assets/js/loot.js"></script>
+<script defer src="assets/js/maps.js"></script>
+<script defer src="assets/js/projects.js"></script>
+<script defer src="assets/js/hunts.js"></script>
+<script defer src="assets/js/trades.js"></script>
+<script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

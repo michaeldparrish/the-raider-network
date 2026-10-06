@@ -1,0 +1,880 @@
+{
+ "_readme": "Hand-researched facts merged by tools/build_data.py. Every fact carries a confidence label and source. Map 'overview', 'difficulty', 'environment' and 'lootProfile' are Raider Network editorial summaries (not game data). Nothing here was taken from the generated concept art.",
+ "projects": [
+  {
+   "id": "ascending-the-mountain",
+   "name": "Ascending the Mountain",
+   "type": "Limited-time",
+   "startDate": "2026-09-08",
+   "endDate": "2026-10-05",
+   "description": "Four-stage limited-time project focused on high-altitude mechanics, ignition tests and landing capabilities. Late stages created heavy demand for Sensors, Broken Guidance Systems, Advanced Electrical Components and Vaporizer Regulators.",
+   "stages": [
+    {
+     "stage": 1,
+     "name": "Research High-Altitude Mechanics",
+     "requiredItems": [
+      {
+       "itemId": "mechanical-components",
+       "quantity": 10
+      },
+      {
+       "itemId": "pop-trigger",
+       "quantity": 6
+      },
+      {
+       "itemId": "explosive-compound",
+       "quantity": 10
+      },
+      {
+       "itemId": "headphones",
+       "quantity": 2
+      }
+     ],
+     "rewards": [
+      {
+       "itemId": "burletta-iv",
+       "quantity": 1
+      },
+      {
+       "itemId": "extended-light-mag-iii",
+       "quantity": 1
+      },
+      {
+       "itemId": "silencer-iii",
+       "quantity": 1
+      }
+     ]
+    },
+    {
+     "stage": 2,
+     "name": "Begin Ignition Tests",
+     "requiredItems": [
+      {
+       "itemId": "wires",
+       "quantity": 20
+      },
+      {
+       "itemId": "voltage-converter",
+       "quantity": 8
+      },
+      {
+       "itemId": "sentinel-firing-core",
+       "quantity": 2
+      },
+      {
+       "itemId": "rocket-thruster",
+       "quantity": 1
+      }
+     ],
+     "rewards": [
+      {
+       "itemId": "wolfpack",
+       "quantity": 2
+      },
+      {
+       "itemId": "deadline",
+       "quantity": 2
+      },
+      {
+       "itemId": "trailblazer",
+       "quantity": 3
+      },
+      {
+       "itemId": "crash-mat-blueprint",
+       "quantity": 1
+      }
+     ]
+    },
+    {
+     "stage": 3,
+     "name": "Implement Landing Capabilities",
+     "requiredItems": [
+      {
+       "itemId": "ruined-parachute",
+       "quantity": 2
+      },
+      {
+       "itemId": "crash-mat",
+       "quantity": 10
+      },
+      {
+       "itemId": "shredder-gyro",
+       "quantity": 5
+      },
+      {
+       "itemId": "breathtaking-snow-globe",
+       "quantity": 3
+      }
+     ],
+     "rewards": [
+      {
+       "itemId": "powered-descender",
+       "quantity": 1
+      },
+      {
+       "itemId": "raider-hatch-key",
+       "quantity": 2
+      },
+      {
+       "itemId": "rascal-iv",
+       "quantity": 1
+      },
+      {
+       "itemId": "launcher-ammo",
+       "quantity": 30
+      }
+     ]
+    },
+    {
+     "stage": 4,
+     "name": "Final Tweaks",
+     "requiredItems": [
+      {
+       "itemId": "sensors",
+       "quantity": 30
+      },
+      {
+       "itemId": "broken-guidance-system",
+       "quantity": 3
+      },
+      {
+       "itemId": "advanced-electrical-components",
+       "quantity": 15
+      },
+      {
+       "itemId": "vaporizer-regulator",
+       "quantity": 3
+      }
+     ],
+     "rewards": [
+      {
+       "itemId": null,
+       "name": "Hot Air Balloon Charm (cosmetic)",
+       "quantity": 1
+      },
+      {
+       "itemId": "tactical-mk3-defensive",
+       "quantity": 1
+      },
+      {
+       "itemId": "tempest-iv",
+       "quantity": 1
+      },
+      {
+       "itemId": "kinetic-converter",
+       "quantity": 1
+      }
+     ]
+    }
+   ],
+   "rewardsNote": "Guides agree on requirements. One guide lists the Rascal and Tempest rewards without a tier; the wiki lists them as Rascal IV and Tempest IV.",
+   "dataConfidence": "VERIFIED COMMUNITY",
+   "datesNote": "Ends 5 Oct 2026 (exact end hour not published in sources). Kept as a historical record after it closes.",
+   "sources": [
+    {
+     "label": "ARC Raiders Wiki — Ascending The Mountain",
+     "url": "https://arcraiders.wiki/wiki/Ascending_The_Mountain",
+     "confidence": "VERIFIED COMMUNITY"
+    },
+    {
+     "label": "AllThings.How — Ascending the Mountain project guide",
+     "url": "https://allthings.how/arc-raiders-ascending-the-mountain-project-guide-all-stages-and-rewards/",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "label": "Playnews — Ascending the Mountain stages and rewards",
+     "url": "https://www.playnews.gg/en/guides/ascending-the-mountain-in-arc-raiders-the-4-stages-of-the-project-and-their-rewards",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  }
+ ],
+ "projectAliases": {
+  "trophy-display": [
+   "Trophy Room"
+  ]
+ },
+ "itemLocations": {
+  "rotary-encoder": {
+   "confidence": "COMMUNITY REPORT",
+   "locations": [
+    {
+     "map": "stella-montis",
+     "areas": [
+      "Medical Research",
+      "Assembly",
+      "Assembly Workshops",
+      "Lobby",
+      "Loading Bay"
+     ],
+     "bestArea": "Medical Research",
+     "method": "Exodus-area containers",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "containers": [
+    "Small cabinets",
+    "Yellow drawers",
+    "White drawers",
+    "File cabinets"
+   ],
+   "sources": [
+    {
+     "label": "Gamer Guides — Where to find Rotary Encoders",
+     "url": "https://gamer-guides.com/arc-raiders/where-to-find-rotary-encoder/",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "label": "GamesRadar — With a View walkthrough",
+     "url": "https://www.gamesradar.com/games/third-person-shooter/arc-raiders-with-a-view/",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  },
+  "ion-sputter": {
+   "confidence": "COMMUNITY REPORT",
+   "locations": [
+    {
+     "map": "stella-montis",
+     "areas": [
+      "Assembly",
+      "Business Center",
+      "Medical Research"
+     ],
+     "bestArea": "Assembly",
+     "method": "Exodus-area containers",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "containers": [
+    "Shelves",
+    "Drawers",
+    "Breachable containers"
+   ],
+   "sources": [
+    {
+     "label": "GamesRadar — With a View walkthrough",
+     "url": "https://www.gamesradar.com/games/third-person-shooter/arc-raiders-with-a-view/",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  },
+  "magnetron": {
+   "confidence": "COMMUNITY REPORT",
+   "locations": [
+    {
+     "map": "stella-montis",
+     "areas": [
+      "Assembly",
+      "Assembly Workshops"
+     ],
+     "bestArea": "Assembly Workshops",
+     "method": "Upper-level Exodus containers",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "containers": [
+    "Drawers"
+   ],
+   "sources": [
+    {
+     "label": "Shacknews — Where to find Magnetrons",
+     "url": "https://www.shacknews.com/article/147890/where-to-find-magnetrons-in-arc-raiders",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  },
+  "headphones": {
+   "confidence": "COMMUNITY REPORT",
+   "locations": [
+    {
+     "map": "buried-city",
+     "areas": [
+      "Plaza Rosa",
+      "Corso de Vinci",
+      "Santa Maria Houses",
+      "Hospital",
+      "JKV Offices"
+     ],
+     "bestArea": "Plaza Rosa",
+     "method": "Residential / office containers",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": "spaceport",
+     "areas": [
+      "Departure Building"
+     ],
+     "bestArea": "Departure Building",
+     "method": "Upper-floor offices and check-in counters",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": "stella-montis",
+     "areas": [
+      "Business Center",
+      "Business Lounge",
+      "Archives",
+      "Loading Bay"
+     ],
+     "bestArea": "Business Center",
+     "method": "Lobby furniture / suitcases",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "containers": [
+    "Desk drawers",
+    "Blue suitcases",
+    "Office containers",
+    "Staff lockers"
+   ],
+   "sources": [
+    {
+     "label": "GamesRecon — Where to find Headphones",
+     "url": "https://www.gamesrecon.com/arc-raiders-headphones-location",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  },
+  "vaporizer-regulator": {
+   "confidence": "COMMUNITY REPORT",
+   "locations": [
+    {
+     "map": null,
+     "areas": [],
+     "method": "Dropped by the Vaporizer ARC, which appears during the Close Scrutiny map condition near landed Assessor probes. Not restricted to one map.",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "containers": [],
+   "sources": [
+    {
+     "label": "Beebom — Vaporizer location and Regulator",
+     "url": "https://beebom.com/arc-raiders-vaporizer-location-vaporizer-regulator/",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  }
+ },
+ "editorial": {
+  "rotary-encoder": {
+   "demand": 8,
+   "difficulty": 8,
+   "notes": "Single-map Exodus item and a With a View quest bottleneck. Community guides consistently report Stella Montis only."
+  },
+  "ion-sputter": {
+   "demand": 8,
+   "difficulty": 8.5,
+   "notes": "Epic Exodus item needed for With a View and historically for Expedition 2. Recycles into an Exodus Module plus four Voltage Converters."
+  },
+  "magnetron": {
+   "demand": 7,
+   "difficulty": 8,
+   "notes": "Needed for Snap and Salvage. Recycling converts it directly into a Magnetic Accelerator."
+  },
+  "vaporizer-regulator": {
+   "difficulty": 9,
+   "notes": "Only source reported is the Vaporizer ARC during Close Scrutiny. Repeatedly required by projects (High-Gain Antenna, Avian Alarm, Expedition 4, Ascending the Mountain). v4 listed Riven Tides as the map; current sources say it is not map-restricted, so no map is asserted."
+  },
+  "magnetic-accelerator": {
+   "notes": "Drops from The Queen and the Matriarch; Magnetron and both reactors also recycle into it. Required by Trophy Display stage 4 and several Expeditions."
+  },
+  "queen-reactor": {
+   "notes": "Legendary drop from The Queen. Required ×3 by Trophy Display stage 4."
+  },
+  "matriarch-reactor": {
+   "notes": "Legendary drop from the Matriarch (Dam Battlegrounds). Required ×3 by Trophy Display stage 5."
+  },
+  "headphones": {
+   "notes": "Ascending the Mountain stage 1 required ×2. Some guides also report Headphones in trader stock."
+  }
+ },
+ "maps": [
+  {
+   "id": "dam-battlegrounds",
+   "name": "Dam Battlegrounds",
+   "shortName": "The Dam",
+   "overview": "Forested valley around a massive hydroelectric dam, with flooded marshland, research buildings and residential blocks. The usual first map for new Raiders, and home of the Matriarch.",
+   "environment": "Forest, swamp, industrial dam complex",
+   "lootProfile": "ARC parts, research & residential loot",
+   "difficulty": 2,
+   "difficultyLabel": "Entry",
+   "editorial": true,
+   "image": "assets/images/maps/dam-battlegrounds-hero.webp",
+   "gallery": [
+    "assets/images/maps/dam-battlegrounds-thumb-1.webp",
+    "assets/images/maps/dam-battlegrounds-thumb-2.webp",
+    "assets/images/maps/dam-battlegrounds-thumb-3.webp",
+    "assets/images/maps/dam-battlegrounds-thumb-4.webp",
+    "assets/images/heroes/dam-run-route.webp"
+   ],
+   "pois": [
+    {
+     "name": "Control Tower",
+     "items": [
+      "dam-control-tower-key"
+     ],
+     "image": "assets/images/maps/dam-battlegrounds-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in Dam Control Tower Key data"
+    },
+    {
+     "name": "Controlled Access Zone",
+     "items": [
+      "dam-controlled-access-zone-key"
+     ],
+     "image": "assets/images/maps/dam-battlegrounds-thumb-3.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Testing Annex",
+     "items": [
+      "dam-testing-annex-key"
+     ],
+     "image": "assets/images/maps/dam-battlegrounds-thumb-1.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Water Treatment Control",
+     "items": [
+      "dam-surveillance-key"
+     ],
+     "image": "assets/images/maps/dam-battlegrounds-thumb-4.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in Dam Surveillance Key data"
+    },
+    {
+     "name": "Staff Room",
+     "items": [
+      "dam-staff-room-key"
+     ],
+     "image": "assets/images/maps/dam-battlegrounds-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    }
+   ]
+  },
+  {
+   "id": "buried-city",
+   "name": "Buried City",
+   "shortName": "Buried City",
+   "overview": "Sand-swept ruins of a pre-collapse town with plazas, apartment blocks, a hospital and office buildings. Tight urban lanes, rooftop sightlines and many residential containers.",
+   "environment": "Desert urban ruins",
+   "lootProfile": "Residential, commercial & medical loot",
+   "difficulty": 3,
+   "difficultyLabel": "Moderate",
+   "editorial": true,
+   "image": "assets/images/maps/buried-city-hero.webp",
+   "gallery": [
+    "assets/images/maps/buried-city-thumb-1.webp",
+    "assets/images/maps/buried-city-thumb-2.webp",
+    "assets/images/maps/buried-city-thumb-3.webp",
+    "assets/images/maps/buried-city-thumb-4.webp",
+    "assets/images/maps/buried-city-town-square.webp",
+    "assets/images/maps/buried-city-poi-thumb-3.webp"
+   ],
+   "pois": [
+    {
+     "name": "Hospital",
+     "items": [
+      "buried-city-hospital-key",
+      "headphones"
+     ],
+     "image": "assets/images/maps/buried-city-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in Buried City Hospital Key data"
+    },
+    {
+     "name": "Town Hall",
+     "items": [
+      "buried-city-town-hall-key"
+     ],
+     "image": "assets/images/maps/buried-city-poi-thumb-1.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "JKV Offices",
+     "items": [
+      "buried-city-jkv-employee-access-card",
+      "headphones"
+     ],
+     "image": "assets/images/maps/buried-city-thumb-3.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in JKV access card data"
+    },
+    {
+     "name": "Plaza Rosa",
+     "items": [
+      "headphones",
+      "buried-city-residential-master-key"
+     ],
+     "image": "assets/images/maps/buried-city-poi-thumb-2.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Named in community location guides"
+    },
+    {
+     "name": "Santa Maria Houses",
+     "items": [
+      "headphones"
+     ],
+     "image": "assets/images/maps/buried-city-thumb-4.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Named in community location guides"
+    }
+   ]
+  },
+  {
+   "id": "spaceport",
+   "name": "Spaceport",
+   "shortName": "Spaceport",
+   "overview": "Derelict launch facility of towers, trenches, warehouses and terminal buildings. Long sightlines between launch towers and dense interiors in the departure halls.",
+   "environment": "Industrial launch complex",
+   "lootProfile": "Industrial, technological & launch hardware",
+   "difficulty": 3,
+   "difficultyLabel": "Moderate",
+   "editorial": true,
+   "image": "assets/images/maps/spaceport-hero.webp",
+   "gallery": [
+    "assets/images/maps/spaceport-thumb-1.webp",
+    "assets/images/maps/spaceport-thumb-2.webp",
+    "assets/images/maps/spaceport-thumb-3.webp",
+    "assets/images/maps/spaceport-thumb-4.webp",
+    "assets/images/maps/spaceport-launch-tower.webp"
+   ],
+   "pois": [
+    {
+     "name": "Departure Building",
+     "items": [
+      "headphones"
+     ],
+     "image": "assets/images/maps/spaceport-poi-thumb-2.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Named in community location guides"
+    },
+    {
+     "name": "Control Tower A6",
+     "items": [
+      "spaceport-control-tower-key"
+     ],
+     "image": "assets/images/maps/spaceport-thumb-3.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Trench Towers",
+     "items": [
+      "spaceport-trench-tower-key"
+     ],
+     "image": "assets/images/maps/spaceport-thumb-1.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Warehouse & Container Storage",
+     "items": [
+      "spaceport-warehouse-key",
+      "spaceport-container-storage-key"
+     ],
+     "image": "assets/images/maps/spaceport-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Hidden Bunker",
+     "items": [
+      "hidden-bunker-key"
+     ],
+     "image": "assets/images/maps/spaceport-poi-thumb-1.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in Hidden Bunker Key data (also a map condition)"
+    }
+   ]
+  },
+  {
+   "id": "stella-montis",
+   "name": "Stella Montis",
+   "shortName": "Stella Montis",
+   "overview": "Research megastructure carved into a snowbound mountain, split into upper and lower levels. Exodus assembly halls, medical research labs and archives make it the main source of rare Exodus components.",
+   "environment": "Mountain research facility (interior, two levels)",
+   "lootProfile": "Exodus tech, medical research & archives",
+   "difficulty": 4,
+   "difficultyLabel": "High",
+   "editorial": true,
+   "unlockNote": "Added in patch 1.2.0; the wiki lists 24 rounds played to unlock.",
+   "image": "assets/images/maps/stella-montis-hero.webp",
+   "gallery": [
+    "assets/images/maps/stella-montis-assembly.webp",
+    "assets/images/maps/stella-montis-medical-research.webp",
+    "assets/images/maps/stella-montis-thumb-1.webp",
+    "assets/images/maps/stella-montis-thumb-2.webp",
+    "assets/images/maps/stella-montis-thumb-3.webp",
+    "assets/images/maps/stella-montis-thumb-4.webp"
+   ],
+   "pois": [
+    {
+     "name": "Assembly",
+     "items": [
+      "ion-sputter",
+      "rotary-encoder",
+      "magnetron",
+      "stella-montis-assembly-admin-key"
+     ],
+     "image": "assets/images/maps/stella-montis-assembly-thumb-1.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Assembly named in key data; item links from community guides"
+    },
+    {
+     "name": "Assembly Workshops",
+     "items": [
+      "magnetron",
+      "rotary-encoder"
+     ],
+     "image": "assets/images/maps/stella-montis-assembly-thumb-3.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Community location guides"
+    },
+    {
+     "name": "Medical Research",
+     "items": [
+      "rotary-encoder",
+      "ion-sputter",
+      "stella-montis-medical-storage-key"
+     ],
+     "image": "assets/images/maps/stella-montis-medical-thumb-1.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Medical Research named in key data; item links from community guides"
+    },
+    {
+     "name": "Lobby",
+     "items": [
+      "rotary-encoder"
+     ],
+     "image": "assets/images/maps/stella-montis-thumb-2.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Community location guides"
+    },
+    {
+     "name": "Business Center",
+     "items": [
+      "ion-sputter",
+      "headphones"
+     ],
+     "image": "assets/images/maps/stella-montis-assembly-thumb-2.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Community location guides"
+    },
+    {
+     "name": "Loading Bay",
+     "items": [
+      "rotary-encoder",
+      "headphones"
+     ],
+     "image": "assets/images/maps/stella-montis-thumb-3.webp",
+     "confidence": "COMMUNITY REPORT",
+     "basis": "Community location guides"
+    },
+    {
+     "name": "Archives",
+     "items": [
+      "stella-montis-archives-key",
+      "headphones"
+     ],
+     "image": "assets/images/maps/stella-montis-medical-thumb-3.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in Archives Key data"
+    },
+    {
+     "name": "Security Checkpoint",
+     "items": [
+      "stella-montis-security-checkpoint-key"
+     ],
+     "image": "assets/images/maps/stella-montis-thumb-4.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Seed Vault",
+     "items": [
+      "seed-vault-box-key"
+     ],
+     "image": "assets/images/maps/stella-montis-medical-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    }
+   ]
+  },
+  {
+   "id": "the-blue-gate",
+   "name": "The Blue Gate",
+   "shortName": "Blue Gate",
+   "overview": "Alpine valley beneath a colossal ring structure, with a mountain village, an ancient fort, tunnels and a sealed Locked Gate that needs four security codes.",
+   "environment": "Mountains, village, tunnels",
+   "lootProfile": "Village residential, tunnel security & fort caches",
+   "difficulty": 4,
+   "difficultyLabel": "High",
+   "editorial": true,
+   "image": "assets/images/maps/the-blue-gate-hero.webp",
+   "gallery": [
+    "assets/images/maps/the-blue-gate-thumb-1.webp",
+    "assets/images/maps/the-blue-gate-thumb-2.webp",
+    "assets/images/maps/the-blue-gate-thumb-3.webp",
+    "assets/images/maps/the-blue-gate-thumb-4.webp"
+   ],
+   "pois": [
+    {
+     "name": "Blue Gate Village",
+     "items": [
+      "blue-gate-village-key",
+      "blue-gate-cellar-key"
+     ],
+     "image": "assets/images/maps/the-blue-gate-thumb-1.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Tunnels — Confiscation Room",
+     "items": [
+      "blue-gate-confiscation-room-key"
+     ],
+     "image": "assets/images/maps/the-blue-gate-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Communication Tower",
+     "items": [
+      "blue-gate-communication-tower-key"
+     ],
+     "image": "assets/images/maps/the-blue-gate-thumb-4.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in key data"
+    },
+    {
+     "name": "Locked Gate",
+     "items": [
+      "ancient-fort-security-code",
+      "pilgrims-peak-security-code",
+      "raiders-refuge-security-code",
+      "reinforced-reception-security-code"
+     ],
+     "image": "assets/images/maps/the-blue-gate-thumb-3.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Four security codes named in item data (Ancient Fort, Pilgrim's Peak, Raider's Refuge, Reinforced Reception)"
+    }
+   ]
+  },
+  {
+   "id": "riven-tides",
+   "name": "Riven Tides",
+   "shortName": "Riven Tides",
+   "overview": "Coastal port of flooded shipyards, crane houses, a port authority complex and the Panorama Azzurro hotel. Water-level routes and keycard rooms reward patient searching.",
+   "environment": "Coastal port & waterfront ruins",
+   "lootProfile": "Port authority, hotel suites & shipyard caches",
+   "difficulty": 4,
+   "difficultyLabel": "High",
+   "editorial": true,
+   "image": "assets/images/maps/riven-tides-hero.webp",
+   "gallery": [
+    "assets/images/maps/riven-tides-thumb-1.webp",
+    "assets/images/maps/riven-tides-thumb-2.webp",
+    "assets/images/maps/riven-tides-thumb-3.webp"
+   ],
+   "pois": [
+    {
+     "name": "Port Authority Building",
+     "items": [
+      "riven-tides-classified-records-keycard",
+      "riven-tides-secure-storage-keycard"
+     ],
+     "image": "assets/images/maps/riven-tides-thumb-2.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in keycard data"
+    },
+    {
+     "name": "Panorama Azzurro Hotel",
+     "items": [
+      "riven-tides-hotel-keycard-no-102",
+      "riven-tides-hotel-keycard-no-208",
+      "riven-tides-hotel-keycard-no-404"
+     ],
+     "image": "assets/images/maps/riven-tides-thumb-3.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in hotel keycard data"
+    },
+    {
+     "name": "Crane Houses",
+     "items": [
+      "riven-tides-crane-house-keycard"
+     ],
+     "image": "assets/images/maps/riven-tides-thumb-1.webp",
+     "confidence": "VERIFIED COMMUNITY",
+     "basis": "Named in keycard data"
+    }
+   ]
+  },
+  {
+   "id": "pendola-pass",
+   "name": "Pendola Pass",
+   "shortName": "Pendola Pass",
+   "status": "upcoming",
+   "overview": "Snowy mountain pass announced for the Frozen Trail update (8 Oct 2026). Not live yet — no verified loot, POI or marker data is available, so nothing is listed here until the map ships and sources update.",
+   "environment": "Snowbound mountain pass (announced)",
+   "lootProfile": "Unknown until release",
+   "difficulty": 0,
+   "difficultyLabel": "Unreleased",
+   "editorial": true,
+   "releaseNote": "Frozen Trail update — announced release 8 Oct 2026 (GamesRadar).",
+   "image": "assets/images/heroes/raider-network-skyline.webp",
+   "gallery": [],
+   "pois": [],
+   "sources": [
+    {
+     "label": "GamesRadar — Frozen Trail",
+     "url": "https://www.gamesradar.com/games/third-person-shooter/arc-raiders-frozen-trail/",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ]
+  }
+ ],
+ "demoConditions": [
+  {
+   "mapId": "dam-battlegrounds",
+   "condition": "Matriarch",
+   "window": "Now",
+   "severity": "high-threat"
+  },
+  {
+   "mapId": "buried-city",
+   "condition": "Night Raid",
+   "window": "Now",
+   "severity": "risky"
+  },
+  {
+   "mapId": "spaceport",
+   "condition": "Electromagnetic Storm",
+   "window": "Next rotation",
+   "severity": "weather"
+  },
+  {
+   "mapId": "stella-montis",
+   "condition": "Prospecting Probes",
+   "window": "Now",
+   "severity": "safe"
+  },
+  {
+   "mapId": "the-blue-gate",
+   "condition": "Harvester",
+   "window": "Next rotation",
+   "severity": "hazard"
+  },
+  {
+   "mapId": "riven-tides",
+   "condition": "Hurricane",
+   "window": "Later today",
+   "severity": "weather"
+  }
+ ]
+}

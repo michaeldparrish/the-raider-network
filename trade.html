@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trade Board — The Raider Network</title>
+<meta name="description" content="Post what you are looking for in ARC Raiders, list possible offers, and respond privately. No payments.">
+<meta name="theme-color" content="#071014">
+<link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body data-page="trade">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader" class="site-header"></header>
+<main id="main">
+<section class="page-banner trade-banner">
+  <img src="assets/images/heroes/community-bunker.webp" alt="">
+  <div class="page-banner__shade"></div>
+  <div class="page-banner__copy"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> COMMUNITY BOARD</span><h1>Trade Board</h1><p>Post what you are looking for, list what you might offer, or invite Raiders to message you with an offer.</p>
+    <div class="btn-row"><button class="btn btn-primary btn-lg" id="openTradeModal">+ Post a Trade Request</button></div>
+    <div class="banner-stats"><span><b id="statOpenTrades">—</b> open requests</span><span><b id="statOpenOffers">—</b> open to offers</span><span><b id="statCompleted">0</b> trades completed</span></div></div>
+  <img class="banner-side-art" src="assets/images/raiders/raider-veteran-trader.webp" alt="">
+</section>
+<div class="page-shell trade-layout">
+  <div>
+    <div class="policy-warning"><img class="ico" src="assets/images/ui/icon-warning.png" alt="" aria-hidden="true"><div><strong>Fair-play notice:</strong> Embark currently states that trading in-game items for anything of value, whether real money or otherwise, may result in enforcement. The Raider Network does not process payments, allows no real-money trades, and does not guarantee that any proposed item transfer is permitted.</div></div>
+    <div class="toolbar hunts-toolbar trade-toolbar">
+      <div class="search-wrap"><svg class="svg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input class="input" id="tradeSearch" placeholder="Search wanted items, offered items, or Raider names" aria-label="Search trades"></div>
+      <select class="input" id="tradeRegion" aria-label="Region"></select>
+      <select class="input" id="tradePlatform" aria-label="Platform"></select>
+      <select class="input" id="tradeStatus" aria-label="Status"><option value="open" selected>Open</option><option value="closed">Closed</option><option value="">Any status</option></select>
+    </div>
+    <p class="muted" id="tradeFilterNote"></p>
+    <p class="result-line"><b id="tradeCount">0</b> requests shown</p>
+    <div class="trade-request-grid" id="tradeRequestGrid"></div>
+    <div id="tradeEmpty" class="empty-state hidden"><img src="assets/images/raiders/gear-rusher-knife.webp" alt="" class="empty-art"><strong>No requests match.</strong></div>
+  </div>
+  <aside class="trade-side-col">
+    <div id="inventoryPanels"></div>
+    <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-value.png" alt="" aria-hidden="true"> MOST WANTED</span></header><div class="mini-list" id="mostWanted"></div></section>
+    <section class="panel side-art"><img src="assets/images/raiders/gear-trader-coins.webp" alt=""><div><strong>Deals keep us moving.</strong><p>Agree terms in private messages. Share your Raider tag only when you're ready.</p></div></section>
+  </aside>
+</div>
+<div class="modal hidden" id="tradeModal" role="dialog" aria-modal="true" aria-labelledby="tradeModalTitle"><div class="modal-card">
+  <button class="modal-close" id="closeTradeModal" aria-label="Close">×</button>
+  <span class="eyebrow">NEW REQUEST</span><h2 id="tradeModalTitle">Post a trade request</h2>
+  <form id="tradeForm" class="form-grid">
+    <label>Looking for<input class="input" name="want" list="tradeItemNames" required placeholder="e.g. Rotary Encoder" autocomplete="off"></label>
+    <label>Qty<input class="input" name="wantQty" type="number" min="1" max="99" value="1"></label>
+    <div class="full item-preview" id="tradeItemPreview"></div>
+    <div class="full inv-offer hidden" id="invOfferWrap"><label>Reserve from your trade inventory<select class="input" name="invKey"></select></label><label>Qty<input class="input" name="invQty" type="number" min="1" max="2" value="1"></label></div>
+    <label>Other offer (free text)<input class="input" name="have" list="tradeItemNames" placeholder="Optional — you are open to offers" autocomplete="off"></label>
+    <label>Qty<input class="input" name="haveQty" type="number" min="1" max="99" value="1"></label>
+    <label class="full check-line"><input type="checkbox" name="openToOffers" checked> Open to offers</label>
+    <datalist id="tradeItemNames"></datalist>
+    <label>Region<select class="input" name="region"></select></label>
+    <label>Platform<select class="input" name="platform"></select></label>
+    <label class="full">Desired time<input class="input" name="desiredTime" maxlength="80" placeholder="Evenings, weekend…"></label>
+    <label class="full">Notes<textarea class="input" name="notes" rows="3" maxlength="500" placeholder="What you need it for, flexibility, etc."></textarea></label>
+    <div class="full"><button class="btn btn-primary" type="submit">Publish Request</button> <span class="form-note" id="tradeFormMsg" role="status"></span></div>
+  </form>
+</div></div>
+</main>
+<footer id="siteFooter" class="site-footer"></footer>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="assets/config.js"></script>
+<script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/data.js"></script>
+<script defer src="assets/js/auth.js"></script>
+<script defer src="assets/js/loot.js"></script>
+<script defer src="assets/js/maps.js"></script>
+<script defer src="assets/js/projects.js"></script>
+<script defer src="assets/js/hunts.js"></script>
+<script defer src="assets/js/trades.js"></script>
+<script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

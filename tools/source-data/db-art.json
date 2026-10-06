@@ -1,0 +1,2254 @@
+{
+ "acoustic-guitar": {
+  "file": "items/db/acoustic-guitar.svg",
+  "kind": "fallback"
+ },
+ "adrenaline-shot": {
+  "file": "items/db/adrenaline-shot.svg",
+  "kind": "fallback"
+ },
+ "advanced-arc-powercell": {
+  "file": "items/db/advanced-arc-powercell.svg",
+  "kind": "fallback"
+ },
+ "advanced-electrical-components": {
+  "file": "items/db/advanced-electrical-components.svg",
+  "kind": "fallback"
+ },
+ "agave": {
+  "file": "items/db/agave.svg",
+  "kind": "fallback"
+ },
+ "agave-juice": {
+  "file": "items/db/agave-juice.svg",
+  "kind": "fallback"
+ },
+ "air-freshener": {
+  "file": "items/db/air-freshener.svg",
+  "kind": "fallback"
+ },
+ "alarm-clock": {
+  "file": "items/db/alarm-clock.svg",
+  "kind": "fallback"
+ },
+ "alien-duck": {
+  "file": "items/db/alien-duck.svg",
+  "kind": "fallback"
+ },
+ "ancient-fort-security-code": {
+  "file": "items/db/ancient-fort-security-code.svg",
+  "kind": "key"
+ },
+ "angled-grip-i": {
+  "file": "items/db/angled-grip-i.svg",
+  "kind": "fallback"
+ },
+ "angled-grip-ii": {
+  "file": "items/db/angled-grip-ii.svg",
+  "kind": "fallback"
+ },
+ "angled-grip-ii-blueprint": {
+  "file": "items/db/angled-grip-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "angled-grip-iii": {
+  "file": "items/db/angled-grip-iii.svg",
+  "kind": "fallback"
+ },
+ "angled-grip-iii-blueprint": {
+  "file": "items/db/angled-grip-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "antiseptic": {
+  "file": "items/db/antiseptic.svg",
+  "kind": "fallback"
+ },
+ "anvil-blueprint": {
+  "file": "items/db/anvil-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "anvil-i": {
+  "file": "items/db/anvil-i.svg",
+  "kind": "weapon"
+ },
+ "anvil-ii": {
+  "file": "items/db/anvil-ii.svg",
+  "kind": "weapon"
+ },
+ "anvil-iii": {
+  "file": "items/db/anvil-iii.svg",
+  "kind": "weapon"
+ },
+ "anvil-iv": {
+  "file": "items/db/anvil-iv.svg",
+  "kind": "weapon"
+ },
+ "anvil-splitter": {
+  "file": "items/db/anvil-splitter.svg",
+  "kind": "fallback"
+ },
+ "aphelion": {
+  "file": "items/db/aphelion.svg",
+  "kind": "weapon"
+ },
+ "aphelion-blueprint": {
+  "file": "items/db/aphelion-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "apricot": {
+  "file": "items/db/apricot.svg",
+  "kind": "fallback"
+ },
+ "arc-alloy": {
+  "file": "items/db/arc-alloy.svg",
+  "kind": "fallback"
+ },
+ "arc-circuitry": {
+  "file": "items/db/arc-circuitry.svg",
+  "kind": "fallback"
+ },
+ "arc-coolant": {
+  "file": "items/db/arc-coolant.svg",
+  "kind": "fallback"
+ },
+ "arc-flex-rubber": {
+  "file": "items/db/arc-flex-rubber.svg",
+  "kind": "fallback"
+ },
+ "arc-motion-core": {
+  "file": "items/db/arc-motion-core.svg",
+  "kind": "fallback"
+ },
+ "arc-performance-steel": {
+  "file": "items/db/arc-performance-steel.svg",
+  "kind": "fallback"
+ },
+ "arc-synthetic-resin": {
+  "file": "items/db/arc-synthetic-resin.svg",
+  "kind": "fallback"
+ },
+ "arc-thermo-lining": {
+  "file": "items/db/arc-thermo-lining.svg",
+  "kind": "fallback"
+ },
+ "arpeggio-i": {
+  "file": "items/db/arpeggio-i.svg",
+  "kind": "weapon"
+ },
+ "arpeggio-ii": {
+  "file": "items/db/arpeggio-ii.svg",
+  "kind": "weapon"
+ },
+ "arpeggio-iii": {
+  "file": "items/db/arpeggio-iii.svg",
+  "kind": "weapon"
+ },
+ "arpeggio-iv": {
+  "file": "items/db/arpeggio-iv.svg",
+  "kind": "weapon"
+ },
+ "assessor-matrix": {
+  "file": "items/db/assessor-matrix.svg",
+  "kind": "fallback"
+ },
+ "assorted-seeds": {
+  "file": "items/db/assorted-seeds.svg",
+  "kind": "fallback"
+ },
+ "bandage": {
+  "file": "items/db/bandage.svg",
+  "kind": "fallback"
+ },
+ "barricade-kit": {
+  "file": "items/db/barricade-kit.svg",
+  "kind": "fallback"
+ },
+ "barricade-kit-blueprint": {
+  "file": "items/db/barricade-kit-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "bastion-cell": {
+  "file": "items/db/bastion-cell.svg",
+  "kind": "specific"
+ },
+ "bettina-blueprint": {
+  "file": "items/db/bettina-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "bettina-i": {
+  "file": "items/db/bettina-i.svg",
+  "kind": "weapon"
+ },
+ "bettina-ii": {
+  "file": "items/db/bettina-ii.svg",
+  "kind": "weapon"
+ },
+ "bettina-iii": {
+  "file": "items/db/bettina-iii.svg",
+  "kind": "weapon"
+ },
+ "bettina-iv": {
+  "file": "items/db/bettina-iv.svg",
+  "kind": "weapon"
+ },
+ "bicycle-pump": {
+  "file": "items/db/bicycle-pump.svg",
+  "kind": "fallback"
+ },
+ "binoculars": {
+  "file": "items/db/binoculars.svg",
+  "kind": "fallback"
+ },
+ "blaze-grenade": {
+  "file": "items/db/blaze-grenade.svg",
+  "kind": "fallback"
+ },
+ "blaze-grenade-blueprint": {
+  "file": "items/db/blaze-grenade-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "blaze-grenade-trap": {
+  "file": "items/db/blaze-grenade-trap.svg",
+  "kind": "fallback"
+ },
+ "bloated-tuna-can": {
+  "file": "items/db/bloated-tuna-can.svg",
+  "kind": "fallback"
+ },
+ "blue-gate-cellar-key": {
+  "file": "items/db/blue-gate-cellar-key.svg",
+  "kind": "key"
+ },
+ "blue-gate-communication-tower-key": {
+  "file": "items/db/blue-gate-communication-tower-key.svg",
+  "kind": "key"
+ },
+ "blue-gate-confiscation-room-key": {
+  "file": "items/db/blue-gate-confiscation-room-key.svg",
+  "kind": "key"
+ },
+ "blue-gate-village-key": {
+  "file": "items/db/blue-gate-village-key.svg",
+  "kind": "key"
+ },
+ "blue-light-stick": {
+  "file": "items/db/blue-light-stick.svg",
+  "kind": "fallback"
+ },
+ "blue-light-stick-blueprint": {
+  "file": "items/db/blue-light-stick-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "bobcat-blueprint": {
+  "file": "items/db/bobcat-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "bobcat-i": {
+  "file": "items/db/bobcat-i.svg",
+  "kind": "weapon"
+ },
+ "bobcat-ii": {
+  "file": "items/db/bobcat-ii.svg",
+  "kind": "weapon"
+ },
+ "bobcat-iii": {
+  "file": "items/db/bobcat-iii.svg",
+  "kind": "weapon"
+ },
+ "bobcat-iv": {
+  "file": "items/db/bobcat-iv.svg",
+  "kind": "weapon"
+ },
+ "bombardier-cell": {
+  "file": "items/db/bombardier-cell.svg",
+  "kind": "specific"
+ },
+ "broken-flashlight": {
+  "file": "items/db/broken-flashlight.svg",
+  "kind": "fallback"
+ },
+ "broken-guidance-system": {
+  "file": "items/db/broken-guidance-system.svg",
+  "kind": "fallback"
+ },
+ "broken-handheld-radio": {
+  "file": "items/db/broken-handheld-radio.svg",
+  "kind": "fallback"
+ },
+ "broken-taser": {
+  "file": "items/db/broken-taser.svg",
+  "kind": "fallback"
+ },
+ "buried-city-hospital-key": {
+  "file": "items/db/buried-city-hospital-key.svg",
+  "kind": "key"
+ },
+ "buried-city-jkv-employee-access-card": {
+  "file": "items/db/buried-city-jkv-employee-access-card.svg",
+  "kind": "key"
+ },
+ "buried-city-residential-master-key": {
+  "file": "items/db/buried-city-residential-master-key.svg",
+  "kind": "key"
+ },
+ "buried-city-town-hall-key": {
+  "file": "items/db/buried-city-town-hall-key.svg",
+  "kind": "key"
+ },
+ "burletta-blueprint": {
+  "file": "items/db/burletta-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "burletta-i": {
+  "file": "items/db/burletta-i.svg",
+  "kind": "weapon"
+ },
+ "burletta-ii": {
+  "file": "items/db/burletta-ii.svg",
+  "kind": "weapon"
+ },
+ "burletta-iii": {
+  "file": "items/db/burletta-iii.svg",
+  "kind": "weapon"
+ },
+ "burletta-iv": {
+  "file": "items/db/burletta-iv.svg",
+  "kind": "weapon"
+ },
+ "burned-arc-circuitry": {
+  "file": "items/db/burned-arc-circuitry.svg",
+  "kind": "fallback"
+ },
+ "burnt-out-candles": {
+  "file": "items/db/burnt-out-candles.svg",
+  "kind": "fallback"
+ },
+ "camera-lens": {
+  "file": "items/db/camera-lens.svg",
+  "kind": "fallback"
+ },
+ "candle-holder": {
+  "file": "items/db/candle-holder.svg",
+  "kind": "fallback"
+ },
+ "candleberries": {
+  "file": "items/db/candleberries.svg",
+  "kind": "fallback"
+ },
+ "canister": {
+  "file": "items/db/canister.svg",
+  "kind": "fallback"
+ },
+ "canto-blueprint": {
+  "file": "items/db/canto-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "canto-i": {
+  "file": "items/db/canto-i.svg",
+  "kind": "weapon"
+ },
+ "canto-ii": {
+  "file": "items/db/canto-ii.svg",
+  "kind": "weapon"
+ },
+ "canto-iii": {
+  "file": "items/db/canto-iii.svg",
+  "kind": "weapon"
+ },
+ "canto-iv": {
+  "file": "items/db/canto-iv.svg",
+  "kind": "weapon"
+ },
+ "cat-bed": {
+  "file": "items/db/cat-bed.svg",
+  "kind": "fallback"
+ },
+ "celeste-journal": {
+  "file": "items/db/celeste-journal.svg",
+  "kind": "fallback"
+ },
+ "chemicals": {
+  "file": "items/db/chemicals.svg",
+  "kind": "fallback"
+ },
+ "coffee-pot": {
+  "file": "items/db/coffee-pot.svg",
+  "kind": "fallback"
+ },
+ "colorful-shoes-green": {
+  "file": "items/db/colorful-shoes-green.svg",
+  "kind": "fallback"
+ },
+ "colorful-shoes-red": {
+  "file": "items/db/colorful-shoes-red.svg",
+  "kind": "fallback"
+ },
+ "colorful-shoes-silver": {
+  "file": "items/db/colorful-shoes-silver.svg",
+  "kind": "fallback"
+ },
+ "combat-mk1": {
+  "file": "items/db/combat-mk1.svg",
+  "kind": "fallback"
+ },
+ "combat-mk2": {
+  "file": "items/db/combat-mk2.svg",
+  "kind": "fallback"
+ },
+ "combat-mk3-aggressive": {
+  "file": "items/db/combat-mk3-aggressive.svg",
+  "kind": "fallback"
+ },
+ "combat-mk3-aggressive-blueprint": {
+  "file": "items/db/combat-mk3-aggressive-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "combat-mk3-flanking": {
+  "file": "items/db/combat-mk3-flanking.svg",
+  "kind": "fallback"
+ },
+ "combat-mk3-flanking-blueprint": {
+  "file": "items/db/combat-mk3-flanking-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "comet-igniter": {
+  "file": "items/db/comet-igniter.svg",
+  "kind": "fallback"
+ },
+ "compensator-i": {
+  "file": "items/db/compensator-i.svg",
+  "kind": "fallback"
+ },
+ "compensator-ii": {
+  "file": "items/db/compensator-ii.svg",
+  "kind": "fallback"
+ },
+ "compensator-ii-blueprint": {
+  "file": "items/db/compensator-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "compensator-iii": {
+  "file": "items/db/compensator-iii.svg",
+  "kind": "fallback"
+ },
+ "compensator-iii-blueprint": {
+  "file": "items/db/compensator-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "complex-gun-parts": {
+  "file": "items/db/complex-gun-parts.svg",
+  "kind": "fallback"
+ },
+ "complex-gun-parts-blueprint": {
+  "file": "items/db/complex-gun-parts-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "coolant": {
+  "file": "items/db/coolant.svg",
+  "kind": "fallback"
+ },
+ "cooling-coil": {
+  "file": "items/db/cooling-coil.svg",
+  "kind": "fallback"
+ },
+ "cooling-fan": {
+  "file": "items/db/cooling-fan.svg",
+  "kind": "fallback"
+ },
+ "cracked-bioscanner": {
+  "file": "items/db/cracked-bioscanner.svg",
+  "kind": "fallback"
+ },
+ "crash-mat": {
+  "file": "items/db/crash-mat.svg",
+  "kind": "fallback"
+ },
+ "crash-mat-blueprint": {
+  "file": "items/db/crash-mat-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "crude-explosives": {
+  "file": "items/db/crude-explosives.svg",
+  "kind": "fallback"
+ },
+ "crumpled-plastic-bottle": {
+  "file": "items/db/crumpled-plastic-bottle.svg",
+  "kind": "fallback"
+ },
+ "dam-control-tower-key": {
+  "file": "items/db/dam-control-tower-key.svg",
+  "kind": "key"
+ },
+ "dam-controlled-access-zone-key": {
+  "file": "items/db/dam-controlled-access-zone-key.svg",
+  "kind": "key"
+ },
+ "dam-staff-room-key": {
+  "file": "items/db/dam-staff-room-key.svg",
+  "kind": "key"
+ },
+ "dam-surveillance-key": {
+  "file": "items/db/dam-surveillance-key.svg",
+  "kind": "key"
+ },
+ "dam-testing-annex-key": {
+  "file": "items/db/dam-testing-annex-key.svg",
+  "kind": "key"
+ },
+ "damaged-arc-motion-core": {
+  "file": "items/db/damaged-arc-motion-core.svg",
+  "kind": "fallback"
+ },
+ "damaged-arc-powercell": {
+  "file": "items/db/damaged-arc-powercell.svg",
+  "kind": "fallback"
+ },
+ "damaged-fireball-burner": {
+  "file": "items/db/damaged-fireball-burner.svg",
+  "kind": "fallback"
+ },
+ "damaged-heat-sink": {
+  "file": "items/db/damaged-heat-sink.svg",
+  "kind": "fallback"
+ },
+ "damaged-hornet-driver": {
+  "file": "items/db/damaged-hornet-driver.svg",
+  "kind": "fallback"
+ },
+ "damaged-rocketeer-driver": {
+  "file": "items/db/damaged-rocketeer-driver.svg",
+  "kind": "fallback"
+ },
+ "damaged-snitch-scanner": {
+  "file": "items/db/damaged-snitch-scanner.svg",
+  "kind": "fallback"
+ },
+ "damaged-tick-pod": {
+  "file": "items/db/damaged-tick-pod.svg",
+  "kind": "fallback"
+ },
+ "damaged-wasp-driver": {
+  "file": "items/db/damaged-wasp-driver.svg",
+  "kind": "fallback"
+ },
+ "dart-board": {
+  "file": "items/db/dart-board.svg",
+  "kind": "fallback"
+ },
+ "deadline": {
+  "file": "items/db/deadline.svg",
+  "kind": "fallback"
+ },
+ "deadline-blueprint": {
+  "file": "items/db/deadline-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "defibrillator": {
+  "file": "items/db/defibrillator.svg",
+  "kind": "fallback"
+ },
+ "defibrillator-blueprint": {
+  "file": "items/db/defibrillator-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "deflated-football": {
+  "file": "items/db/deflated-football.svg",
+  "kind": "fallback"
+ },
+ "degraded-arc-rubber": {
+  "file": "items/db/degraded-arc-rubber.svg",
+  "kind": "fallback"
+ },
+ "diving-goggles": {
+  "file": "items/db/diving-goggles.svg",
+  "kind": "fallback"
+ },
+ "dockmasters-detector": {
+  "file": "items/db/dockmasters-detector.svg",
+  "kind": "fallback"
+ },
+ "dodgers-note": {
+  "file": "items/db/dodgers-note.svg",
+  "kind": "fallback"
+ },
+ "dog-collar": {
+  "file": "items/db/dog-collar.svg",
+  "kind": "fallback"
+ },
+ "dolabra": {
+  "file": "items/db/dolabra.svg",
+  "kind": "weapon"
+ },
+ "dolabra-blueprint": {
+  "file": "items/db/dolabra-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "doodly-duck": {
+  "file": "items/db/doodly-duck.svg",
+  "kind": "fallback"
+ },
+ "door-blocker": {
+  "file": "items/db/door-blocker.svg",
+  "kind": "fallback"
+ },
+ "dried-out-arc-resin": {
+  "file": "items/db/dried-out-arc-resin.svg",
+  "kind": "fallback"
+ },
+ "duct-tape": {
+  "file": "items/db/duct-tape.svg",
+  "kind": "fallback"
+ },
+ "durable-cloth": {
+  "file": "items/db/durable-cloth.svg",
+  "kind": "fallback"
+ },
+ "dusty-film-reel": {
+  "file": "items/db/dusty-film-reel.svg",
+  "kind": "fallback"
+ },
+ "elephant-obelisk": {
+  "file": "items/db/elephant-obelisk.svg",
+  "kind": "fallback"
+ },
+ "empty-wine-bottle": {
+  "file": "items/db/empty-wine-bottle.svg",
+  "kind": "fallback"
+ },
+ "energy-clip": {
+  "file": "items/db/energy-clip.svg",
+  "kind": "fallback"
+ },
+ "equalizer": {
+  "file": "items/db/equalizer.svg",
+  "kind": "weapon"
+ },
+ "equalizer-blueprint": {
+  "file": "items/db/equalizer-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "equatorial-sundial": {
+  "file": "items/db/equatorial-sundial.svg",
+  "kind": "fallback"
+ },
+ "espresso-machine-parts": {
+  "file": "items/db/espresso-machine-parts.svg",
+  "kind": "fallback"
+ },
+ "esr-analyzer": {
+  "file": "items/db/esr-analyzer.svg",
+  "kind": "fallback"
+ },
+ "experimental-seed-sample": {
+  "file": "items/db/experimental-seed-sample.svg",
+  "kind": "fallback"
+ },
+ "expired-pasta": {
+  "file": "items/db/expired-pasta.svg",
+  "kind": "fallback"
+ },
+ "expired-respirator": {
+  "file": "items/db/expired-respirator.svg",
+  "kind": "fallback"
+ },
+ "expired-security-code": {
+  "file": "items/db/expired-security-code.svg",
+  "kind": "key"
+ },
+ "explosive-compound": {
+  "file": "items/db/explosive-compound.svg",
+  "kind": "fallback"
+ },
+ "explosive-mine": {
+  "file": "items/db/explosive-mine.svg",
+  "kind": "fallback"
+ },
+ "explosive-mine-blueprint": {
+  "file": "items/db/explosive-mine-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-barrel-i": {
+  "file": "items/db/extended-barrel-i.svg",
+  "kind": "fallback"
+ },
+ "extended-barrel-ii": {
+  "file": "items/db/extended-barrel-ii.svg",
+  "kind": "fallback"
+ },
+ "extended-barrel-ii-blueprint": {
+  "file": "items/db/extended-barrel-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-barrel-iii": {
+  "file": "items/db/extended-barrel-iii.svg",
+  "kind": "fallback"
+ },
+ "extended-barrel-iii-blueprint": {
+  "file": "items/db/extended-barrel-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-light-mag-i": {
+  "file": "items/db/extended-light-mag-i.svg",
+  "kind": "fallback"
+ },
+ "extended-light-mag-ii": {
+  "file": "items/db/extended-light-mag-ii.svg",
+  "kind": "fallback"
+ },
+ "extended-light-mag-ii-blueprint": {
+  "file": "items/db/extended-light-mag-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-light-mag-iii": {
+  "file": "items/db/extended-light-mag-iii.svg",
+  "kind": "fallback"
+ },
+ "extended-light-mag-iii-blueprint": {
+  "file": "items/db/extended-light-mag-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-medium-mag-i": {
+  "file": "items/db/extended-medium-mag-i.svg",
+  "kind": "fallback"
+ },
+ "extended-medium-mag-ii": {
+  "file": "items/db/extended-medium-mag-ii.svg",
+  "kind": "fallback"
+ },
+ "extended-medium-mag-ii-blueprint": {
+  "file": "items/db/extended-medium-mag-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-medium-mag-iii": {
+  "file": "items/db/extended-medium-mag-iii.svg",
+  "kind": "fallback"
+ },
+ "extended-medium-mag-iii-blueprint": {
+  "file": "items/db/extended-medium-mag-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-shotgun-mag-i": {
+  "file": "items/db/extended-shotgun-mag-i.svg",
+  "kind": "fallback"
+ },
+ "extended-shotgun-mag-ii": {
+  "file": "items/db/extended-shotgun-mag-ii.svg",
+  "kind": "fallback"
+ },
+ "extended-shotgun-mag-ii-blueprint": {
+  "file": "items/db/extended-shotgun-mag-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "extended-shotgun-mag-iii": {
+  "file": "items/db/extended-shotgun-mag-iii.svg",
+  "kind": "fallback"
+ },
+ "extended-shotgun-mag-iii-blueprint": {
+  "file": "items/db/extended-shotgun-mag-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "fabric": {
+  "file": "items/db/fabric.svg",
+  "kind": "fallback"
+ },
+ "faded-photograph": {
+  "file": "items/db/faded-photograph.svg",
+  "kind": "fallback"
+ },
+ "familiar-duck": {
+  "file": "items/db/familiar-duck.svg",
+  "kind": "fallback"
+ },
+ "ferro-i": {
+  "file": "items/db/ferro-i.svg",
+  "kind": "weapon"
+ },
+ "ferro-ii": {
+  "file": "items/db/ferro-ii.svg",
+  "kind": "weapon"
+ },
+ "ferro-iii": {
+  "file": "items/db/ferro-iii.svg",
+  "kind": "weapon"
+ },
+ "ferro-iv": {
+  "file": "items/db/ferro-iv.svg",
+  "kind": "weapon"
+ },
+ "fertilizer": {
+  "file": "items/db/fertilizer.svg",
+  "kind": "fallback"
+ },
+ "film-reel": {
+  "file": "items/db/film-reel.svg",
+  "kind": "fallback"
+ },
+ "fine-wristwatch": {
+  "file": "items/db/fine-wristwatch.svg",
+  "kind": "fallback"
+ },
+ "fireball-burner": {
+  "file": "items/db/fireball-burner.svg",
+  "kind": "specific"
+ },
+ "firecracker": {
+  "file": "items/db/firecracker.svg",
+  "kind": "fallback"
+ },
+ "firefly-burner": {
+  "file": "items/db/firefly-burner.svg",
+  "kind": "fallback"
+ },
+ "fireworks-box": {
+  "file": "items/db/fireworks-box.svg",
+  "kind": "fallback"
+ },
+ "fireworks-box-blueprint": {
+  "file": "items/db/fireworks-box-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "first-wave-compass": {
+  "file": "items/db/first-wave-compass.svg",
+  "kind": "fallback"
+ },
+ "first-wave-rations": {
+  "file": "items/db/first-wave-rations.svg",
+  "kind": "fallback"
+ },
+ "first-wave-tape": {
+  "file": "items/db/first-wave-tape.svg",
+  "kind": "fallback"
+ },
+ "flame-spray": {
+  "file": "items/db/flame-spray.svg",
+  "kind": "fallback"
+ },
+ "flashy-duck": {
+  "file": "items/db/flashy-duck.svg",
+  "kind": "fallback"
+ },
+ "flow-controller": {
+  "file": "items/db/flow-controller.svg",
+  "kind": "fallback"
+ },
+ "flushing-terminal-key": {
+  "file": "items/db/flushing-terminal-key.svg",
+  "kind": "fallback"
+ },
+ "fossilized-lightning": {
+  "file": "items/db/fossilized-lightning.svg",
+  "kind": "fallback"
+ },
+ "free-loadout-augment": {
+  "file": "items/db/free-loadout-augment.svg",
+  "kind": "fallback"
+ },
+ "frequency-modulation-box": {
+  "file": "items/db/frequency-modulation-box.svg",
+  "kind": "fallback"
+ },
+ "fried-motherboard": {
+  "file": "items/db/fried-motherboard.svg",
+  "kind": "fallback"
+ },
+ "fruit-mix": {
+  "file": "items/db/fruit-mix.svg",
+  "kind": "fallback"
+ },
+ "frying-pan": {
+  "file": "items/db/frying-pan.svg",
+  "kind": "fallback"
+ },
+ "garlic-press": {
+  "file": "items/db/garlic-press.svg",
+  "kind": "fallback"
+ },
+ "gas-grenade": {
+  "file": "items/db/gas-grenade.svg",
+  "kind": "fallback"
+ },
+ "gas-grenade-trap": {
+  "file": "items/db/gas-grenade-trap.svg",
+  "kind": "fallback"
+ },
+ "gas-mine": {
+  "file": "items/db/gas-mine.svg",
+  "kind": "fallback"
+ },
+ "gas-mine-blueprint": {
+  "file": "items/db/gas-mine-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "geiger-counter": {
+  "file": "items/db/geiger-counter.svg",
+  "kind": "fallback"
+ },
+ "gentle-duck": {
+  "file": "items/db/gentle-duck.svg",
+  "kind": "fallback"
+ },
+ "glitched-arc-circuitry": {
+  "file": "items/db/glitched-arc-circuitry.svg",
+  "kind": "fallback"
+ },
+ "glitched-arc-light-ring": {
+  "file": "items/db/glitched-arc-light-ring.svg",
+  "kind": "fallback"
+ },
+ "glitched-arc-phased-array": {
+  "file": "items/db/glitched-arc-phased-array.svg",
+  "kind": "fallback"
+ },
+ "glitched-arc-power-converter": {
+  "file": "items/db/glitched-arc-power-converter.svg",
+  "kind": "fallback"
+ },
+ "glitched-arc-transmitter": {
+  "file": "items/db/glitched-arc-transmitter.svg",
+  "kind": "fallback"
+ },
+ "great-mullein": {
+  "file": "items/db/great-mullein.svg",
+  "kind": "fallback"
+ },
+ "green-light-stick": {
+  "file": "items/db/green-light-stick.svg",
+  "kind": "fallback"
+ },
+ "green-light-stick-blueprint": {
+  "file": "items/db/green-light-stick-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "hairpin-i": {
+  "file": "items/db/hairpin-i.svg",
+  "kind": "weapon"
+ },
+ "hairpin-ii": {
+  "file": "items/db/hairpin-ii.svg",
+  "kind": "weapon"
+ },
+ "hairpin-iii": {
+  "file": "items/db/hairpin-iii.svg",
+  "kind": "weapon"
+ },
+ "hairpin-iv": {
+  "file": "items/db/hairpin-iv.svg",
+  "kind": "weapon"
+ },
+ "heavy-ammo": {
+  "file": "items/db/heavy-ammo.svg",
+  "kind": "fallback"
+ },
+ "heavy-fuze-grenade": {
+  "file": "items/db/heavy-fuze-grenade.svg",
+  "kind": "fallback"
+ },
+ "heavy-gun-parts": {
+  "file": "items/db/heavy-gun-parts.svg",
+  "kind": "fallback"
+ },
+ "heavy-gun-parts-blueprint": {
+  "file": "items/db/heavy-gun-parts-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "heavy-shield": {
+  "file": "items/db/heavy-shield.svg",
+  "kind": "fallback"
+ },
+ "herbal-bandage": {
+  "file": "items/db/herbal-bandage.svg",
+  "kind": "fallback"
+ },
+ "hidden-bunker-key": {
+  "file": "items/db/hidden-bunker-key.svg",
+  "kind": "key"
+ },
+ "horizontal-grip": {
+  "file": "items/db/horizontal-grip.svg",
+  "kind": "fallback"
+ },
+ "hornet-driver": {
+  "file": "items/db/hornet-driver.svg",
+  "kind": "specific"
+ },
+ "household-cleaner": {
+  "file": "items/db/household-cleaner.svg",
+  "kind": "fallback"
+ },
+ "hullcracker-blueprint": {
+  "file": "items/db/hullcracker-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "hullcracker-i": {
+  "file": "items/db/hullcracker-i.svg",
+  "kind": "weapon"
+ },
+ "hullcracker-ii": {
+  "file": "items/db/hullcracker-ii.svg",
+  "kind": "weapon"
+ },
+ "hullcracker-iii": {
+  "file": "items/db/hullcracker-iii.svg",
+  "kind": "weapon"
+ },
+ "hullcracker-iv": {
+  "file": "items/db/hullcracker-iv.svg",
+  "kind": "weapon"
+ },
+ "humidifier": {
+  "file": "items/db/humidifier.svg",
+  "kind": "fallback"
+ },
+ "ice-cream-scooper": {
+  "file": "items/db/ice-cream-scooper.svg",
+  "kind": "fallback"
+ },
+ "il-toro-blueprint": {
+  "file": "items/db/il-toro-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "il-toro-i": {
+  "file": "items/db/il-toro-i.svg",
+  "kind": "weapon"
+ },
+ "il-toro-ii": {
+  "file": "items/db/il-toro-ii.svg",
+  "kind": "weapon"
+ },
+ "il-toro-iii": {
+  "file": "items/db/il-toro-iii.svg",
+  "kind": "weapon"
+ },
+ "il-toro-iv": {
+  "file": "items/db/il-toro-iv.svg",
+  "kind": "weapon"
+ },
+ "impure-arc-coolant": {
+  "file": "items/db/impure-arc-coolant.svg",
+  "kind": "fallback"
+ },
+ "industrial-charger": {
+  "file": "items/db/industrial-charger.svg",
+  "kind": "fallback"
+ },
+ "industrial-magnet": {
+  "file": "items/db/industrial-magnet.svg",
+  "kind": "fallback"
+ },
+ "ion-sputter": {
+  "file": "items/db/ion-sputter.svg",
+  "kind": "specific"
+ },
+ "jolt-mine": {
+  "file": "items/db/jolt-mine.svg",
+  "kind": "fallback"
+ },
+ "jolt-mine-blueprint": {
+  "file": "items/db/jolt-mine-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "jupiter": {
+  "file": "items/db/jupiter.svg",
+  "kind": "weapon"
+ },
+ "jupiter-blueprint": {
+  "file": "items/db/jupiter-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "kettle-i": {
+  "file": "items/db/kettle-i.svg",
+  "kind": "weapon"
+ },
+ "kettle-ii": {
+  "file": "items/db/kettle-ii.svg",
+  "kind": "weapon"
+ },
+ "kettle-iii": {
+  "file": "items/db/kettle-iii.svg",
+  "kind": "weapon"
+ },
+ "kettle-iv": {
+  "file": "items/db/kettle-iv.svg",
+  "kind": "weapon"
+ },
+ "kinetic-converter": {
+  "file": "items/db/kinetic-converter.svg",
+  "kind": "specific"
+ },
+ "laboratory-reagents": {
+  "file": "items/db/laboratory-reagents.svg",
+  "kind": "fallback"
+ },
+ "lances-mixtape-5th-edition": {
+  "file": "items/db/lances-mixtape-5th-edition.svg",
+  "kind": "fallback"
+ },
+ "launcher-ammo": {
+  "file": "items/db/launcher-ammo.svg",
+  "kind": "fallback"
+ },
+ "leaper-pulse-unit": {
+  "file": "items/db/leaper-pulse-unit.svg",
+  "kind": "specific"
+ },
+ "lemon": {
+  "file": "items/db/lemon.svg",
+  "kind": "fallback"
+ },
+ "leviathans-crown-ship-model": {
+  "file": "items/db/leviathans-crown-ship-model.svg",
+  "kind": "fallback"
+ },
+ "library-book": {
+  "file": "items/db/library-book.svg",
+  "kind": "fallback"
+ },
+ "lidar-scanner": {
+  "file": "items/db/lidar-scanner.svg",
+  "kind": "fallback"
+ },
+ "light-ammo": {
+  "file": "items/db/light-ammo.svg",
+  "kind": "fallback"
+ },
+ "light-bulb": {
+  "file": "items/db/light-bulb.svg",
+  "kind": "fallback"
+ },
+ "light-gun-parts": {
+  "file": "items/db/light-gun-parts.svg",
+  "kind": "fallback"
+ },
+ "light-gun-parts-blueprint": {
+  "file": "items/db/light-gun-parts-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "light-impact-grenade": {
+  "file": "items/db/light-impact-grenade.svg",
+  "kind": "fallback"
+ },
+ "light-shield": {
+  "file": "items/db/light-shield.svg",
+  "kind": "fallback"
+ },
+ "lightweight-stock": {
+  "file": "items/db/lightweight-stock.svg",
+  "kind": "fallback"
+ },
+ "lightweight-stock-blueprint": {
+  "file": "items/db/lightweight-stock-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "lil-smoke-grenade": {
+  "file": "items/db/lil-smoke-grenade.svg",
+  "kind": "fallback"
+ },
+ "looting-mk1": {
+  "file": "items/db/looting-mk1.svg",
+  "kind": "fallback"
+ },
+ "looting-mk2": {
+  "file": "items/db/looting-mk2.svg",
+  "kind": "fallback"
+ },
+ "looting-mk3-cautious": {
+  "file": "items/db/looting-mk3-cautious.svg",
+  "kind": "fallback"
+ },
+ "looting-mk3-safekeeper": {
+  "file": "items/db/looting-mk3-safekeeper.svg",
+  "kind": "fallback"
+ },
+ "looting-mk3-safekeeper-blueprint": {
+  "file": "items/db/looting-mk3-safekeeper-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "looting-mk3-survivor": {
+  "file": "items/db/looting-mk3-survivor.svg",
+  "kind": "fallback"
+ },
+ "looting-mk3-survivor-blueprint": {
+  "file": "items/db/looting-mk3-survivor-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "lure-grenade": {
+  "file": "items/db/lure-grenade.svg",
+  "kind": "fallback"
+ },
+ "lure-grenade-blueprint": {
+  "file": "items/db/lure-grenade-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "lure-grenade-trap": {
+  "file": "items/db/lure-grenade-trap.svg",
+  "kind": "fallback"
+ },
+ "magnet": {
+  "file": "items/db/magnet.svg",
+  "kind": "fallback"
+ },
+ "magnetic-accelerator": {
+  "file": "items/db/magnetic-accelerator.svg",
+  "kind": "specific"
+ },
+ "major-aivas-mementos": {
+  "file": "items/db/major-aivas-mementos.svg",
+  "kind": "fallback"
+ },
+ "major-aivas-patch": {
+  "file": "items/db/major-aivas-patch.svg",
+  "kind": "fallback"
+ },
+ "marano-market-business-card": {
+  "file": "items/db/marano-market-business-card.svg",
+  "kind": "fallback"
+ },
+ "medium-ammo": {
+  "file": "items/db/medium-ammo.svg",
+  "kind": "fallback"
+ },
+ "medium-gun-parts": {
+  "file": "items/db/medium-gun-parts.svg",
+  "kind": "fallback"
+ },
+ "medium-gun-parts-blueprint": {
+  "file": "items/db/medium-gun-parts-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "medium-shield": {
+  "file": "items/db/medium-shield.svg",
+  "kind": "fallback"
+ },
+ "metal-brackets": {
+  "file": "items/db/metal-brackets.svg",
+  "kind": "fallback"
+ },
+ "metal-parts": {
+  "file": "items/db/metal-parts.svg",
+  "kind": "fallback"
+ },
+ "microscope": {
+  "file": "items/db/microscope.svg",
+  "kind": "fallback"
+ },
+ "mini-centrifuge": {
+  "file": "items/db/mini-centrifuge.svg",
+  "kind": "fallback"
+ },
+ "mod-components": {
+  "file": "items/db/mod-components.svg",
+  "kind": "fallback"
+ },
+ "moisture-meter": {
+  "file": "items/db/moisture-meter.svg",
+  "kind": "fallback"
+ },
+ "moss": {
+  "file": "items/db/moss.svg",
+  "kind": "fallback"
+ },
+ "motor": {
+  "file": "items/db/motor.svg",
+  "kind": "fallback"
+ },
+ "mushroom": {
+  "file": "items/db/mushroom.svg",
+  "kind": "fallback"
+ },
+ "music-album": {
+  "file": "items/db/music-album.svg",
+  "kind": "fallback"
+ },
+ "music-box": {
+  "file": "items/db/music-box.svg",
+  "kind": "fallback"
+ },
+ "muzzle-brake-i": {
+  "file": "items/db/muzzle-brake-i.svg",
+  "kind": "fallback"
+ },
+ "muzzle-brake-ii": {
+  "file": "items/db/muzzle-brake-ii.svg",
+  "kind": "fallback"
+ },
+ "muzzle-brake-ii-blueprint": {
+  "file": "items/db/muzzle-brake-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "muzzle-brake-iii": {
+  "file": "items/db/muzzle-brake-iii.svg",
+  "kind": "fallback"
+ },
+ "muzzle-brake-iii-blueprint": {
+  "file": "items/db/muzzle-brake-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "noisemaker": {
+  "file": "items/db/noisemaker.svg",
+  "kind": "fallback"
+ },
+ "number-plate": {
+  "file": "items/db/number-plate.svg",
+  "kind": "fallback"
+ },
+ "nutrient-meter": {
+  "file": "items/db/nutrient-meter.svg",
+  "kind": "fallback"
+ },
+ "official-shutdown-documentation": {
+  "file": "items/db/official-shutdown-documentation.svg",
+  "kind": "fallback"
+ },
+ "oil": {
+  "file": "items/db/oil.svg",
+  "kind": "fallback"
+ },
+ "old-world-books": {
+  "file": "items/db/old-world-books.svg",
+  "kind": "fallback"
+ },
+ "olives": {
+  "file": "items/db/olives.svg",
+  "kind": "fallback"
+ },
+ "osprey-blueprint": {
+  "file": "items/db/osprey-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "osprey-i": {
+  "file": "items/db/osprey-i.svg",
+  "kind": "weapon"
+ },
+ "osprey-ii": {
+  "file": "items/db/osprey-ii.svg",
+  "kind": "weapon"
+ },
+ "osprey-iii": {
+  "file": "items/db/osprey-iii.svg",
+  "kind": "weapon"
+ },
+ "osprey-iv": {
+  "file": "items/db/osprey-iv.svg",
+  "kind": "weapon"
+ },
+ "padded-stock": {
+  "file": "items/db/padded-stock.svg",
+  "kind": "fallback"
+ },
+ "padded-stock-blueprint": {
+  "file": "items/db/padded-stock-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "painted-box": {
+  "file": "items/db/painted-box.svg",
+  "kind": "fallback"
+ },
+ "patrol-car-key": {
+  "file": "items/db/patrol-car-key.svg",
+  "kind": "key"
+ },
+ "photoelectric-cloak": {
+  "file": "items/db/photoelectric-cloak.svg",
+  "kind": "fallback"
+ },
+ "pilgrims-peak-security-code": {
+  "file": "items/db/pilgrims-peak-security-code.svg",
+  "kind": "key"
+ },
+ "plastic-parts": {
+  "file": "items/db/plastic-parts.svg",
+  "kind": "fallback"
+ },
+ "playing-cards": {
+  "file": "items/db/playing-cards.svg",
+  "kind": "fallback"
+ },
+ "polluted-air-filter": {
+  "file": "items/db/polluted-air-filter.svg",
+  "kind": "fallback"
+ },
+ "pop-trigger": {
+  "file": "items/db/pop-trigger.svg",
+  "kind": "specific"
+ },
+ "portable-tv": {
+  "file": "items/db/portable-tv.svg",
+  "kind": "fallback"
+ },
+ "possibly-toxic-plant": {
+  "file": "items/db/possibly-toxic-plant.svg",
+  "kind": "fallback"
+ },
+ "poster-of-natural-wonders": {
+  "file": "items/db/poster-of-natural-wonders.svg",
+  "kind": "fallback"
+ },
+ "pottery": {
+  "file": "items/db/pottery.svg",
+  "kind": "fallback"
+ },
+ "power-bank": {
+  "file": "items/db/power-bank.svg",
+  "kind": "fallback"
+ },
+ "power-cable": {
+  "file": "items/db/power-cable.svg",
+  "kind": "fallback"
+ },
+ "power-rod": {
+  "file": "items/db/power-rod.svg",
+  "kind": "fallback"
+ },
+ "powered-descender": {
+  "file": "items/db/powered-descender.svg",
+  "kind": "fallback"
+ },
+ "powered-descender-blueprint": {
+  "file": "items/db/powered-descender-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "precision-gimbal": {
+  "file": "items/db/precision-gimbal.svg",
+  "kind": "fallback"
+ },
+ "prickly-pear": {
+  "file": "items/db/prickly-pear.svg",
+  "kind": "fallback"
+ },
+ "project-heartwood-blueprints": {
+  "file": "items/db/project-heartwood-blueprints.svg",
+  "kind": "fallback"
+ },
+ "projector": {
+  "file": "items/db/projector.svg",
+  "kind": "fallback"
+ },
+ "pulse-mine": {
+  "file": "items/db/pulse-mine.svg",
+  "kind": "fallback"
+ },
+ "pulse-mine-blueprint": {
+  "file": "items/db/pulse-mine-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "radio": {
+  "file": "items/db/radio.svg",
+  "kind": "fallback"
+ },
+ "radio-relay": {
+  "file": "items/db/radio-relay.svg",
+  "kind": "fallback"
+ },
+ "raider-flag": {
+  "file": "items/db/raider-flag.svg",
+  "kind": "fallback"
+ },
+ "raider-hatch-key": {
+  "file": "items/db/raider-hatch-key.svg",
+  "kind": "specific"
+ },
+ "raiders-refuge-security-code": {
+  "file": "items/db/raiders-refuge-security-code.svg",
+  "kind": "key"
+ },
+ "rascal-blueprint": {
+  "file": "items/db/rascal-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "rascal-i": {
+  "file": "items/db/rascal-i.svg",
+  "kind": "weapon"
+ },
+ "rascal-ii": {
+  "file": "items/db/rascal-ii.svg",
+  "kind": "weapon"
+ },
+ "rascal-iii": {
+  "file": "items/db/rascal-iii.svg",
+  "kind": "weapon"
+ },
+ "rascal-iv": {
+  "file": "items/db/rascal-iv.svg",
+  "kind": "weapon"
+ },
+ "rattler-i": {
+  "file": "items/db/rattler-i.svg",
+  "kind": "weapon"
+ },
+ "rattler-ii": {
+  "file": "items/db/rattler-ii.svg",
+  "kind": "weapon"
+ },
+ "rattler-iii": {
+  "file": "items/db/rattler-iii.svg",
+  "kind": "weapon"
+ },
+ "rattler-iv": {
+  "file": "items/db/rattler-iv.svg",
+  "kind": "weapon"
+ },
+ "recorder": {
+  "file": "items/db/recorder.svg",
+  "kind": "fallback"
+ },
+ "red-coral-jewelry": {
+  "file": "items/db/red-coral-jewelry.svg",
+  "kind": "fallback"
+ },
+ "red-light-stick": {
+  "file": "items/db/red-light-stick.svg",
+  "kind": "fallback"
+ },
+ "red-light-stick-blueprint": {
+  "file": "items/db/red-light-stick-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "reinforced-reception-security-code": {
+  "file": "items/db/reinforced-reception-security-code.svg",
+  "kind": "key"
+ },
+ "remote-control": {
+  "file": "items/db/remote-control.svg",
+  "kind": "fallback"
+ },
+ "remote-raider-flare": {
+  "file": "items/db/remote-raider-flare.svg",
+  "kind": "fallback"
+ },
+ "remote-raider-flare-blueprint": {
+  "file": "items/db/remote-raider-flare-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "renegade-i": {
+  "file": "items/db/renegade-i.svg",
+  "kind": "weapon"
+ },
+ "renegade-ii": {
+  "file": "items/db/renegade-ii.svg",
+  "kind": "weapon"
+ },
+ "renegade-iii": {
+  "file": "items/db/renegade-iii.svg",
+  "kind": "weapon"
+ },
+ "renegade-iv": {
+  "file": "items/db/renegade-iv.svg",
+  "kind": "weapon"
+ },
+ "resin": {
+  "file": "items/db/resin.svg",
+  "kind": "fallback"
+ },
+ "ripped-safety-vest": {
+  "file": "items/db/ripped-safety-vest.svg",
+  "kind": "fallback"
+ },
+ "riven-tides-classified-records-keycard": {
+  "file": "items/db/riven-tides-classified-records-keycard.svg",
+  "kind": "key"
+ },
+ "riven-tides-crane-house-keycard": {
+  "file": "items/db/riven-tides-crane-house-keycard.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-102": {
+  "file": "items/db/riven-tides-hotel-keycard-no-102.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-107": {
+  "file": "items/db/riven-tides-hotel-keycard-no-107.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-113": {
+  "file": "items/db/riven-tides-hotel-keycard-no-113.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-205": {
+  "file": "items/db/riven-tides-hotel-keycard-no-205.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-208": {
+  "file": "items/db/riven-tides-hotel-keycard-no-208.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-311": {
+  "file": "items/db/riven-tides-hotel-keycard-no-311.svg",
+  "kind": "key"
+ },
+ "riven-tides-hotel-keycard-no-404": {
+  "file": "items/db/riven-tides-hotel-keycard-no-404.svg",
+  "kind": "key"
+ },
+ "riven-tides-secure-storage-keycard": {
+  "file": "items/db/riven-tides-secure-storage-keycard.svg",
+  "kind": "key"
+ },
+ "rocket-thruster": {
+  "file": "items/db/rocket-thruster.svg",
+  "kind": "fallback"
+ },
+ "rocketeer-driver": {
+  "file": "items/db/rocketeer-driver.svg",
+  "kind": "specific"
+ },
+ "roots": {
+  "file": "items/db/roots.svg",
+  "kind": "fallback"
+ },
+ "rope": {
+  "file": "items/db/rope.svg",
+  "kind": "fallback"
+ },
+ "rosary": {
+  "file": "items/db/rosary.svg",
+  "kind": "fallback"
+ },
+ "rubber-duck": {
+  "file": "items/db/rubber-duck.svg",
+  "kind": "fallback"
+ },
+ "rubber-pad": {
+  "file": "items/db/rubber-pad.svg",
+  "kind": "fallback"
+ },
+ "rubber-parts": {
+  "file": "items/db/rubber-parts.svg",
+  "kind": "fallback"
+ },
+ "ruined-accordion": {
+  "file": "items/db/ruined-accordion.svg",
+  "kind": "fallback"
+ },
+ "ruined-augment": {
+  "file": "items/db/ruined-augment.svg",
+  "kind": "fallback"
+ },
+ "ruined-baton": {
+  "file": "items/db/ruined-baton.svg",
+  "kind": "fallback"
+ },
+ "ruined-handcuffs": {
+  "file": "items/db/ruined-handcuffs.svg",
+  "kind": "fallback"
+ },
+ "ruined-parachute": {
+  "file": "items/db/ruined-parachute.svg",
+  "kind": "fallback"
+ },
+ "ruined-riot-shield": {
+  "file": "items/db/ruined-riot-shield.svg",
+  "kind": "fallback"
+ },
+ "ruined-tactical-vest": {
+  "file": "items/db/ruined-tactical-vest.svg",
+  "kind": "fallback"
+ },
+ "rusted-bolts": {
+  "file": "items/db/rusted-bolts.svg",
+  "kind": "fallback"
+ },
+ "rusted-gear": {
+  "file": "items/db/rusted-gear.svg",
+  "kind": "fallback"
+ },
+ "rusted-shut-medical-kit": {
+  "file": "items/db/rusted-shut-medical-kit.svg",
+  "kind": "fallback"
+ },
+ "rusted-tools": {
+  "file": "items/db/rusted-tools.svg",
+  "kind": "fallback"
+ },
+ "rusty-arc-steel": {
+  "file": "items/db/rusty-arc-steel.svg",
+  "kind": "fallback"
+ },
+ "sample-cleaner": {
+  "file": "items/db/sample-cleaner.svg",
+  "kind": "fallback"
+ },
+ "scout-patrol-note": {
+  "file": "items/db/scout-patrol-note.svg",
+  "kind": "fallback"
+ },
+ "secret-meeting-info": {
+  "file": "items/db/secret-meeting-info.svg",
+  "kind": "fallback"
+ },
+ "seed-vault-box-key": {
+  "file": "items/db/seed-vault-box-key.svg",
+  "kind": "key"
+ },
+ "seeker-grenade": {
+  "file": "items/db/seeker-grenade.svg",
+  "kind": "fallback"
+ },
+ "seeker-grenade-blueprint": {
+  "file": "items/db/seeker-grenade-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "sentinel-firing-core": {
+  "file": "items/db/sentinel-firing-core.svg",
+  "kind": "specific"
+ },
+ "sextant": {
+  "file": "items/db/sextant.svg",
+  "kind": "fallback"
+ },
+ "shaker": {
+  "file": "items/db/shaker.svg",
+  "kind": "fallback"
+ },
+ "shield-recharger": {
+  "file": "items/db/shield-recharger.svg",
+  "kind": "fallback"
+ },
+ "shotgun-ammo": {
+  "file": "items/db/shotgun-ammo.svg",
+  "kind": "fallback"
+ },
+ "shotgun-choke-i": {
+  "file": "items/db/shotgun-choke-i.svg",
+  "kind": "fallback"
+ },
+ "shotgun-choke-ii": {
+  "file": "items/db/shotgun-choke-ii.svg",
+  "kind": "fallback"
+ },
+ "shotgun-choke-ii-blueprint": {
+  "file": "items/db/shotgun-choke-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "shotgun-choke-iii": {
+  "file": "items/db/shotgun-choke-iii.svg",
+  "kind": "fallback"
+ },
+ "shotgun-choke-iii-blueprint": {
+  "file": "items/db/shotgun-choke-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "shotgun-silencer": {
+  "file": "items/db/shotgun-silencer.svg",
+  "kind": "fallback"
+ },
+ "shotgun-silencer-blueprint": {
+  "file": "items/db/shotgun-silencer-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "showstopper": {
+  "file": "items/db/showstopper.svg",
+  "kind": "fallback"
+ },
+ "showstopper-blueprint": {
+  "file": "items/db/showstopper-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "shrapnel-grenade": {
+  "file": "items/db/shrapnel-grenade.svg",
+  "kind": "fallback"
+ },
+ "shredder-gyro": {
+  "file": "items/db/shredder-gyro.svg",
+  "kind": "fallback"
+ },
+ "signal-amplifier": {
+  "file": "items/db/signal-amplifier.svg",
+  "kind": "fallback"
+ },
+ "silencer-i": {
+  "file": "items/db/silencer-i.svg",
+  "kind": "fallback"
+ },
+ "silencer-i-blueprint": {
+  "file": "items/db/silencer-i-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "silencer-ii": {
+  "file": "items/db/silencer-ii.svg",
+  "kind": "fallback"
+ },
+ "silencer-ii-blueprint": {
+  "file": "items/db/silencer-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "silencer-iii": {
+  "file": "items/db/silencer-iii.svg",
+  "kind": "fallback"
+ },
+ "silver-teaspoon-set": {
+  "file": "items/db/silver-teaspoon-set.svg",
+  "kind": "fallback"
+ },
+ "simple-gun-parts": {
+  "file": "items/db/simple-gun-parts.svg",
+  "kind": "fallback"
+ },
+ "sirena-dorata-ship-model": {
+  "file": "items/db/sirena-dorata-ship-model.svg",
+  "kind": "fallback"
+ },
+ "smoke-grenade": {
+  "file": "items/db/smoke-grenade.svg",
+  "kind": "fallback"
+ },
+ "smoke-grenade-blueprint": {
+  "file": "items/db/smoke-grenade-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "smoke-grenade-trap": {
+  "file": "items/db/smoke-grenade-trap.svg",
+  "kind": "fallback"
+ },
+ "snap-blast-grenade": {
+  "file": "items/db/snap-blast-grenade.svg",
+  "kind": "fallback"
+ },
+ "snap-hook": {
+  "file": "items/db/snap-hook.svg",
+  "kind": "specific"
+ },
+ "snap-hook-blueprint": {
+  "file": "items/db/snap-hook-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "snitch-scanner": {
+  "file": "items/db/snitch-scanner.svg",
+  "kind": "fallback"
+ },
+ "snowball": {
+  "file": "items/db/snowball.svg",
+  "kind": "fallback"
+ },
+ "spaceport-container-storage-key": {
+  "file": "items/db/spaceport-container-storage-key.svg",
+  "kind": "key"
+ },
+ "spaceport-control-tower-key": {
+  "file": "items/db/spaceport-control-tower-key.svg",
+  "kind": "key"
+ },
+ "spaceport-trench-tower-key": {
+  "file": "items/db/spaceport-trench-tower-key.svg",
+  "kind": "key"
+ },
+ "spaceport-warehouse-key": {
+  "file": "items/db/spaceport-warehouse-key.svg",
+  "kind": "key"
+ },
+ "speaker-component": {
+  "file": "items/db/speaker-component.svg",
+  "kind": "fallback"
+ },
+ "spectrometer": {
+  "file": "items/db/spectrometer.svg",
+  "kind": "fallback"
+ },
+ "spectrum-analyzer": {
+  "file": "items/db/spectrum-analyzer.svg",
+  "kind": "fallback"
+ },
+ "spotter-relay": {
+  "file": "items/db/spotter-relay.svg",
+  "kind": "fallback"
+ },
+ "spring-cushion": {
+  "file": "items/db/spring-cushion.svg",
+  "kind": "fallback"
+ },
+ "stable-stock-i": {
+  "file": "items/db/stable-stock-i.svg",
+  "kind": "fallback"
+ },
+ "stable-stock-ii": {
+  "file": "items/db/stable-stock-ii.svg",
+  "kind": "fallback"
+ },
+ "stable-stock-ii-blueprint": {
+  "file": "items/db/stable-stock-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "stable-stock-iii": {
+  "file": "items/db/stable-stock-iii.svg",
+  "kind": "fallback"
+ },
+ "stable-stock-iii-blueprint": {
+  "file": "items/db/stable-stock-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "stack-of-movie-tapes": {
+  "file": "items/db/stack-of-movie-tapes.svg",
+  "kind": "fallback"
+ },
+ "statuette": {
+  "file": "items/db/statuette.svg",
+  "kind": "fallback"
+ },
+ "steel-spring": {
+  "file": "items/db/steel-spring.svg",
+  "kind": "fallback"
+ },
+ "stella-montis-archives-key": {
+  "file": "items/db/stella-montis-archives-key.svg",
+  "kind": "key"
+ },
+ "stella-montis-assembly-admin-key": {
+  "file": "items/db/stella-montis-assembly-admin-key.svg",
+  "kind": "key"
+ },
+ "stella-montis-medical-storage-key": {
+  "file": "items/db/stella-montis-medical-storage-key.svg",
+  "kind": "key"
+ },
+ "stella-montis-security-checkpoint-key": {
+  "file": "items/db/stella-montis-security-checkpoint-key.svg",
+  "kind": "key"
+ },
+ "sterilized-bandage": {
+  "file": "items/db/sterilized-bandage.svg",
+  "kind": "fallback"
+ },
+ "stitcher-i": {
+  "file": "items/db/stitcher-i.svg",
+  "kind": "weapon"
+ },
+ "stitcher-ii": {
+  "file": "items/db/stitcher-ii.svg",
+  "kind": "weapon"
+ },
+ "stitcher-iii": {
+  "file": "items/db/stitcher-iii.svg",
+  "kind": "weapon"
+ },
+ "stitcher-iv": {
+  "file": "items/db/stitcher-iv.svg",
+  "kind": "weapon"
+ },
+ "surge-coil": {
+  "file": "items/db/surge-coil.svg",
+  "kind": "fallback"
+ },
+ "surge-coil-blueprint": {
+  "file": "items/db/surge-coil-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "surge-shield-recharger": {
+  "file": "items/db/surge-shield-recharger.svg",
+  "kind": "fallback"
+ },
+ "surveyor-vault": {
+  "file": "items/db/surveyor-vault.svg",
+  "kind": "specific"
+ },
+ "synthesized-fuel": {
+  "file": "items/db/synthesized-fuel.svg",
+  "kind": "fallback"
+ },
+ "syringe": {
+  "file": "items/db/syringe.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk1": {
+  "file": "items/db/tactical-mk1.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk2": {
+  "file": "items/db/tactical-mk2.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk3-defensive": {
+  "file": "items/db/tactical-mk3-defensive.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk3-defensive-blueprint": {
+  "file": "items/db/tactical-mk3-defensive-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tactical-mk3-healing": {
+  "file": "items/db/tactical-mk3-healing.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk3-healing-blueprint": {
+  "file": "items/db/tactical-mk3-healing-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tactical-mk3-revival": {
+  "file": "items/db/tactical-mk3-revival.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk3-revival-blueprint": {
+  "file": "items/db/tactical-mk3-revival-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tactical-mk3-smoke": {
+  "file": "items/db/tactical-mk3-smoke.svg",
+  "kind": "fallback"
+ },
+ "tactical-mk3-smoke-blueprint": {
+  "file": "items/db/tactical-mk3-smoke-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tagging-grenade": {
+  "file": "items/db/tagging-grenade.svg",
+  "kind": "fallback"
+ },
+ "tagging-grenade-blueprint": {
+  "file": "items/db/tagging-grenade-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tattered-arc-lining": {
+  "file": "items/db/tattered-arc-lining.svg",
+  "kind": "fallback"
+ },
+ "tattered-clothes": {
+  "file": "items/db/tattered-clothes.svg",
+  "kind": "fallback"
+ },
+ "telemetry-transceiver": {
+  "file": "items/db/telemetry-transceiver.svg",
+  "kind": "fallback"
+ },
+ "tellurion": {
+  "file": "items/db/tellurion.svg",
+  "kind": "fallback"
+ },
+ "tempest-blueprint": {
+  "file": "items/db/tempest-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tempest-i": {
+  "file": "items/db/tempest-i.svg",
+  "kind": "weapon"
+ },
+ "tempest-ii": {
+  "file": "items/db/tempest-ii.svg",
+  "kind": "weapon"
+ },
+ "tempest-iii": {
+  "file": "items/db/tempest-iii.svg",
+  "kind": "weapon"
+ },
+ "tempest-iv": {
+  "file": "items/db/tempest-iv.svg",
+  "kind": "weapon"
+ },
+ "thermostat": {
+  "file": "items/db/thermostat.svg",
+  "kind": "fallback"
+ },
+ "tick-pod": {
+  "file": "items/db/tick-pod.svg",
+  "kind": "specific"
+ },
+ "toaster": {
+  "file": "items/db/toaster.svg",
+  "kind": "fallback"
+ },
+ "torn-blanket": {
+  "file": "items/db/torn-blanket.svg",
+  "kind": "fallback"
+ },
+ "torn-book": {
+  "file": "items/db/torn-book.svg",
+  "kind": "fallback"
+ },
+ "torrente-blueprint": {
+  "file": "items/db/torrente-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "torrente-i": {
+  "file": "items/db/torrente-i.svg",
+  "kind": "weapon"
+ },
+ "torrente-ii": {
+  "file": "items/db/torrente-ii.svg",
+  "kind": "weapon"
+ },
+ "torrente-iii": {
+  "file": "items/db/torrente-iii.svg",
+  "kind": "weapon"
+ },
+ "torrente-iv": {
+  "file": "items/db/torrente-iv.svg",
+  "kind": "weapon"
+ },
+ "trailblazer": {
+  "file": "items/db/trailblazer.svg",
+  "kind": "fallback"
+ },
+ "trailblazer-blueprint": {
+  "file": "items/db/trailblazer-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "train-model": {
+  "file": "items/db/train-model.svg",
+  "kind": "fallback"
+ },
+ "trigger-nade": {
+  "file": "items/db/trigger-nade.svg",
+  "kind": "fallback"
+ },
+ "trigger-nade-blueprint": {
+  "file": "items/db/trigger-nade-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "tropical-duck": {
+  "file": "items/db/tropical-duck.svg",
+  "kind": "fallback"
+ },
+ "turbine-compressor": {
+  "file": "items/db/turbine-compressor.svg",
+  "kind": "fallback"
+ },
+ "turbo-pump": {
+  "file": "items/db/turbo-pump.svg",
+  "kind": "fallback"
+ },
+ "twilight-compass-ship-model": {
+  "file": "items/db/twilight-compass-ship-model.svg",
+  "kind": "fallback"
+ },
+ "unusable-weapon": {
+  "file": "items/db/unusable-weapon.svg",
+  "kind": "fallback"
+ },
+ "vase": {
+  "file": "items/db/vase.svg",
+  "kind": "fallback"
+ },
+ "velocity-ship-model": {
+  "file": "items/db/velocity-ship-model.svg",
+  "kind": "fallback"
+ },
+ "venator-blueprint": {
+  "file": "items/db/venator-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "venator-i": {
+  "file": "items/db/venator-i.svg",
+  "kind": "weapon"
+ },
+ "venator-ii": {
+  "file": "items/db/venator-ii.svg",
+  "kind": "weapon"
+ },
+ "venator-iii": {
+  "file": "items/db/venator-iii.svg",
+  "kind": "weapon"
+ },
+ "venator-iv": {
+  "file": "items/db/venator-iv.svg",
+  "kind": "weapon"
+ },
+ "vertical-grip-i": {
+  "file": "items/db/vertical-grip-i.svg",
+  "kind": "fallback"
+ },
+ "vertical-grip-ii": {
+  "file": "items/db/vertical-grip-ii.svg",
+  "kind": "fallback"
+ },
+ "vertical-grip-ii-blueprint": {
+  "file": "items/db/vertical-grip-ii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "vertical-grip-iii": {
+  "file": "items/db/vertical-grip-iii.svg",
+  "kind": "fallback"
+ },
+ "vertical-grip-iii-blueprint": {
+  "file": "items/db/vertical-grip-iii-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "very-comfortable-pillow": {
+  "file": "items/db/very-comfortable-pillow.svg",
+  "kind": "fallback"
+ },
+ "vintage-steering-wheel": {
+  "file": "items/db/vintage-steering-wheel.svg",
+  "kind": "fallback"
+ },
+ "vita-shot": {
+  "file": "items/db/vita-shot.svg",
+  "kind": "fallback"
+ },
+ "vita-shot-blueprint": {
+  "file": "items/db/vita-shot-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "vita-spray": {
+  "file": "items/db/vita-spray.svg",
+  "kind": "fallback"
+ },
+ "vita-spray-blueprint": {
+  "file": "items/db/vita-spray-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "volcanic-rock": {
+  "file": "items/db/volcanic-rock.svg",
+  "kind": "fallback"
+ },
+ "vulcano-blueprint": {
+  "file": "items/db/vulcano-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "vulcano-i": {
+  "file": "items/db/vulcano-i.svg",
+  "kind": "weapon"
+ },
+ "vulcano-ii": {
+  "file": "items/db/vulcano-ii.svg",
+  "kind": "weapon"
+ },
+ "vulcano-iii": {
+  "file": "items/db/vulcano-iii.svg",
+  "kind": "weapon"
+ },
+ "vulcano-iv": {
+  "file": "items/db/vulcano-iv.svg",
+  "kind": "weapon"
+ },
+ "wasp-driver": {
+  "file": "items/db/wasp-driver.svg",
+  "kind": "specific"
+ },
+ "water-filter": {
+  "file": "items/db/water-filter.svg",
+  "kind": "fallback"
+ },
+ "water-pump": {
+  "file": "items/db/water-pump.svg",
+  "kind": "fallback"
+ },
+ "white-flag": {
+  "file": "items/db/white-flag.svg",
+  "kind": "fallback"
+ },
+ "white-flag-blueprint": {
+  "file": "items/db/white-flag-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "wind-sprite-ship-model": {
+  "file": "items/db/wind-sprite-ship-model.svg",
+  "kind": "fallback"
+ },
+ "wolfpack": {
+  "file": "items/db/wolfpack.svg",
+  "kind": "fallback"
+ },
+ "wolfpack-blueprint": {
+  "file": "items/db/wolfpack-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "yellow-light-stick": {
+  "file": "items/db/yellow-light-stick.svg",
+  "kind": "fallback"
+ },
+ "yellow-light-stick-blueprint": {
+  "file": "items/db/yellow-light-stick-blueprint.svg",
+  "kind": "blueprint"
+ },
+ "zipline": {
+  "file": "items/db/zipline.svg",
+  "kind": "fallback"
+ }
+}

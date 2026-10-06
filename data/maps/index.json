@@ -1,0 +1,486 @@
+{
+ "source": "MetaForge game-map-data API",
+ "endpoint": "https://metaforge.app/api/game-map-data?tableID=arc_map_data&mapID=<id>",
+ "fetchedAt": "2026-10-05T19:46:02.650Z",
+ "attribution": {
+  "label": "MetaForge community map data",
+  "url": "https://metaforge.app/arc-raiders",
+  "confidence": "COMMUNITY REPORT"
+ },
+ "coordinateSystem": "MetaForge map units (Leaflet CRS.Simple): x = lng, y = lat; y increases upward.",
+ "categoryLabels": {
+  "containers": "Containers",
+  "nature": "Nature / Resources",
+  "events": "Events",
+  "locations": "Locations",
+  "arc": "ARC",
+  "quests": "Quests"
+ },
+ "maps": {
+  "dam-battlegrounds": {
+   "metaforgeMapId": "dam",
+   "status": "live",
+   "count": 7662,
+   "bounds": {
+    "minX": 2455.15,
+    "maxX": 5573.32,
+    "minY": 975.33,
+    "maxY": 4292.58
+   },
+   "categories": {
+    "containers": 5434,
+    "nature": 1518,
+    "events": 224,
+    "arc": 194,
+    "locations": 164,
+    "quests": 128
+   },
+   "file": "data/maps/dam-battlegrounds-markers.json",
+   "topSubcategories": {
+    "containers": {
+     "base_container": 1587,
+     "raider_cache": 884,
+     "arc_probe": 667,
+     "locker": 622,
+     "arc_courier": 609,
+     "car": 167,
+     "weapon_case": 139,
+     "ammo_crate": 121
+    },
+    "locations": {
+     "field_crate": 68,
+     "supply_station": 29,
+     "player_spawn": 23,
+     "locked_room": 9,
+     "fuel-cell": 9,
+     "raider_camp": 6,
+     "field_depot": 6,
+     "hatch": 4
+    },
+    "arc": {
+     "turret": 31,
+     "tick": 22,
+     "pop": 21,
+     "wasp": 16,
+     "fireball": 13,
+     "sentinel": 13,
+     "rocketeer": 12,
+     "rollbot": 10
+    },
+    "events": {
+     "snow_pile": 191,
+     "ship_model": 23,
+     "assessor": 9,
+     "harvester": 1
+    },
+    "quests": {
+     "back-on-top": 12,
+     "down-to-earth": 12,
+     "untended-garden": 10,
+     "espresso": 9,
+     "the-league": 9,
+     "paving-the-way": 8,
+     "hatch-repairs": 8,
+     "picking-up-the-pieces": 7
+    },
+    "nature": {
+     "moss": 591,
+     "candleberries": 339,
+     "mushroom": 205,
+     "great-mullein": 194,
+     "fertilizer": 72,
+     "agave": 63,
+     "prickly-pear": 28,
+     "roots": 15
+    }
+   }
+  },
+  "buried-city": {
+   "metaforgeMapId": "buried-city",
+   "status": "live",
+   "count": 6173,
+   "bounds": {
+    "minX": 4964.07,
+    "maxX": 9410.43,
+    "minY": 2426.98,
+    "maxY": 7269.8
+   },
+   "categories": {
+    "containers": 4936,
+    "nature": 393,
+    "events": 385,
+    "arc": 215,
+    "locations": 136,
+    "quests": 108
+   },
+   "file": "data/maps/buried-city-markers.json",
+   "topSubcategories": {
+    "arc": {
+     "turret": 59,
+     "pop": 28,
+     "fireball": 21,
+     "tick": 17,
+     "sentinel": 12,
+     "shredder": 11,
+     "comet": 9,
+     "wasp": 8
+    },
+    "locations": {
+     "field_crate": 63,
+     "player_spawn": 21,
+     "metro_entrance": 11,
+     "supply_station": 10,
+     "locked_room": 6,
+     "breach_room": 6,
+     "hatch": 4,
+     "metro_station": 4
+    },
+    "quests": {
+     "combat-recon": 17,
+     "esr-analyzer": 10,
+     "unexpected-initiative": 9,
+     "back-on-top": 9,
+     "hatch-repairs": 8,
+     "the-league": 6,
+     "down-to-earth": 6,
+     "espresso": 5
+    },
+    "containers": {
+     "base_container": 1967,
+     "locker": 991,
+     "raider_cache": 681,
+     "arc_probe": 255,
+     "bag": 181,
+     "arc_courier": 170,
+     "car": 154,
+     "ammo_crate": 109
+    },
+    "nature": {
+     "great-mullein": 135,
+     "candleberries": 92,
+     "fertilizer": 59,
+     "agave": 56,
+     "prickly-pear": 19,
+     "moss": 16,
+     "lemons": 8,
+     "apricot": 8
+    },
+    "events": {
+     "bird": 187,
+     "snow_pile": 144,
+     "ship_model": 28,
+     "puzzle_button": 16,
+     "assessor": 10
+    }
+   }
+  },
+  "spaceport": {
+   "metaforgeMapId": "spaceport",
+   "status": "live",
+   "count": 7525,
+   "bounds": {
+    "minX": 2394.51,
+    "maxX": 5343.39,
+    "minY": 840.45,
+    "maxY": 3847.55
+   },
+   "categories": {
+    "containers": 5817,
+    "nature": 847,
+    "events": 258,
+    "arc": 236,
+    "locations": 224,
+    "quests": 143
+   },
+   "file": "data/maps/spaceport-markers.json",
+   "topSubcategories": {
+    "locations": {
+     "field_crate": 116,
+     "fuel-cell": 31,
+     "player_spawn": 21,
+     "supply_station": 20,
+     "breach_room": 12,
+     "locked_room": 10,
+     "field_depot": 5,
+     "hatch": 4
+    },
+    "containers": {
+     "base_container": 2522,
+     "locker": 1263,
+     "arc_probe": 408,
+     "car": 307,
+     "raider_cache": 267,
+     "arc_courier": 256,
+     "ammo_crate": 189,
+     "wasp_husk": 112
+    },
+    "arc": {
+     "turret": 53,
+     "pop": 36,
+     "sentinel": 18,
+     "tick": 18,
+     "fireball": 16,
+     "firefly": 13,
+     "comet": 12,
+     "rollbot": 10
+    },
+    "events": {
+     "snow_pile": 227,
+     "assessor": 10,
+     "ship_model": 9,
+     "antenna": 8,
+     "bunker": 3,
+     "harvester": 1
+    },
+    "quests": {
+     "on-the-map": 50,
+     "the-stench-of-corruption": 10,
+     "down-to-earth": 10,
+     "the-clean-dream": 9,
+     "hatch-repairs": 8,
+     "back-on-top": 7,
+     "dust-on-the-wires": 6,
+     "waking-the-grid": 6
+    },
+    "nature": {
+     "candleberries": 259,
+     "great-mullein": 201,
+     "moss": 168,
+     "agave": 111,
+     "mushroom": 60,
+     "prickly-pear": 23,
+     "apricot": 18,
+     "lemons": 6
+    }
+   }
+  },
+  "stella-montis": {
+   "metaforgeMapId": "stella-montis",
+   "status": "live",
+   "count": 2940,
+   "bounds": {
+    "minX": 1943.91,
+    "maxX": 6295.07,
+    "minY": 1126.5,
+    "maxY": 4137.95
+   },
+   "categories": {
+    "containers": 2432,
+    "arc": 217,
+    "locations": 125,
+    "quests": 109,
+    "nature": 57
+   },
+   "file": "data/maps/stella-montis-markers.json",
+   "topSubcategories": {
+    "containers": {
+     "base_container": 1359,
+     "locker": 613,
+     "bag": 95,
+     "breachable_container": 80,
+     "ammo_crate": 62,
+     "android": 51,
+     "wasp_husk": 42,
+     "med_crate": 40
+    },
+    "arc": {
+     "pop": 63,
+     "tick": 45,
+     "fireball": 38,
+     "turret": 37,
+     "shredder": 21,
+     "hornet": 3,
+     "firefly": 3,
+     "comet": 3
+    },
+    "quests": {
+     "on-deaf-ears": 27,
+     "snap-and-salvage": 22,
+     "in-my-image": 15,
+     "with-a-view": 12,
+     "fragmented-logs": 8,
+     "cold-storage": 7,
+     "hatch-repairs": 6,
+     "stable-housing": 4
+    },
+    "locations": {
+     "fuel-cell": 59,
+     "player_spawn": 26,
+     "locked_room": 12,
+     "supply_station": 9,
+     "button": 5,
+     "hatch": 3,
+     "extraction": 3,
+     "breach_room": 3
+    },
+    "nature": {
+     "great-mullein": 57
+    }
+   }
+  },
+  "the-blue-gate": {
+   "metaforgeMapId": "blue-gate",
+   "status": "live",
+   "count": 6617,
+   "bounds": {
+    "minX": 4229.75,
+    "maxX": 9958.99,
+    "minY": 2620.45,
+    "maxY": 7765
+   },
+   "categories": {
+    "containers": 4750,
+    "events": 862,
+    "nature": 559,
+    "arc": 178,
+    "quests": 140,
+    "locations": 128
+   },
+   "file": "data/maps/blue-gate-markers.json",
+   "topSubcategories": {
+    "nature": {
+     "candleberries": 244,
+     "great-mullein": 110,
+     "moss": 59,
+     "mushroom": 52,
+     "olive": 35,
+     "lemons": 28,
+     "fertilizer": 16,
+     "apricot": 14
+    },
+    "locations": {
+     "supply_station": 46,
+     "player_spawn": 24,
+     "button": 23,
+     "fuel-cell": 12,
+     "locked_room": 10,
+     "extraction": 4,
+     "hatch": 4,
+     "breach_room": 3
+    },
+    "containers": {
+     "base_container": 1902,
+     "raider_cache": 788,
+     "locker": 481,
+     "arc_probe": 358,
+     "car": 267,
+     "arc_courier": 168,
+     "ammo_crate": 153,
+     "bag": 140
+    },
+    "arc": {
+     "turret": 30,
+     "sentinel": 18,
+     "wasp": 18,
+     "comet": 13,
+     "hornet": 10,
+     "fireball": 10,
+     "rocketeer": 9,
+     "pop": 9
+    },
+    "quests": {
+     "reduced-to-rubble": 40,
+     "clamoring-for-attention": 28,
+     "groundbreaking": 19,
+     "hatch-repairs": 8,
+     "a-first-foothold": 6,
+     "back-on-top": 6,
+     "armored-transports": 6,
+     "the-clean-dream": 4
+    },
+    "events": {
+     "mine": 594,
+     "snow_pile": 211,
+     "bird": 38,
+     "assessor": 8,
+     "locked_gate_key": 6,
+     "ship_model": 4,
+     "harvester": 1
+    }
+   }
+  },
+  "riven-tides": {
+   "metaforgeMapId": "riven-tides",
+   "status": "live",
+   "count": 5052,
+   "bounds": {
+    "minX": 3552.42,
+    "maxX": 11387.85,
+    "minY": 2893.74,
+    "maxY": 8677.45
+   },
+   "categories": {
+    "containers": 3312,
+    "events": 717,
+    "nature": 482,
+    "locations": 375,
+    "arc": 113,
+    "quests": 53
+   },
+   "file": "data/maps/riven-tides-markers.json",
+   "topSubcategories": {
+    "locations": {
+     "field_crate": 288,
+     "fuel-cell": 21,
+     "button": 19,
+     "player_spawn": 15,
+     "locked_room": 14,
+     "supply_station": 11,
+     "hatch": 3,
+     "extraction": 2
+    },
+    "containers": {
+     "base_container": 1220,
+     "locker": 667,
+     "raider_cache": 657,
+     "bag": 220,
+     "breachable_container": 78,
+     "wasp_husk": 70,
+     "rocketeer_husk": 58,
+     "weapon_case": 52
+    },
+    "nature": {
+     "great-mullein": 183,
+     "agave": 113,
+     "mushroom": 67,
+     "fertilizer": 50,
+     "moss": 45,
+     "roots": 10,
+     "prickly-pear": 8,
+     "apricot": 6
+    },
+    "arc": {
+     "turret": 18,
+     "wasp": 10,
+     "tick": 9,
+     "fireball": 8,
+     "turbine": 8,
+     "pop": 7,
+     "firefly": 6,
+     "comet": 6
+    },
+    "events": {
+     "dig_spot": 675,
+     "ship_model": 42
+    },
+    "quests": {
+     "battening-down": 29,
+     "shoring-up-defenses": 12,
+     "hatch-repairs": 6,
+     "safe-harbor": 3,
+     "down-to-earth": 2,
+     "off-the-raider": 1
+    }
+   }
+  },
+  "pendola-pass": {
+   "metaforgeMapId": "pendola-pass",
+   "status": "no-data",
+   "count": 0,
+   "bounds": null,
+   "categories": {},
+   "file": "data/maps/pendola-pass-markers.json",
+   "topSubcategories": {}
+  }
+ }
+}

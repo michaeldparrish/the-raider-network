@@ -1,0 +1,2498 @@
+[
+ {
+  "file": "assets/images/maps/dam-battlegrounds-hero.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   24,
+   93,
+   826,
+   322
+  ],
+  "size": [
+   802,
+   229
+  ],
+  "category": "maps",
+  "usage": "Map card, map hero, home Maps & Quick Access"
+ },
+ {
+  "file": "assets/images/maps/buried-city-hero.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   848,
+   93,
+   1651,
+   322
+  ],
+  "size": [
+   803,
+   229
+  ],
+  "category": "maps",
+  "usage": "Map card, map hero, home Maps & Quick Access"
+ },
+ {
+  "file": "assets/images/maps/spaceport-hero.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   25,
+   533,
+   563,
+   736
+  ],
+  "size": [
+   538,
+   203
+  ],
+  "category": "maps",
+  "usage": "Map card, map hero, home Maps & Quick Access"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-hero.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   587,
+   533,
+   1089,
+   736
+  ],
+  "size": [
+   502,
+   203
+  ],
+  "category": "maps",
+  "usage": "Map card, map hero, home Maps & Quick Access"
+ },
+ {
+  "file": "assets/images/maps/the-blue-gate-hero.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1112,
+   533,
+   1651,
+   736
+  ],
+  "size": [
+   539,
+   203
+  ],
+  "category": "maps",
+  "usage": "Map card, map hero, home Maps & Quick Access"
+ },
+ {
+  "file": "assets/images/maps/dam-battlegrounds-thumb-1.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   36,
+   397,
+   220,
+   495
+  ],
+  "size": [
+   184,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/dam-battlegrounds-thumb-2.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   234,
+   397,
+   418,
+   495
+  ],
+  "size": [
+   184,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/dam-battlegrounds-thumb-3.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   432,
+   397,
+   616,
+   495
+  ],
+  "size": [
+   184,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/dam-battlegrounds-thumb-4.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   630,
+   397,
+   812,
+   495
+  ],
+  "size": [
+   182,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/buried-city-thumb-1.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   862,
+   397,
+   1045,
+   495
+  ],
+  "size": [
+   183,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/buried-city-thumb-2.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1060,
+   397,
+   1243,
+   495
+  ],
+  "size": [
+   183,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/buried-city-thumb-3.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1257,
+   397,
+   1440,
+   495
+  ],
+  "size": [
+   183,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/buried-city-thumb-4.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1454,
+   397,
+   1637,
+   495
+  ],
+  "size": [
+   183,
+   98
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/spaceport-thumb-1.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   32,
+   802,
+   154,
+   902
+  ],
+  "size": [
+   122,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/spaceport-thumb-2.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   167,
+   802,
+   289,
+   902
+  ],
+  "size": [
+   122,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/spaceport-thumb-3.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   301,
+   802,
+   422,
+   902
+  ],
+  "size": [
+   121,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/spaceport-thumb-4.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   435,
+   802,
+   556,
+   902
+  ],
+  "size": [
+   121,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-thumb-1.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   594,
+   802,
+   710,
+   902
+  ],
+  "size": [
+   116,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-thumb-2.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   723,
+   802,
+   837,
+   902
+  ],
+  "size": [
+   114,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-thumb-3.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   849,
+   802,
+   963,
+   902
+  ],
+  "size": [
+   114,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-thumb-4.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   972,
+   802,
+   1081,
+   902
+  ],
+  "size": [
+   109,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/the-blue-gate-thumb-1.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1118,
+   802,
+   1239,
+   902
+  ],
+  "size": [
+   121,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/the-blue-gate-thumb-2.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1252,
+   802,
+   1373,
+   902
+  ],
+  "size": [
+   121,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/the-blue-gate-thumb-3.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1386,
+   802,
+   1508,
+   902
+  ],
+  "size": [
+   122,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/the-blue-gate-thumb-4.webp",
+  "sourceBoard": "source-boards/board-01-maps-world-locations.png",
+  "box": [
+   1521,
+   802,
+   1643,
+   902
+  ],
+  "size": [
+   122,
+   100
+  ],
+  "category": "maps",
+  "usage": "Map detail gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/riven-tides-hero.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   17,
+   151,
+   825,
+   382
+  ],
+  "size": [
+   808,
+   231
+  ],
+  "category": "maps",
+  "usage": "Map card, map hero, home Maps & Quick Access"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-assembly.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   848,
+   151,
+   1655,
+   382
+  ],
+  "size": [
+   807,
+   231
+  ],
+  "category": "maps",
+  "usage": "Featured route panel, Stella Montis Assembly POI, routes"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-medical-research.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   17,
+   591,
+   607,
+   786
+  ],
+  "size": [
+   590,
+   195
+  ],
+  "category": "maps",
+  "usage": "Stella Montis Medical Research POI, routes"
+ },
+ {
+  "file": "assets/images/maps/spaceport-launch-tower.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   626,
+   591,
+   1101,
+   786
+  ],
+  "size": [
+   475,
+   195
+  ],
+  "category": "maps",
+  "usage": "Spaceport POI / route art"
+ },
+ {
+  "file": "assets/images/maps/buried-city-town-square.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   1119,
+   591,
+   1655,
+   786
+  ],
+  "size": [
+   536,
+   195
+  ],
+  "category": "maps",
+  "usage": "Buried City POI / route art"
+ },
+ {
+  "file": "assets/images/maps/riven-tides-thumb-1.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   27,
+   395,
+   180,
+   507
+  ],
+  "size": [
+   153,
+   112
+  ],
+  "category": "maps",
+  "usage": "Riven Tides gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/riven-tides-thumb-2.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   195,
+   395,
+   348,
+   507
+  ],
+  "size": [
+   153,
+   112
+  ],
+  "category": "maps",
+  "usage": "Riven Tides gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/riven-tides-thumb-3.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   362,
+   395,
+   515,
+   507
+  ],
+  "size": [
+   153,
+   112
+  ],
+  "category": "maps",
+  "usage": "Riven Tides gallery / POI tiles"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-assembly-thumb-1.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   858,
+   396,
+   1011,
+   509
+  ],
+  "size": [
+   153,
+   113
+  ],
+  "category": "maps",
+  "usage": "Assembly POI gallery"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-assembly-thumb-2.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   1026,
+   396,
+   1179,
+   509
+  ],
+  "size": [
+   153,
+   113
+  ],
+  "category": "maps",
+  "usage": "Assembly POI gallery"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-assembly-thumb-3.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   1194,
+   396,
+   1348,
+   509
+  ],
+  "size": [
+   154,
+   113
+  ],
+  "category": "maps",
+  "usage": "Assembly POI gallery"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-medical-thumb-1.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   26,
+   797,
+   130,
+   899
+  ],
+  "size": [
+   104,
+   102
+  ],
+  "category": "maps",
+  "usage": "Medical Research POI gallery"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-medical-thumb-2.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   143,
+   797,
+   247,
+   899
+  ],
+  "size": [
+   104,
+   102
+  ],
+  "category": "maps",
+  "usage": "Medical Research POI gallery"
+ },
+ {
+  "file": "assets/images/maps/stella-montis-medical-thumb-3.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   260,
+   797,
+   366,
+   899
+  ],
+  "size": [
+   106,
+   102
+  ],
+  "category": "maps",
+  "usage": "Medical Research POI gallery"
+ },
+ {
+  "file": "assets/images/maps/spaceport-poi-thumb-1.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   637,
+   797,
+   748,
+   899
+  ],
+  "size": [
+   111,
+   102
+  ],
+  "category": "maps",
+  "usage": "Spaceport POI gallery"
+ },
+ {
+  "file": "assets/images/maps/spaceport-poi-thumb-2.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   761,
+   797,
+   899,
+   899
+  ],
+  "size": [
+   138,
+   102
+  ],
+  "category": "maps",
+  "usage": "Spaceport POI gallery"
+ },
+ {
+  "file": "assets/images/maps/buried-city-poi-thumb-1.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   1128,
+   797,
+   1222,
+   899
+  ],
+  "size": [
+   94,
+   102
+  ],
+  "category": "maps",
+  "usage": "Buried City POI gallery"
+ },
+ {
+  "file": "assets/images/maps/buried-city-poi-thumb-2.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   1236,
+   797,
+   1330,
+   899
+  ],
+  "size": [
+   94,
+   102
+  ],
+  "category": "maps",
+  "usage": "Buried City POI gallery"
+ },
+ {
+  "file": "assets/images/maps/buried-city-poi-thumb-3.webp",
+  "sourceBoard": "source-boards/board-02-maps-points-of-interest.png",
+  "box": [
+   1345,
+   797,
+   1439,
+   899
+  ],
+  "size": [
+   94,
+   102
+  ],
+  "category": "maps",
+  "usage": "Buried City POI gallery"
+ },
+ {
+  "file": "assets/images/raiders/raider-solo-scout.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   19,
+   160,
+   277,
+   538
+  ],
+  "size": [
+   258,
+   378
+  ],
+  "category": "raiders",
+  "usage": "Raider archetype art: profiles, avatars, auth, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-heavy-looter.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   298,
+   160,
+   554,
+   538
+  ],
+  "size": [
+   256,
+   378
+  ],
+  "category": "raiders",
+  "usage": "Raider archetype art: profiles, avatars, auth, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-tech-specialist.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   573,
+   160,
+   829,
+   538
+  ],
+  "size": [
+   256,
+   378
+  ],
+  "category": "raiders",
+  "usage": "Raider archetype art: profiles, avatars, auth, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-mountain-runner.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   849,
+   160,
+   1103,
+   538
+  ],
+  "size": [
+   254,
+   378
+  ],
+  "category": "raiders",
+  "usage": "Raider archetype art: profiles, avatars, auth, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-medic-support.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   1123,
+   160,
+   1379,
+   538
+  ],
+  "size": [
+   256,
+   378
+  ],
+  "category": "raiders",
+  "usage": "Raider archetype art: profiles, avatars, auth, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-stealth-raider.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   1398,
+   160,
+   1654,
+   538
+  ],
+  "size": [
+   256,
+   378
+  ],
+  "category": "raiders",
+  "usage": "Raider archetype art: profiles, avatars, auth, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-squad-lineup.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   14,
+   130,
+   628,
+   509
+  ],
+  "size": [
+   614,
+   379
+  ],
+  "category": "raiders",
+  "usage": "Loot Hunts banner, Find Squad CTA"
+ },
+ {
+  "file": "assets/images/raiders/raider-veteran-trader.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   746,
+   131,
+   1058,
+   444
+  ],
+  "size": [
+   312,
+   313
+  ],
+  "category": "raiders",
+  "usage": "Trade Board banner and sidebar"
+ },
+ {
+  "file": "assets/images/raiders/raider-expedition-leader.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1198,
+   131,
+   1436,
+   444
+  ],
+  "size": [
+   238,
+   313
+  ],
+  "category": "raiders",
+  "usage": "Routes / featured route, profile badge art"
+ },
+ {
+  "file": "assets/images/raiders/raider-close-quarters.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   15,
+   584,
+   358,
+   849
+  ],
+  "size": [
+   343,
+   265
+  ],
+  "category": "raiders",
+  "usage": "Archetype gallery, hunts"
+ },
+ {
+  "file": "assets/images/raiders/raider-engineer.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   589,
+   584,
+   888,
+   849
+  ],
+  "size": [
+   299,
+   265
+  ],
+  "category": "raiders",
+  "usage": "Archetype gallery, projects page"
+ },
+ {
+  "file": "assets/images/raiders/raider-comms-operator.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1123,
+   584,
+   1438,
+   849
+  ],
+  "size": [
+   315,
+   265
+  ],
+  "category": "raiders",
+  "usage": "Messages page banner"
+ },
+ {
+  "file": "assets/images/raiders/gear-trader-coins.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1066,
+   206,
+   1174,
+   289
+  ],
+  "size": [
+   108,
+   83
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-trader-pack.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1066,
+   296,
+   1174,
+   369
+  ],
+  "size": [
+   108,
+   73
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-trader-device.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1066,
+   373,
+   1174,
+   444
+  ],
+  "size": [
+   108,
+   71
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-leader-backpack.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1534,
+   148,
+   1651,
+   239
+  ],
+  "size": [
+   117,
+   91
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-leader-tablet.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1534,
+   251,
+   1651,
+   336
+  ],
+  "size": [
+   117,
+   85
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-leader-compass.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1534,
+   346,
+   1651,
+   431
+  ],
+  "size": [
+   117,
+   85
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-rusher-helmet.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   444,
+   591,
+   562,
+   679
+  ],
+  "size": [
+   118,
+   88
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-rusher-knife.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   444,
+   686,
+   562,
+   759
+  ],
+  "size": [
+   118,
+   73
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-rusher-ammo.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   444,
+   766,
+   562,
+   844
+  ],
+  "size": [
+   118,
+   78
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-engineer-drone.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   979,
+   589,
+   1097,
+   677
+  ],
+  "size": [
+   118,
+   88
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-engineer-tools.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   979,
+   684,
+   1097,
+   756
+  ],
+  "size": [
+   118,
+   72
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-engineer-case.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   979,
+   764,
+   1097,
+   844
+  ],
+  "size": [
+   118,
+   80
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-comms-radio.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1548,
+   589,
+   1651,
+   677
+  ],
+  "size": [
+   103,
+   88
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-comms-dish.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1548,
+   678,
+   1651,
+   756
+  ],
+  "size": [
+   103,
+   78
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/raiders/gear-comms-terminal.webp",
+  "sourceBoard": "source-boards/board-04-raider-asset-board.png",
+  "box": [
+   1548,
+   761,
+   1651,
+   844
+  ],
+  "size": [
+   103,
+   83
+  ],
+  "category": "raiders",
+  "usage": "Small decorative gear tiles (profile, messages, routes)"
+ },
+ {
+  "file": "assets/images/items/rotary-encoder.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   24,
+   150,
+   414,
+   338
+  ],
+  "size": [
+   390,
+   188
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/magnetron.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   436,
+   150,
+   824,
+   338
+  ],
+  "size": [
+   388,
+   188
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/ion-sputter.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   848,
+   150,
+   1236,
+   338
+  ],
+  "size": [
+   388,
+   188
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/magnetic-accelerator.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   1258,
+   150,
+   1648,
+   338
+  ],
+  "size": [
+   390,
+   188
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/industrial-battery.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   24,
+   425,
+   414,
+   615
+  ],
+  "size": [
+   390,
+   190
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/advanced-mechanical-components.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   436,
+   425,
+   824,
+   615
+  ],
+  "size": [
+   388,
+   190
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/electrical-components.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   848,
+   425,
+   1236,
+   615
+  ],
+  "size": [
+   388,
+   190
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/processor.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   1258,
+   425,
+   1648,
+   615
+  ],
+  "size": [
+   390,
+   190
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/voltage-converter.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   24,
+   700,
+   414,
+   897
+  ],
+  "size": [
+   390,
+   197
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/sensor-module.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   436,
+   700,
+   824,
+   897
+  ],
+  "size": [
+   388,
+   197
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/power-cell.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   848,
+   700,
+   1236,
+   897
+  ],
+  "size": [
+   388,
+   197
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/stabilizer-coil.webp",
+  "sourceBoard": "source-boards/board-05-loot-rare-components.png",
+  "box": [
+   1258,
+   700,
+   1648,
+   897
+  ],
+  "size": [
+   390,
+   197
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/headphones.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   18,
+   112,
+   406,
+   268
+  ],
+  "size": [
+   388,
+   156
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/vaporizer-regulator.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   433,
+   112,
+   822,
+   268
+  ],
+  "size": [
+   389,
+   156
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/sentinel-firing-core.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   850,
+   112,
+   1239,
+   268
+  ],
+  "size": [
+   389,
+   156
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/queen-reactor.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   1267,
+   112,
+   1654,
+   268
+  ],
+  "size": [
+   387,
+   156
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/matriarch-reactor.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   18,
+   405,
+   406,
+   560
+  ],
+  "size": [
+   388,
+   155
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/exodus-module.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   433,
+   405,
+   822,
+   560
+  ],
+  "size": [
+   389,
+   155
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/snow-globe.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   850,
+   405,
+   1239,
+   560
+  ],
+  "size": [
+   389,
+   155
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/survey-sensor.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   1267,
+   405,
+   1654,
+   560
+  ],
+  "size": [
+   387,
+   155
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/medical-canister.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   18,
+   698,
+   406,
+   838
+  ],
+  "size": [
+   388,
+   140
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/field-transmitter.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   433,
+   698,
+   822,
+   838
+  ],
+  "size": [
+   389,
+   140
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/trophy-component.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   850,
+   698,
+   1239,
+   838
+  ],
+  "size": [
+   389,
+   140
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/prototype-relay.webp",
+  "sourceBoard": "source-boards/board-06-loot-project-items.png",
+  "box": [
+   1267,
+   698,
+   1654,
+   838
+  ],
+  "size": [
+   387,
+   140
+  ],
+  "category": "items",
+  "usage": "Item card + item detail art (visual only)"
+ },
+ {
+  "file": "assets/images/items/art-mechanical-components.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   28,
+   136,
+   286,
+   329
+  ],
+  "size": [
+   258,
+   193
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-wiring-bundle.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   305,
+   136,
+   557,
+   329
+  ],
+  "size": [
+   252,
+   193
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-battery-cells.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   576,
+   136,
+   827,
+   329
+  ],
+  "size": [
+   251,
+   193
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-scrap-electronics.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   846,
+   136,
+   1098,
+   329
+  ],
+  "size": [
+   252,
+   193
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-circuit-board.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   1117,
+   136,
+   1368,
+   329
+  ],
+  "size": [
+   251,
+   193
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-tool-kit.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   1388,
+   136,
+   1644,
+   329
+  ],
+  "size": [
+   256,
+   193
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-alloy-plate.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   28,
+   558,
+   286,
+   740
+  ],
+  "size": [
+   258,
+   182
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-adhesive-tube.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   305,
+   558,
+   557,
+   740
+  ],
+  "size": [
+   252,
+   182
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-filter-cartridge.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   576,
+   558,
+   827,
+   740
+  ],
+  "size": [
+   251,
+   182
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-canister-fuel.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   846,
+   558,
+   1098,
+   740
+  ],
+  "size": [
+   252,
+   182
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-med-supply-pack.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   1117,
+   558,
+   1368,
+   740
+  ],
+  "size": [
+   251,
+   182
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/items/art-ration-crate.webp",
+  "sourceBoard": "source-boards/board-07-loot-common-components.png",
+  "box": [
+   1388,
+   558,
+   1644,
+   740
+  ],
+  "size": [
+   256,
+   182
+  ],
+  "category": "items",
+  "usage": "Category fallback art for item records without dedicated artwork"
+ },
+ {
+  "file": "assets/images/ui/icon-search.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   51,
+   172,
+   191,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-loot-intel.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   255,
+   172,
+   395,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-map.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   460,
+   172,
+   600,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-route.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   664,
+   172,
+   804,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-squad.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   868,
+   172,
+   1008,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-message.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1073,
+   172,
+   1213,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-trade.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1279,
+   172,
+   1419,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-profile.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1482,
+   172,
+   1622,
+   312
+  ],
+  "size": [
+   140,
+   140
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-project.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   50,
+   420,
+   192,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-inventory.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   254,
+   420,
+   396,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-rarity.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   459,
+   420,
+   601,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-recycle.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   663,
+   420,
+   805,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-crafting.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   867,
+   420,
+   1009,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-danger.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1072,
+   420,
+   1214,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-difficulty.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1278,
+   420,
+   1420,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-time.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1481,
+   420,
+   1623,
+   562
+  ],
+  "size": [
+   142,
+   142
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-value.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   52,
+   668,
+   190,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-filter.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   256,
+   668,
+   394,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-sort.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   461,
+   668,
+   599,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-location.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   665,
+   668,
+   803,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-extraction.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   869,
+   668,
+   1007,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-warning.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1074,
+   668,
+   1212,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-online.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1280,
+   668,
+   1418,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/icon-settings.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   1483,
+   668,
+   1621,
+   806
+  ],
+  "size": [
+   138,
+   138
+  ],
+  "category": "ui",
+  "usage": "UI icon (nav, stat rows, filters, buttons)"
+ },
+ {
+  "file": "assets/images/ui/rarity-common.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   596,
+   203,
+   673,
+   298
+  ],
+  "size": [
+   77,
+   95
+  ],
+  "category": "ui",
+  "usage": "Rarity badge on item cards and item detail"
+ },
+ {
+  "file": "assets/images/ui/rarity-uncommon.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   699,
+   203,
+   777,
+   298
+  ],
+  "size": [
+   78,
+   95
+  ],
+  "category": "ui",
+  "usage": "Rarity badge on item cards and item detail"
+ },
+ {
+  "file": "assets/images/ui/rarity-rare.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   802,
+   203,
+   880,
+   298
+  ],
+  "size": [
+   78,
+   95
+  ],
+  "category": "ui",
+  "usage": "Rarity badge on item cards and item detail"
+ },
+ {
+  "file": "assets/images/ui/rarity-epic.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   906,
+   203,
+   984,
+   298
+  ],
+  "size": [
+   78,
+   95
+  ],
+  "category": "ui",
+  "usage": "Rarity badge on item cards and item detail"
+ },
+ {
+  "file": "assets/images/ui/rarity-legendary.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1013,
+   200,
+   1101,
+   300
+  ],
+  "size": [
+   88,
+   100
+  ],
+  "category": "ui",
+  "usage": "Rarity badge on item cards and item detail"
+ },
+ {
+  "file": "assets/images/ui/demand-low.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1170,
+   205,
+   1258,
+   285
+  ],
+  "size": [
+   88,
+   80
+  ],
+  "category": "ui",
+  "usage": "Demand indicator on item cards / detail"
+ },
+ {
+  "file": "assets/images/ui/demand-normal.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1290,
+   205,
+   1376,
+   285
+  ],
+  "size": [
+   86,
+   80
+  ],
+  "category": "ui",
+  "usage": "Demand indicator on item cards / detail"
+ },
+ {
+  "file": "assets/images/ui/demand-high.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1408,
+   205,
+   1497,
+   285
+  ],
+  "size": [
+   89,
+   80
+  ],
+  "category": "ui",
+  "usage": "Demand indicator on item cards / detail"
+ },
+ {
+  "file": "assets/images/ui/demand-very-high.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1529,
+   200,
+   1623,
+   285
+  ],
+  "size": [
+   94,
+   85
+  ],
+  "category": "ui",
+  "usage": "Demand indicator on item cards / detail"
+ },
+ {
+  "file": "assets/images/ui/condition-safe.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   44,
+   420,
+   118,
+   508
+  ],
+  "size": [
+   74,
+   88
+  ],
+  "category": "ui",
+  "usage": "Map conditions module, map risk"
+ },
+ {
+  "file": "assets/images/ui/condition-risky.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   143,
+   420,
+   219,
+   508
+  ],
+  "size": [
+   76,
+   88
+  ],
+  "category": "ui",
+  "usage": "Map conditions module, map risk"
+ },
+ {
+  "file": "assets/images/ui/condition-high-threat.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   245,
+   420,
+   322,
+   508
+  ],
+  "size": [
+   77,
+   88
+  ],
+  "category": "ui",
+  "usage": "Map conditions module, map risk"
+ },
+ {
+  "file": "assets/images/ui/condition-hazard.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   349,
+   418,
+   430,
+   508
+  ],
+  "size": [
+   81,
+   90
+  ],
+  "category": "ui",
+  "usage": "Map conditions module, map risk"
+ },
+ {
+  "file": "assets/images/ui/condition-weather.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   453,
+   420,
+   533,
+   508
+  ],
+  "size": [
+   80,
+   88
+  ],
+  "category": "ui",
+  "usage": "Map conditions module, map risk"
+ },
+ {
+  "file": "assets/images/ui/action-keep.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   600,
+   436,
+   662,
+   496
+  ],
+  "size": [
+   62,
+   60
+  ],
+  "category": "ui",
+  "usage": "Recommendation badge glyph (item detail)"
+ },
+ {
+  "file": "assets/images/ui/action-recycle.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   717,
+   436,
+   779,
+   496
+  ],
+  "size": [
+   62,
+   60
+  ],
+  "category": "ui",
+  "usage": "Recommendation badge glyph (item detail)"
+ },
+ {
+  "file": "assets/images/ui/action-sell.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   831,
+   436,
+   893,
+   496
+  ],
+  "size": [
+   62,
+   60
+  ],
+  "category": "ui",
+  "usage": "Recommendation badge glyph (item detail)"
+ },
+ {
+  "file": "assets/images/ui/action-trade.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   945,
+   436,
+   1005,
+   486
+  ],
+  "size": [
+   60,
+   50
+  ],
+  "category": "ui",
+  "usage": "Recommendation badge glyph (item detail)"
+ },
+ {
+  "file": "assets/images/ui/action-project.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1058,
+   436,
+   1118,
+   486
+  ],
+  "size": [
+   60,
+   50
+  ],
+  "category": "ui",
+  "usage": "Recommendation badge glyph (item detail)"
+ },
+ {
+  "file": "assets/images/heroes/ring-city-strip.webp",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   1180,
+   0,
+   1672,
+   128
+  ],
+  "size": [
+   492,
+   128
+  ],
+  "category": "heroes",
+  "usage": "Decorative header strip (projects / footer)"
+ },
+ {
+  "file": "assets/images/heroes/home-hero-overlook.webp",
+  "sourceBoard": "source-boards/board-10-dashboard-mockup.png",
+  "box": [
+   668,
+   62,
+   1452,
+   356
+  ],
+  "size": [
+   784,
+   294
+  ],
+  "category": "heroes",
+  "usage": "Homepage hero background (right side)"
+ },
+ {
+  "file": "assets/images/heroes/dam-run-route.webp",
+  "sourceBoard": "source-boards/board-10-dashboard-mockup.png",
+  "box": [
+   806,
+   440,
+   1240,
+   520
+  ],
+  "size": [
+   434,
+   80
+  ],
+  "category": "heroes",
+  "usage": "Route card art (Dam route)"
+ },
+ {
+  "file": "assets/images/heroes/raider-network-skyline.webp",
+  "sourceBoard": "source-boards/board-03-raider-roles.png",
+  "box": [
+   590,
+   0,
+   1540,
+   150
+  ],
+  "size": [
+   950,
+   150
+  ],
+  "category": "heroes",
+  "usage": "Page-banner background strip (maps / projects)"
+ },
+ {
+  "file": "assets/images/branding/raider-network-mark.png",
+  "sourceBoard": "source-boards/board-09-ui-asset-board.png",
+  "box": [
+   48,
+   12,
+   160,
+   116
+  ],
+  "size": [
+   112,
+   104
+  ],
+  "category": "branding",
+  "usage": "Header + footer brand mark"
+ },
+ {
+  "file": "assets/images/branding/raider-network-mark-small.png",
+  "sourceBoard": "source-boards/board-08-icon-sheet.png",
+  "box": [
+   62,
+   30,
+   160,
+   108
+  ],
+  "size": [
+   98,
+   78
+  ],
+  "category": "branding",
+  "usage": "Favicon source"
+ }
+]

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400"><defs>
+<radialGradient id="bg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#15303a"/><stop offset=".55" stop-color="#0a181e"/><stop offset="1" stop-color="#050b0e"/></radialGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#19d3c5" stroke-opacity=".05"/></pattern>
+<linearGradient id="steelV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b666c"/><stop offset=".18" stop-color="#e8eef0"/><stop offset=".32" stop-color="#b9c3c7"/><stop offset=".62" stop-color="#6b767c"/><stop offset=".85" stop-color="#3a4348"/><stop offset="1" stop-color="#252b2f"/></linearGradient>
+<linearGradient id="darkV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3e484d"/><stop offset=".2" stop-color="#7d888d"/><stop offset=".35" stop-color="#4a5459"/><stop offset=".75" stop-color="#1f2528"/><stop offset="1" stop-color="#121618"/></linearGradient>
+<linearGradient id="brassV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b3f17"/><stop offset=".2" stop-color="#ffd38f"/><stop offset=".4" stop-color="#d1913f"/><stop offset=".75" stop-color="#7a4718"/><stop offset="1" stop-color="#3d220b"/></linearGradient>
+<linearGradient id="copperV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a2a12"/><stop offset=".22" stop-color="#ffb07a"/><stop offset=".45" stop-color="#c8642c"/><stop offset="1" stop-color="#3a1607"/></linearGradient>
+<linearGradient id="whiteV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#dfe5e7"/><stop offset="1" stop-color="#9aa5aa"/></linearGradient>
+<linearGradient id="faceL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfd7da"/><stop offset="1" stop-color="#6d787d"/></linearGradient>
+<linearGradient id="faceR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b969b"/><stop offset="1" stop-color="#3a4348"/></linearGradient>
+<linearGradient id="faceT" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#eef3f4"/><stop offset="1" stop-color="#aab4b8"/></linearGradient>
+<linearGradient id="dfaceL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f5a5f"/><stop offset="1" stop-color="#22282b"/></linearGradient>
+<linearGradient id="dfaceR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#343c40"/><stop offset="1" stop-color="#14181a"/></linearGradient>
+<linearGradient id="dfaceT" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6c777c"/><stop offset="1" stop-color="#3f484c"/></linearGradient>
+<radialGradient id="capFace" cx="40%" cy="38%" r="70%"><stop offset="0" stop-color="#cfd7da"/><stop offset=".6" stop-color="#5d686e"/><stop offset="1" stop-color="#20262a"/></radialGradient>
+<radialGradient id="specular" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".6"/></filter>
+<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="softglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<rect width="640" height="400" fill="url(#bg)"/><rect width="640" height="400" fill="url(#grid)"/>
+<ellipse cx="320" cy="300" rx="250" ry="60" fill="#3aa2ff" opacity=".07"/>
+<ellipse cx="320" cy="318" rx="200" ry="20" fill="#000" opacity=".55" filter="url(#softglow)"/>
+<g filter="url(#sh)"><polygon points="320.0,300.0 198.8,230.0 198.8,130.0 320.0,200.0" fill="url(#faceL)" stroke="#141a1d" stroke-width="2" stroke-linejoin="round"/><polygon points="320.0,300.0 423.9,240.0 423.9,140.0 320.0,200.0" fill="url(#faceR)" stroke="#141a1d" stroke-width="2" stroke-linejoin="round"/><polygon points="320.0,200.0 423.9,140.0 302.7,70.0 198.8,130.0" fill="url(#faceT)" stroke="#141a1d" stroke-width="2" stroke-linejoin="round"/><polygon points="289.7,282.5 281.2,277.6 281.2,177.6 289.7,182.5" fill="#ff6a1a"/><polygon points="229.1,247.5 220.6,242.6 220.6,142.6 229.1,147.5" fill="#ff6a1a"/><polygon points="281.9,166.0 365.0,118.0 340.8,104.0 257.6,152.0" fill="#ff6a1a"/><polygon points="340.8,258.0 403.1,222.0 403.1,182.0 340.8,218.0" fill="none" stroke="#59656a" stroke-width="2"/></g>
+<path d="M0 0H640V3H0Z" fill="#3aa2ff"/><path d="M0 397H640V400H0Z" fill="#3aa2ff" opacity=".35"/>
+<text x="22" y="380" font-family="'Barlow Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#3aa2ff">SALVAGE</text><text x="22" y="356" font-family="'Barlow Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif" font-size="30" font-weight="800" fill="#eef4f5">RUBBER PAD</text>
+</svg>

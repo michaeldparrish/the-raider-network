@@ -1,0 +1,39 @@
+{
+ "_note": "Perisher's REAL available trade inventory (8 units). Listings may reserve units from this pool; reservations + completed trades can never exceed quantityTotal.",
+ "userId": "perisher",
+ "updated": "2026-10-05",
+ "items": [
+  {
+   "key": "kinetic-converter",
+   "itemId": "kinetic-converter",
+   "label": "Kinetic Converter",
+   "quantityTotal": 2
+  },
+  {
+   "key": "queen-reactor",
+   "itemId": "queen-reactor",
+   "label": "Queen Reactor",
+   "quantityTotal": 2
+  },
+  {
+   "key": "snap-hook",
+   "itemId": "snap-hook",
+   "label": "Snap Hook",
+   "quantityTotal": 2
+  },
+  {
+   "key": "patina-blueprint",
+   "itemId": null,
+   "label": "Patina Blueprint",
+   "quantityTotal": 1,
+   "note": "Not in the Loot Intel snapshot (RaidTheory, Aug 2026) or the wiki blueprint list \u2014 kept as a text entry; no ID invented."
+  },
+  {
+   "key": "heavy-gun-parts-blueprint",
+   "itemId": "heavy-gun-parts-blueprint",
+   "label": "Heavy Parts Blueprint",
+   "quantityTotal": 1,
+   "note": "Canonical record: Heavy Gun Parts Blueprint."
+  }
+ ]
+}

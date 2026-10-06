@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Messages — The Raider Network</title>
+<meta name="description" content="Private Raider messages.">
+<meta name="theme-color" content="#071014">
+<link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/v5.css">
+</head>
+<body data-page="messages">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader" class="site-header"></header>
+<main id="main">
+<section class="page-banner page-banner--slim">
+  <img src="assets/images/raiders/raider-comms-operator.webp" alt="">
+  <div class="page-banner__shade"></div>
+  <div class="page-banner__copy"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-message.png" alt="" aria-hidden="true"> PRIVATE COMMS</span><h1>Messages</h1><p>Talk privately before sharing your in-game tag. Messages keep the trade or hunt they're about.</p></div>
+</section>
+<div class="page-shell">
+  <section class="messages-shell">
+    <aside class="conversation-list"><div class="conversation-title"><img class="ico" src="assets/images/ui/icon-message.png" alt="" aria-hidden="true"> Conversations <b id="unreadCount"></b></div><div id="conversationList"></div></aside>
+    <section class="chat-panel">
+      <div id="chatEmpty" class="chat-empty"><img src="assets/images/raiders/gear-comms-radio.webp" alt=""><strong>Select a conversation</strong><span>Or choose “Message Raider” on a Loot Hunt or Trade request.</span></div>
+      <div id="chatActive" class="hidden">
+        <div class="chat-head"><button class="icon-btn chat-back" id="chatBack" aria-label="Back to conversations">‹</button><span id="chatAvatar"></span><span class="chat-who"><strong id="chatName">Raider</strong><small id="chatMeta"></small></span><a href="hunts.html" class="text-btn">Hunts</a><a href="trade.html" class="text-btn">Trades</a></div>
+        <div class="chat-regarding hidden" id="chatRegarding"></div>
+        <div id="messageThread" class="message-thread"></div>
+        <form id="messageForm" class="message-compose"><textarea class="input" name="body" rows="2" maxlength="1000" placeholder="Write a message…" required aria-label="Message"></textarea><button class="btn btn-primary" type="submit">Send</button></form>
+        <p class="form-note" id="messageFormMsg" role="status"></p>
+      </div>
+    </section>
+  </section>
+</div>
+</main>
+<footer id="siteFooter" class="site-footer"></footer>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="assets/config.js"></script>
+<script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/data.js"></script>
+<script defer src="assets/js/auth.js"></script>
+<script defer src="assets/js/loot.js"></script>
+<script defer src="assets/js/maps.js"></script>
+<script defer src="assets/js/projects.js"></script>
+<script defer src="assets/js/hunts.js"></script>
+<script defer src="assets/js/trades.js"></script>
+<script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/app.js"></script>
+</body>
+</html>

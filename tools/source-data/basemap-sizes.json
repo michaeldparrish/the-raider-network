@@ -1,0 +1,37 @@
+{
+ "dam-battlegrounds": {
+  "origW": 4260,
+  "origH": 3890,
+  "w": 1200
+ },
+ "buried-city": {
+  "origW": 6144,
+  "origH": 6144,
+  "w": 1200
+ },
+ "the-blue-gate": {
+  "origW": 4096,
+  "origH": 3072,
+  "w": 1200
+ },
+ "spaceport": {
+  "origW": 4096,
+  "origH": 4096,
+  "w": 1200
+ },
+ "riven-tides": {
+  "origW": 4000,
+  "origH": 4000,
+  "w": 1200
+ },
+ "stella-montis": {
+  "origW": 5120,
+  "origH": 3072,
+  "w": 1200
+ },
+ "stella-montis-upper": {
+  "origW": 4096,
+  "origH": 3072,
+  "w": 1200
+ }
+}

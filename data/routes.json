@@ -1,0 +1,116 @@
+{
+ "_note": "Routes are Raider Network editorial guides (demo for v5). Ratings are 1\u201310 estimates, not game data. POI and item links follow the sources in maps.json / items.json.",
+ "routes": [
+  {
+   "id": "stella-montis-assembly-tech-run",
+   "name": "Assembly Tech Run",
+   "mapId": "stella-montis",
+   "featured": true,
+   "image": "maps/stella-montis-assembly.webp",
+   "summary": "A sweep of Stella Montis upper-level Exodus areas aimed at Rotary Encoders, Ion Sputters and Magnetrons.",
+   "pois": [
+    "Assembly",
+    "Assembly Workshops",
+    "Medical Research",
+    "Lobby"
+   ],
+   "targetItems": [
+    "rotary-encoder",
+    "ion-sputter",
+    "magnetron"
+   ],
+   "lootRating": 9,
+   "risk": 7,
+   "soloFriendly": 6,
+   "estimatedTime": "15\u201320 min",
+   "steps": [
+    "Enter through the Lobby and check drawers on the way in.",
+    "Clear the Assembly floor, then the Assembly Workshops (drawers and cabinets).",
+    "Finish in Medical Research \u2014 white and yellow drawers, file cabinets.",
+    "Extract or reset; avoid lingering where fights draw third parties."
+   ],
+   "confidence": "COMMUNITY REPORT",
+   "editorial": true
+  },
+  {
+   "id": "buried-city-headphone-sweep",
+   "name": "Residential Headphone Sweep",
+   "mapId": "buried-city",
+   "featured": false,
+   "image": "maps/buried-city-town-square.webp",
+   "summary": "Residential and office containers across Buried City for Headphones and general Residential loot.",
+   "pois": [
+    "Plaza Rosa",
+    "Santa Maria Houses",
+    "Hospital",
+    "JKV Offices"
+   ],
+   "targetItems": [
+    "headphones"
+   ],
+   "lootRating": 6,
+   "risk": 5,
+   "soloFriendly": 8,
+   "estimatedTime": "12\u201315 min",
+   "steps": [
+    "Start in Plaza Rosa apartments.",
+    "Move through Santa Maria Houses.",
+    "Finish in the Hospital staff rooms or JKV offices depending on extraction."
+   ],
+   "confidence": "COMMUNITY REPORT",
+   "editorial": true
+  },
+  {
+   "id": "dam-matriarch-hunt",
+   "name": "Matriarch Reactor Hunt",
+   "mapId": "dam-battlegrounds",
+   "featured": false,
+   "image": "heroes/dam-run-route.webp",
+   "summary": "Squad-only hunt for the Matriarch when the condition is active. Drops include the Matriarch Reactor and Magnetic Accelerator.",
+   "pois": [
+    "Control Tower",
+    "Water Treatment Control"
+   ],
+   "targetItems": [
+    "matriarch-reactor",
+    "magnetic-accelerator"
+   ],
+   "lootRating": 10,
+   "risk": 9,
+   "soloFriendly": 2,
+   "estimatedTime": "20\u201330 min",
+   "steps": [
+    "Only queue when the Matriarch condition is listed for the Dam.",
+    "Bring heavy ammo and explosives; coordinate in squad comms.",
+    "Loot the drop fast \u2014 the fight attracts other squads."
+   ],
+   "confidence": "VERIFIED COMMUNITY",
+   "editorial": true
+  },
+  {
+   "id": "spaceport-departure-run",
+   "name": "Departure Building Run",
+   "mapId": "spaceport",
+   "featured": false,
+   "image": "maps/spaceport-launch-tower.webp",
+   "summary": "Short interior run through the Departure Building offices for Headphones and office loot.",
+   "pois": [
+    "Departure Building"
+   ],
+   "targetItems": [
+    "headphones"
+   ],
+   "lootRating": 5,
+   "risk": 4,
+   "soloFriendly": 9,
+   "estimatedTime": "8\u201312 min",
+   "steps": [
+    "Head to the Departure Building west of the Launch Towers.",
+    "Upper-floor offices: desk drawers and suitcases.",
+    "Extract early \u2014 this is a quick loop."
+   ],
+   "confidence": "COMMUNITY REPORT",
+   "editorial": true
+  }
+ ]
+}
