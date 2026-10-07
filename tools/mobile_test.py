@@ -7,9 +7,14 @@ the interactive map lets one-finger swipes scroll the page at fit zoom and captu
 Usage: python3 -m http.server 8080 &  then  python3 tools/mobile_test.py [--shots DIR]"""
 import sys, os, json
 from playwright.sync_api import sync_playwright
-BASE = 'http://localhost:8080/'
+BASE = sys.argv[sys.argv.index('--base') + 1] if '--base' in sys.argv else 'http://localhost:8080/'
+SERVER_LOGIN = """async () => { await TRN.api.init(); if (TRN.mode !== 'server') return TRN.mode;
+  const u = 'qa_layout', pw = 'Qa-Test-Pass-1';   // throw-away local test account: log in, or create it the first time
+  try { await TRN.api.post('/auth/login', { login: u, password: pw }); }
+  catch (e) { await TRN.api.post('/auth/register', { username: u, display_name: 'QA Raider', email: u + '@example.com', password: pw, confirm_password: pw, region: 'Europe', platform: 'PC', avatar_url: 'raiders/raider-tech-specialist.webp' }); }
+  return 'server'; }"""
 SHOTS = sys.argv[sys.argv.index('--shots') + 1] if '--shots' in sys.argv else None
-WIDTHS = [(390, 844), (393, 852), (430, 932), (768, 1024)]
+WIDTHS = [(390, 844), (393, 852), (430, 932), (768, 1024), (1440, 900), (1920, 1080)]
 PAGES = ['index.html', 'loot.html', 'loot.html?map=stella-montis', 'item.html?id=rotary-encoder', 'item.html?id=kinetic-converter',
          'maps.html', 'map.html?id=dam-battlegrounds', 'map.html?id=stella-montis', 'map.html?id=riven-tides', 'map.html?id=pendola-pass',
          'projects.html', 'hunts.html', 'trade.html', 'auth.html', 'LOGIN', 'profile.html', 'messages.html',
@@ -32,6 +37,8 @@ with sync_playwright() as p:
         page.route('**/*', lambda r: r.continue_() if r.request.url.startswith(BASE) else r.abort())
         for path in PAGES:
             if path == 'LOGIN':
+                if page.evaluate(SERVER_LOGIN) == 'server':
+                    continue   # server mode: a real (throw-away) account was registered and the session cookie set
                 page.evaluate("()=>{const u={id:'perisher',user_id:'perisher',email:'qa@example.com',password:'password123',display_name:'Perisher',raider_tag:'PER#1',platform:'Cross-platform',region:'NA East',avatar:'raiders/raider-veteran-trader.webp'};localStorage.setItem('trn_users',JSON.stringify([u]));localStorage.setItem('trn_session',JSON.stringify(u))}")
                 continue
             page.goto(BASE + path, wait_until='networkidle'); page.wait_for_timeout(500)

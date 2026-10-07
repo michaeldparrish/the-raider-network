@@ -1,3 +1,5 @@
+-- SUPERSEDED in v6.0: the live backend is Cloudflare D1 (see migrations/ and docs/BACKEND.md).
+-- This v5 Supabase sketch is kept for reference only and is not used by the site.
 -- The Raider Network - planned Supabase schema (v3 Loot Hunts)
 -- Keep DEMO_MODE=true until local design review is complete.
 create table if not exists public.profiles (

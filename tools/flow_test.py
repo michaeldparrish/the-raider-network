@@ -4,7 +4,7 @@ respond to trade, demo reply, profile lists, mark complete, logout/login, global
 import sys, json, os
 from playwright.sync_api import sync_playwright, expect
 
-BASE = 'http://localhost:8080/'
+BASE = sys.argv[sys.argv.index('--base') + 1] if '--base' in sys.argv else 'http://localhost:8080/'
 V4_HUNTS = [{"id": "h1", "user_id": "u-local", "display_name": "LocalRaider", "item": "Wolfpack Blueprint", "map": "Dam Battlegrounds", "region": "NA East", "platform": "PlayStation", "squad_size": 3, "current_members": 1, "desired_time": "Tonight", "details": "v4 record", "status": "open", "created_at": "2026-10-05T10:00:00Z"},
             {"id": "h4", "user_id": "u-local", "display_name": "LocalRaider", "item": "ARC Powercell", "map": "The Blue Gate", "region": "NA West", "platform": "PlayStation", "squad_size": 3, "current_members": 1, "desired_time": "Weekend", "details": "v4", "status": "open", "created_at": "2026-10-05T09:00:00Z"},
             {"id": "h9", "user_id": "u-local", "display_name": "LocalRaider", "item": "Some Unknown Thing", "map": "Spaceport", "region": "Europe", "platform": "PC", "squad_size": 2, "current_members": 1, "desired_time": "", "details": "", "status": "open", "created_at": "2026-10-05T09:00:00Z"}]
@@ -72,7 +72,8 @@ with sync_playwright() as p:
     # --- register
     page.click('#registerTab')
     f = page.locator('#registerForm')
-    f.locator('[name=email]').fill('tester@example.com'); f.locator('[name=password]').fill('password123')
+    f.locator('[name=username]').fill('test_raider'); f.locator('[name=email]').fill('tester@example.com')
+    f.locator('[name=password]').fill('raider-pass-123'); f.locator('[name=confirm_password]').fill('raider-pass-123')
     f.locator('[name=display_name]').fill('TestRaider'); f.locator('[name=raider_tag]').fill('TEST#1234')
     f.locator('[name=region]').select_option('Europe'); f.locator('.avatar-picker label').nth(2).click()
     f.locator('button[type=submit]').click()
@@ -129,15 +130,16 @@ with sync_playwright() as p:
 
     # --- logout / login
     page.click('#logoutBtn'); page.wait_for_url('**/index.html')
-    page.goto(BASE + 'auth.html'); page.fill('#loginForm [name=email]', 'tester@example.com'); page.fill('#loginForm [name=password]', 'password123')
-    page.click('#loginForm button'); page.wait_for_url('**/hunts.html')
+    page.goto(BASE + 'auth.html'); page.fill('#loginForm [name=login]', 'tester@example.com'); page.fill('#loginForm [name=password]', 'raider-pass-123')
+    page.click('#loginForm button'); page.wait_for_url('**/profile.html')
     check(page.locator('#navUser:not(.hidden)').count() == 1, 'login works and nav shows user')
 
     # --- Perisher account claim + inventory safeguards
     page.click('#logoutBtn') if page.locator('#logoutBtn').count() else None
     page.goto(BASE + 'auth.html#register'); page.click('#registerTab')
     f = page.locator('#registerForm')
-    f.locator('[name=email]').fill('perisher@example.com'); f.locator('[name=password]').fill('password123')
+    f.locator('[name=username]').fill('perisher'); f.locator('[name=email]').fill('perisher@example.com')
+    f.locator('[name=password]').fill('raider-pass-123'); f.locator('[name=confirm_password]').fill('raider-pass-123')
     f.locator('[name=display_name]').fill('Perisher'); f.locator('[name=raider_tag]').fill('PER#1')
     f.locator('button[type=submit]').click(); page.wait_for_url('**/profile.html', timeout=8000)
     page.wait_for_selector('#myInventory .inv-row')

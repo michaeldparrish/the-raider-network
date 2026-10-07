@@ -23,17 +23,25 @@
     <div class="quote-card">“Hunting: Rotary Encoder<br>Stella Montis · Tonight<br>NA East · Cross-platform”</div></div>
   </div>
   <div class="auth-card">
-    <div class="auth-tabs"><button id="loginTab" class="active" type="button">Log in</button><button id="registerTab" type="button">Register</button></div>
-    <form id="loginForm" class="stack"><label>Email<input class="input" type="email" name="email" required autocomplete="email"></label><label>Password<input class="input" type="password" name="password" required minlength="8" autocomplete="current-password"></label><button class="btn btn-primary" type="submit">Log in</button><p class="form-note" id="loginMsg" role="status"></p></form>
-    <form id="registerForm" class="stack hidden"><label>Email <span class="muted-label">(private)</span><input class="input" type="email" name="email" required autocomplete="email"></label><label>Password<input class="input" type="password" name="password" required minlength="8" autocomplete="new-password"></label><label>Raider Name<input class="input" name="display_name" required maxlength="30" placeholder="Your in-game Raider name"></label><label>Raider Tag / ID <span class="muted-label">(kept private)</span><input class="input" name="raider_tag" required maxlength="50" placeholder="Share it later in private messages"></label><div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div><fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset><button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status"></p></form>
-    <p class="small-note">Demo Mode: accounts are stored only in this browser. Don't reuse a real password here.</p>
+    <div class="auth-tabs" role="tablist"><button id="loginTab" class="active" type="button" role="tab" aria-selected="true" aria-controls="loginForm">Log in</button><button id="registerTab" type="button" role="tab" aria-selected="false" aria-controls="registerForm">Register</button></div>
+    <p class="auth-next" id="authNext"></p>
+    <form id="loginForm" class="stack" novalidate><label>Username or email<input class="input" name="login" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false"></label><label>Password<input class="input" type="password" name="password" required maxlength="128" autocomplete="current-password"></label><button class="btn btn-primary" type="submit">Log in</button><p class="form-note" id="loginMsg" role="status" aria-live="polite"></p></form>
+    <form id="registerForm" class="stack hidden" novalidate>
+      <div class="two-col"><label>Username <span class="muted-label">(public handle)</span><input class="input" name="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. night_runner"></label><label>Display name<input class="input" name="display_name" required minlength="2" maxlength="30" placeholder="Your in-game Raider name"></label></div>
+      <label>Email <span class="muted-label">(private — never shown)</span><input class="input" type="email" name="email" required maxlength="254" autocomplete="email"></label>
+      <div class="two-col"><label>Password <span class="muted-label">(10+ characters)</span><input class="input" type="password" name="password" required minlength="10" maxlength="128" autocomplete="new-password"></label><label>Confirm password<input class="input" type="password" name="confirm_password" required minlength="10" maxlength="128" autocomplete="new-password"></label></div>
+      <label>Raider Tag / ID <span class="muted-label">(optional, kept private)</span><input class="input" name="raider_tag" maxlength="50" placeholder="Share it later, only when you choose"></label>
+      <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
+      <fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset>
+      <button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status" aria-live="polite"></p></form>
+    <p class="small-note" id="authModeNote"></p>
   </div>
 </section>
 </main>
 <footer id="siteFooter" class="site-footer"></footer>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="assets/config.js"></script>
 <script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/api.js"></script>
 <script defer src="assets/js/data.js"></script>
 <script defer src="assets/js/auth.js"></script>
 <script defer src="assets/js/loot.js"></script>

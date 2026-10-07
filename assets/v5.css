@@ -41,8 +41,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .hidden{display:none!important}
 
 /* ---------------- header ---------------- */
-.site-header{position:sticky;top:0;z-index:60;background:rgba(5,12,15,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)}
-.site-header .topbar{position:static;height:66px;gap:26px;border:0;background:transparent;padding:0 var(--gut);max-width:none}
+/* v6.0: the frosted background lives on a pseudo-element. backdrop-filter on .site-header itself made the header the
+   containing block for the position:fixed mobile menu, so the drawer was sized against the 90px header and collapsed to ~12px. */
+.site-header{position:sticky;top:0;z-index:60;border-bottom:1px solid rgba(255,255,255,.07)}
+.site-header::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(5,12,15,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);pointer-events:none}
+.site-header .topbar{position:static;height:66px;gap:26px;border:0;background:transparent;padding:0 var(--gut);max-width:none;-webkit-backdrop-filter:none;backdrop-filter:none}  /* v4 .topbar blur also trapped the fixed drawer */
 .brand-logo{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(255,106,26,.25))}
 .brand strong{font-size:23px;letter-spacing:.3px;line-height:1}
 .brand strong em{font-style:normal;color:var(--orange)}
@@ -53,6 +56,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .main-nav a.active{color:#fff}
 .main-nav a.active:after{content:"";position:absolute;left:11px;right:11px;bottom:12px;height:2px;background:var(--orange);box-shadow:0 0 12px var(--orange);margin:0}
 .nav-secondary-mobile{display:none}
+.nav-account-mobile{display:none}
 .account-actions{gap:8px}
 .nav-user{display:flex;align-items:center;gap:8px;padding:4px 10px 4px 4px;border:1px solid var(--line2);border-radius:3px;font-size:13px;font-weight:600}
 .nav-user img{width:30px;height:30px;object-fit:cover;object-position:top;border-radius:2px}
@@ -787,6 +791,31 @@ b.band-critical,b.band-high,b.band-valuable,b.band-useful,b.band-low{box-shadow:
 /* =====================================================================
    Responsive
    ===================================================================== */
+/* ---------------------------------------------------------------- v6.0 accounts, offers, notices */
+.notice-bar{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;padding:13px 16px;border:1px solid #1b5a55;border-left:4px solid var(--teal);background:rgba(25,211,197,.06);color:#d6e6e8;font-size:14px;line-height:1.5}
+.notice-bar .ico{width:20px;height:20px;flex:0 0 auto;margin-top:1px}
+.notice-bar a{color:var(--teal);text-decoration:underline}
+.notice-bar code{font-size:12.5px;background:#0a161b;padding:1px 5px}
+.field-error{display:block;margin-top:5px;color:#ff8f86;font-size:12.5px;font-weight:600}
+.input[aria-invalid=true]{border-color:#a8433c}
+.auth-next{margin:0 0 6px;font-size:13.5px;color:#cfdadd}
+.auth-next:empty{display:none}
+.auth-next a{color:var(--teal)}
+.profile-meta .handle{color:var(--teal);font-weight:600}
+.sub-h{margin:6px 0 2px;font:700 12px Inter;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.offer-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:10px;border:1px solid var(--line);background:#0a161b}
+.offer-row>div{min-width:0}
+.offer-row span small{color:var(--muted)}
+.offer-row p{margin:6px 0 0;font-size:13.5px;color:#d6e0e2;white-space:pre-line;overflow-wrap:anywhere}
+.offer-row .offer-item{display:block;margin-top:4px;font-size:13px;color:#ffbf96}
+.offer-row .status-chip{justify-self:end}
+.offer-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.offer-panel{flex:1 1 100%;display:grid;gap:8px;margin-top:6px}
+.offer-sent{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#5ee08f;font-weight:600}
+.count-pill{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;margin-left:4px;border-radius:9px;background:var(--orange);color:#071014;font:700 11px Inter}
+.btn.btn-danger{color:#ff8f86;border-color:#6f2a26}
+.btn.btn-danger.confirming{background:#5a1d19;color:#fff;border-color:#ff5149}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
 @media (max-width:1380px){
   .dash-popular{grid-column:1/-1}.dash-route{grid-column:1/span 7}.dash-trades{grid-column:8/span 5}
   .dash-maps{grid-column:1/-1}.dash-conditions{grid-column:8/span 5;grid-row:auto}
@@ -801,6 +830,16 @@ b.band-critical,b.band-high,b.band-valuable,b.band-useful,b.band-low{box-shadow:
   .menu-btn{display:grid}
   .main-nav{display:none!important;position:fixed;top:96px;left:0;right:0;bottom:0;flex-direction:column;gap:0;background:rgba(5,12,15,.98);padding:10px var(--gut);overflow:auto;z-index:65}
   body.nav-open .main-nav{display:flex!important}
+  .main-nav{top:var(--nav-top,96px);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);max-height:calc(100vh - var(--nav-top,96px));max-height:calc(100dvh - var(--nav-top,96px));overscroll-behavior:contain;box-shadow:0 30px 60px rgba(0,0,0,.6)}
+  .main-nav a{min-height:48px;display:flex;align-items:center}
+  body.nav-open{overflow:hidden}
+  .nav-account-mobile{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 4px 6px;border-top:1px solid var(--line);margin-top:6px}
+  .nav-account-mobile .btn{min-height:44px;flex:1 1 140px}
+  .nav-account-mobile .who{display:flex;align-items:center;gap:10px;flex:1 1 100%;font-size:14px;color:#dfe8ea}
+  .nav-account-mobile .who img{width:36px;height:36px;object-fit:cover;object-position:top;border-radius:2px}
+  .nav-account-mobile .who small{display:block;color:var(--muted);font-size:12px}
+  .main-nav .nav-account-mobile a.btn{font:700 14px Inter;text-transform:none;letter-spacing:.2px;border:1px solid var(--line2);padding:10px 14px;justify-content:center}
+  .main-nav .nav-account-mobile a.btn-primary{border-color:var(--orange)}
   .main-nav a{padding:15px 4px;font:700 22px "Barlow Condensed";letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--line)}
   .main-nav a.active:after{left:0;right:auto;width:30px;bottom:8px}
   .nav-secondary-mobile{display:flex;gap:16px;padding:14px 4px}
@@ -896,7 +935,10 @@ b.band-critical,b.band-high,b.band-valuable,b.band-useful,b.band-low{box-shadow:
   .brand-logo{width:36px;height:36px}
   #navJoin{display:none}
   .nav-user span{display:none}
-  .main-nav{top:90px}
+  /* v6: on phones the signed-in Raider, Messages and Log out live in the menu drawer, so the header row never wraps */
+  #navUser,#navInbox{display:none!important}
+  .account-actions{gap:8px;flex-wrap:nowrap}
+  .main-nav{top:var(--nav-top,90px);max-height:calc(100vh - var(--nav-top,90px));max-height:calc(100dvh - var(--nav-top,90px))}
   .home-hero{min-height:0}
   .home-hero__inner{padding:30px var(--gut) 26px}
   .home-hero__copy h1{font-size:50px}

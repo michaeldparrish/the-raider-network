@@ -1,17 +1,16 @@
-/* The Raider Network v5 — data access layer.
+/* The Raider Network v6 — data access layer.
  *
  * Two kinds of data:
- *  1. Reference data (items, maps, projects, quests, routes...) — static JSON in /data.
- *  2. Community data (users, hunts, trades, messages) — Demo Mode uses localStorage;
- *     Supabase mode uses the tables in supabase-schema.sql. UI code only calls TRN.store.*,
- *     so swapping the backend does not touch page code.
+ *  1. Reference data (items, maps, projects, quests, routes...) — static JSON in /data. Unchanged in v6.
+ *  2. Community data. In SERVER mode (production) accounts, sessions, trade posts and offers live in Cloudflare D1
+ *     behind /api (see assets/js/api.js and functions/). In DEMO mode (local development without the API)
+ *     the v5 browser-only demo storage is used. Loot Hunts and Messages are still browser-only in v6.0.
+ *  UI code only calls TRN.store.*, so page code does not care which backend is active.
  */
 (function () {
   const TRN = window.TRN;
-  const cfg = window.RAIDER_CONFIG || {};
-  const realMode = !cfg.DEMO_MODE && cfg.SUPABASE_URL && cfg.SUPABASE_PUBLISHABLE_KEY && window.supabase;
-  const sb = realMode ? window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_PUBLISHABLE_KEY) : null;
-  TRN.realMode = !!realMode; TRN.sb = sb;
+  const server = () => TRN.mode === 'server';
+  const offline = () => TRN.mode === 'offline';
 
   /* ---------------- reference data ---------------- */
   const FILES = { items: 'items.json', maps: 'maps.json', projects: 'projects.json', quests: 'quests.json', routes: 'routes.json',
@@ -172,43 +171,74 @@
     }
   }
 
+  /* Server trade post -> the client shape the Trade Board renders (same shape as demo rows). */
+  const fromServer = t => ({
+    id: t.id, server: true, userId: t.owner.id, username: t.owner.username, displayName: t.owner.display_name, avatar: t.owner.avatar_url,
+    lookingFor: [{ itemId: t.wanted.item_id, name: t.wanted.name, quantity: t.wanted.quantity }],
+    offering: t.offered ? [{ itemId: t.offered.item_id, name: t.offered.name, quantity: t.offered.quantity }] : [],
+    openToOffers: t.open_to_offers, region: t.region, platform: t.platform, desiredTime: t.desired_time || '', notes: t.notes || '',
+    status: String(t.status).toLowerCase(), createdAt: t.created_at, updatedAt: t.updated_at, closedAt: t.closed_at,
+    pendingOffers: t.pending_offers, isMine: t.is_mine,
+  });
+  /* Client form row -> API body. Item ids are only sent when they exist in Loot Intel; the server re-validates. */
+  const toServer = row => {
+    const w = row.lookingFor?.[0] || {}, o = (row.offering || []).find(x => !x.fromInventory) || null;
+    return {
+      wanted_item_id: w.itemId || null, wanted_item_name: w.itemId ? undefined : w.name, wanted_quantity: w.quantity || 1,
+      offered_item_id: o?.itemId || null, offered_item_name: o ? (o.itemId ? undefined : o.name) : null, offered_quantity: o ? (o.quantity || 1) : null,
+      open_to_offers: !!row.openToOffers, region: row.region, platform: row.platform, desired_time: row.desiredTime || '', notes: row.notes || '',
+    };
+  };
+  let tradeCache = null;
+
   TRN.store = {
     LS,
-    async listHunts() {
-      if (!realMode) return demoHunts();
-      const { data, error } = await sb.from('loot_hunts').select('*,profiles(display_name)').order('created_at', { ascending: false });
-      if (error) { console.error(error); return []; }
-      return (data || []).map(h => ({ id: h.id, userId: h.user_id, displayName: h.profiles?.display_name || 'Raider', itemId: h.item_id, itemName: h.item,
-        mapId: h.map_id, region: h.region, platform: h.platform, squadSize: h.squad_size, currentMembers: h.current_members,
-        desiredTime: h.desired_time, description: h.details, status: h.status, createdAt: h.created_at }));
-    },
+    /* Loot Hunts: browser-only in v6.0 (server storage is planned for v6.1). */
+    async listHunts() { return demoHunts(); },
     async createHunt(row, user) {
-      if (!realMode) { const rows = demoHunts(); rows.unshift({ ...row, id: 'h' + Date.now(), userId: user.user_id || user.id, displayName: user.display_name, currentMembers: 1, status: 'open', createdAt: new Date().toISOString() }); LS.set('trn_hunts', rows); return; }
-      const { error } = await sb.from('loot_hunts').insert({ user_id: user.user_id, item_id: row.itemId, item: row.itemName, map_id: row.mapId, map: TRN.data.mapName(row.mapId), region: row.region, platform: row.platform, squad_size: row.squadSize, current_members: 1, desired_time: row.desiredTime, details: row.description, status: 'open' });
-      if (error) throw error;
+      const rows = demoHunts(); rows.unshift({ ...row, id: 'h' + Date.now(), userId: user.user_id || user.id, displayName: user.display_name, currentMembers: 1, status: 'open', createdAt: new Date().toISOString(), deviceOnly: server() });
+      LS.set('trn_hunts', rows);
     },
-    async updateHunt(id, patch) {
-      if (!realMode) { const rows = demoHunts(); const i = rows.findIndex(r => r.id === id); if (i > -1) { rows[i] = { ...rows[i], ...patch }; LS.set('trn_hunts', rows); } return; }
-      const { error } = await sb.from('loot_hunts').update({ status: patch.status, current_members: patch.currentMembers }).eq('id', id); if (error) throw error;
-    },
-    async listTrades() {
-      if (!realMode) return demoTrades();
-      const { data, error } = await sb.from('trade_requests').select('*,profiles(display_name)').order('created_at', { ascending: false });
-      if (error) { console.error(error); return []; }
-      return (data || []).map(t => ({ id: t.id, userId: t.user_id, displayName: t.profiles?.display_name || 'Raider', lookingFor: t.looking_for || [], offering: t.offering || [],
-        openToOffers: t.open_to_offers, region: t.region, platform: t.platform, desiredTime: t.desired_time, notes: t.details, status: t.status, createdAt: t.created_at }));
+    async updateHunt(id, patch) { const rows = demoHunts(); const i = rows.findIndex(r => r.id === id); if (i > -1) { rows[i] = { ...rows[i], ...patch }; LS.set('trn_hunts', rows); } },
+
+    async listTrades({ fresh } = {}) {
+      if (server()) {
+        if (!tradeCache || fresh) tradeCache = TRN.api.get('/trades?status=ALL').then(d => d.trades.map(fromServer)).catch(e => { tradeCache = null; console.error(e); TRN.backendProblem = e.message; return []; });
+        return tradeCache;
+      }
+      if (offline()) return [];
+      return demoTrades();
     },
     async createTrade(row, user) {
+      if (server()) { const d = await TRN.api.post('/trades', toServer(row)); tradeCache = null; return fromServer(d.trade); }
+      if (offline()) throw new Error(TRN.backendProblem || 'Trading is unavailable right now.');
       checkAllocation(user.user_id || user.id, row.offering, await TRN.store.listTrades());
-      if (!realMode) { const rows = demoTrades(); rows.unshift({ ...row, id: 't' + Date.now(), userId: user.user_id || user.id, displayName: user.display_name || 'Raider', status: 'open', createdAt: new Date().toISOString() }); LS.set('trn_trades', rows); return; }
-      const { error } = await sb.from('trade_requests').insert({ user_id: user.user_id, looking_for: row.lookingFor, offering: row.offering, open_to_offers: row.openToOffers, region: row.region, platform: row.platform, desired_time: row.desiredTime, details: row.notes, status: 'open' });
-      if (error) throw error;
+      const rows = demoTrades(); rows.unshift({ ...row, id: 't' + Date.now(), userId: user.user_id || user.id, displayName: user.display_name || 'Raider', status: 'open', createdAt: new Date().toISOString() }); LS.set('trn_trades', rows);
     },
+    /* patch: { status } and/or full edit fields in client shape (lookingFor, offering, ...). */
     async updateTrade(id, patch) {
-      if (!realMode) { const rows = demoTrades(); const i = rows.findIndex(r => r.id === id); if (i > -1) { rows[i] = { ...rows[i], ...patch }; LS.set('trn_trades', rows); } return; }
-      const { error } = await sb.from('trade_requests').update({ status: patch.status }).eq('id', id); if (error) throw error;
+      if (server()) {
+        const body = patch.lookingFor ? toServer(patch) : {};
+        if (patch.status) body.status = String(patch.status).toUpperCase();
+        const d = await TRN.api.patch('/trades/' + encodeURIComponent(id), body); tradeCache = null; return fromServer(d.trade);
+      }
+      if (offline()) throw new Error(TRN.backendProblem || 'Trading is unavailable right now.');
+      const rows = demoTrades(); const i = rows.findIndex(r => r.id === id); if (i > -1) { rows[i] = { ...rows[i], ...patch }; LS.set('trn_trades', rows); }
     },
-    inventory(userId, trades) { return inventoryState(userId, trades); },
+    async deleteTrade(id) {
+      if (server()) { await TRN.api.del('/trades/' + encodeURIComponent(id)); tradeCache = null; return; }
+      if (offline()) throw new Error(TRN.backendProblem || 'Trading is unavailable right now.');
+      LS.set('trn_trades', demoTrades().filter(r => r.id !== id));
+    },
+    /* Offers (server mode only). */
+    offers: {
+      forTrade: id => TRN.api.get('/trades/' + encodeURIComponent(id) + '/offers'),
+      create: (id, body) => TRN.api.post('/trades/' + encodeURIComponent(id) + '/offers', body),
+      act: (offerId, action) => TRN.api.patch('/offers/' + encodeURIComponent(offerId), { action }),
+      mine: () => TRN.api.get('/me/offers'),
+    },
+    /* The Perisher trade inventory is a demo-mode feature (data/trade-inventory.json). Server inventories are planned. */
+    inventory(userId, trades) { return server() || offline() ? null : inventoryState(userId, trades); },
     /* Owner marks a listing as traded: decrement the given inventory units (never below zero) and close the listing. */
     async completeTrade(tradeId, given) {
       const trades = await TRN.store.listTrades(); const t = trades.find(x => x.id === tradeId); if (!t) throw new Error('Listing not found.');
@@ -225,26 +255,37 @@
       await TRN.store.updateTrade(tradeId, { status: 'closed', completedAt: new Date().toISOString(), given });
       LS.set('trn_trades_completed', (LS.get('trn_trades_completed', 0) || 0) + 1);
     },
+    /* Messages: browser-only in v6.0 (server messaging is planned for v6.1). */
     async listMessages(user) {
       const uid = user.user_id || user.id;
-      if (!realMode) return LS.get('trn_messages', []).filter(m => m.sender_id === uid || m.recipient_id === uid);
-      const { data, error } = await sb.from('messages').select('*').or(`sender_id.eq.${uid},recipient_id.eq.${uid}`).order('created_at', { ascending: true });
-      if (error) { console.error(error); return []; } return data || [];
+      return LS.get('trn_messages', []).filter(m => m.sender_id === uid || m.recipient_id === uid);
     },
     async sendMessage(msg) {
-      if (!realMode) { const all = LS.get('trn_messages', []); all.push({ id: 'm' + Date.now(), created_at: new Date().toISOString(), ...msg }); LS.set('trn_messages', all); return; }
-      const { error } = await sb.from('messages').insert({ sender_id: msg.sender_id, recipient_id: msg.recipient_id, body: msg.body, trade_id: msg.trade_id || null, hunt_id: msg.hunt_id || null, item_id: msg.item_id || null });
-      if (error) throw error;
+      if (server()) throw new Error('Private messages are not live yet. Use Make Offer on the Trade Board to contact a Raider.');
+      const all = LS.get('trn_messages', []); all.push({ id: 'm' + Date.now(), created_at: new Date().toISOString(), ...msg }); LS.set('trn_messages', all);
     },
     /* Public profile lookup (never returns email or private Raider tag for other users). */
     publicUser(id) {
+      const st = tradeCacheSync.find(t => t.userId === id);
+      if (st) return { id, displayName: st.displayName, avatar: st.avatar, username: st.username };
       const d = (DB.publicUsers || []).find(u => u.id === id);
       if (d) return d;
       const u = LS.get('trn_users', []).find(x => x.id === id);
       return u ? { id: u.id, displayName: u.display_name, platform: u.platform, region: u.region, avatar: u.avatar || null, archetype: null, badges: [] } : null;
     },
-    stats() { return { ...(DB.stats || {}), tradesCompleted: (DB.stats?.tradesCompleted || 0) + (LS.get('trn_trades_completed', 0) || 0) }; }
+    async loadServerStats() {
+      if (!server()) return null;
+      try { TRN.serverStats = (await TRN.api.get('/stats')).stats; } catch (e) { console.error(e); }
+      return TRN.serverStats;
+    },
+    stats() {
+      if (server()) return { ...(DB.stats || {}), tradesCompleted: TRN.serverStats?.completed_trades ?? 0 };
+      return { ...(DB.stats || {}), tradesCompleted: (DB.stats?.tradesCompleted || 0) + (LS.get('trn_trades_completed', 0) || 0) };
+    }
   };
+  let tradeCacheSync = [];
+  const _list = TRN.store.listTrades;
+  TRN.store.listTrades = async (o) => { const r = await _list(o); if (server()) tradeCacheSync = r; return r; };
 
   TRN.data = { load, item, map, itemName, mapName, itemLink, mapLink, projectLink, questName, findItemByName, findMapByName, projectStatus };
 })();

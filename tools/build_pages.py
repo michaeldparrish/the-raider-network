@@ -1,4 +1,4 @@
-"""Generate the v5 HTML pages from one shared head/scripts template. Run: python3 tools/build_pages.py
+"""Generate the v6 HTML pages from one shared head/scripts template. Run: python3 tools/build_pages.py
 Page bodies live in this file; header/footer markup is injected at runtime by assets/js/app.js."""
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,9 +25,9 @@ HEAD = '''<!doctype html>
 FOOT = '''
 </main>
 <footer id="siteFooter" class="site-footer"></footer>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="assets/config.js"></script>
 <script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/api.js"></script>
 <script defer src="assets/js/data.js"></script>
 <script defer src="assets/js/auth.js"></script>
 <script defer src="assets/js/loot.js"></script>
@@ -224,6 +224,7 @@ PAGES['hunts.html'] = ('hunts', 'Loot Hunts — The Raider Network', 'Find Raide
   <img class="banner-side-art" src="assets/images/raiders/raider-squad-lineup.webp" alt="">
 </section>
 <div class="page-shell">
+  <div class="notice-bar hidden" id="huntsNotice" role="note"></div>
   <section class="toolbar hunts-toolbar">
     <div class="search-wrap">{SEARCH_SVG}<input id="huntSearch" class="input" placeholder="Search items, maps, or Raider names" aria-label="Search hunts"></div>
     <select id="mapFilter" class="input" aria-label="Map"></select>
@@ -266,12 +267,13 @@ PAGES['trade.html'] = ('trade', 'Trade Board — The Raider Network', 'Post what
 </section>
 <div class="page-shell trade-layout">
   <div>
+    <div class="notice-bar hidden" id="tradeNotice" role="note"></div>
     <div class="policy-warning">{I('warning')}<div><strong>Fair-play notice:</strong> Embark currently states that trading in-game items for anything of value, whether real money or otherwise, may result in enforcement. The Raider Network does not process payments, allows no real-money trades, and does not guarantee that any proposed item transfer is permitted.</div></div>
     <div class="toolbar hunts-toolbar trade-toolbar">
       <div class="search-wrap">{SEARCH_SVG}<input class="input" id="tradeSearch" placeholder="Search wanted items, offered items, or Raider names" aria-label="Search trades"></div>
       <select class="input" id="tradeRegion" aria-label="Region"></select>
       <select class="input" id="tradePlatform" aria-label="Platform"></select>
-      <select class="input" id="tradeStatus" aria-label="Status"><option value="open" selected>Open</option><option value="closed">Closed</option><option value="">Any status</option></select>
+      <select class="input" id="tradeStatus" aria-label="Status"><option value="open" selected>Open</option><option value="closed">Closed</option><option value="completed">Completed</option><option value="">Any status</option></select>
     </div>
     <p class="muted" id="tradeFilterNote"></p>
     <p class="result-line"><b id="tradeCount">0</b> requests shown</p>
@@ -286,7 +288,7 @@ PAGES['trade.html'] = ('trade', 'Trade Board — The Raider Network', 'Post what
 </div>
 <div class="modal hidden" id="tradeModal" role="dialog" aria-modal="true" aria-labelledby="tradeModalTitle"><div class="modal-card">
   <button class="modal-close" id="closeTradeModal" aria-label="Close">×</button>
-  <span class="eyebrow">NEW REQUEST</span><h2 id="tradeModalTitle">Post a trade request</h2>
+  <span class="eyebrow" id="tradeModalEyebrow">NEW REQUEST</span><h2 id="tradeModalTitle">Post a trade request</h2>
   <form id="tradeForm" class="form-grid">
     <label>Looking for<input class="input" name="want" list="tradeItemNames" required placeholder="e.g. Rotary Encoder" autocomplete="off"></label>
     <label>Qty<input class="input" name="wantQty" type="number" min="1" max="99" value="1"></label>
@@ -300,7 +302,18 @@ PAGES['trade.html'] = ('trade', 'Trade Board — The Raider Network', 'Post what
     <label>Platform<select class="input" name="platform"></select></label>
     <label class="full">Desired time<input class="input" name="desiredTime" maxlength="80" placeholder="Evenings, weekend…"></label>
     <label class="full">Notes<textarea class="input" name="notes" rows="3" maxlength="500" placeholder="What you need it for, flexibility, etc."></textarea></label>
-    <div class="full"><button class="btn btn-primary" type="submit">Publish Request</button> <span class="form-note" id="tradeFormMsg" role="status"></span></div>
+    <div class="full"><button class="btn btn-primary" type="submit" id="tradeSubmit">Publish Request</button> <span class="form-note" id="tradeFormMsg" role="status" aria-live="polite"></span></div>
+  </form>
+</div></div>
+<div class="modal hidden" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle"><div class="modal-card">
+  <button class="modal-close" id="closeOfferModal" aria-label="Close">×</button>
+  <span class="eyebrow">RESPOND TO A TRADE</span><h2 id="offerModalTitle">Make an offer</h2>
+  <p class="muted" id="offerContext"></p>
+  <form id="offerForm" class="form-grid">
+    <label class="full">What can you offer? <span class="muted-label">(optional)</span><input class="input" name="offer" list="tradeItemNames" maxlength="80" placeholder="An item from Loot Intel, or free text" autocomplete="off"></label>
+    <label class="full">Message to the Raider<textarea class="input" name="message" rows="4" minlength="2" maxlength="500" required placeholder="When you can play, platform, what you'd want in return…"></textarea></label>
+    <p class="full small-note">Only this trade's owner can see your offer. Don't share passwords or payment details — The Raider Network never handles payments.</p>
+    <div class="full"><button class="btn btn-primary" type="submit">Send Offer</button> <span class="form-note" id="offerFormMsg" role="status" aria-live="polite"></span></div>
   </form>
 </div></div>
 ''')
@@ -312,6 +325,7 @@ PAGES['messages.html'] = ('messages', 'Messages — The Raider Network', 'Privat
   <div class="page-banner__copy"><span class="eyebrow">{I('message')} PRIVATE COMMS</span><h1>Messages</h1><p>Talk privately before sharing your in-game tag. Messages keep the trade or hunt they're about.</p></div>
 </section>
 <div class="page-shell">
+  <div class="notice-bar hidden" id="messagesNotice" role="note"></div>
   <section class="messages-shell">
     <aside class="conversation-list"><div class="conversation-title">{I('message')} Conversations <b id="unreadCount"></b></div><div id="conversationList"></div></aside>
     <section class="chat-panel">
@@ -334,7 +348,7 @@ PAGES['profile.html'] = ('profile', 'My Profile — The Raider Network', 'Your R
   <div class="profile-hero__inner">
     <img class="profile-avatar" id="profileAvatar" src="assets/images/raiders/raider-solo-scout.webp" alt="">
     <div><span class="eyebrow">RAIDER PROFILE</span><h1 id="profileName">My Profile</h1><div class="profile-meta" id="profileMeta"></div></div>
-    <div class="profile-stats"><div><b id="statActive">0</b><span>Active hunts</span></div><div><b id="statTrades">0</b><span>Open trades</span></div><div><b id="statDone">0</b><span>Completed</span></div><div><b>—</b><span>Reputation <em>soon</em></span></div></div>
+    <div class="profile-stats"><div><b id="statActive">0</b><span id="statActiveLabel">Active hunts</span></div><div><b id="statTrades">0</b><span id="statTradesLabel">Open trades</span></div><div><b id="statDone">0</b><span id="statDoneLabel">Completed</span></div><div><b>—</b><span>Reputation <em>soon</em></span></div></div>
     <button class="btn btn-ghost" id="logoutBtn">Log out</button>
   </div>
 </section>
@@ -342,15 +356,16 @@ PAGES['profile.html'] = ('profile', 'My Profile — The Raider Network', 'Your R
   <section class="panel"><header class="panel-head"><span class="eyebrow">{I('profile')} RAIDER IDENTITY</span></header>
     <form id="profileForm" class="stack">
       <label>Raider Display Name<input class="input" name="display_name" required maxlength="30"></label>
-      <label>Raider Tag / ID <span class="muted-label">(private — only shown to you)</span><input class="input" name="raider_tag" required maxlength="50"></label>
+      <label>Raider Tag / ID <span class="muted-label">(private — only shown to you)</span><input class="input" name="raider_tag" maxlength="50"></label>
       <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
       <fieldset class="avatar-field"><legend>Raider portrait</legend><div id="profileAvatarSlot"></div></fieldset>
       <button class="btn btn-primary">Save Profile</button><p class="form-note" id="profileMsg" role="status"></p>
     </form>
   </section>
   <div class="profile-cols">
-    <section class="panel"><header class="panel-head"><span class="eyebrow">{I('squad')} ACTIVE LOOT HUNTS</span><a class="text-btn" href="hunts.html?new=">+ New</a></header><div id="myHunts" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow">{I('trade')} OPEN TRADE REQUESTS</span><a class="text-btn" href="trade.html?new=">+ New</a></header><div id="myTrades" class="stack-sm"></div></section>
+    <section class="panel hidden" id="myOffersPanel"><header class="panel-head"><span class="eyebrow">{I('trade')} TRADE OFFERS</span><a class="text-btn" href="trade.html">Trade Board</a></header><div id="myOffers" class="stack-sm"></div></section>
+    <section class="panel"><header class="panel-head"><span class="eyebrow">{I('squad')} ACTIVE LOOT HUNTS</span><a class="text-btn" href="hunts.html?new=">+ New</a></header><p class="small-note device-only-note hidden">Loot Hunts are still in preview: they are saved in this browser only until they move to the server.</p><div id="myHunts" class="stack-sm"></div></section>
     <section class="panel hidden" id="myInventoryPanel"><header class="panel-head"><span class="eyebrow">{I('inventory')} MY TRADE INVENTORY</span><a class="text-btn" href="trade.html">Trade Board</a></header><div id="myInventory"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow">{I('extraction')} COMPLETED HUNTS</span></header><div id="myCompleted" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow">{I('rarity')} REPUTATION &amp; BADGES</span><span class="demo-pill">COMING SOON</span></header><p class="muted">Reputation will come from completed hunts and trades confirmed by both Raiders. Badges are placeholders.</p><div class="badge-grid" id="badgeGrid"></div></section>
@@ -366,10 +381,18 @@ PAGES['auth.html'] = ('auth', 'Join — The Raider Network', 'Create a Raider pr
     <div class="quote-card">“Hunting: Rotary Encoder<br>Stella Montis · Tonight<br>NA East · Cross-platform”</div></div>
   </div>
   <div class="auth-card">
-    <div class="auth-tabs"><button id="loginTab" class="active" type="button">Log in</button><button id="registerTab" type="button">Register</button></div>
-    <form id="loginForm" class="stack"><label>Email<input class="input" type="email" name="email" required autocomplete="email"></label><label>Password<input class="input" type="password" name="password" required minlength="8" autocomplete="current-password"></label><button class="btn btn-primary" type="submit">Log in</button><p class="form-note" id="loginMsg" role="status"></p></form>
-    <form id="registerForm" class="stack hidden"><label>Email <span class="muted-label">(private)</span><input class="input" type="email" name="email" required autocomplete="email"></label><label>Password<input class="input" type="password" name="password" required minlength="8" autocomplete="new-password"></label><label>Raider Name<input class="input" name="display_name" required maxlength="30" placeholder="Your in-game Raider name"></label><label>Raider Tag / ID <span class="muted-label">(kept private)</span><input class="input" name="raider_tag" required maxlength="50" placeholder="Share it later in private messages"></label><div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div><fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset><button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status"></p></form>
-    <p class="small-note">Demo Mode: accounts are stored only in this browser. Don't reuse a real password here.</p>
+    <div class="auth-tabs" role="tablist"><button id="loginTab" class="active" type="button" role="tab" aria-selected="true" aria-controls="loginForm">Log in</button><button id="registerTab" type="button" role="tab" aria-selected="false" aria-controls="registerForm">Register</button></div>
+    <p class="auth-next" id="authNext"></p>
+    <form id="loginForm" class="stack" novalidate><label>Username or email<input class="input" name="login" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false"></label><label>Password<input class="input" type="password" name="password" required maxlength="128" autocomplete="current-password"></label><button class="btn btn-primary" type="submit">Log in</button><p class="form-note" id="loginMsg" role="status" aria-live="polite"></p></form>
+    <form id="registerForm" class="stack hidden" novalidate>
+      <div class="two-col"><label>Username <span class="muted-label">(public handle)</span><input class="input" name="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{{3,20}}" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. night_runner"></label><label>Display name<input class="input" name="display_name" required minlength="2" maxlength="30" placeholder="Your in-game Raider name"></label></div>
+      <label>Email <span class="muted-label">(private — never shown)</span><input class="input" type="email" name="email" required maxlength="254" autocomplete="email"></label>
+      <div class="two-col"><label>Password <span class="muted-label">(10+ characters)</span><input class="input" type="password" name="password" required minlength="10" maxlength="128" autocomplete="new-password"></label><label>Confirm password<input class="input" type="password" name="confirm_password" required minlength="10" maxlength="128" autocomplete="new-password"></label></div>
+      <label>Raider Tag / ID <span class="muted-label">(optional, kept private)</span><input class="input" name="raider_tag" maxlength="50" placeholder="Share it later, only when you choose"></label>
+      <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
+      <fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset>
+      <button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status" aria-live="polite"></p></form>
+    <p class="small-note" id="authModeNote"></p>
   </div>
 </section>
 ''')

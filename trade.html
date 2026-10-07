@@ -26,12 +26,13 @@
 </section>
 <div class="page-shell trade-layout">
   <div>
+    <div class="notice-bar hidden" id="tradeNotice" role="note"></div>
     <div class="policy-warning"><img class="ico" src="assets/images/ui/icon-warning.png" alt="" aria-hidden="true"><div><strong>Fair-play notice:</strong> Embark currently states that trading in-game items for anything of value, whether real money or otherwise, may result in enforcement. The Raider Network does not process payments, allows no real-money trades, and does not guarantee that any proposed item transfer is permitted.</div></div>
     <div class="toolbar hunts-toolbar trade-toolbar">
       <div class="search-wrap"><svg class="svg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input class="input" id="tradeSearch" placeholder="Search wanted items, offered items, or Raider names" aria-label="Search trades"></div>
       <select class="input" id="tradeRegion" aria-label="Region"></select>
       <select class="input" id="tradePlatform" aria-label="Platform"></select>
-      <select class="input" id="tradeStatus" aria-label="Status"><option value="open" selected>Open</option><option value="closed">Closed</option><option value="">Any status</option></select>
+      <select class="input" id="tradeStatus" aria-label="Status"><option value="open" selected>Open</option><option value="closed">Closed</option><option value="completed">Completed</option><option value="">Any status</option></select>
     </div>
     <p class="muted" id="tradeFilterNote"></p>
     <p class="result-line"><b id="tradeCount">0</b> requests shown</p>
@@ -46,7 +47,7 @@
 </div>
 <div class="modal hidden" id="tradeModal" role="dialog" aria-modal="true" aria-labelledby="tradeModalTitle"><div class="modal-card">
   <button class="modal-close" id="closeTradeModal" aria-label="Close">×</button>
-  <span class="eyebrow">NEW REQUEST</span><h2 id="tradeModalTitle">Post a trade request</h2>
+  <span class="eyebrow" id="tradeModalEyebrow">NEW REQUEST</span><h2 id="tradeModalTitle">Post a trade request</h2>
   <form id="tradeForm" class="form-grid">
     <label>Looking for<input class="input" name="want" list="tradeItemNames" required placeholder="e.g. Rotary Encoder" autocomplete="off"></label>
     <label>Qty<input class="input" name="wantQty" type="number" min="1" max="99" value="1"></label>
@@ -60,14 +61,25 @@
     <label>Platform<select class="input" name="platform"></select></label>
     <label class="full">Desired time<input class="input" name="desiredTime" maxlength="80" placeholder="Evenings, weekend…"></label>
     <label class="full">Notes<textarea class="input" name="notes" rows="3" maxlength="500" placeholder="What you need it for, flexibility, etc."></textarea></label>
-    <div class="full"><button class="btn btn-primary" type="submit">Publish Request</button> <span class="form-note" id="tradeFormMsg" role="status"></span></div>
+    <div class="full"><button class="btn btn-primary" type="submit" id="tradeSubmit">Publish Request</button> <span class="form-note" id="tradeFormMsg" role="status" aria-live="polite"></span></div>
+  </form>
+</div></div>
+<div class="modal hidden" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle"><div class="modal-card">
+  <button class="modal-close" id="closeOfferModal" aria-label="Close">×</button>
+  <span class="eyebrow">RESPOND TO A TRADE</span><h2 id="offerModalTitle">Make an offer</h2>
+  <p class="muted" id="offerContext"></p>
+  <form id="offerForm" class="form-grid">
+    <label class="full">What can you offer? <span class="muted-label">(optional)</span><input class="input" name="offer" list="tradeItemNames" maxlength="80" placeholder="An item from Loot Intel, or free text" autocomplete="off"></label>
+    <label class="full">Message to the Raider<textarea class="input" name="message" rows="4" minlength="2" maxlength="500" required placeholder="When you can play, platform, what you'd want in return…"></textarea></label>
+    <p class="full small-note">Only this trade's owner can see your offer. Don't share passwords or payment details — The Raider Network never handles payments.</p>
+    <div class="full"><button class="btn btn-primary" type="submit">Send Offer</button> <span class="form-note" id="offerFormMsg" role="status" aria-live="polite"></span></div>
   </form>
 </div></div>
 </main>
 <footer id="siteFooter" class="site-footer"></footer>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="assets/config.js"></script>
 <script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/api.js"></script>
 <script defer src="assets/js/data.js"></script>
 <script defer src="assets/js/auth.js"></script>
 <script defer src="assets/js/loot.js"></script>

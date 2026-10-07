@@ -1,10 +1,28 @@
-# The Raider Network — v5.3
+# The Raider Network — v6.0
 
 **FIND IT. HUNT IT. TRADE IT. EXTRACT.**
 
 An independent ARC Raiders community and intelligence hub covering Loot Intel, Maps, Loot Hunts, the Trade Board, Raider Profiles, Private Messages, Projects, and Routes. The site is built with plain HTML, CSS and vanilla JavaScript. There is no build step and no framework.
 
 > Unofficial fan site. Not affiliated with Embark Studios. Core item data: [RaidTheory/arcraiders-data](https://github.com/RaidTheory/arcraiders-data) (MIT). All artwork is AI-generated concept art and does not show in-game appearance.
+
+## What's new in v6.0: real accounts and a persistent Trade Board
+
+- **Mobile menu fixed.** The hamburger worked, but the menu drawer had collapsed to about 12 px.
+  - **Cause:** `backdrop-filter` on `.site-header` (v5) and on `.topbar` (v4). Each makes its element the containing block for `position:fixed` children, so the drawer's `top:90px; bottom:0` was measured against the 70 px header instead of the screen, and `overflow:auto` clipped every link.
+  - **Fix:** the blur now sits on a `::before` layer. The menu also gained `aria-expanded`/label updates, Escape and tap-outside to close, focus handling, 48 px links, and a sign-in/sign-out row.
+  - **Test:** `tools/nav_test.py` really opens and uses the menu.
+- **Accounts:** register, log in and log out are backed by **Cloudflare Pages Functions + D1**. Accounts use salted PBKDF2 passwords and HttpOnly session cookies. Usernames and emails are unique, and email is never shown publicly.
+- **Persistent Trade Board:**
+  - Trade posts live in D1, so every visitor and device sees the same board, and posts survive refreshes, cleared browsers and new deployments.
+  - Owners can **edit**, **close/reopen**, **mark completed** and **delete** their posts; the server refuses anyone else.
+  - **Offers:** other Raiders send offers; owners accept or decline them, and senders can withdraw them (see My Profile → Trade Offers).
+- **Environment-based modes.**
+  - **Production:** server mode with no DEMO badge.
+  - **`python3 -m http.server`:** the old browser-only demo, on localhost only and labelled.
+  - **No API on a real domain:** a clear "OFFLINE" state, never a silent fallback.
+- **Still browser-only (labelled):** Loot Hunts. Private messaging is switched off in server mode until it moves to the server; offers replace it for trades.
+- **Docs:** `docs/CLOUDFLARE-BACKEND-SETUP.md` (step-by-step) and `docs/BACKEND.md` (architecture, schema, API, security).
 
 ## What's new in v5.3 (mobile repair, desktop unchanged)
 
@@ -45,10 +63,15 @@ An independent ARC Raiders community and intelligence hub covering Loot Intel, M
 ## Run locally
 
 ```bash
-cd the-raider-network-v5
-python3 -m http.server 8080
-# open http://localhost:8080
+# Full stack: the same as production (accounts + trades in a local D1 database)
+npx wrangler d1 migrations apply raider-network-db --local
+npx wrangler pages dev .            # http://127.0.0.1:8788
+
+# Static demo only: browser storage, labelled DEMO MODE
+python3 -m http.server 8080         # http://localhost:8080
 ```
+
+To deploy with the database, follow **docs/CLOUDFLARE-BACKEND-SETUP.md**.
 
 The pages load JSON from `/data`, so they must be served over HTTP. Opening `index.html` directly from disk shows a "Data could not load" banner.
 
@@ -71,12 +94,21 @@ The pages load JSON from `/data`, so they must be served over HTTP. Opening `ind
 ## Structure
 
 ```
+functions/            Cloudflare Pages Functions (server-side API, /api/*): see docs/BACKEND.md
+  api/[[path]].js     entry point
+  _lib/               router, session, handlers, validate, security, reference, repo (all SQL)
+migrations/           D1 schema (0001_initial.sql)
+wrangler.toml         D1 binding "DB" -> raider-network-db (paste your database_id)
+_routes.json          only /api/* runs Functions
+_headers              security headers + Content-Security-Policy for static pages
+seeds/                optional, manual SQL (Perisher's listings: only for an existing account)
 assets/
   site.css            v4 base styles (kept)
   v5.css              v5 component layer and responsive rules
-  config.js           DEMO_MODE switch (unchanged)
+  config.js           BACKEND mode: auto | server | demo (no secrets)
   js/
     utils.js          helpers, icons, chips, Intel Score bands
+    api.js            /api client + backend-mode detection (server / demo / offline)
     data.js           reference-data loader + TRN.store (localStorage <-> Supabase seam)
     auth.js           session, register/login, profile page
     loot.js           Loot Intel + item detail
@@ -102,7 +134,12 @@ tools/
   make_manifest.py    -> ASSET-MANIFEST.md
   make_data_status.py -> DATA-STATUS.md
   smoke_test.py       every page, desktop + mobile, errors + overflow (Playwright)
-  mobile_test.py      phone/tablet horizontal-overflow regression test (Playwright)
+  mobile_test.py      horizontal-overflow regression test, phone → desktop (Playwright)
+  nav_test.py         functional mobile-menu test
+  api_test.py         API auth/authorization/offers tests (local D1)
+  persistence_test.py browser persistence test across server restarts (local D1)
+  devserver.py        starts an isolated wrangler pages dev + throw-away D1 for tests
+  make_seed_sql.py    optional Perisher listings SQL (manual)
   flow_test.py        54 end-to-end demo-flow checks (Playwright)
   source-data/        raidtheory-snapshot.json (English-only), research.json
 ```
@@ -124,17 +161,26 @@ tools/
   4. `python3 tools/make_data_status.py`
 - See `DATA-STATUS.md` for counts, confidence tiers and the research backlog, and `ASSET-MANIFEST.md` for every image.
 
-## Demo Mode
+## Server mode and Demo Mode
 
-`assets/config.js` keeps `DEMO_MODE: true`. Accounts, hunts, trades and messages live only in the browser (`trn_users`, `trn_session`, `trn_hunts`, `trn_trades`, `trn_messages`, the same keys as v4). v4 hunts and trades that used free-text item and map names are migrated to IDs automatically on first load. Names that can't be matched are kept as text. There are no fictional Raiders and no auto-replies. When you have no conversations, Messages shows one static example, clearly labelled "EXAMPLE · DEMO CONTENT".
+In production the site runs in **server mode**:
+
+- Accounts, sessions, trade posts and offers live in Cloudflare D1; nothing authoritative is kept in the browser.
+- Loot Hunts are still saved in the browser and are labelled as a preview.
+- Private messages are disabled until they move to the server.
+
+The rest of this section describes the local **demo mode** (`python3 -m http.server`, localhost only). It keeps the v5 behaviour: Accounts, hunts, trades and messages live only in the browser (`trn_users`, `trn_session`, `trn_hunts`, `trn_trades`, `trn_messages`, the same keys as v4). v4 hunts and trades that used free-text item and map names are migrated to IDs automatically on first load. Names that can't be matched are kept as text. There are no fictional Raiders and no auto-replies. When you have no conversations, Messages shows one static example, clearly labelled "EXAMPLE · DEMO CONTENT".
 
 ## Testing
 
 ```bash
 python3 -m http.server 8080 &
 pip install playwright        # Chromium required
-python3 tools/smoke_test.py   # 20 pages × 2 widths: JS errors, failed requests, horizontal overflow
-python3 tools/mobile_test.py  # 18 pages × 390/393/430/768: scrollWidth must equal clientWidth, no clipped content, map touch
+python3 tools/smoke_test.py   # 20 pages × 2 widths: JS errors, failed requests, horizontal overflow  (add --base URL for another server)
+python3 tools/nav_test.py     # mobile menu really opens/closes/navigates at 390/393/430/768 + desktop
+python3 tools/api_test.py         # 89 API checks: auth, authorization, offers, validation, CSRF, rate limits (own throw-away D1)
+python3 tools/persistence_test.py # 30 browser checks: register, post, server restart, fresh browsers, multi-user (own throw-away D1)
+python3 tools/mobile_test.py  # 18 pages × 390/393/430/768/1440/1920: scrollWidth must equal clientWidth, no clipped content, map touch
 python3 tools/flow_test.py    # 54 checks: real-data seed, stats, inventory safeguards, map intelligence, register → hunt → trade → messages with context → profile → login → search/filters
 ```
 

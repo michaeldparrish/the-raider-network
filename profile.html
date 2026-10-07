@@ -21,7 +21,7 @@
   <div class="profile-hero__inner">
     <img class="profile-avatar" id="profileAvatar" src="assets/images/raiders/raider-solo-scout.webp" alt="">
     <div><span class="eyebrow">RAIDER PROFILE</span><h1 id="profileName">My Profile</h1><div class="profile-meta" id="profileMeta"></div></div>
-    <div class="profile-stats"><div><b id="statActive">0</b><span>Active hunts</span></div><div><b id="statTrades">0</b><span>Open trades</span></div><div><b id="statDone">0</b><span>Completed</span></div><div><b>—</b><span>Reputation <em>soon</em></span></div></div>
+    <div class="profile-stats"><div><b id="statActive">0</b><span id="statActiveLabel">Active hunts</span></div><div><b id="statTrades">0</b><span id="statTradesLabel">Open trades</span></div><div><b id="statDone">0</b><span id="statDoneLabel">Completed</span></div><div><b>—</b><span>Reputation <em>soon</em></span></div></div>
     <button class="btn btn-ghost" id="logoutBtn">Log out</button>
   </div>
 </section>
@@ -29,15 +29,16 @@
   <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-profile.png" alt="" aria-hidden="true"> RAIDER IDENTITY</span></header>
     <form id="profileForm" class="stack">
       <label>Raider Display Name<input class="input" name="display_name" required maxlength="30"></label>
-      <label>Raider Tag / ID <span class="muted-label">(private — only shown to you)</span><input class="input" name="raider_tag" required maxlength="50"></label>
+      <label>Raider Tag / ID <span class="muted-label">(private — only shown to you)</span><input class="input" name="raider_tag" maxlength="50"></label>
       <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
       <fieldset class="avatar-field"><legend>Raider portrait</legend><div id="profileAvatarSlot"></div></fieldset>
       <button class="btn btn-primary">Save Profile</button><p class="form-note" id="profileMsg" role="status"></p>
     </form>
   </section>
   <div class="profile-cols">
-    <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-squad.png" alt="" aria-hidden="true"> ACTIVE LOOT HUNTS</span><a class="text-btn" href="hunts.html?new=">+ New</a></header><div id="myHunts" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> OPEN TRADE REQUESTS</span><a class="text-btn" href="trade.html?new=">+ New</a></header><div id="myTrades" class="stack-sm"></div></section>
+    <section class="panel hidden" id="myOffersPanel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> TRADE OFFERS</span><a class="text-btn" href="trade.html">Trade Board</a></header><div id="myOffers" class="stack-sm"></div></section>
+    <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-squad.png" alt="" aria-hidden="true"> ACTIVE LOOT HUNTS</span><a class="text-btn" href="hunts.html?new=">+ New</a></header><p class="small-note device-only-note hidden">Loot Hunts are still in preview: they are saved in this browser only until they move to the server.</p><div id="myHunts" class="stack-sm"></div></section>
     <section class="panel hidden" id="myInventoryPanel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-inventory.png" alt="" aria-hidden="true"> MY TRADE INVENTORY</span><a class="text-btn" href="trade.html">Trade Board</a></header><div id="myInventory"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-extraction.png" alt="" aria-hidden="true"> COMPLETED HUNTS</span></header><div id="myCompleted" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-rarity.png" alt="" aria-hidden="true"> REPUTATION &amp; BADGES</span><span class="demo-pill">COMING SOON</span></header><p class="muted">Reputation will come from completed hunts and trades confirmed by both Raiders. Badges are placeholders.</p><div class="badge-grid" id="badgeGrid"></div></section>
@@ -45,9 +46,9 @@
 </div>
 </main>
 <footer id="siteFooter" class="site-footer"></footer>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="assets/config.js"></script>
 <script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/api.js"></script>
 <script defer src="assets/js/data.js"></script>
 <script defer src="assets/js/auth.js"></script>
 <script defer src="assets/js/loot.js"></script>

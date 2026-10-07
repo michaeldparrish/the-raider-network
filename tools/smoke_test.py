@@ -6,7 +6,12 @@ horizontal overflow and empty render containers. Requires: pip install playwrigh
 import sys, os, json
 from playwright.sync_api import sync_playwright
 
-BASE = 'http://localhost:8080/'
+BASE = sys.argv[sys.argv.index('--base') + 1] if '--base' in sys.argv else 'http://localhost:8080/'
+SERVER_LOGIN = """async () => { await TRN.api.init(); if (TRN.mode !== 'server') return TRN.mode;
+  const u = 'qa_layout', pw = 'Qa-Test-Pass-1';   // throw-away local test account: log in, or create it the first time
+  try { await TRN.api.post('/auth/login', { login: u, password: pw }); }
+  catch (e) { await TRN.api.post('/auth/register', { username: u, display_name: 'QA Raider', email: u + '@example.com', password: pw, confirm_password: pw, region: 'Europe', platform: 'PC', avatar_url: 'raiders/raider-tech-specialist.webp' }); }
+  return 'server'; }"""
 SHOTS = sys.argv[sys.argv.index('--shots') + 1] if '--shots' in sys.argv else None
 PAGES = [
     ('index.html', '#popularLoot .item-card'), ('loot.html', '#lootResults .item-card'),
@@ -42,6 +47,8 @@ with sync_playwright() as p:
         page.on('response', lambda r: r.url.startswith(BASE) and r.status >= 400 and errs.append(('http', f'{r.status} {r.url}')))
         for path, sel in PAGES:
             if path == 'LOGIN':
+                if page.evaluate(SERVER_LOGIN) == 'server':
+                    continue   # server mode: a real (throw-away) account was registered and the session cookie set
                 page.evaluate("()=>{const u={id:'u1',user_id:'u1',email:'qa@example.com',password:'password123',display_name:'QA Raider',raider_tag:'QA#0001',platform:'PC',region:'Europe',avatar:'raiders/raider-tech-specialist.webp'};localStorage.setItem('trn_users',JSON.stringify([u]));localStorage.setItem('trn_session',JSON.stringify(u))}")
                 continue
             errs.clear()
@@ -51,10 +58,16 @@ with sync_playwright() as p:
             except Exception:
                 problems.append((label, path, 'missing ' + sel))
             page.wait_for_timeout(250)
-            # body has overflow-x:hidden, so look for any element poking past the viewport instead of scrollWidth
+            # look for any element poking past the viewport (tools/mobile_test.py also checks scrollWidth)
             wide = page.evaluate('''[...document.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();if(!r.width||r.right<=innerWidth+1||getComputedStyle(e).position==='fixed')return false;let p=e.parentElement;while(p&&p!==document.body){if(getComputedStyle(p).overflowX!=='visible')return false;p=p.parentElement}return true}).slice(0,6).map(e=>e.tagName+'.'+(e.className||'').toString().slice(0,40)+' r='+Math.round(e.getBoundingClientRect().right))''')
             if wide:
                 problems.append((label, path, 'element wider than viewport', wide))
+            # In demo mode (python http.server) the backend probe GET /api/health returns 404 by design: that is how
+            # the page knows there is no API. Ignore that one response and its matching console line.
+            if any(e[0] == 'http' and e[1].startswith('404') and '/api/health' in e[1] for e in errs):
+                errs[:] = [e for e in errs if not (e[0] == 'http' and '/api/health' in e[1])]
+                i = next((k for k, e in enumerate(errs) if e[0] == 'console' and '404' in e[1]), None)
+                if i is not None: errs.pop(i)
             for e in errs:
                 if any(k in e[1] for k in ('supabase', 'fonts.g', 'jsdelivr', 'ERR_TUNNEL', 'ERR_FAILED')):
                     continue

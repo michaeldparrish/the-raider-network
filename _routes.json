@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/functions/*", "/migrations/*", "/tools/*", "/seeds/*", "/docs/*", "/backups/*", "/node_modules/*", "/.wrangler/*",
+    "/wrangler.toml", "/package.json", "/package-lock.json", "/.gitignore", "/.dev.vars", "/supabase-schema.sql",
+    "/README.md", "/README", "/ASSET-MANIFEST.md", "/ASSET-MANIFEST", "/DATA-STATUS.md", "/DATA-STATUS"
+  ],
+  "exclude": []
+}

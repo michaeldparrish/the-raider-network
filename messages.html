@@ -22,6 +22,7 @@
   <div class="page-banner__copy"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-message.png" alt="" aria-hidden="true"> PRIVATE COMMS</span><h1>Messages</h1><p>Talk privately before sharing your in-game tag. Messages keep the trade or hunt they're about.</p></div>
 </section>
 <div class="page-shell">
+  <div class="notice-bar hidden" id="messagesNotice" role="note"></div>
   <section class="messages-shell">
     <aside class="conversation-list"><div class="conversation-title"><img class="ico" src="assets/images/ui/icon-message.png" alt="" aria-hidden="true"> Conversations <b id="unreadCount"></b></div><div id="conversationList"></div></aside>
     <section class="chat-panel">
@@ -38,9 +39,9 @@
 </div>
 </main>
 <footer id="siteFooter" class="site-footer"></footer>
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="assets/config.js"></script>
 <script defer src="assets/js/utils.js"></script>
+<script defer src="assets/js/api.js"></script>
 <script defer src="assets/js/data.js"></script>
 <script defer src="assets/js/auth.js"></script>
 <script defer src="assets/js/loot.js"></script>

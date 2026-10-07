@@ -84,6 +84,13 @@
         <p class="small-note">This is an illustration of how private messages look — it is not a real conversation. Start one with <b>Message Raider</b> on a Loot Hunt or Trade listing.</p></div>`;
     }
     $('#chatBack').onclick = () => $('.messages-shell').classList.remove('chat-open');
+    if (TRN.mode === 'server') {   // v6.0: messaging is not on the server yet, so nothing is "sent" that would never arrive
+      const n = $('#messagesNotice');
+      n.innerHTML = `${TRN.icon('warning')}<div><strong>Private messages are coming soon.</strong> Messages aren't stored on the server yet, so sending is turned off rather than pretending to deliver them. To contact a Raider about a trade, use <a href="trade.html">Respond / Make Offer</a> on the Trade Board — offers are saved and the owner sees them.</div>`;
+      n.classList.remove('hidden');
+      $$('#messageForm textarea, #messageForm button').forEach(x => (x.disabled = true));
+      $('#messageForm textarea').placeholder = 'Messaging is not live yet — use Make Offer on the Trade Board.';
+    }
     await renderList();
     if (to && to !== uid) openConversation(to, toName, hasCtx ? startCtx : null);
     else { const first = $('.conversation-item'); if (first && innerWidth > 760) openConversation(first.dataset.id, first.dataset.name); }

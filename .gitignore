@@ -1,0 +1,11 @@
+# local Cloudflare dev state (local D1 database lives here)
+.wrangler/
+node_modules/
+# secrets for local development (never commit)
+.dev.vars
+.env
+# D1 exports contain emails and password hashes
+backups/
+__pycache__/
+*.pyc
+.DS_Store
