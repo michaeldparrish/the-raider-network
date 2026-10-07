@@ -1,10 +1,23 @@
-# The Raider Network — v5.2
+# The Raider Network — v5.3
 
 **FIND IT. HUNT IT. TRADE IT. EXTRACT.**
 
 An independent ARC Raiders community and intelligence hub covering Loot Intel, Maps, Loot Hunts, the Trade Board, Raider Profiles, Private Messages, Projects, and Routes. The site is built with plain HTML, CSS and vanilla JavaScript. There is no build step and no framework.
 
 > Unofficial fan site. Not affiliated with Embark Studios. Core item data: [RaidTheory/arcraiders-data](https://github.com/RaidTheory/arcraiders-data) (MIT). All artwork is AI-generated concept art and does not show in-game appearance.
+
+## What's new in v5.3 (mobile repair, desktop unchanged)
+
+- **No horizontal page scroll at 390 / 393 / 430 / 768.** `body{overflow-x:hidden}` was removed because it hid overflow instead of fixing it, and the causes were fixed:
+  - Loot Intel's dashboard was a sideways carousel on phones; it's now a single stack.
+  - Auto-fill grids now use `minmax(min(Npx,100%),1fr)`, so a column can never be wider than its screen.
+  - Form fields are 16px on phones. iOS zooms in on smaller fields, which left the page panned sideways.
+- **New ≤768px layer:**
+  - Maps, hunts, trades, routes and POIs show one card per row. Loot results are 2 per row at tablet width and 1 on phones.
+  - Toolbars stack. "Looking For ↔ Available to Offer" stacks with the arrow turned. Perisher's Trade Inventory sits below the listings.
+  - Layout children can shrink (`min-width:0`), and there are 44px touch targets.
+- **Map touch:** at fit zoom, one-finger swipes scroll the page. Pinch or + zooms, and once zoomed a drag pans the map.
+- **`tools/mobile_test.py`:** fails if `scrollWidth > clientWidth`, if anything is clipped past the right edge, if html/body hide overflow, or if the map touch behaviour regresses.
 
 ## What's new in v5.2
 
@@ -89,7 +102,8 @@ tools/
   make_manifest.py    -> ASSET-MANIFEST.md
   make_data_status.py -> DATA-STATUS.md
   smoke_test.py       every page, desktop + mobile, errors + overflow (Playwright)
-  flow_test.py        29 end-to-end demo-flow checks (Playwright)
+  mobile_test.py      phone/tablet horizontal-overflow regression test (Playwright)
+  flow_test.py        54 end-to-end demo-flow checks (Playwright)
   source-data/        raidtheory-snapshot.json (English-only), research.json
 ```
 
@@ -120,6 +134,7 @@ tools/
 python3 -m http.server 8080 &
 pip install playwright        # Chromium required
 python3 tools/smoke_test.py   # 20 pages × 2 widths: JS errors, failed requests, horizontal overflow
+python3 tools/mobile_test.py  # 18 pages × 390/393/430/768: scrollWidth must equal clientWidth, no clipped content, map touch
 python3 tools/flow_test.py    # 54 checks: real-data seed, stats, inventory safeguards, map intelligence, register → hunt → trade → messages with context → profile → login → search/filters
 ```
 

@@ -165,7 +165,7 @@
         <div class="mv-stage" id="mvStage" tabindex="0" aria-label="${esc(m.name)} level map. Drag to pan, scroll or use +/− to zoom.">
           <div class="mv-world" id="mvWorld"><img id="mvImg" alt="${esc(m.name)} level map" decoding="async"></div>
           <canvas id="mvCanvas"></canvas><div class="mi-tip hidden" id="miTip"></div>
-          <div class="mv-hint">Drag to pan · scroll / pinch / +− to zoom</div>
+          <div class="mv-hint">${matchMedia('(pointer:coarse)').matches ? 'Pinch or +− to zoom · drag to pan when zoomed' : 'Drag to pan · scroll / pinch / +− to zoom'}</div>
           <div class="mv-loading" id="mvLoading">Loading map…</div>
         </div>
         ${hasMarkers ? `<div class="mv-controls">
@@ -218,6 +218,8 @@
     function draw() {
       world.style.width = lvl().width * base + 'px';
       world.style.transform = `translate(${px}px,${py}px) scale(${z})`;
+      /* at fit zoom there is nothing to pan, so one-finger swipes scroll the page; once zoomed, touch drags pan the map */
+      stage.style.touchAction = z > 1.001 ? 'none' : 'pan-y';
       const dpr = window.devicePixelRatio || 1;
       cv.width = Math.round(sw() * dpr); cv.height = Math.round(sh() * dpr); cv.style.width = sw() + 'px'; cv.style.height = sh() + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, sw(), sh());
@@ -242,9 +244,10 @@
     });
     stage.addEventListener('pointerup', e => { if (drag && !drag.moved) pick(e); drag = null; });
     stage.addEventListener('pointerleave', () => tip.classList.add('hidden'));
+    stage.addEventListener('pointercancel', () => (drag = null));   // browser took over for page scroll
     stage.addEventListener('wheel', e => { e.preventDefault(); const r = stage.getBoundingClientRect(); zoomAt(e.deltaY < 0 ? 1.25 : 0.8, e.clientX - r.left, e.clientY - r.top); }, { passive: false });
     stage.addEventListener('touchstart', e => { if (e.touches.length === 2) { pinch = { d: Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY) }; drag = null; } }, { passive: true });
-    stage.addEventListener('touchmove', e => { if (pinch && e.touches.length === 2) { const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); const r = stage.getBoundingClientRect(); zoomAt(d / pinch.d, (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left, (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top); pinch.d = d; } }, { passive: true });
+    stage.addEventListener('touchmove', e => { if (pinch && e.touches.length === 2) { if (e.cancelable) e.preventDefault(); const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY); const r = stage.getBoundingClientRect(); zoomAt(d / pinch.d, (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left, (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top); pinch.d = d; } }, { passive: false });
     stage.addEventListener('touchend', () => (pinch = null));
     stage.addEventListener('keydown', e => { const k = { '+': () => zoomAt(1.25), '=': () => zoomAt(1.25), '-': () => zoomAt(0.8), ArrowLeft: () => { px += 60; }, ArrowRight: () => { px -= 60; }, ArrowUp: () => { py += 60; }, ArrowDown: () => { py -= 60; } }[e.key]; if (k) { e.preventDefault(); k(); clampPan(); draw(); } });
     $('#mvIn').onclick = () => zoomAt(1.4); $('#mvOut').onclick = () => zoomAt(1 / 1.4); $('#mvReset').onclick = fit;
