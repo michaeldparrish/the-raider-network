@@ -1,0 +1,15 @@
+{
+ "_readme": "Owner-approved premium item art. Each entry replaces the database art for that catalog ID. Only add items that passed icon_qa.py and owner review.",
+ "bastion-cell": {
+  "file": "items/game/bastion-cell.webp",
+  "approved": "2026-10-08",
+  "qa": "icon_qa.py PASS except originality REVIEW (owner approved visually)",
+  "source": "AI-assisted concept, v6.1 pilot (repaired cut-out)"
+ },
+ "geiger-counter": {
+  "file": "items/game/geiger-counter.webp",
+  "approved": "2026-10-08",
+  "qa": "icon_qa.py PASS except shape gate (guide pose error; art matches in-game pose)",
+  "source": "AI-assisted concept, v6.1 pilot (repaired cut-out)"
+ }
+}

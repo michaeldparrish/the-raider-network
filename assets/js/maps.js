@@ -106,6 +106,7 @@
     </section>
     <div class="page-shell">
       ${mapSection(m)}
+      ${fieldNotes(m)}
       ${live ? `
       <section class="block" id="pois"><div class="section-title-row"><div><span class="eyebrow">KEY LOCATIONS / POIs</span><h2>Points of interest</h2></div></div>
         <div class="poi-grid">${m.pois.map(p => `<article class="poi-card"><div class="poi-card__media"><img src="${TRN.img(p.image)}" alt="" loading="lazy"><h3>${esc(p.name)}</h3></div><div class="poi-card__body">${TRN.confChip(p.confidence)}<small class="muted">${esc(p.basis)}</small><div class="poi-items">${p.items.map(id => { const it = TRN.data.item(id); return it ? `<a href="item.html?id=${encodeURIComponent(id)}" class="poi-item rarity-edge-${esc(it.rarity.toLowerCase())}"><img src="${TRN.img(it.image)}" alt="" loading="lazy">${esc(it.name)}</a>` : ''; }).join('')}</div></div></article>`).join('')}</div>
@@ -144,10 +145,23 @@
   }
 
   /* ---------------------------------------------------------------- map section markup */
+  /* v6.1: map-specific warnings and temporary map conditions (kept separate from permanent POIs). */
+  function fieldNotes(m) {
+    const notes = m.notices || [], conds = m.conditions || [];
+    if (!notes.length && !conds.length) return '';
+    return `<section class="block" id="field-notes"><div class="section-title-row"><div><span class="eyebrow">${TRN.icon('warning')} FIELD NOTES</span><h2>Before you drop in</h2></div></div>
+      ${notes.map(n => `<div class="notice-bar notice-bar--warn" role="note">${TRN.icon('warning')}<div><strong>${esc(n.title)}.</strong> ${esc(n.body)}</div></div>`).join('')}
+      ${conds.map(c => `<article class="cond-card" id="condition-${esc(c.id)}">
+        <header><span class="eyebrow">${esc(m.shortName.toUpperCase())} · MAP CONDITION</span><h3>${esc(c.name)}</h3>${c.temporary ? '<span class="cond-temp">TEMPORARY CONDITION · NOT A PERMANENT LANDMARK</span>' : ''}</header>
+        <p class="cond-desc">“${esc(c.description)}”</p>
+        <div class="cond-effects">${(c.effects || []).map(e => `<div><b>${esc(e.name)}</b><small>${esc(e.note)}</small></div>`).join('')}</div>
+        <p class="small-note">${esc(c.source)} Timing, counts and payload contents are not confirmed and are not stated here.</p></article>`).join('')}
+    </section>`;
+  }
   function mapSection(m) {
     const mi = m.mapImage || { levels: [] }, md = m.markerData, hasMarkers = md && md.status === 'live';
     const lv = mi.levels || [];
-    const attr = `<span class="mf-attr">${hasMarkers ? `Markers: <a href="https://metaforge.app/arc-raiders" target="_blank" rel="noopener">MetaForge</a> community data (cached ${esc((md.fetchedAt || '').slice(0, 10))}).` : ''} ${mi.source ? `Map image: <a href="${esc(mi.source.url)}" target="_blank" rel="noopener">RaidTheory / arctracker</a> · © Embark Studios.` : ''}</span>`;
+    const attr = `<span class="mf-attr">${hasMarkers ? `Markers: <a href="https://metaforge.app/arc-raiders" target="_blank" rel="noopener">MetaForge</a> community data (cached ${esc((md.fetchedAt || '').slice(0, 10))}).` : ''} ${mi.source ? `Map image: <a href="${esc(mi.source.url)}" target="_blank" rel="noopener">${esc(mi.source.short || 'RaidTheory / arctracker')}</a> · © Embark Studios.` : ''}</span>`;
     if (!lv.length) {
       return `<section class="block map-intel" id="map-view"><div class="section-title-row"><div><span class="eyebrow">${TRN.icon('map')} LEVEL MAP</span><h2>Map &amp; topography</h2></div></div>
         <div class="map-placeholder"><img src="${TRN.img(m.image)}" alt="" loading="lazy"><div><strong>${m.status === 'live' ? 'Base map image coming soon' : 'Map not released yet'}</strong>
@@ -178,7 +192,7 @@
           </div>
         </div>
         <details class="mv-listwrap" id="mvListWrap"><summary><span id="miCount"></span> — marker list</summary><div class="mi-list" id="miList" role="list"></div></details>` : ''}
-        <p class="small-note mv-cal">${mi.calibrated ? `Calibration: ${lv.map(l => `${esc(l.label)} — ${l.calibration.points} control points, RMS ${l.calibration.rmsPx}px on a ${l.width}px image`).join(' · ')}.` : 'This map has not been calibrated against MetaForge coordinates yet, so markers are not drawn on the image (no guessing). Markers remain searchable in the list.'}</p>
+        <p class="small-note mv-cal">${mi.calibrated ? `Calibration: ${lv.map(l => `${esc(l.label)} — ${l.calibration.points} control points, RMS ${l.calibration.rmsPx}px on a ${l.width}px image`).join(' · ')}.` : (hasMarkers ? 'This map has not been calibrated against MetaForge coordinates yet, so markers are not drawn on the image (no guessing). Markers remain searchable in the list.' : 'Labels mark the named areas shown on the in-game map. Community marker data is not available for this map yet, so no markers, routes or gondola landing spots are drawn.')}</p>
       </div>
     </section>`;
   }

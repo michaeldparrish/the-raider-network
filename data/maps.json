@@ -61,7 +61,7 @@
    "items": 581,
    "projects": 14,
    "quests": 100,
-   "maps": 6,
+   "maps": 7,
    "arcs": 17
   },
   "confidenceScale": [
@@ -1526,22 +1526,121 @@
    "id": "pendola-pass",
    "name": "Pendola Pass",
    "shortName": "Pendola Pass",
-   "status": "upcoming",
-   "overview": "Snowy mountain pass announced for the Frozen Trail update (8 Oct 2026). Not live yet — no verified loot, POI or marker data is available, so nothing is listed here until the map ships and sources update.",
-   "environment": "Snowbound mountain pass (announced)",
-   "lootProfile": "Unknown until release",
+   "status": "live",
+   "overview": "Snowbound mountain pass added in the Frozen Trail 2.0 update (8 Oct 2026). The in-game map names nine areas, from the downed Fallen Emperor and Old Town in the west to the Railyard, Loading Platforms, Cielo Sereno Observatory and Deep-Space Telescope in the east.",
+   "environment": "Snowbound mountain pass",
+   "lootProfile": "Not yet verified",
    "difficulty": 0,
-   "difficultyLabel": "Unreleased",
+   "difficultyLabel": "Not rated yet",
    "editorial": true,
-   "releaseNote": "Frozen Trail update — announced release 8 Oct 2026 (GamesRadar).",
-   "image": "assets/images/heroes/raider-network-skyline.webp",
+   "releaseNote": "Released in the Frozen Trail 2.0 update, 8 Oct 2026 (official patch notes).",
+   "image": "assets/images/maps/pendola-pass-hero.webp",
    "gallery": [],
-   "pois": [],
+   "pois": [
+    {
+     "name": "Fallen Emperor",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-fallen-emperor.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Almatera Station",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-almatera-station.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Railroad Junction",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-railroad-junction.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Cielo Sereno Observatory",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-cielo-sereno-observatory.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Deep-Space Telescope",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-deep-space-telescope.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Commissary Supermarket",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-commissary-supermarket.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Railyard",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-railyard.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Old Town",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-old-town.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    },
+    {
+     "name": "Loading Platforms",
+     "items": [],
+     "image": "assets/images/maps/pendola-pass-poi-loading-platforms.webp",
+     "confidence": "OFFICIAL",
+     "basis": "Named on the in-game map"
+    }
+   ],
    "sources": [
     {
-     "label": "GamesRadar — Frozen Trail",
-     "url": "https://www.gamesradar.com/games/third-person-shooter/arc-raiders-frozen-trail/",
-     "confidence": "COMMUNITY REPORT"
+     "label": "Frozen Trail 2.0 update (official)",
+     "url": "https://arcraiders.com/news/frozen-trail-2-0-update",
+     "confidence": "OFFICIAL"
+    },
+    {
+     "label": "In-game map & destination screen (owner screenshots, 8 Oct 2026)",
+     "url": "",
+     "confidence": "OFFICIAL"
+    }
+   ],
+   "notices": [
+    {
+     "kind": "warning",
+     "title": "Gondola Transceivers are request points, not landing spots",
+     "body": "Use a Gondola Transceiver to call the gondola. The gondola may land some distance away from the transceiver. Plan your route to it, especially if you are downed or carrying a downed teammate. Landing locations are not marked on this map."
+    }
+   ],
+   "conditions": [
+    {
+     "id": "redirection",
+     "name": "Redirection",
+     "temporary": true,
+     "description": "Emperor Beacons are activating throughout the area. Raiders can loot and deploy them to redirect valuable payloads to their own position.",
+     "effects": [
+      {
+       "name": "Emperor Relays active",
+       "note": "Relay locations are event-specific and are not marked on the permanent map."
+      },
+      {
+       "name": "Falling Debris",
+       "note": "Listed as an active hazard during Redirection."
+      },
+      {
+       "name": "No Flash Freeze",
+       "note": "Listed by the game for this condition."
+      }
+     ],
+     "source": "In-game destination screen (8 Oct 2026); Redirection is confirmed as a map condition in the official Frozen Trail 2.0 notes."
     }
    ],
    "arcs": [],
@@ -1557,10 +1656,46 @@
    },
    "arcMarkers": {},
    "mapImage": {
-    "levels": [],
+    "levels": [
+     {
+      "id": "all",
+      "label": "Detailed map",
+      "layer": null,
+      "src": "assets/images/maps/base/pendola-pass.webp",
+      "srcSmall": "assets/images/maps/base/pendola-pass-sm.webp",
+      "width": 4000,
+      "height": 2048,
+      "calibrated": false,
+      "scaleX": null,
+      "scaleY": null,
+      "offsetX": null,
+      "offsetY": null,
+      "calibration": null
+     },
+     {
+      "id": "all",
+      "label": "Terrain overview",
+      "layer": null,
+      "src": "assets/images/maps/base/pendola-pass-terrain.webp",
+      "srcSmall": "assets/images/maps/base/pendola-pass-terrain-sm.webp",
+      "width": 2541,
+      "height": 1722,
+      "calibrated": false,
+      "scaleX": null,
+      "scaleY": null,
+      "offsetX": null,
+      "offsetY": null,
+      "calibration": null
+     }
+    ],
     "markerBounds": null,
-    "source": null,
-    "note": "Base map image not available yet. Add assets/images/maps/base/<mapId>.webp (+ -sm.webp), its size to tools/source-data/basemap-sizes.json, and control points to tools/calibrate_maps.py.",
+    "source": {
+     "short": "in-game map (owner screenshots, 8 Oct 2026), labels by The Raider Network",
+     "label": "Pendola Pass: in-game map and topographic destination screen (owner screenshots, 8 Oct 2026); labels and key by The Raider Network. Game imagery © Embark Studios AB",
+     "url": "https://arcraiders.com/news/frozen-trail-2-0-update",
+     "confidence": "OFFICIAL"
+    },
+    "note": null,
     "calibrated": false
    }
   }

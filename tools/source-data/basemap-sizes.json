@@ -33,5 +33,15 @@
   "origW": 4096,
   "origH": 3072,
   "w": 1200
+ },
+ "pendola-pass": {
+  "origW": 4000,
+  "origH": 2048,
+  "w": 1800
+ },
+ "pendola-pass-terrain": {
+  "origW": 2541,
+  "origH": 1722,
+  "w": 1200
  }
 }

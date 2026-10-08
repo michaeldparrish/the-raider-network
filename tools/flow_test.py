@@ -60,7 +60,7 @@ with sync_playwright() as p:
     check('8\nunits owned' in inv or '8 units owned' in inv.replace('\n', ' '), 'inventory panel shows 8 owned units')
     page.goto(BASE + 'index.html'); page.wait_for_selector('#homeStats .stat-tile')
     st = {t: page.inner_text(f'#homeStats [data-stat="{t}"] strong') for t in ['founding-raiders', 'open-loot-hunts', 'trades-completed', 'loot-intel-records', 'maps', 'open-trade-requests']}
-    check(st == {'founding-raiders': '10', 'open-loot-hunts': '10', 'trades-completed': '0', 'loot-intel-records': '581', 'maps': '6', 'open-trade-requests': '10'}, f'homepage stats {st}')
+    check(st == {'founding-raiders': '10', 'open-loot-hunts': '10', 'trades-completed': '0', 'loot-intel-records': '581', 'maps': '7', 'open-trade-requests': '10'}, f'homepage stats {st}')
     body = page.inner_text('main')
     check(not any(n in body for n in ['NightWolf', 'RaiderMike', 'StormRider', 'LunaRook', 'SperanzaLocal', 'EchoUnit', 'ArcNomad', 'StellaScout', 'GrimTide', '2,847', '1,326']), 'no fake Raiders or old stats on homepage')
     page.goto(BASE + 'hunts.html'); page.wait_for_selector('#huntGrid .hunt-card')
@@ -180,8 +180,27 @@ with sync_playwright() as p:
     check(n0 > 0 and rows and all('with a view' in r.lower() for r in rows), f'marker search/filter works ({len(rows)} rows)')
     check('MetaForge' in page.inner_text('#map-view'), 'MetaForge attribution on map page')
     check(page.locator('.mv-level').count() == 2, 'Stella Montis has two level images')
-    page.goto(BASE + 'map.html?id=pendola-pass'); page.wait_for_selector('.map-placeholder')
-    check('INCOMING' in page.inner_text('main').upper() and page.locator('.mi-row').count() == 0, 'Pendola Pass shows a proper placeholder, no data')
+    # v6.1 Pendola Pass: labelled in-game map + terrain level, gondola warning, temporary Redirection condition, no invented markers
+    page.goto(BASE + 'map.html?id=pendola-pass'); page.wait_for_selector('#mvImg[src*="pendola-pass"]', state='attached')
+    page.wait_for_function("document.querySelector('#mvImg').naturalWidth > 0")
+    check(page.locator('.mv-level').count() == 2, 'Pendola Pass has Detailed map + Terrain overview levels')
+    src0 = page.get_attribute('#mvImg', 'src'); page.click('.mv-level[data-level="1"]')
+    page.wait_for_function("document.querySelector('#mvImg').src.includes('terrain') && document.querySelector('#mvImg').naturalWidth > 0")
+    check('terrain' not in src0 and 'terrain' in page.get_attribute('#mvImg', 'src'), 'Pendola level switch loads the terrain image')
+    notes = page.inner_text('main')
+    check('request points, not landing spots' in notes and 'Landing locations are not marked' in notes, 'gondola transceiver warning shown')
+    check('TEMPORARY CONDITION' in notes.upper() and 'Redirection' in notes and 'NOT A PERMANENT LANDMARK' in notes.upper(), 'Redirection shown as a temporary condition')
+    check(page.locator('.mi-row').count() == 0 and page.locator('#mvOverlay').is_disabled(), 'Pendola has no invented markers; overlay disabled')
+    check('RaidTheory' not in page.inner_text('#map-view') and 'owner screenshots' in page.inner_text('#map-view'), 'Pendola map credit names the correct source')
+    check(page.locator('.poi-card').count() == 9, f'Pendola lists the 9 named areas ({page.locator(".poi-card").count()})')
+
+    # v6.1 premium renders: approved pilot icons load; everything else unchanged
+    for iid in ('bastion-cell', 'geiger-counter'):
+        page.goto(BASE + f'item.html?id={iid}'); page.wait_for_selector('main img[src*="items/game/%s.webp"]' % iid, state='attached')
+        loaded = page.evaluate("id => [...document.querySelectorAll('main img')].filter(i => i.src.includes('items/game/' + id)).every(i => i.complete && i.naturalWidth > 0)", iid)
+        check(loaded, f'{iid} shows the approved Raider Network render')
+    page.goto(BASE + 'item.html?id=bombardier-cell'); page.wait_for_selector('main img', state='attached')
+    check(page.locator('main img[src*="items/game/"]').count() == 0, 'Bombardier Cell keeps its current icon (pilot not approved)')
 
     # --- search + filters
     page.goto(BASE + 'index.html'); page.wait_for_selector('#popularLoot .item-card')

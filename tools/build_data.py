@@ -178,6 +178,10 @@ BASE_SOURCE = {'label': 'Base map images: RaidTheory arcraiders-data / arctracke
                'url': 'https://github.com/RaidTheory/arcraiders-data'}
 
 
+PENDOLA_SOURCE = {'short': 'in-game map (owner screenshots, 8 Oct 2026), labels by The Raider Network', 'label': 'Pendola Pass: in-game map and topographic destination screen (owner screenshots, 8 Oct 2026); labels and key by The Raider Network. Game imagery © Embark Studios AB',
+                  'url': 'https://arcraiders.com/news/frozen-trail-2-0-update', 'confidence': 'OFFICIAL'}
+
+
 def base_map_config(mid, bounds):
     """Per-map base image + independent MetaForge->image calibration (tools/calibrate_maps.py).
     Transform: imgPx = scale * metaforgeCoord + offset, in ORIGINAL image pixels (width/height).
@@ -199,10 +203,14 @@ def base_map_config(mid, bounds):
     if mid == 'stella-montis':
         levels = [level('stella-montis', 'stella-montis#2', 'Main level — Assembly · Medical · Lobby', 2),
                   level('stella-montis-upper', 'stella-montis', 'Sandbox · Metro · Seed Vault level', 1)]
+    elif mid == 'pendola-pass':   # v6.1: labelled in-game map + topographic overview (not MetaForge-calibrated)
+        levels = [level('pendola-pass', 'pendola-pass', 'Detailed map', None),
+                  level('pendola-pass-terrain', 'pendola-pass-terrain', 'Terrain overview', None)]
     else:
         levels = [level(mid, mid, 'Full map', None)]
     levels = [l for l in levels if l]
-    return {'levels': levels, 'markerBounds': bounds, 'source': BASE_SOURCE if levels else None,
+    src = PENDOLA_SOURCE if mid == 'pendola-pass' else BASE_SOURCE
+    return {'levels': levels, 'markerBounds': bounds, 'source': src if levels else None,
             'note': None if levels else 'Base map image not available yet. Add assets/images/maps/base/<mapId>.webp (+ -sm.webp), its size to tools/source-data/basemap-sizes.json, and control points to tools/calibrate_maps.py.',
             'calibrated': bool(levels) and all(l['calibrated'] for l in levels)}
 
@@ -315,6 +323,10 @@ def build():
     arc_sub = lambda name: name.lower().replace('the ', '').strip()
     db_art_path = os.path.join(SRC, 'db-art.json')
     db_art = json.load(open(db_art_path)) if os.path.exists(db_art_path) else {}
+    pa_path = os.path.join(SRC, 'premium-art.json')
+    premium_art = {k: v for k, v in (json.load(open(pa_path)) if os.path.exists(pa_path) else {}).items() if not k.startswith('_')}
+    for k, v in premium_art.items():
+        assert os.path.exists(os.path.join(ROOT, 'assets/images', v['file'])), 'missing premium art file ' + v['file']
     items = []
     SOURCE_REG = {'raidtheory': SNAP_SOURCE}
     for it in snap['items']:
@@ -420,6 +432,8 @@ def build():
         hero_img = img if img_kind == 'dedicated' else None
         if iid in db_art:
             img, img_kind = 'assets/images/' + db_art[iid]['file'], 'database'
+        if iid in premium_art:   # v6.1: owner-approved premium art (tools/source-data/premium-art.json)
+            img, img_kind = 'assets/images/' + premium_art[iid]['file'], 'premium'
         found = [s.strip() for s in (it.get('foundIn') or '').split(',') if s.strip()]
         notes = override.get('notes', '')
         sources = ['raidtheory'] + (['metaforge'] if used_mf else [])

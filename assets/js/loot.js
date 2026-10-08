@@ -136,7 +136,7 @@
       <div class="item-hero__inner">
         <nav class="crumbs"><a href="loot.html">Loot Intel</a><span>/</span><a href="loot.html?q=${encodeURIComponent(it.category)}">${esc(it.category)}</a><span>/</span><b>${esc(it.name)}</b></nav>
         <div class="item-hero__grid">
-          <figure class="item-art"><img src="${TRN.img(it.image)}" alt="Artwork for ${esc(it.name)}"><figcaption>${{ database: 'Database art · reference silhouette', dedicated: 'Concept art', category: 'Category concept art' }[it.imageKind] || 'Concept art'} · not an in-game render</figcaption>${it.heroImage && it.heroImage !== it.image ? `<img class="feature-inset" src="${TRN.img(it.heroImage)}" alt="" title="Feature art (cinematic concept render)">` : ''}</figure>
+          <figure class="item-art"><img src="${TRN.img(it.image)}" alt="Artwork for ${esc(it.name)}"><figcaption>${{ database: 'Database art · reference silhouette', dedicated: 'Concept art', category: 'Category concept art', premium: 'Raider Network render' }[it.imageKind] || 'Concept art'} · not an in-game render</figcaption>${it.heroImage && it.heroImage !== it.image ? `<img class="feature-inset" src="${TRN.img(it.heroImage)}" alt="" title="Feature art (cinematic concept render)">` : ''}</figure>
           <div class="item-hero__copy">
             <div class="chip-row">${TRN.rarityBadge(it.rarity)}<span class="cat-chip">${esc(it.category)}</span>${TRN.demandChip(it.demand)}</div>
             <h1>${esc(it.name)}</h1>
