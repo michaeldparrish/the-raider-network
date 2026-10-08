@@ -206,8 +206,10 @@ with sync_playwright() as p:
         page.goto(BASE + f'item.html?id={iid}'); page.wait_for_selector('main img[src*="items/game/%s.webp"]' % iid, state='attached')
         loaded = page.evaluate("id => [...document.querySelectorAll('main img')].filter(i => i.src.includes('items/game/' + id)).every(i => i.complete && i.naturalWidth > 0)", iid)
         check(loaded, f'{iid} shows the approved Raider Network render')
-    page.goto(BASE + 'item.html?id=bombardier-cell'); page.wait_for_selector('main img', state='attached')
-    check(page.locator('main img[src*="items/game/"]').count() == 0, 'Bombardier Cell keeps its current icon (pilot not approved)')
+    for iid in ('bombardier-cell', 'leaper-pulse-unit', 'rocketeer-driver', 'ion-sputter', 'surveyor-vault', 'hornet-driver', 'spotter-relay', 'advanced-electrical-components', 'comet-igniter'):
+        page.goto(BASE + f'item.html?id={iid}'); page.wait_for_selector('main img[src*="items/game/%s.webp"]' % iid, state='attached')
+        loaded = page.evaluate("async id => { const im = [...document.querySelectorAll('main img')].filter(i => i.src.includes('items/game/' + id)); await Promise.all(im.map(i => i.decode().catch(() => null))); return im.length > 0 && im.every(i => i.naturalWidth > 0); }", iid)
+        check(loaded, f'{iid} shows its v6.1 premium render')
 
     # v6.1 weapon art: traced per-weapon outlines on weapon cards + weapon blueprints; item pages with a single-string craft bench render
     for iid in ('tempest-i', 'aphelion', 'venator-blueprint'):

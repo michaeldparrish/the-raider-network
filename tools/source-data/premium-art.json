@@ -11,5 +11,59 @@
   "approved": "2026-10-08",
   "qa": "icon_qa.py PASS except shape gate (guide pose error; art matches in-game pose)",
   "source": "AI-assisted concept, v6.1 pilot (repaired cut-out)"
+ },
+ "bombardier-cell": {
+  "file": "items/game/bombardier-cell.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input. Replaces the v6.1 AI pilot candidate (corrected: rounded housing, no markings)."
+ },
+ "leaper-pulse-unit": {
+  "file": "items/game/leaper-pulse-unit.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "rocketeer-driver": {
+  "file": "items/game/rocketeer-driver.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "ion-sputter": {
+  "file": "items/game/ion-sputter.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS except lighting heuristic (bright faces turned right; same studio lights; manual override)",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "surveyor-vault": {
+  "file": "items/game/surveyor-vault.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS except lighting heuristic (bright faces turned right; same studio lights; manual override)",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "hornet-driver": {
+  "file": "items/game/hornet-driver.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "spotter-relay": {
+  "file": "items/game/spotter-relay.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "advanced-electrical-components": {
+  "file": "items/game/advanced-electrical-components.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
+ },
+ "comet-igniter": {
+  "file": "items/game/comet-igniter.webp",
+  "approved": "pending owner review (v6.1 preview)",
+  "qa": "icon_qa.py PASS",
+  "source": "Original procedural 3D model (Blender/Cycles), The Raider Network. RaidTheory in-game icon used only as a visual reference for shape and features; never an image input."
  }
 }

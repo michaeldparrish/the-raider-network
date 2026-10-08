@@ -73,6 +73,8 @@ def main():
             pg2.wait_for_url(lambda u: '/profile' in u, timeout=10000); pg2.wait_for_selector('#profileMeta .handle')
             check(pg2.text_content('#profileName') == 'Persist A' and f'@{ua}' in pg2.inner_text('#profileMeta'), 'User A still exists: log in from a fresh browser works')
             check('Joined' in pg2.inner_text('#profileMeta'), 'profile shows join date')
+            try: pg2.wait_for_function("document.querySelector('#statActive') && document.querySelector('#statActive').textContent === '1'", timeout=8000)
+            except Exception: pass
             check(pg2.text_content('#statActive') == '1' and pg2.text_content('#statActiveLabel') == 'Active trades', f"profile shows 1 active trade ({pg2.text_content('#statActive')} {pg2.text_content('#statActiveLabel')})")
             check(f'{ua}@example.com' not in pg2.inner_text('body'), 'email is not shown on the profile page')
             pg2.evaluate('localStorage.clear(); sessionStorage.clear()'); pg2.goto(B + 'trade.html', wait_until='networkidle')
