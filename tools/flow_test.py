@@ -192,6 +192,13 @@ with sync_playwright() as p:
     check('TEMPORARY CONDITION' in notes.upper() and 'Redirection' in notes and 'NOT A PERMANENT LANDMARK' in notes.upper(), 'Redirection shown as a temporary condition')
     check(page.locator('.mi-row').count() == 0 and page.locator('#mvOverlay').is_disabled(), 'Pendola has no invented markers; overlay disabled')
     check('RaidTheory' not in page.inner_text('#map-view') and 'owner screenshots' in page.inner_text('#map-view'), 'Pendola map credit names the correct source')
+    check(page.locator('.intel-list li').count() == 5 and '100–150 m' in notes and 'three enclosed pods' in notes, 'gondola extraction details shown, each marked as a community report')
+    check(page.locator('.cond-guide li').count() == 7 and 'Emperor Gateway Conduit' in notes and 'No drop rates' in notes, 'Redirection loot guide: 7 steps, no drop rates')
+    check(page.locator('.lg-card').count() == 6 and 'no specific item is guaranteed' in notes, 'location loot guide: 6 locations with the no-guarantee note')
+    page.fill('#dirSearch', 'old'); page.wait_for_timeout(150)
+    check(page.locator('#dirList li:not([hidden])').count() == 2, 'location directory search filters (old -> Old Town, Old Hamlet)')
+    page.fill('#dirSearch', '')
+    check(page.locator('#intel-sources a').count() == 6 and page.locator('.mi-row').count() == 0, 'intel sources attributed; still no markers placed')
     check(page.locator('.poi-card').count() == 9, f'Pendola lists the 9 named areas ({page.locator(".poi-card").count()})')
 
     # v6.1 premium renders: approved pilot icons load; everything else unchanged

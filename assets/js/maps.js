@@ -107,6 +107,7 @@
     <div class="page-shell">
       ${mapSection(m)}
       ${fieldNotes(m)}
+      ${mapIntel(m)}
       ${live ? `
       <section class="block" id="pois"><div class="section-title-row"><div><span class="eyebrow">KEY LOCATIONS / POIs</span><h2>Points of interest</h2></div></div>
         <div class="poi-grid">${m.pois.map(p => `<article class="poi-card"><div class="poi-card__media"><img src="${TRN.img(p.image)}" alt="" loading="lazy"><h3>${esc(p.name)}</h3></div><div class="poi-card__body">${TRN.confChip(p.confidence)}<small class="muted">${esc(p.basis)}</small><div class="poi-items">${p.items.map(id => { const it = TRN.data.item(id); return it ? `<a href="item.html?id=${encodeURIComponent(id)}" class="poi-item rarity-edge-${esc(it.rarity.toLowerCase())}"><img src="${TRN.img(it.image)}" alt="" loading="lazy">${esc(it.name)}</a>` : ''; }).join('')}</div></div></article>`).join('')}</div>
@@ -140,23 +141,53 @@
       : `<p class="small-note">${(m.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join(' · ')}</p>`}
     </div>`;
     TRN.hunts.wireHuntButtons(root); TRN.trades.wireTradeButtons(root);
-    initMapViewer(m);
+    initMapViewer(m); wireDirectory();
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   }
 
   /* ---------------------------------------------------------------- map section markup */
   /* v6.1: map-specific warnings and temporary map conditions (kept separate from permanent POIs). */
+  const STATUS = { 'REPORTED': ['COMMUNITY REPORT', 'st-rep'], 'CONFIRMED': ['CONFIRMED', 'st-ok'], 'IN-GAME MAP': ['ON IN-GAME MAP', 'st-ok'] };
+  const stChip = st => { const [t, c] = STATUS[st] || [st, 'st-rep']; return `<span class="st-chip ${c}">${esc(t)}</span>`; };
+  const srcLink = (m, key) => { const s = (m.intelSources || []).find(x => x.key === key); return s ? `<a class="src-ref" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label.split(':')[0])}</a>` : ''; };
   function fieldNotes(m) {
     const notes = m.notices || [], conds = m.conditions || [];
     if (!notes.length && !conds.length) return '';
     return `<section class="block" id="field-notes"><div class="section-title-row"><div><span class="eyebrow">${TRN.icon('warning')} FIELD NOTES</span><h2>Before you drop in</h2></div></div>
-      ${notes.map(n => `<div class="notice-bar notice-bar--warn" role="note">${TRN.icon('warning')}<div><strong>${esc(n.title)}.</strong> ${esc(n.body)}</div></div>`).join('')}
+      ${notes.map(n => `<div class="notice-bar notice-bar--warn" role="note">${TRN.icon('warning')}<div><strong>${esc(n.title)}.</strong> ${esc(n.body)}
+        ${(n.details || []).length ? `<ul class="intel-list">${n.details.map(x => `<li>${stChip(x.status)}<span>${esc(x.text)}</span></li>`).join('')}</ul><p class="small-note">Gondola details: ${srcLink(m, n.details[0].source)}, from early-access footage. Not yet confirmed by Embark.</p>` : ''}</div></div>`).join('')}
       ${conds.map(c => `<article class="cond-card" id="condition-${esc(c.id)}">
         <header><span class="eyebrow">${esc(m.shortName.toUpperCase())} · MAP CONDITION</span><h3>${esc(c.name)}</h3>${c.temporary ? '<span class="cond-temp">TEMPORARY CONDITION · NOT A PERMANENT LANDMARK</span>' : ''}</header>
         <p class="cond-desc">“${esc(c.description)}”</p>
         <div class="cond-effects">${(c.effects || []).map(e => `<div><b>${esc(e.name)}</b><small>${esc(e.note)}</small></div>`).join('')}</div>
-        <p class="small-note">${esc(c.source)} Timing, counts and payload contents are not confirmed and are not stated here.</p></article>`).join('')}
+        ${(c.guide || []).length ? `<h4 class="cond-guide-title">Redirection loot guide</h4><ol class="cond-guide">${c.guide.map(g => `<li><div><b>${esc(g.title)}</b>${stChip(g.status)}</div><p>${esc(g.text)}</p>${(g.items || []).length ? `<div class="poi-items">${g.items.map(id => { const it = TRN.data.item(id); return it ? `<a href="item.html?id=${encodeURIComponent(id)}" class="poi-item rarity-edge-${esc(it.rarity.toLowerCase())}"><img src="${TRN.img(it.image)}" alt="" loading="lazy">${esc(it.name)}</a>` : ''; }).join('')}</div>` : ''}</li>`).join('')}</ol>` : ''}
+        <p class="small-note">${esc(c.source)} ${esc(c.caveat || 'Timing, counts and payload contents are not confirmed and are not stated here.')} ${c.guide ? `Guide steps: ${srcLink(m, 'redir')}.` : ''}</p></article>`).join('')}
     </section>`;
+  }
+  function mapIntel(m) {
+    const li = m.lootIntel, dir = m.directory, ca = m.caches;
+    if (!li && !dir && !ca) return '';
+    const loot = li ? `<section class="block" id="loot-guide"><div class="section-title-row"><div><span class="eyebrow">${TRN.icon('loot-intel')} LOOT INTEL</span><h2>Location loot guide</h2><p class="muted">${esc(li.note)}</p></div></div>
+      <div class="lg-grid">${li.locations.map(l => `<article class="lg-card"><header><h3>${esc(l.name)}</h3>${stChip(l.status)}</header>
+        <div class="lg-tags">${l.loot.map(t => `<span class="lg-tag">${esc(t)}</span>`).join('')}</div>
+        ${l.keyRoom ? `<p><b>Key room:</b> ${esc(l.keyRoom)}</p>` : ''}${l.extra ? `<p>${esc(l.extra)}</p>` : ''}<small class="muted">Source: ${srcLink(m, l.source)}</small></article>`).join('')}</div></section>` : '';
+    const directory = dir ? `<section class="block" id="location-directory"><div class="section-title-row"><div><span class="eyebrow">${TRN.icon('map')} DIRECTORY</span><h2>All named locations</h2><p class="muted">${esc(dir.note)}</p></div></div>
+      <div class="search-field dir-search">${TRN.svg('search')}<input id="dirSearch" placeholder="Search locations or areas" aria-label="Search Pendola Pass locations"></div>
+      <ul class="dir-list" id="dirList">${dir.entries.map(e => `<li data-q="${esc((e.name + ' ' + e.area).toLowerCase())}"><b>${esc(e.name)}</b><small>${esc(e.area || 'Area not stated')}</small>${stChip(e.status)}</li>`).join('')}</ul>
+      <p class="small-note" id="dirEmpty" hidden>No matching locations.</p>
+      ${ca ? `<article class="cache-card"><header><h3>${esc(ca.title)}</h3>${stChip(ca.status)}</header><p>${esc(ca.body)}</p>
+        <div class="lg-tags">${ca.clusters.map(c => `<span class="lg-tag">${esc(c)}</span>`).join('')}</div><small class="muted">Cluster names: ${srcLink(m, ca.source)}. Spots are not plotted.</small></article>` : ''}</section>` : '';
+    const src = (m.intelSources || []).length ? `<section class="block" id="intel-sources"><span class="eyebrow">SOURCES</span><ul class="src-list">${m.intelSources.map(s => `<li>${TRN.confChip(s.confidence)} <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join('')}</ul>
+      <p class="small-note">Summarised in our own words. No map imagery, marker data or layouts from these sites are used.</p></section>` : '';
+    return loot + directory + src;
+  }
+  function wireDirectory() {
+    const inp = document.getElementById('dirSearch'); if (!inp) return;
+    inp.addEventListener('input', () => {
+      const q = inp.value.trim().toLowerCase(); let n = 0;
+      document.querySelectorAll('#dirList li').forEach(li => { const show = !q || li.dataset.q.includes(q); li.hidden = !show; if (show) n++; });
+      document.getElementById('dirEmpty').hidden = n > 0;
+    });
   }
   function mapSection(m) {
     const mi = m.mapImage || { levels: [] }, md = m.markerData, hasMarkers = md && md.status === 'live';

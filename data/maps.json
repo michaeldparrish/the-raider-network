@@ -1617,7 +1617,34 @@
     {
      "kind": "warning",
      "title": "Gondola Transceivers are request points, not landing spots",
-     "body": "Use a Gondola Transceiver to call the gondola. The gondola may land some distance away from the transceiver. Plan your route to it, especially if you are downed or carrying a downed teammate. Landing locations are not marked on this map."
+     "body": "Use a Gondola Transceiver to call the gondola. The gondola may land some distance away from the transceiver. Plan your route to it, especially if you are downed or carrying a downed teammate. Landing locations are not marked on this map.",
+     "details": [
+      {
+       "text": "Early-access reports put the landing spot roughly 100–150 m from the transceiver you used, not at it.",
+       "status": "REPORTED",
+       "source": "gondola"
+      },
+      {
+       "text": "Look for three cues once it is on its way: an incoming-gondola marker on your map, the transceiver light pointing toward the landing area, and green smoke rising where it will touch down.",
+       "status": "REPORTED",
+       "source": "gondola"
+      },
+      {
+       "text": "The gondola carries three enclosed pods, one Raider per pod.",
+       "status": "REPORTED",
+       "source": "gondola"
+      },
+      {
+       "text": "Players report a short countdown, about 10 seconds, that starts as soon as someone climbs in, even if the rest of the squad has not arrived. Treat this as a community observation; Embark has not published exact timings.",
+       "status": "REPORTED",
+       "source": "gondola"
+      },
+      {
+       "text": "Calling the gondola is reported to attract ARC. Clear the area or call it from cover.",
+       "status": "REPORTED",
+       "source": "gondola"
+      }
+     ]
     }
    ],
    "conditions": [
@@ -1640,7 +1667,293 @@
        "note": "Listed by the game for this condition."
       }
      ],
-     "source": "In-game destination screen (8 Oct 2026); Redirection is confirmed as a map condition in the official Frozen Trail 2.0 notes."
+     "source": "In-game destination screen (8 Oct 2026); Redirection is confirmed as a map condition in the official Frozen Trail 2.0 notes.",
+     "caveat": "The steps and loot below come from early-access community reports and may change. No drop rates are published, and none are given here.",
+     "guide": [
+      {
+       "title": "Find a Damaged Emperor Relay",
+       "text": "Several relays appear across the map during Redirection. Players report a red beam and a relay icon marking each one.",
+       "status": "REPORTED"
+      },
+      {
+       "title": "Search it for an Emperor Beacon",
+       "text": "Searching a relay is reported to give an Emperor Beacon. Players report carrying up to three.",
+       "status": "REPORTED"
+      },
+      {
+       "title": "Deploy the beacon under open sky",
+       "text": "Place it somewhere with a clear view of the sky. The beacon beam is reported to be visible map-wide, so expect other squads to come looking.",
+       "status": "REPORTED"
+      },
+      {
+       "title": "Take cover from the falling payload",
+       "text": "The payload comes down with debris that can hurt health and shields. Stay clear until it lands.",
+       "status": "REPORTED"
+      },
+      {
+       "title": "Breach the payload, then sweep the debris",
+       "text": "The payload is reported to hold ARC Couplers (Conductive, Insulated and Plated) plus other ARC parts. Smaller debris reportedly drops ARC materials such as ARC Alloy, ARC Circuitry and ARC Motion Cores. Contents vary per payload.",
+       "status": "REPORTED",
+       "items": [
+        "arc-alloy",
+        "arc-circuitry",
+        "arc-motion-core"
+       ]
+      },
+      {
+       "title": "Craft the Emperor Gateway Conduit",
+       "text": "Community guides report the conduit is crafted at Workbench I from one of each coupler plus the Emperor Gateway Conduit Blueprint.",
+       "status": "REPORTED"
+      },
+      {
+       "title": "Enter the Fallen Emperor",
+       "text": "The conduit is reported to open the way into the Fallen Emperor. Embark confirms only that an Emperor has fallen, that rare technology lies inside, and that Raiders must find a way in.",
+       "status": "REPORTED"
+      }
+     ]
+    }
+   ],
+   "lootIntel": {
+    "note": "Loot types describe what a location tends to hold. High-value spawns can change from raid to raid, so no specific item is guaranteed anywhere.",
+    "locations": [
+     {
+      "name": "Almatera Station",
+      "loot": [
+       "Industrial",
+       "Mechanical"
+      ],
+      "keyRoom": "Train Station key room",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Railyard",
+      "loot": [
+       "Industrial",
+       "Mechanical"
+      ],
+      "extra": "Weapon crates and augment boxes reported",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Commissary Supermarket",
+      "loot": [
+       "Commercial",
+       "Medical"
+      ],
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Old Town",
+      "loot": [
+       "Residential",
+       "Old World"
+      ],
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Cielo Sereno Observatory",
+      "loot": [
+       "Industrial",
+       "Mechanical"
+      ],
+      "keyRoom": "Observatory key room",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Fallen Emperor",
+      "loot": [
+       "ARC"
+      ],
+      "extra": "Entry reportedly requires an Emperor Gateway Conduit (see Redirection)",
+      "status": "REPORTED",
+      "source": "redir"
+     }
+    ]
+   },
+   "directory": {
+    "note": "Names on the in-game map are confirmed from screenshots. Other names and the area groupings come from community guides and are listed without map positions; no markers are placed until coordinates are verified.",
+    "entries": [
+     {
+      "name": "Fallen Emperor",
+      "area": "Almatera Village",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Almatera Station",
+      "area": "Almatera Village",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Railroad Junction",
+      "area": "Freight Terminal",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Cielo Sereno Observatory",
+      "area": "Northern Tracks",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Deep-Space Telescope",
+      "area": "Northern Tracks",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Commissary Supermarket",
+      "area": "Freight Terminal",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Railyard",
+      "area": "Freight Terminal",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Old Town",
+      "area": "Almatera Village",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Loading Platforms",
+      "area": "Freight Terminal",
+      "status": "IN-GAME MAP"
+     },
+     {
+      "name": "Researcher Lodgings",
+      "area": "Northern Tracks",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Dispatch Tower",
+      "area": "Northern Tracks",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Frozen River",
+      "area": "Northern Tracks / Southern Pass",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Northern Tracks",
+      "area": "North",
+      "status": "REPORTED",
+      "source": "caches"
+     },
+     {
+      "name": "Piazza della Rupe",
+      "area": "Almatera Village",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Porta Benvenuti",
+      "area": "Almatera Village",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Weather Station",
+      "area": "Freight Terminal",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Transit Tunnel",
+      "area": "Village and south",
+      "status": "REPORTED",
+      "source": "caches"
+     },
+     {
+      "name": "Old Hamlet",
+      "area": "Southern Pass",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Truck Stop",
+      "area": "Southern Pass",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Electrical Substation",
+      "area": "Southern Pass",
+      "status": "REPORTED",
+      "source": "beebom"
+     },
+     {
+      "name": "Southern Pass",
+      "area": "South",
+      "status": "REPORTED",
+      "source": "caches"
+     }
+    ]
+   },
+   "caches": {
+    "title": "Frozen Raider Caches",
+    "status": "REPORTED",
+    "source": "caches",
+    "body": "Pendola Pass has its own snow-covered version of the Raider Cache, opened with Breach & Search. Community data lists 13 cache clusters, each with several possible spots, and one spot used per raid. Exact spots are not shown here.",
+    "clusters": [
+     "Researcher Lodgings",
+     "Northern Tracks",
+     "Deep-Space Telescope",
+     "Dispatch Tower",
+     "Frozen River (north)",
+     "Porta Benvenuti",
+     "Weather Station",
+     "Transit Tunnel",
+     "Old Town (east)",
+     "Old Town (west)",
+     "Frozen River (south)",
+     "Southern Pass",
+     "Old Hamlet"
+    ]
+   },
+   "intelSources": [
+    {
+     "key": "preview",
+     "label": "ARC Raiders: Frozen Trail content preview (official)",
+     "url": "https://arcraiders.com/news/frozen-trail-content-preview",
+     "confidence": "OFFICIAL"
+    },
+    {
+     "key": "beebom",
+     "label": "Beebom: Pendola Pass map guide",
+     "url": "https://beebom.com/arc-raiders-pendola-pass-map-guide/",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "key": "gondola",
+     "label": "ARC Raiders Hub: Ballistic gondola extraction guide",
+     "url": "https://arcraidershub.com/guides/ballistic-gondola-extraction-guide",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "key": "redir",
+     "label": "ARC Raiders Hub: Redirection map condition guide",
+     "url": "https://arcraidershub.com/guides/redirection-map-condition-guide",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "key": "caches",
+     "label": "ARC Raiders Hub: Frozen Raider Caches guide",
+     "url": "https://arcraidershub.com/guides/frozen-raider-caches-guide",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "key": "hubmap",
+     "label": "ARC Raiders Hub: Pendola Pass overview",
+     "url": "https://arcraidershub.com/maps/pendola-pass",
+     "confidence": "COMMUNITY REPORT"
     }
    ],
    "arcs": [],
