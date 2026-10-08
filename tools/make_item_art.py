@@ -18,6 +18,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'assets', 'images', 'items', 'db')
 SNAP = json.load(open(os.path.join(ROOT, 'tools', 'source-data', 'raidtheory-snapshot.json')))
 PROJ_PATH = os.path.join(ROOT, 'data', 'projects.json')
+WSIL = {k: v for k, v in json.load(open(os.path.join(ROOT, 'tools', 'source-data', 'weapon-silhouettes.json'))).items() if not k.startswith('_')}
 RARITY = {'Common': '#a7b3b8', 'Uncommon': '#3fd07a', 'Rare': '#3aa2ff', 'Epic': '#b45cff', 'Legendary': '#ffb020'}
 FONT = "'Barlow Condensed','Arial Narrow','Helvetica Neue',Arial,sans-serif"
 E = html.escape
@@ -389,6 +390,14 @@ def blueprint_svg(it, target, unlisted=False):
          '<radialGradient id="bphalo" cx="50%" cy="55%" r="55%"><stop offset="0" stop-color="#19d3c5" stop-opacity=".22"/><stop offset="1" stop-color="#19d3c5" stop-opacity="0"/></radialGradient>'
          '<filter id="bpglow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>')
     sil = SIL[s]
+    fam = weapon_family(target['id']) if target and target.get('type') in WEAPON_SIL else None
+    if fam:   # v6.1: the weapon's own traced side profile, centred in the same 400x150 schematic box
+        sil, (w, hh) = WSIL[fam]['d'], WSIL[fam]['size']; ox, oy = 90 + (400 - w) / 2 * 1.15, 138 + (150 - hh) / 2 * 1.15
+        silg = (f'<g transform="translate({ox:.1f} {oy:.1f}) scale(1.15)" filter="url(#bpglow)"><path d="{sil}" fill="#7ff3ff" fill-opacity=".1" fill-rule="evenodd" stroke="#a8f7ff" stroke-width="2" stroke-linejoin="round"/></g>\n'
+                f'<g transform="translate({ox:.1f} {oy:.1f}) scale(1.15)"><path d="{sil}" fill="none" stroke="#ffffff" stroke-width=".8" stroke-opacity=".75" stroke-dasharray="3 5" transform="translate(5 5)"/></g>')
+    else:
+        silg = (f'<g transform="translate(90 138) scale(1.15)" filter="url(#bpglow)"><path d="{sil}" fill="#7ff3ff" fill-opacity=".1" stroke="#a8f7ff" stroke-width="2.4" stroke-linejoin="round"/></g>\n'
+                f'<g transform="translate(90 138) scale(1.15)"><path d="{sil}" fill="none" stroke="#ffffff" stroke-width=".8" stroke-opacity=".75" stroke-dasharray="3 5" transform="translate(5 5)"/></g>')
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400"><defs>{d}</defs>
 <rect width="640" height="400" fill="#050d12"/>
 <path d="M18 14 H600 L624 38 V386 H42 L18 362 Z" fill="url(#bpbg)" stroke="#2f8fb0" stroke-width="2"/>
@@ -400,8 +409,7 @@ def blueprint_svg(it, target, unlisted=False):
 <text x="604" y="52" text-anchor="end" font-family="{FONT}" font-size="14" font-weight="700" letter-spacing="2.5" fill="#7ff3ff">{E(klass)}</text>
 <text x="38" y="{86 + size * .2:.0f}" font-family="{FONT}" font-size="{size}" font-weight="800" letter-spacing=".5" fill="#ffffff">{E(name)}</text>
 <rect x="38" y="{98 + size * .2:.0f}" width="120" height="3" fill="{c}"/>
-<g transform="translate(90 138) scale(1.15)" filter="url(#bpglow)"><path d="{sil}" fill="#7ff3ff" fill-opacity=".1" stroke="#a8f7ff" stroke-width="2.4" stroke-linejoin="round"/></g>
-<g transform="translate(90 138) scale(1.15)"><path d="{sil}" fill="none" stroke="#ffffff" stroke-width=".8" stroke-opacity=".75" stroke-dasharray="3 5" transform="translate(5 5)"/></g>
+{silg}
 <path d="M120 330 h400 M120 324 v12 M520 324 v12 M320 326 v8" stroke="#7ff3ff" stroke-opacity=".7"/>
 <text x="320" y="350" text-anchor="middle" font-family="{FONT}" font-size="11" letter-spacing="3" fill="#7ff3ff" fill-opacity=".8">SCHEMATIC · NOT THE FINISHED ITEM</text>
 <path d="M560 130 v170 M554 130 h12 M554 300 h12" stroke="#7ff3ff" stroke-opacity=".5"/>
@@ -453,7 +461,33 @@ def glyph(kind):
     return glyph('salvage')
 
 
+def weapon_family(rid):
+    """'il_toro_ii' -> 'il_toro'; 'aphelion' -> 'aphelion'. Only families with a traced outline are returned."""
+    f = re.sub(r'_(i|ii|iii|iv)$', '', rid.replace('-', '_'))
+    return f if f in WSIL else None
+
+
+WDEFS = '''<linearGradient id="gunV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e999e"/><stop offset=".12" stop-color="#5d686d"/><stop offset=".45" stop-color="#363e42"/><stop offset=".8" stop-color="#1c2124"/><stop offset="1" stop-color="#121517"/></linearGradient>
+<filter id="metal" x="-5%" y="-10%" width="110%" height="130%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="1.6" result="bump"/><feSpecularLighting in="bump" surfaceScale="3.2" specularConstant=".95" specularExponent="22" lighting-color="#fff4e6" result="spec"><feDistantLight azimuth="235" elevation="38"/></feSpecularLighting><feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn"/><feDiffuseLighting in="bump" surfaceScale="3.2" diffuseConstant="1.05" lighting-color="#ffffff" result="diff"><feDistantLight azimuth="235" elevation="50"/></feDiffuseLighting><feComposite in="SourceGraphic" in2="diff" operator="arithmetic" k1="1.15" k2="0" k3="0" k4="0" result="lit"/><feComposite in="lit" in2="SourceAlpha" operator="in" result="litIn"/><feComposite in="litIn" in2="specIn" operator="arithmetic" k1="0" k2="1" k3=".55" k4="0"/></filter>
+<filter id="inset" x="-5%" y="-10%" width="110%" height="130%"><feMorphology in="SourceAlpha" operator="erode" radius="5" result="e"/><feMorphology in="e" operator="erode" radius="1" result="e2"/><feComposite in="e" in2="e2" operator="out" result="ln"/><feOffset in="ln" dy="1.2" result="lo"/><feComposite in="lo" in2="ln" operator="out" result="hl"/><feFlood flood-color="#05080a" flood-opacity=".55"/><feComposite in2="ln" operator="in" result="dk"/><feFlood flood-color="#cfe3e6" flood-opacity=".22"/><feComposite in2="hl" operator="in" result="lt"/><feMerge><feMergeNode in="dk"/><feMergeNode in="lt"/></feMerge></filter>
+<filter id="rim" x="-5%" y="-15%" width="110%" height="130%"><feOffset in="SourceAlpha" dx="1.1" dy="-1.0" result="o"/><feComposite in="o" in2="SourceAlpha" operator="out" result="r"/><feGaussianBlur in="r" stdDeviation=".45" result="rb"/><feFlood flood-color="#19d3c5" flood-opacity=".85"/><feComposite in2="rb" operator="in"/></filter>'''
+
+
+def traced_weapon_svg(it, fam):
+    """v6.1: the weapon's own side profile (traced outline, see weapon-silhouettes.json) as a lit gunmetal render."""
+    d, (w, h) = WSIL[fam]['d'], WSIL[fam]['size']
+    s = min(540 / w, 230 / h); tx, ty = 320 - w * s / 2, 175 - h * s / 2
+    g = f'<g transform="translate({tx:.1f} {ty:.1f}) scale({s:.3f})">'
+    body = (f'{g}<path d="{d}" fill="#000" fill-rule="evenodd" filter="url(#rim)"/></g>'
+            f'{g}<path d="{d}" fill="url(#gunV)" fill-rule="evenodd" filter="url(#metal)"/>'
+            f'<path d="{d}" fill="#000" fill-rule="evenodd" filter="url(#inset)"/>'
+            f'<path d="{d}" fill="none" stroke="#0a0d0f" stroke-width="{1.4 / s:.2f}" stroke-linejoin="round"/></g>')
+    return frame(body, f'WEAPON · {it["type"].upper()}', it['rarity'], WDEFS, title=it['name'])
+
+
 def weapon_svg(it):
+    fam = weapon_family(it['id'])
+    if fam: return traced_weapon_svg(it, fam)
     s = WEAPON_SIL.get(it['type'], 'rifle')
     body = f'<g transform="translate(120 130)"><path d="{SIL[s]}" fill="url(#darkV)" stroke="#9aa5aa" stroke-width="2" stroke-linejoin="round"/><path d="{SIL[s]}" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1" transform="translate(0 -2)"/></g>'
     return frame(body, f'WEAPON · {it["type"].upper()}', it['rarity'], title=it['name'])

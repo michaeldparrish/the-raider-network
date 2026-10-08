@@ -196,7 +196,7 @@
           <header class="panel-head"><span class="eyebrow">${TRN.icon('crafting')} CRAFTING</span><h3>Crafting & workshop</h3></header>
           <div class="io-grid">
             <div><h4>Used to craft (${it.craftingUses.length})</h4>${it.craftingUses.length ? `<div class="tag-cloud">${it.craftingUses.map(id => TRN.data.itemLink(id)).join('')}</div>` : '<p class="muted">No recorded recipes use this.</p>'}</div>
-            <div><h4>Recipe</h4>${it.recipe.length ? `<div class="io-list">${it.recipe.map(o => ioRow(o)).join('')}</div><small class="muted">${esc((it.craftBench || []).join(' / '))}</small>` : '<p class="muted">Not craftable.</p>'}</div>
+            <div><h4>Recipe</h4>${it.recipe.length ? `<div class="io-list">${it.recipe.map(o => ioRow(o)).join('')}</div><small class="muted">${esc([].concat(it.craftBench || []).join(" / "))}</small>` : '<p class="muted">Not craftable.</p>'}</div>
             <div><h4>Workshop upgrades</h4>${it.workshopUses.length ? it.workshopUses.map(w => { const [st, lv] = w.split(':'); return `<span class="zone-chip">${esc((D().workshop || []).find(s => s.id === st)?.name || st)} L${esc(lv)}</span>`; }).join('') : '<p class="muted">None recorded.</p>'}</div>
           </div>
         </section>

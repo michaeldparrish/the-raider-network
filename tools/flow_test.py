@@ -202,6 +202,18 @@ with sync_playwright() as p:
     page.goto(BASE + 'item.html?id=bombardier-cell'); page.wait_for_selector('main img', state='attached')
     check(page.locator('main img[src*="items/game/"]').count() == 0, 'Bombardier Cell keeps its current icon (pilot not approved)')
 
+    # v6.1 weapon art: traced per-weapon outlines on weapon cards + weapon blueprints; item pages with a single-string craft bench render
+    for iid in ('tempest-i', 'aphelion', 'venator-blueprint'):
+        page.goto(BASE + f'item.html?id={iid}'); page.wait_for_selector('footer', state='attached'); page.wait_for_timeout(300)
+        loaded = page.evaluate("() => [...document.querySelectorAll('main img')].filter(i => i.src.includes('/items/db/')).every(i => i.complete && i.naturalWidth > 0)")
+        check('went wrong' not in page.inner_text('body') and loaded, f'{iid} item page renders with its v6.1 art')
+    svg = page.evaluate("async () => (await (await fetch('assets/images/items/db/tempest-i.svg')).text())")
+    check('id="gunV"' in svg and 'fill-rule="evenodd"' in svg, 'Tempest card uses the traced Tempest outline')
+    svg = page.evaluate("async () => (await (await fetch('assets/images/items/db/rascal-i.svg')).text())")
+    check('id="gunV"' not in svg, 'Rascal (no reference) keeps its class silhouette')
+    svg = page.evaluate("async () => (await (await fetch('assets/images/items/db/venator-blueprint.svg')).text())")
+    check('BLUEPRINT' in svg and 'SCHEMATIC' in svg and 'fill-rule="evenodd"' in svg, 'Venator blueprint keeps the card and gains the traced outline')
+
     # --- search + filters
     page.goto(BASE + 'index.html'); page.wait_for_selector('#popularLoot .item-card')
     page.fill('#homeSearch', 'stella'); page.wait_for_selector('#homeSearchForm .ac-row')
