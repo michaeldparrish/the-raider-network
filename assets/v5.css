@@ -873,6 +873,7 @@ b.band-critical,b.band-high,b.band-valuable,b.band-useful,b.band-low{box-shadow:
 #copyEmbark.copied{background:#1f7a4a;border-color:#1f7a4a}
 .hp-myid{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;margin-top:12px}.hp-myid label{display:grid;gap:6px}.hp-myid small,.hp-myid .form-note{grid-column:1/-1}
 .hp-share{display:grid;gap:8px;justify-items:start;margin-top:12px;padding:12px;border:1px dashed #7a4a1c}.hp-share p{margin:0;line-height:1.55}
+#handoffBanner{grid-column:1/-1}#handoffBanner:empty{display:none}#handoffBanner .handoff-banner{margin:0}#myHandoffsPanel{grid-column:1/-1}
 .hp-agreed{display:grid;gap:10px}.hp-agreed>div{padding:10px;border:1px solid var(--line);background:#0a161b}.hp-agreed small{font:700 10px Inter;letter-spacing:1.4px;color:var(--teal)}.hp-agreed p{margin:6px 0 0}
 .hp-agreed blockquote{margin:8px 0 0;padding:6px 10px;border-left:3px solid #38535c;color:#c5d2d6;font-style:italic}
 .hp-steps{margin:0;padding-left:22px;display:grid;gap:9px;line-height:1.55}.hp-steps b{color:#fff}
