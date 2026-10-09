@@ -29,13 +29,16 @@
   <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-profile.png" alt="" aria-hidden="true"> RAIDER IDENTITY</span></header>
     <form id="profileForm" class="stack">
       <label>Raider Display Name<input class="input" name="display_name" required maxlength="30"></label>
-      <label>Raider Tag / ID <span class="muted-label">(private — only shown to you)</span><input class="input" name="raider_tag" maxlength="50"></label>
+      <label id="embark">Embark ID <span class="muted-label">(private · only shared inside an accepted trade)</span><input class="input" name="raider_tag" maxlength="30" placeholder="RaiderName#1234" autocomplete="off"></label>
+      <p class="small-note embark-help">Find it in ARC Raiders: Main Menu → Social menu (👥) → your profile → <b>Show Discriminator</b>. It looks like <code>DisplayName#1234</code>. Raiders see it only after you accept their offer or they accept yours.</p>
       <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
       <fieldset class="avatar-field"><legend>Raider portrait</legend><div id="profileAvatarSlot"></div></fieldset>
       <button class="btn btn-primary">Save Profile</button><p class="form-note" id="profileMsg" role="status"></p>
     </form>
   </section>
   <div class="profile-cols">
+    <div id="handoffBanner"></div>
+    <section class="panel hidden" id="myHandoffsPanel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> ACCEPTED TRADES</span><a class="text-btn" href="messages.html">All handoffs</a></header><div id="myHandoffs" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> OPEN TRADE REQUESTS</span><a class="text-btn" href="trade.html?new=">+ New</a></header><div id="myTrades" class="stack-sm"></div></section>
     <section class="panel hidden" id="myOffersPanel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-trade.png" alt="" aria-hidden="true"> TRADE OFFERS</span><a class="text-btn" href="trade.html">Trade Board</a></header><div id="myOffers" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow"><img class="ico" src="assets/images/ui/icon-squad.png" alt="" aria-hidden="true"> ACTIVE LOOT HUNTS</span><a class="text-btn" href="hunts.html?new=">+ New</a></header><p class="small-note device-only-note hidden">Loot Hunts are still in preview: they are saved in this browser only until they move to the server.</p><div id="myHunts" class="stack-sm"></div></section>
@@ -57,6 +60,7 @@
 <script defer src="assets/js/hunts.js"></script>
 <script defer src="assets/js/trades.js"></script>
 <script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/handoff.js"></script>
 <script defer src="assets/js/app.js"></script>
 </body>
 </html>

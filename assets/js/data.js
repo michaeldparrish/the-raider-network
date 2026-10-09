@@ -178,7 +178,7 @@
     offering: t.offered ? [{ itemId: t.offered.item_id, name: t.offered.name, quantity: t.offered.quantity }] : [],
     openToOffers: t.open_to_offers, region: t.region, platform: t.platform, desiredTime: t.desired_time || '', notes: t.notes || '',
     status: String(t.status).toLowerCase(), createdAt: t.created_at, updatedAt: t.updated_at, closedAt: t.closed_at,
-    pendingOffers: t.pending_offers, isMine: t.is_mine,
+    pendingOffers: t.pending_offers, isMine: t.is_mine, awaiting: t.display_status === 'AWAITING_EXCHANGE',
   });
   /* Client form row -> API body. Item ids are only sent when they exist in Loot Intel; the server re-validates. */
   const toServer = row => {

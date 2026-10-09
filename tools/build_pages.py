@@ -36,6 +36,7 @@ FOOT = '''
 <script defer src="assets/js/hunts.js"></script>
 <script defer src="assets/js/trades.js"></script>
 <script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/handoff.js"></script>
 <script defer src="assets/js/app.js"></script>
 </body>
 </html>
@@ -326,6 +327,9 @@ PAGES['messages.html'] = ('messages', 'Messages — The Raider Network', 'Privat
 </section>
 <div class="page-shell">
   <div class="notice-bar hidden" id="messagesNotice" role="note"></div>
+  <section class="panel hidden" id="handoffInbox"><header class="panel-head"><span class="eyebrow">{I('trade')} TRADE HANDOFFS</span><a class="text-btn" href="trade.html">Trade Board</a></header>
+    <p class="muted">Every trade where an offer was accepted. Open one to see the other Raider's Embark ID, the agreed items, and to confirm the exchange.</p>
+    <div id="handoffList" class="stack-sm"></div></section>
   <section class="messages-shell">
     <aside class="conversation-list"><div class="conversation-title">{I('message')} Conversations <b id="unreadCount"></b></div><div id="conversationList"></div></aside>
     <section class="chat-panel">
@@ -342,6 +346,10 @@ PAGES['messages.html'] = ('messages', 'Messages — The Raider Network', 'Privat
 </div>
 ''')
 
+PAGES['handoff.html'] = ('handoff', 'Trade Handoff — The Raider Network', 'Private trade handoff between two Raiders.', f'''
+<div class="page-shell handoff-shell" id="handoffRoot"><p class="muted">Loading trade…</p></div>
+''')
+
 PAGES['profile.html'] = ('profile', 'My Profile — The Raider Network', 'Your Raider profile.', f'''
 <section class="profile-hero">
   <img class="profile-hero__bg" src="assets/images/heroes/raider-network-skyline.webp" alt="">
@@ -356,13 +364,16 @@ PAGES['profile.html'] = ('profile', 'My Profile — The Raider Network', 'Your R
   <section class="panel"><header class="panel-head"><span class="eyebrow">{I('profile')} RAIDER IDENTITY</span></header>
     <form id="profileForm" class="stack">
       <label>Raider Display Name<input class="input" name="display_name" required maxlength="30"></label>
-      <label>Raider Tag / ID <span class="muted-label">(private — only shown to you)</span><input class="input" name="raider_tag" maxlength="50"></label>
+      <label id="embark">Embark ID <span class="muted-label">(private · only shared inside an accepted trade)</span><input class="input" name="raider_tag" maxlength="30" placeholder="RaiderName#1234" autocomplete="off"></label>
+      <p class="small-note embark-help">Find it in ARC Raiders: Main Menu → Social menu (👥) → your profile → <b>Show Discriminator</b>. It looks like <code>DisplayName#1234</code>. Raiders see it only after you accept their offer or they accept yours.</p>
       <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
       <fieldset class="avatar-field"><legend>Raider portrait</legend><div id="profileAvatarSlot"></div></fieldset>
       <button class="btn btn-primary">Save Profile</button><p class="form-note" id="profileMsg" role="status"></p>
     </form>
   </section>
   <div class="profile-cols">
+    <div id="handoffBanner"></div>
+    <section class="panel hidden" id="myHandoffsPanel"><header class="panel-head"><span class="eyebrow">{I('trade')} ACCEPTED TRADES</span><a class="text-btn" href="messages.html">All handoffs</a></header><div id="myHandoffs" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow">{I('trade')} OPEN TRADE REQUESTS</span><a class="text-btn" href="trade.html?new=">+ New</a></header><div id="myTrades" class="stack-sm"></div></section>
     <section class="panel hidden" id="myOffersPanel"><header class="panel-head"><span class="eyebrow">{I('trade')} TRADE OFFERS</span><a class="text-btn" href="trade.html">Trade Board</a></header><div id="myOffers" class="stack-sm"></div></section>
     <section class="panel"><header class="panel-head"><span class="eyebrow">{I('squad')} ACTIVE LOOT HUNTS</span><a class="text-btn" href="hunts.html?new=">+ New</a></header><p class="small-note device-only-note hidden">Loot Hunts are still in preview: they are saved in this browser only until they move to the server.</p><div id="myHunts" class="stack-sm"></div></section>
@@ -388,7 +399,7 @@ PAGES['auth.html'] = ('auth', 'Join — The Raider Network', 'Create a Raider pr
       <div class="two-col"><label>Username <span class="muted-label">(public handle)</span><input class="input" name="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{{3,20}}" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. night_runner"></label><label>Display name<input class="input" name="display_name" required minlength="2" maxlength="30" placeholder="Your in-game Raider name"></label></div>
       <label>Email <span class="muted-label">(private — never shown)</span><input class="input" type="email" name="email" required maxlength="254" autocomplete="email"></label>
       <div class="two-col"><label>Password <span class="muted-label">(10+ characters)</span><input class="input" type="password" name="password" required minlength="10" maxlength="128" autocomplete="new-password"></label><label>Confirm password<input class="input" type="password" name="confirm_password" required minlength="10" maxlength="128" autocomplete="new-password"></label></div>
-      <label>Raider Tag / ID <span class="muted-label">(optional, kept private)</span><input class="input" name="raider_tag" maxlength="50" placeholder="Share it later, only when you choose"></label>
+      <label>Embark ID <span class="muted-label">(optional, kept private)</span><input class="input" name="raider_tag" maxlength="30" placeholder="RaiderName#1234 · add it later if you like" autocomplete="off"></label>
       <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
       <fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset>
       <button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status" aria-live="polite"></p></form>

@@ -30,7 +30,7 @@
       <div class="two-col"><label>Username <span class="muted-label">(public handle)</span><input class="input" name="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. night_runner"></label><label>Display name<input class="input" name="display_name" required minlength="2" maxlength="30" placeholder="Your in-game Raider name"></label></div>
       <label>Email <span class="muted-label">(private — never shown)</span><input class="input" type="email" name="email" required maxlength="254" autocomplete="email"></label>
       <div class="two-col"><label>Password <span class="muted-label">(10+ characters)</span><input class="input" type="password" name="password" required minlength="10" maxlength="128" autocomplete="new-password"></label><label>Confirm password<input class="input" type="password" name="confirm_password" required minlength="10" maxlength="128" autocomplete="new-password"></label></div>
-      <label>Raider Tag / ID <span class="muted-label">(optional, kept private)</span><input class="input" name="raider_tag" maxlength="50" placeholder="Share it later, only when you choose"></label>
+      <label>Embark ID <span class="muted-label">(optional, kept private)</span><input class="input" name="raider_tag" maxlength="30" placeholder="RaiderName#1234 · add it later if you like" autocomplete="off"></label>
       <div class="two-col"><label>Platform<select class="input" name="platform"></select></label><label>Region<select class="input" name="region"></select></label></div>
       <fieldset class="avatar-field"><legend>Pick a Raider portrait</legend><div id="avatarSlot"></div></fieldset>
       <button class="btn btn-primary" type="submit">Create Raider Account</button><p class="form-note" id="registerMsg" role="status" aria-live="polite"></p></form>
@@ -50,6 +50,7 @@
 <script defer src="assets/js/hunts.js"></script>
 <script defer src="assets/js/trades.js"></script>
 <script defer src="assets/js/messages.js"></script>
+<script defer src="assets/js/handoff.js"></script>
 <script defer src="assets/js/app.js"></script>
 </body>
 </html>

@@ -16,3 +16,7 @@
   X-Robots-Tag: noindex
 /docs/*
   X-Robots-Tag: noindex
+
+# v6.2: private trade handoff page (content is loaded per participant from the API; nothing to index)
+/handoff.html
+  X-Robots-Tag: noindex

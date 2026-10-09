@@ -137,7 +137,7 @@
     $('#profileAvatarSlot').innerHTML = avatarPicker('avatar', user.avatar || 'raiders/raider-solo-scout.webp');
     const paintHead = u => {
       $('#profileName').textContent = u.display_name || 'My Profile';
-      $('#profileMeta').innerHTML = `${u.username ? `<span class="handle">@${esc(u.username)}</span>` : ''}${u.joined_at || u.created_at ? `<span>${TRN.svg('clock')} Joined ${esc(fmtDate(u.joined_at || u.created_at))}</span>` : ''}<span>${TRN.svg('radio')} ${esc(u.platform || 'Cross-platform')}</span><span>${TRN.svg('pin')} ${esc(u.region || 'NA East')}</span><span class="private-tag" title="Only visible to you">${TRN.svg('info')} Tag: ${esc(u.raider_tag || 'not set')} · private</span>`;
+      $('#profileMeta').innerHTML = `${u.username ? `<span class="handle">@${esc(u.username)}</span>` : ''}${u.joined_at || u.created_at ? `<span>${TRN.svg('clock')} Joined ${esc(fmtDate(u.joined_at || u.created_at))}</span>` : ''}<span>${TRN.svg('radio')} ${esc(u.platform || 'Cross-platform')}</span><span>${TRN.svg('pin')} ${esc(u.region || 'NA East')}</span><span class="private-tag" title="Only shared inside an accepted trade">${TRN.svg('info')} Embark ID: ${esc(u.raider_tag || 'not set')} · private</span>`;
       $('#profileAvatar').src = TRN.IMG + (u.avatar || 'raiders/raider-solo-scout.webp');
     };
     paintHead(user);
@@ -178,16 +178,28 @@
     $('#logoutBtn').onclick = logout;
   }
 
+  /* v6.2: accepted trades (private handoffs) + the one-time "Trade accepted" banner. Server mode only. */
+  async function renderHandoffs() {
+    if (!TRN.handoffs || !$('#myHandoffsPanel')) return;
+    let d; try { d = await TRN.handoffs.listAll(); } catch (e) { console.error(e); return; }
+    $('#myHandoffsPanel').classList.toggle('hidden', !d.rows.length);
+    $('#myHandoffs').innerHTML = TRN.handoffs.listHtml(d.rows.slice(0, 6), '');
+    $('#handoffBanner').innerHTML = TRN.handoffs.bannerHtml(d.rows, d.unseen);
+    TRN.handoffs.wireBanner($('#handoffBanner'));
+  }
+
   /* Offers received on my trades (accept / decline) and offers I sent (withdraw). Server mode only. */
   async function renderOffers(user) {
     const panel = $('#myOffersPanel'); if (!panel) return;
     panel.classList.remove('hidden');
     let d; try { d = await TRN.store.offers.mine(); } catch (e) { $('#myOffers').innerHTML = `<p class="empty-note">${esc(e.message)}</p>`; return; }
     const who = o => `<b>${esc(o.from.display_name)}</b> <small>@${esc(o.from.username)}</small>`;
-    const recv = d.received.map(o => `<div class="offer-row"><div><span>${who(o)} on <a href="trade.html#${esc(o.trade_id)}">LF ${esc(o.trade?.wanted_name || 'trade')}</a> · ${TRN.ageFromIso(o.created_at)}</span>${o.offered ? `<span class="offer-item">Offers: ${TRN.data.itemLink(o.offered.item_id, o.offered.name)}</span>` : ''}<p>${esc(o.message)}</p></div>${TRN.statusChip(o.status)}${o.status === 'PENDING' ? `<span class="offer-actions"><button class="btn btn-primary btn-xs" data-offer="${esc(o.id)}" data-act="accept">Accept</button><button class="btn btn-ghost btn-xs" data-offer="${esc(o.id)}" data-act="decline">Decline</button></span>` : ''}</div>`).join('');
-    const sent = d.sent.map(o => `<div class="offer-row"><div><span>To <b>${esc(o.trade?.owner_display_name || 'Raider')}</b> on <a href="trade.html#${esc(o.trade_id)}">LF ${esc(o.trade?.wanted_name || 'trade')}</a> · ${TRN.ageFromIso(o.created_at)}</span><p>${esc(o.message)}</p></div>${TRN.statusChip(o.status)}${o.status === 'PENDING' ? `<span class="offer-actions"><button class="btn btn-ghost btn-xs" data-offer="${esc(o.id)}" data-act="withdraw">Withdraw</button></span>` : ''}</div>`).join('');
+    const viewBtn = o => `<span class="offer-actions"><a class="btn btn-primary btn-xs" href="handoff.html?offer=${encodeURIComponent(o.id)}">View Trade Details</a></span>`;
+    const recv = d.received.map(o => `<div class="offer-row"><div><span>${who(o)} on <a href="trade.html#${esc(o.trade_id)}">LF ${esc(o.trade?.wanted_name || 'trade')}</a> · ${TRN.ageFromIso(o.created_at)}</span>${o.offered ? `<span class="offer-item">Offers: ${TRN.data.itemLink(o.offered.item_id, o.offered.name)}</span>` : ''}<p>${esc(o.message)}</p></div>${TRN.statusChip(o.status)}${o.status === 'ACCEPTED' ? viewBtn(o) : ''}${o.status === 'PENDING' ? `<span class="offer-actions"><button class="btn btn-primary btn-xs" data-offer="${esc(o.id)}" data-act="accept">Accept</button><button class="btn btn-ghost btn-xs" data-offer="${esc(o.id)}" data-act="decline">Decline</button></span>` : ''}</div>`).join('');
+    const sent = d.sent.map(o => `<div class="offer-row ${o.status === 'ACCEPTED' ? 'offer-row--accepted' : ''}"><div><span>To <b>${esc(o.trade?.owner_display_name || 'Raider')}</b> on <a href="trade.html#${esc(o.trade_id)}">LF ${esc(o.trade?.wanted_name || 'trade')}</a> · ${TRN.ageFromIso(o.created_at)}</span>${o.status === 'ACCEPTED' ? `<span class="offer-next">Accepted by ${esc(o.trade?.owner_display_name || 'the Raider')} — next: add each other in ARC Raiders</span>` : ''}<p>${esc(o.message)}</p></div>${TRN.statusChip(o.status)}${o.status === 'ACCEPTED' ? viewBtn(o) : ''}${o.status === 'PENDING' ? `<span class="offer-actions"><button class="btn btn-ghost btn-xs" data-offer="${esc(o.id)}" data-act="withdraw">Withdraw</button></span>` : ''}</div>`).join('');
     $('#myOffers').innerHTML = `<h3 class="sub-h">Received</h3>${recv || '<p class="empty-note">No offers on your trades yet.</p>'}<h3 class="sub-h">Sent</h3>${sent || '<p class="empty-note">You haven’t made any offers yet.</p>'}`;
-    $$('#myOffers [data-offer]').forEach(b => (b.onclick = async () => { b.disabled = true; try { await TRN.store.offers.act(b.dataset.offer, b.dataset.act); TRN.toast('Offer ' + { accept: 'accepted', decline: 'declined', withdraw: 'withdrawn' }[b.dataset.act]); renderOffers(user); } catch (e) { TRN.toast(e.message); b.disabled = false; } }));
+    $$('#myOffers [data-offer]').forEach(b => (b.onclick = async () => { b.disabled = true; try { const r = await TRN.store.offers.act(b.dataset.offer, b.dataset.act); TRN.toast('Offer ' + { accept: 'accepted', decline: 'declined', withdraw: 'withdrawn' }[b.dataset.act]); if (b.dataset.act === 'accept' && r.handoff?.id) { location.href = 'handoff.html?id=' + encodeURIComponent(r.handoff.id); return; } renderOffers(user); } catch (e) { TRN.toast(e.message); b.disabled = false; } }));
+    await renderHandoffs();
   }
 
   TRN.auth = { currentUser, refreshUser, requireUser, register, login, logout, setupAuthPage, setupProfilePage, avatarPicker, options, validateRegister };

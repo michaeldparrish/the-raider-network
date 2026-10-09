@@ -176,7 +176,7 @@
     syncNav();
     const run = { home: renderHome, loot: TRN.loot.setupLootPage, item: TRN.loot.setupItemPage, maps: TRN.maps.setupMapsPage, map: TRN.maps.setupMapPage,
       projects: TRN.projects.setupProjectsPage, hunts: TRN.hunts.setupHuntsPage, trade: TRN.trades.setupTradeBoard, messages: TRN.messages.setupMessages,
-      profile: TRN.auth.setupProfilePage, auth: TRN.auth.setupAuthPage }[page];
+      profile: TRN.auth.setupProfilePage, auth: TRN.auth.setupAuthPage, handoff: TRN.handoffs?.setupHandoffPage }[page];
     try { await run?.(); } catch (e) { console.error(e); TRN.toast('Something went wrong rendering this page.'); }
     document.body.classList.add('ready');
   });

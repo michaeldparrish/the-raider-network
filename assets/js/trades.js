@@ -38,7 +38,7 @@
     const wantImg = want ? TRN.img(want.image) : unlistedArt(t.lookingFor[0]?.name);
     const st = mine ? inv(t.userId) : null;
     return `<article class="trade-card trade-${esc(t.status)}" id="${esc(t.id)}" data-search="${esc(search)}" data-region="${esc(t.region)}" data-platform="${esc(t.platform)}" data-status="${esc(t.status)}" data-items="${esc([...t.lookingFor, ...t.offering].map(x => x.itemId).join(' '))}">
-      <header class="trade-card__head"><div class="raider-id">${avatar ? `<img class="avatar-img" src="${TRN.IMG + esc(avatar)}" alt="">` : `<span class="avatar">${esc((t.displayName || 'R')[0].toUpperCase())}</span>`}<div><strong>${esc(t.displayName || 'Raider')}</strong><small>${t.username ? `@${esc(t.username)} · ` : ''}${TRN.ageFromIso(t.createdAt)}${t.updatedAt && t.updatedAt !== t.createdAt ? ' · edited' : ''}</small></div></div>${TRN.statusChip(t.status)}</header>
+      <header class="trade-card__head"><div class="raider-id">${avatar ? `<img class="avatar-img" src="${TRN.IMG + esc(avatar)}" alt="">` : `<span class="avatar">${esc((t.displayName || 'R')[0].toUpperCase())}</span>`}<div><strong>${esc(t.displayName || 'Raider')}</strong><small>${t.username ? `@${esc(t.username)} · ` : ''}${TRN.ageFromIso(t.createdAt)}${t.updatedAt && t.updatedAt !== t.createdAt ? ' · edited' : ''}</small></div></div>${t.awaiting ? '<span class="status-chip status-awaiting">AWAITING EXCHANGE</span>' : TRN.statusChip(t.status)}</header>
       <div class="trade-pair">
         <div class="trade-side want"><img src="${wantImg}" alt=""><div><span>LOOKING FOR</span><strong>${itemsTxt(t.lookingFor, '—')}</strong></div></div>
         <div class="trade-arrow">${TRN.icon('trade')}</div>
@@ -63,6 +63,10 @@
   /* Owner controls for a server-stored post. The server re-checks ownership on every request. */
   function ownerBarServer(t) {
     const id = esc(t.id);
+    if (t.awaiting) return `<div class="owner-bar owner-bar--server"><span>Offer accepted · awaiting the in-game exchange</span>
+      <a class="btn btn-primary btn-xs" href="messages.html">View Trade Details</a>
+      <button class="btn btn-ghost btn-xs" data-offers="${id}" aria-expanded="false">Offers${t.pendingOffers ? ` <b class="count-pill">${t.pendingOffers}</b>` : ''}</button>
+      <div class="offer-panel hidden" data-offers-for="${id}"></div></div>`;
     return `<div class="owner-bar owner-bar--server"><span>Your listing</span>
       ${t.status !== 'completed' ? `<button class="btn btn-ghost btn-xs" data-edit="${id}">Edit</button>` : ''}
       ${t.status === 'open' ? `<button class="btn btn-ghost btn-xs" data-set-status="${id}" data-to="closed">Close</button><button class="btn btn-ghost btn-xs" data-set-status="${id}" data-to="completed">Mark completed</button>` : ''}
@@ -117,8 +121,13 @@
     panel.innerHTML = '<p class="muted">Loading offers…</p>';
     try {
       const d = await TRN.store.offers.forTrade(id);
-      panel.innerHTML = d.offers.length ? d.offers.map(o => `<div class="offer-row"><div><span><b>${esc(o.from.display_name)}</b> <small>@${esc(o.from.username)} · ${TRN.ageFromIso(o.created_at)}</small></span>${o.offered ? `<span class="offer-item">Offers: ${TRN.data.itemLink(o.offered.item_id, o.offered.name)}</span>` : ''}<p>${esc(o.message)}</p></div>${TRN.statusChip(o.status)}${o.status === 'PENDING' ? `<span class="offer-actions"><button class="btn btn-primary btn-xs" data-offer-act="accept" data-offer="${esc(o.id)}">Accept</button><button class="btn btn-ghost btn-xs" data-offer-act="decline" data-offer="${esc(o.id)}">Decline</button></span>` : ''}</div>`).join('') : '<p class="muted">No offers yet.</p>';
-      $$('[data-offer-act]', panel).forEach(x => (x.onclick = () => act(x, () => TRN.store.offers.act(x.dataset.offer, x.dataset.offerAct), 'Offer ' + (x.dataset.offerAct === 'accept' ? 'accepted' : 'declined'))));
+      panel.innerHTML = d.offers.length ? d.offers.map(o => `<div class="offer-row"><div><span><b>${esc(o.from.display_name)}</b> <small>@${esc(o.from.username)} · ${TRN.ageFromIso(o.created_at)}</small></span>${o.offered ? `<span class="offer-item">Offers: ${TRN.data.itemLink(o.offered.item_id, o.offered.name)}</span>` : ''}<p>${esc(o.message)}</p></div>${TRN.statusChip(o.status)}${o.status === 'ACCEPTED' ? `<span class="offer-actions"><a class="btn btn-primary btn-xs" href="handoff.html?offer=${encodeURIComponent(o.id)}">View Trade Details</a></span>` : ''}${o.status === 'PENDING' ? `<span class="offer-actions"><button class="btn btn-primary btn-xs" data-offer-act="accept" data-offer="${esc(o.id)}">Accept</button><button class="btn btn-ghost btn-xs" data-offer-act="decline" data-offer="${esc(o.id)}">Decline</button></span>` : ''}</div>`).join('') : '<p class="muted">No offers yet.</p>';
+      $$('[data-offer-act]', panel).forEach(x => (x.onclick = async () => {
+        if (x.dataset.offerAct !== 'accept') return act(x, () => TRN.store.offers.act(x.dataset.offer, 'decline'), 'Offer declined');
+        x.disabled = true;   // v6.2: accepting opens the private trade handoff straight away
+        try { const d = await TRN.store.offers.act(x.dataset.offer, 'accept'); TRN.toast('Offer accepted — opening trade details'); location.href = d.handoff?.id ? 'handoff.html?id=' + encodeURIComponent(d.handoff.id) : 'messages.html'; }
+        catch (err) { TRN.toast(err.message); x.disabled = false; }
+      }));
     } catch (err) { panel.innerHTML = `<p class="muted">${esc(err.message)}</p>`; }
   }
   function wireTradeButtons(root = document) {

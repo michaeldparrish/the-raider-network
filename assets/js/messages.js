@@ -84,6 +84,17 @@
         <p class="small-note">This is an illustration of how private messages look — it is not a real conversation. Start one with <b>Message Raider</b> on a Loot Hunt or Trade listing.</p></div>`;
     }
     $('#chatBack').onclick = () => $('.messages-shell').classList.remove('chat-open');
+    if (TRN.mode === 'server' && TRN.handoffs) {   // v6.2: the Messages page is the Trade Handoffs inbox (not a chat)
+      $('.messages-shell').classList.add('hidden');
+      $('#handoffInbox').classList.remove('hidden');
+      $('.page-banner__copy p') && ($('.page-banner__copy p').textContent = 'Your accepted trades in one place: open one to get the other Raider\'s Embark ID and confirm the exchange.');
+      try {
+        const d = await TRN.handoffs.listAll();
+        $('#handoffList').innerHTML = TRN.handoffs.bannerHtml(d.rows, d.unseen) + TRN.handoffs.listHtml(d.rows, 'No accepted trades yet. When you accept an offer, or someone accepts yours, it appears here. <a href="trade.html">Go to the Trade Board →</a>');
+        TRN.handoffs.wireBanner($('#handoffList'));
+      } catch (e) { $('#handoffList').innerHTML = `<p class="empty-note">${esc(e.message)}</p>`; }
+      return;
+    }
     if (TRN.mode === 'server') {   // v6.0: messaging is not on the server yet, so nothing is "sent" that would never arrive
       const n = $('#messagesNotice');
       n.innerHTML = `${TRN.icon('warning')}<div><strong>Private messages are coming soon.</strong> Messages aren't stored on the server yet, so sending is turned off rather than pretending to deliver them. To contact a Raider about a trade, use <a href="trade.html">Respond / Make Offer</a> on the Trade Board — offers are saved and the owner sees them.</div>`;
