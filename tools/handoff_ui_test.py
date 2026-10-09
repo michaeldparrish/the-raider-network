@@ -134,8 +134,12 @@ def main():
             row = bo.locator('#myHandoffs .handoff-row', has_text='Compensator 3')
             check(row.count() == 1 and 'ACCEPTED' in row.inner_text(), 'pre-v6.2 accepted trade is listed with View Trade Details')
             row.locator('a').click(); bo.wait_for_selector('.hp-head')
-            check('Completed before trade handoffs existed' in bo.inner_text('#handoffRoot') and bo.locator('#confirmBtn').count() == 0 and bo.inner_text('#otherEmbarkId') == 'Annika.R#2048',
-                  'it opens read-only with the Embark ID and no confirm button')
+            check('Completed before trade handoffs existed' in bo.inner_text('#handoffRoot') and bo.locator('#confirmBtn').count() == 0 and bo.locator('#shareIdBtn').count() == 1 and bo.locator('#otherEmbarkId').count() == 0,
+                  'it opens read-only with no confirm button; IDs are shared only with an explicit Share button')
+            ann.goto(B + 'profile.html'); ann.wait_for_selector('#myHandoffs .handoff-row'); ann.locator('#myHandoffs .handoff-row', has_text='Compensator 3').locator('a').click(); ann.wait_for_selector('#shareIdBtn')
+            ann.click('#shareIdBtn'); ann.wait_for_selector("text=You've shared your Embark ID")
+            bo.reload(); bo.wait_for_selector('#otherEmbarkId')
+            check(bo.inner_text('#otherEmbarkId') == 'Annika.R#2048', 'after the owner presses Share, the historical handoff shows their Embark ID')
             shot(bo, 'v62-handoff-historical')
             check(srv.sql("SELECT * FROM trade_posts WHERE id = 'trd_legacy1'") == before, 'opening it did not change the historical trade row')
 

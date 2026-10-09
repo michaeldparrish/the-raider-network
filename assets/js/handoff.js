@@ -15,7 +15,7 @@
   };
   const STATUS = {
     AWAITING_EXCHANGE: ['Awaiting exchange', 'status-awaiting'], COMPLETED: ['Completed', 'status-completed'],
-    CANCELLED: ['Cancelled', 'status-closed'], HISTORICAL: ['Completed earlier', 'status-historical'], NOT_OPENED: ['Accepted', 'status-awaiting'],
+    CANCELLED: ['Cancelled', 'status-closed'], HISTORICAL: ['Earlier trade', 'status-historical'], NOT_OPENED: ['Accepted', 'status-awaiting'],
   };
   const chip = s => { const [t, c] = STATUS[s] || [s, 'status-open']; return `<span class="status-chip ${c}">${esc(t.toUpperCase())}</span>`; };
   const CANCEL = { no_show: 'The other Raider didn’t show up', could_not_connect: 'We couldn’t connect in-game', changed_mind: 'Changed my mind', wrong_item: 'Item not as agreed', other: 'Other reason' };
@@ -79,13 +79,25 @@
   function idBlock(h) {
     const o = h.other, you = h.you;
     if (h.status === 'CANCELLED') return `<div class="hp-id hp-id--muted"><small>EMBARK ID</small><p>This trade was cancelled, so ${esc(o.display_name)}'s Embark ID is no longer shown.</p></div>`;
+    if (h.status === 'HISTORICAL') {
+      const hs = h.historical || {};
+      if (!hs.can_share) return `<div class="hp-id hp-id--muted"><small>EMBARK ID</small><p>This offer was accepted before trade handoffs existed and isn't the single, completed trade on this post, so Embark IDs aren't shared here.</p></div>`;
+      const share = hs.you_shared ? `<p class="small-note">You've shared your Embark ID${you.embark_id ? ` (<code>${esc(you.embark_id)}</code>)` : ''} with ${esc(o.display_name)} for this trade.</p>`
+        : `<div class="hp-share"><p>This trade was completed before trade handoffs existed, so Embark IDs were never exchanged. <b>Each Raider chooses whether to share theirs.</b></p><button class="btn btn-primary" id="shareIdBtn" type="button">Share my Embark ID with ${esc(o.display_name)}</button></div>`;
+      const theirsH = o.embark_id ? `<div class="hp-id"><small>${esc(o.display_name.toUpperCase())}'S EMBARK ID</small><div class="hp-id__row"><code id="otherEmbarkId">${esc(o.embark_id)}</code><button class="btn btn-primary" id="copyEmbark" type="button">${TRN.icon('trade')} Copy Embark ID</button></div></div>`
+        : `<div class="hp-id hp-id--muted"><small>EMBARK ID</small><p>${esc(o.display_name)} ${hs.other_opened ? "hasn't saved an Embark ID yet." : "hasn't chosen to share their Embark ID for this trade yet."}</p></div>`;
+      return theirsH + share + (hs.you_shared && !you.embark_id ? mineBlock(h) : '');
+    }
     const theirs = o.embark_id
       ? `<div class="hp-id"><small>${esc(o.display_name.toUpperCase())}'S EMBARK ID</small><div class="hp-id__row"><code id="otherEmbarkId">${esc(o.embark_id)}</code><button class="btn btn-primary" id="copyEmbark" type="button">${TRN.icon('trade')} Copy Embark ID</button></div><span class="small-note">Private: only you and ${esc(o.display_name)} can see this page.</span></div>`
       : `<div class="hp-id hp-id--warn"><small>EMBARK ID</small><p><b>${esc(o.display_name)} hasn't added their Embark ID yet.</b> You need it to find each other in ARC Raiders. It appears here automatically as soon as they save it in My Profile; check back shortly.</p></div>`;
-    const mine = you.embark_id ? `<p class="small-note">Your Embark ID shared with ${esc(o.display_name)}: <code>${esc(you.embark_id)}</code> · <a href="profile.html#embark">change</a></p>`
+    return theirs + mineBlock(h);
+  }
+  function mineBlock(h) {
+    const o = h.other, you = h.you;
+    return you.embark_id ? `<p class="small-note">Your Embark ID shared with ${esc(o.display_name)}: <code>${esc(you.embark_id)}</code> · <a href="profile.html#embark">change</a></p>`
       : `<form class="hp-myid" id="myIdForm"><label><b>Add your Embark ID</b> so ${esc(o.display_name)} can find you<input class="input" name="raider_tag" maxlength="30" placeholder="RaiderName#1234" autocomplete="off" required></label><button class="btn btn-primary">Save</button><span class="form-note" role="status"></span>
           <small class="muted">In ARC Raiders: Main Menu → Social menu (👥) → your profile → <b>Show Discriminator</b>. It looks like <code>DisplayName#1234</code>.</small></form>`;
-    return theirs + mine;
   }
   function agreedBlock(h) {
     const a = h.agreed, ownerIsYou = h.your_role === 'TRADE_OWNER';
@@ -112,12 +124,12 @@
       else if (p.get('offer')) { h = (await API.open(p.get('offer'))).handoff; history.replaceState(null, '', 'handoff.html?id=' + encodeURIComponent(h.id)); }
       else throw new Error('No trade selected.');
     } catch (e) { root.innerHTML = `<div class="notice-bar">${TRN.icon('warning')}<div><strong>${esc(e.message || 'This trade handoff could not be opened.')}</strong> <a href="messages.html">See all your trade handoffs →</a></div></div>`; return; }
-    if (h.unseen) API.seen(h.id).catch(() => {});
+    if (h.unseen && h.status !== 'HISTORICAL') API.seen(h.id).catch(() => {});   // historical: sharing is an explicit button
     render(h);
 
     function render(h) {
       const o = h.other, done = h.status === 'COMPLETED' || h.status === 'HISTORICAL';
-      const head = h.status === 'HISTORICAL' ? `<div class="notice-bar">${TRN.svg('info')}<div><strong>Completed before trade handoffs existed.</strong> Shown so you can find each other again. Nothing here changes the trade's recorded status.</div></div>`
+      const head = h.status === 'HISTORICAL' ? `<div class="notice-bar">${TRN.svg('info')}<div><strong>${h.historical?.trade_completed ? 'Completed before trade handoffs existed.' : 'Accepted before trade handoffs existed.'}</strong> Shown for reference. Nothing here changes the trade's recorded status.</div></div>`
         : h.status === 'COMPLETED' ? `<div class="notice-bar notice-bar--ok">${TRN.svg('check')}<div><strong>Trade completed.</strong> You both confirmed the exchange on ${esc(new Date(h.completed_at).toLocaleString())}.</div></div>`
         : h.status === 'CANCELLED' ? `<div class="notice-bar">${TRN.icon('warning')}<div><strong>This trade was cancelled${h.cancelled?.by_you ? ' by you' : ` by ${esc(o.display_name)}`}.</strong> Reason: ${esc(CANCEL[h.cancelled?.reason] || 'not given')}. The trade post is back on the board.</div></div>` : '';
       const actions = h.status !== 'AWAITING_EXCHANGE' ? '' : `<section class="panel hp-actions">
@@ -144,6 +156,8 @@
         ${actions}${report}
         <p class="small-note hp-foot"><a href="messages.html">← All trade handoffs</a> · Embark IDs are never shown on public pages, profiles or the Trade Board.</p>`;
       $('#copyEmbark')?.addEventListener('click', e => copyText(o.embark_id, e.currentTarget));
+      const sb = $('#shareIdBtn');
+      if (sb) sb.onclick = async () => { sb.disabled = true; try { await API.seen(h.id); render((await API.get(h.id)).handoff); TRN.toast('Embark ID shared'); } catch (err) { TRN.toast(err.message); sb.disabled = false; } };
       const my = $('#myIdForm');
       if (my) my.onsubmit = async e => {
         e.preventDefault(); const note = $('.form-note', my), v = String(new FormData(my).get('raider_tag') || '').trim();

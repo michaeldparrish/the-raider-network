@@ -85,8 +85,11 @@ def main():
         bailie.patch(f'/offers/{o_open}', {'action': 'accept'})
         _, d, _ = carol.post('/trades', {'wanted_item_id': 'light-gun-parts', 'region': 'NA East', 'platform': 'PlayStation'}); t_other = d['trade']['id']
         _, d, _ = dave.post(f'/trades/{t_other}/offers', {'message': 'have 3'}); o_other = d['offer']['id']
+        _, d, _ = carol.post('/trades', {'wanted_item_id': 'arc-alloy', 'region': 'NA East', 'platform': 'PlayStation'}); t_closed = d['trade']['id']
+        _, d, _ = dave.post(f'/trades/{t_closed}/offers', {'message': 'deal?'}); o_closed = d['offer']['id']
+        carol.patch(f'/offers/{o_closed}', {'action': 'accept'}); carol.patch(f'/trades/{t_closed}', {'status': 'CLOSED'})
         before = legacy_rows(old)
-        check(code == 200 and any(r['status'] == 'COMPLETED' for r in before['trade_posts']) and sum(r['status'] == 'ACCEPTED' for r in before['trade_offers']) == 2,
+        check(code == 200 and any(r['status'] == 'COMPLETED' for r in before['trade_posts']) and sum(r['status'] == 'ACCEPTED' for r in before['trade_offers']) == 3,
               'phase A: v6.1 created a COMPLETED trade with an ACCEPTED offer, an ACCEPTED offer on an OPEN trade, and a PENDING offer')
         old.stop()
 
@@ -108,11 +111,21 @@ def main():
             code, d, _ = carol.post(f'/offers/{o_done}/handoff'); check(code == 404, 'third party cannot open a historical handoff (404)')
             code, d, _ = perish.post(f'/offers/{o_done}/handoff'); hd = d['handoff']
             check(code == 200 and hd['status'] == 'HISTORICAL' and not hd['can_confirm'] and not hd['can_cancel'], 'completed historical trade opens as read-only HISTORICAL handoff')
-            check(hd['other']['embark_id'] == 'Bailie0811#2468' and hd['you']['embark_id'] is None, 'historical handoff shows the other Raider\'s Embark ID; flags my missing ID')
+            check(hd['other']['embark_id'] is None and hd['historical'] == {'trade_completed': True, 'can_share': True, 'other_opened': False, 'you_shared': False},
+                  'historical: pre-v6.2 private IDs stay hidden; opening the page shares nothing')
             check(hd['agreed']['owner_gives']['name'] == 'Tempest Blueprint' and hd['agreed']['sender_gives']['name'] == 'Compensator III', 'agreed items come from the recorded trade and offer')
             code, d2, _ = bailie.post(f'/offers/{o_done}/handoff'); check(code == 200 and d2['handoff']['id'] == hd['id'], 'owner opens the same historical handoff (idempotent)')
+            _, d3, _ = perish.get(f"/handoffs/{hd['id']}"); check(d3['handoff']['other']['embark_id'] is None, 'the owner opening it shares nothing either')
+            bailie.post(f"/handoffs/{hd['id']}/seen"); _, d3, _ = perish.get(f"/handoffs/{hd['id']}")
+            check(d3['handoff']['other']['embark_id'] == 'Bailie0811#2468', 'after the owner presses Share, the sender sees their Embark ID (explicit opt-in)')
+            _, d3, _ = bailie.get(f"/handoffs/{hd['id']}"); check(d3['handoff']['other']['embark_id'] is None and not d3['handoff']['historical']['other_opened'], 'the sender has not shared, so the owner sees nothing from them')
+            code, d4, _ = dave.post(f'/offers/{o_closed}/handoff'); carol.post(f'/offers/{o_closed}/handoff'); _, d4, _ = dave.get(f"/handoffs/{d4['handoff']['id']}")
+            code5, _, _ = carol.post(f"/handoffs/{d4['handoff']['id']}/seen"); _, d4, _ = dave.get(f"/handoffs/{d4['handoff']['id']}")
+            check(d4['handoff']['status'] == 'HISTORICAL' and d4['handoff']['other']['embark_id'] is None and code5 == 409 and not d4['handoff']['historical']['can_share'],
+                  'historical offer on a CLOSED trade (deal fell through) can never share Embark IDs')
             code, _, _ = perish.post(f"/handoffs/{hd['id']}/confirm"); check(code == 409, 'historical handoff cannot be confirmed (no status change)')
-            code, _, _ = perish.post(f'/offers/{o_open}/handoff'); _, d, _ = bailie.get('/handoffs')
+            code, d, _ = perish.post(f'/offers/{o_open}/handoff'); check(code == 409 and 'Bailie' in d['error']['message'], 'offer sender cannot turn an old accepted offer into a live exchange (owner must open it)')
+            code, _, _ = bailie.post(f'/offers/{o_open}/handoff'); _, d, _ = bailie.get('/handoffs')
             live_legacy = [x for x in d['handoffs'] if x['offer']['id'] == o_open][0]
             check(live_legacy['status'] == 'AWAITING_EXCHANGE', 'accepted offer on a still-OPEN trade opens as AWAITING_EXCHANGE')
             check(legacy_rows(srv) == before, 'opening historical handoffs changed no trade, offer or user row')
@@ -185,6 +198,10 @@ def main():
             _, d, _ = anon.get(f'/trades/{tid}'); check(d['trade']['status'] == 'COMPLETED' and d['trade']['closed_at'], 'trade is COMPLETED only after both confirmations')
             st = srv.sql(f"SELECT status FROM trade_offers WHERE id = '{ohal}'")[0]['status']; check(st == 'DECLINED', 'remaining pending offers are declined when the trade completes')
             code, _, _ = erin.post(f'/handoffs/{hid}/cancel', {'reason': 'other'}); check(code == 409, 'a completed handoff cannot be cancelled')
+            code, _, _ = erin.delete(f'/trades/{tid}'); check(code == 409, 'a trade with a handoff on record cannot be deleted (keeps the record and any report)')
+            _, d, _ = erin.post('/trades', {'wanted_item_id': 'arc-circuitry', 'region': 'NA East', 'platform': 'PlayStation'}); tsolo = d['trade']['id']
+            code, _, _ = erin.patch(f'/trades/{tsolo}', {'status': 'COMPLETED'}); check(code == 409, 'no Raider can mark a trade completed alone, even with no offer accepted')
+            code, _, _ = erin.delete(f'/trades/{tsolo}'); check(code == 200, 'a trade without any handoff can still be deleted')
 
             # cancellation + reporting
             _, d, _ = erin.post('/trades', {'wanted_item_id': 'bobcat-blueprint', 'region': 'NA East', 'platform': 'PlayStation'}); t2 = d['trade']['id']

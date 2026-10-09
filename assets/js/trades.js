@@ -69,7 +69,7 @@
       <div class="offer-panel hidden" data-offers-for="${id}"></div></div>`;
     return `<div class="owner-bar owner-bar--server"><span>Your listing</span>
       ${t.status !== 'completed' ? `<button class="btn btn-ghost btn-xs" data-edit="${id}">Edit</button>` : ''}
-      ${t.status === 'open' ? `<button class="btn btn-ghost btn-xs" data-set-status="${id}" data-to="closed">Close</button><button class="btn btn-ghost btn-xs" data-set-status="${id}" data-to="completed">Mark completed</button>` : ''}
+      ${t.status === 'open' ? `<button class="btn btn-ghost btn-xs" data-set-status="${id}" data-to="closed">Close</button>` : ''}
       ${t.status === 'closed' ? `<button class="btn btn-ghost btn-xs" data-set-status="${id}" data-to="open">Reopen</button>` : ''}
       <button class="btn btn-ghost btn-xs" data-offers="${id}" aria-expanded="false">Offers${t.pendingOffers ? ` <b class="count-pill">${t.pendingOffers}</b>` : ''}</button>
       <button class="btn btn-ghost btn-xs btn-danger" data-delete="${id}">Delete</button>

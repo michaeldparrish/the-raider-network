@@ -125,9 +125,13 @@ def main():
             c2.locator('[data-set-status][data-to=closed]').click(); pg2.wait_for_timeout(800)
             pg2.select_option('#tradeStatus', 'closed'); pg2.wait_for_timeout(200)
             check(pg2.locator(f'#{tid}').is_visible() and 'CLOSED' in pg2.locator(f'#{tid} .status-chip').first.inner_text(), 'A closes the trade through the UI')
-            pg2.locator(f'#{tid} [data-delete]').click(); pg2.locator(f'#{tid} [data-delete]').click(); pg2.wait_for_timeout(1000)
-            check(pg2.locator(f'#{tid}').count() == 0, 'A deletes the trade (two-step confirm)')
-            check(srv.sql(f"SELECT COUNT(*) AS n FROM trade_posts WHERE id = '{tid}'")[0]['n'] == 0, 'trade removed from D1')
+            res = pg2.evaluate("async id => { try { await TRN.store.deleteTrade(id); return 'deleted'; } catch (e) { return String(e.status); } }", tid)
+            check(res == '409', 'v6.2: a trade with a handoff on record can be closed but not deleted')
+            tid2 = pg2.evaluate("async () => (await TRN.store.createTrade({ lookingFor: [{ itemId: 'arc-alloy', name: 'ARC Alloy', quantity: 1 }], offering: [], openToOffers: true, region: 'NA East', platform: 'PC', notes: 'delete me' })).id")
+            pg2.goto(B + 'trade.html', wait_until='networkidle'); pg2.select_option('#tradeStatus', 'all') if pg2.locator('#tradeStatus option[value=all]').count() else None
+            pg2.locator(f'#{tid2} [data-delete]').click(); pg2.locator(f'#{tid2} [data-delete]').click(); pg2.wait_for_timeout(1000)
+            check(pg2.locator(f'#{tid2}').count() == 0, 'A deletes a trade without a handoff (two-step confirm)')
+            check(srv.sql(f"SELECT COUNT(*) AS n FROM trade_posts WHERE id = '{tid2}'")[0]['n'] == 0, 'trade removed from D1')
             check(not (errs + errs2 + errs3), f'no JavaScript errors ({(errs + errs2 + errs3)[:3]})')
             br.close()
     finally:

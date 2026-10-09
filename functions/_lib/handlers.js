@@ -208,6 +208,7 @@ export async function updateTrade(ctx) {
   if (body.status !== undefined) {
     status = String(body.status).toUpperCase();
     if (!STATUSES.includes(status)) throw bad('Status must be OPEN, CLOSED or COMPLETED.', 'status');
+    if (status === 'COMPLETED' && t.status !== 'COMPLETED') throw conflict('Trades are marked completed when both Raiders confirm the exchange in the trade handoff. If the trade happened elsewhere, close the post instead.', 'status');
     if (status === 'OPEN') closed_at = null; else if (status !== t.status) closed_at = nowIso();
   }
   const changed = await repo.updateTrade(ctx.db, t.id, me.id, { ...f, status, closed_at });
@@ -220,6 +221,7 @@ export async function deleteTrade(ctx) {
   const me = await requireUser(ctx);
   const t = await ownedTrade(ctx, me);
   if (await repo.activeHandoffForTrade(ctx.db, t.id)) throw conflict('This trade has an accepted offer awaiting the in-game exchange. Cancel the handoff before deleting the trade.');
+  if (await repo.anyHandoffForTrade(ctx.db, t.id)) throw conflict('This trade has a trade handoff on record, so it can be closed but not deleted.');
   const n = await repo.deleteTrade(ctx.db, t.id, me.id);
   if (!n) throw forbidden();
   return json({ ok: true, deleted: t.id });
@@ -317,19 +319,34 @@ export async function openHandoffForOffer(ctx) {
   if (o.status !== 'ACCEPTED') throw conflict('A trade handoff opens once the offer has been accepted.');
   let h = await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id);
   if (!h) {
-    await rateLimit(ctx.db, 'handoff-open:' + me.id, 60, 3600, tooMany);
+    const isOwner = o.trade_owner_id === me.id;
     const live = o.trade_status === 'OPEN' && !(await repo.activeHandoffForTrade(ctx.db, o.trade_post_id));
-    try { await repo.createHandoffForAcceptedOffer(ctx.db, { id: randomId('hnd'), offerId: o.id, status: live ? 'AWAITING_EXCHANGE' : 'HISTORICAL' }); }
-    catch (e) { if (!/UNIQUE/i.test(String(e.message))) throw e; await repo.createHandoffForAcceptedOffer(ctx.db, { id: randomId('hnd'), offerId: o.id, status: 'HISTORICAL' }); }
+    /* Only the trade owner can turn an old accepted offer on a still-open trade into a live exchange
+       (otherwise the sender could lock the owner's post). */
+    if (live && !isOwner) throw conflict(`${o.trade_owner_display_name} needs to open this trade's details first (My Profile → Accepted trades). It will appear here once they do.`);
+    await rateLimit(ctx.db, 'handoff-open:' + me.id, 60, 3600, tooMany);
+    const create = status => repo.createHandoffForAcceptedOffer(ctx.db, { id: randomId('hnd'), offerId: o.id, status });
+    try { await create(live ? 'AWAITING_EXCHANGE' : 'HISTORICAL'); }
+    catch (e) {
+      if (!/UNIQUE/i.test(String(e.message))) throw e;
+      // either the same offer was opened concurrently (row now exists) or another live handoff appeared on the trade
+      if (!(await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id))) {
+        try { await create('HISTORICAL'); } catch (e2) { if (!/UNIQUE/i.test(String(e2.message))) throw e2; }
+      }
+    }
     h = await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id);
     if (!h) throw notFound(HANDOFF_404);
   }
+  /* Opening a live handoff counts as seeing it (clears the banner). For a HISTORICAL handoff "seen" means
+     "I share my Embark ID", so it is only recorded through the explicit Share button (POST /handoffs/:id/seen). */
+  if (h.status !== 'HISTORICAL') { await repo.markHandoffSeen(ctx.db, h.id, me.id); h = await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id); }
   return json({ handoff: repo.handoffOut(h, me.id) });
 }
 
 export async function seenHandoff(ctx) {
   const me = await requireUser(ctx);
-  await participantHandoff(ctx, me);
+  const h = await participantHandoff(ctx, me);
+  if (h.status === 'HISTORICAL' && !h.share_ids) throw conflict('Embark IDs are not shared for this earlier offer.');
   await repo.markHandoffSeen(ctx.db, ctx.params.id, me.id);
   return json({ ok: true });
 }

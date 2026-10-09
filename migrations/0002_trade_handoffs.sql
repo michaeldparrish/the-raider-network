@@ -25,6 +25,7 @@ CREATE TABLE trade_handoffs (
   cancelled_by               TEXT REFERENCES users (id) ON DELETE SET NULL,
   cancel_reason              TEXT,
   completed_at               TEXT,
+  share_ids                  INTEGER NOT NULL DEFAULT 1 CHECK (share_ids IN (0, 1)),  -- HISTORICAL only: may IDs ever be shared? fixed at creation
   created_at                 TEXT NOT NULL,
   updated_at                 TEXT NOT NULL,
   CHECK (owner_id <> counterparty_id)
@@ -38,9 +39,9 @@ CREATE INDEX trade_handoffs_cp_idx           ON trade_handoffs (counterparty_id,
 -- Reports about an unsuccessful or abusive exchange. Never returned by any public endpoint.
 CREATE TABLE trade_reports (
   id           TEXT PRIMARY KEY,                                                  -- 'rpt_' + random
-  handoff_id   TEXT NOT NULL REFERENCES trade_handoffs (id) ON DELETE CASCADE,
-  reporter_id  TEXT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-  reported_id  TEXT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+  handoff_id   TEXT NOT NULL REFERENCES trade_handoffs (id),                         -- no cascade: a report can't be erased by deleting
+  reporter_id  TEXT NOT NULL REFERENCES users (id),                                  -- the trade or handoff it is about (the API also
+  reported_id  TEXT NOT NULL REFERENCES users (id),                                  -- refuses to delete trades that have a handoff)
   reason       TEXT NOT NULL CHECK (reason IN ('no_show', 'did_not_deliver', 'scam_attempt', 'abusive', 'other')),
   details      TEXT,
   status       TEXT NOT NULL DEFAULT 'OPEN' CHECK (status IN ('OPEN', 'REVIEWED')),
