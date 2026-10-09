@@ -20,6 +20,13 @@ const ROUTES = [
   ['GET', '/api/trades/:id/offers', h.listOffers],
   ['POST', '/api/trades/:id/offers', h.createOffer],
   ['PATCH', '/api/offers/:id', h.updateOffer],
+  ['POST', '/api/offers/:id/handoff', h.openHandoffForOffer],
+  ['GET', '/api/handoffs', h.listHandoffs],
+  ['GET', '/api/handoffs/:id', h.getHandoff],
+  ['POST', '/api/handoffs/:id/seen', h.seenHandoff],
+  ['POST', '/api/handoffs/:id/confirm', h.confirmHandoff],
+  ['POST', '/api/handoffs/:id/cancel', h.cancelHandoff],
+  ['POST', '/api/handoffs/:id/report', h.reportHandoff],
   ['GET', '/api/stats', h.stats],
 ].map(([method, path, fn]) => {
   const keys = [];

@@ -65,3 +65,16 @@ export function oneOf(v, list, { field, label = field, required = true }) {
   if (!list.includes(v)) throw bad(`Please choose a valid ${label.toLowerCase()}.`, field);
   return v;
 }
+
+/* Embark ID (stored in users.raider_tag). Format per Embark support (id.embark.games FAQ 241): DisplayName#1234.
+ * Display name: 2–16 characters, starts with a letter or number; letters, numbers and - _ . (never two symbols in a row).
+ * Discriminator: Embark's example shows 4 digits but does not state the length, so 3–6 digits are accepted.
+ * Spaces around '#' are removed. Empty = not set. */
+const EMBARK_RE = /^[\p{L}\p{N}](?:[\p{L}\p{N}]|[-_.](?=[\p{L}\p{N}])){1,15}#\d{3,6}$/u;
+export function embarkId(value) {
+  const s = text(value, { field: 'raider_tag', label: 'Embark ID', max: 30 });
+  if (!s) return null;
+  const n = s.replace(/\s*#\s*/, '#');
+  if (!EMBARK_RE.test(n)) throw bad('Enter your Embark ID as it appears in ARC Raiders, for example RaiderName#1234 (Social menu → your profile → Show Discriminator).', 'raider_tag');
+  return n;
+}

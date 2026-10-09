@@ -13,7 +13,8 @@ export const selfUser = u => u && ({ ...publicUser(u), email: u.email, raider_ta
 
 const TRADE_SELECT = `
   SELECT t.*, u.username AS owner_username, u.display_name AS owner_display_name, u.avatar_url AS owner_avatar_url,
-         (SELECT COUNT(*) FROM trade_offers o WHERE o.trade_post_id = t.id AND o.status = 'PENDING') AS pending_offers
+         (SELECT COUNT(*) FROM trade_offers o WHERE o.trade_post_id = t.id AND o.status = 'PENDING') AS pending_offers,
+         EXISTS (SELECT 1 FROM trade_handoffs h WHERE h.trade_post_id = t.id AND h.status = 'AWAITING_EXCHANGE') AS awaiting_exchange
     FROM trade_posts t JOIN users u ON u.id = t.user_id`;
 
 export const tradeOut = (t, viewerId) => t && ({
@@ -24,6 +25,8 @@ export const tradeOut = (t, viewerId) => t && ({
   created_at: t.created_at, updated_at: t.updated_at, closed_at: t.closed_at,
   owner: { id: t.user_id, username: t.owner_username, display_name: t.owner_display_name, avatar_url: t.owner_avatar_url },
   pending_offers: t.pending_offers || 0, is_mine: !!viewerId && viewerId === t.user_id,
+  /* v6.2: public "Awaiting exchange" label only. Who the other Raider is and any Embark ID are never part of a trade. */
+  display_status: t.awaiting_exchange ? 'AWAITING_EXCHANGE' : t.status,
 });
 
 export const offerOut = o => o && ({
@@ -154,4 +157,133 @@ export async function stats(db) {
       (SELECT COUNT(*) FROM trade_posts WHERE status = 'OPEN') AS open_trades,
       (SELECT COUNT(*) FROM trade_posts WHERE status = 'COMPLETED') AS completed_trades`).first();
   return { raiders: r.raiders, open_trades: r.open_trades, completed_trades: r.completed_trades };
+}
+
+
+/* ---------------------------------------------------------------- trade handoffs (v6.2)
+ * Every query that returns a handoff includes "AND (h.owner_id = ?me OR h.counterparty_id = ?me)" in SQL, so a handoff
+ * row can never be read for a non-participant even if a handler check were missing. Embark IDs (users.raider_tag) are
+ * selected ONLY here and only ever leave the server through handoffOut(), for an authorised participant. */
+const HANDOFF_SELECT = `
+  SELECT h.*,
+         t.wanted_item_id, t.wanted_item_name, t.wanted_quantity, t.offered_item_id AS trade_offered_item_id,
+         t.offered_item_name AS trade_offered_item_name, t.offered_quantity AS trade_offered_quantity,
+         t.status AS trade_status, t.platform AS trade_platform, t.region AS trade_region, t.created_at AS trade_created_at,
+         o.offered_item_id AS offer_item_id, o.offered_item_name AS offer_item_name, o.message AS offer_message, o.status AS offer_status,
+         ou.username AS owner_username, ou.display_name AS owner_display_name, ou.platform AS owner_platform, ou.region AS owner_region,
+         ou.avatar_url AS owner_avatar_url, ou.raider_tag AS owner_embark_id,
+         cu.username AS cp_username, cu.display_name AS cp_display_name, cu.platform AS cp_platform, cu.region AS cp_region,
+         cu.avatar_url AS cp_avatar_url, cu.raider_tag AS cp_embark_id
+    FROM trade_handoffs h
+    JOIN trade_posts t ON t.id = h.trade_post_id
+    JOIN trade_offers o ON o.id = h.offer_id
+    JOIN users ou ON ou.id = h.owner_id
+    JOIN users cu ON cu.id = h.counterparty_id`;
+const PARTICIPANT = '(h.owner_id = ?1 OR h.counterparty_id = ?1)';
+
+export const handoffForParticipant = (db, id, me) => db.prepare(`${HANDOFF_SELECT} WHERE h.id = ?2 AND ${PARTICIPANT}`).bind(me, id).first();
+export const handoffByOfferForParticipant = (db, offerId, me) => db.prepare(`${HANDOFF_SELECT} WHERE h.offer_id = ?2 AND ${PARTICIPANT}`).bind(me, offerId).first();
+export const handoffsForUser = async (db, me) => (await db.prepare(`${HANDOFF_SELECT} WHERE ${PARTICIPANT} ORDER BY h.updated_at DESC LIMIT 100`).bind(me).all()).results || [];
+export const activeHandoffForTrade = (db, tradeId) => db.prepare(`SELECT id FROM trade_handoffs WHERE trade_post_id = ?1 AND status = 'AWAITING_EXCHANGE'`).bind(tradeId).first();
+
+/* Accepted offers I'm part of that have no handoff row yet (accepted before v6.2). Read-only; the row is created on demand. */
+export const acceptedOffersWithoutHandoff = async (db, me) => (await db.prepare(`${OFFER_SELECT}
+    WHERE o.status = 'ACCEPTED' AND (o.from_user_id = ?1 OR t.user_id = ?1)
+      AND NOT EXISTS (SELECT 1 FROM trade_handoffs h WHERE h.offer_id = o.id)
+    ORDER BY o.updated_at DESC LIMIT 100`).bind(me).all()).results || [];
+
+/* Accept an offer and open its handoff atomically (D1 batch = one transaction). The INSERT only happens if the offer
+   really is ACCEPTED now; the partial unique index makes a second concurrent acceptance on the same trade fail, which
+   rolls the whole batch back (including the offer status). */
+export async function acceptOfferWithHandoff(db, offerId, ownerId, handoffId) {
+  const now = nowIso();
+  const res = await db.batch([
+    db.prepare(`UPDATE trade_offers SET status = 'ACCEPTED', updated_at = ?2 WHERE id = ?1 AND status = 'PENDING'
+                  AND trade_post_id IN (SELECT id FROM trade_posts WHERE user_id = ?3 AND status = 'OPEN')`).bind(offerId, now, ownerId),
+    db.prepare(`INSERT INTO trade_handoffs (id, trade_post_id, offer_id, owner_id, counterparty_id, status, owner_seen_at, created_at, updated_at)
+                SELECT ?1, o.trade_post_id, o.id, t.user_id, o.from_user_id, 'AWAITING_EXCHANGE', ?3, ?3, ?3
+                  FROM trade_offers o JOIN trade_posts t ON t.id = o.trade_post_id
+                 WHERE o.id = ?2 AND o.status = 'ACCEPTED' AND t.user_id = ?4`).bind(handoffId, offerId, now, ownerId),
+  ]);
+  return res[0].meta.changes === 1 && res[1].meta.changes === 1;
+}
+
+/* Create the handoff for an offer that was accepted before v6.2. Never changes the trade or the offer.
+   status: 'AWAITING_EXCHANGE' (trade still OPEN, no other live handoff) or 'HISTORICAL' (read-only). */
+export async function createHandoffForAcceptedOffer(db, { id, offerId, status }) {
+  const now = nowIso();
+  const r = await db.prepare(`INSERT OR IGNORE INTO trade_handoffs (id, trade_post_id, offer_id, owner_id, counterparty_id, status, created_at, updated_at)
+      SELECT ?1, o.trade_post_id, o.id, t.user_id, o.from_user_id, ?3, ?4, ?4
+        FROM trade_offers o JOIN trade_posts t ON t.id = o.trade_post_id
+       WHERE o.id = ?2 AND o.status = 'ACCEPTED' AND t.user_id <> o.from_user_id`).bind(id, offerId, status, now).run();
+  return r.meta.changes;
+}
+
+export async function markHandoffSeen(db, id, me) {
+  const now = nowIso();
+  await db.batch([
+    db.prepare(`UPDATE trade_handoffs SET owner_seen_at = ?3 WHERE id = ?1 AND owner_id = ?2 AND owner_seen_at IS NULL`).bind(id, me, now),
+    db.prepare(`UPDATE trade_handoffs SET counterparty_seen_at = ?3 WHERE id = ?1 AND counterparty_id = ?2 AND counterparty_seen_at IS NULL`).bind(id, me, now),
+  ]);
+}
+
+/* Record MY confirmation only (the column is chosen by role in SQL, never by the client). When both confirmations exist,
+   the same batch completes the handoff, marks the trade COMPLETED and declines the remaining pending offers.
+   All statements are conditional, so repeating the request or two racing confirmations cannot double-complete. */
+export async function confirmHandoff(db, id, me) {
+  const now = nowIso();
+  const both = `owner_confirmed_at IS NOT NULL AND counterparty_confirmed_at IS NOT NULL`;
+  const res = await db.batch([
+    db.prepare(`UPDATE trade_handoffs SET owner_confirmed_at = ?3, updated_at = ?3 WHERE id = ?1 AND owner_id = ?2 AND status = 'AWAITING_EXCHANGE' AND owner_confirmed_at IS NULL`).bind(id, me, now),
+    db.prepare(`UPDATE trade_handoffs SET counterparty_confirmed_at = ?3, updated_at = ?3 WHERE id = ?1 AND counterparty_id = ?2 AND status = 'AWAITING_EXCHANGE' AND counterparty_confirmed_at IS NULL`).bind(id, me, now),
+    db.prepare(`UPDATE trade_posts SET status = 'COMPLETED', closed_at = ?2, updated_at = ?2
+                 WHERE status = 'OPEN' AND id = (SELECT trade_post_id FROM trade_handoffs WHERE id = ?1 AND status = 'AWAITING_EXCHANGE' AND ${both})`).bind(id, now),
+    db.prepare(`UPDATE trade_offers SET status = 'DECLINED', updated_at = ?2
+                 WHERE status = 'PENDING' AND trade_post_id = (SELECT trade_post_id FROM trade_handoffs WHERE id = ?1 AND status = 'AWAITING_EXCHANGE' AND ${both})`).bind(id, now),
+    db.prepare(`UPDATE trade_handoffs SET status = 'COMPLETED', completed_at = ?2, updated_at = ?2 WHERE id = ?1 AND status = 'AWAITING_EXCHANGE' AND ${both}`).bind(id, now),
+  ]);
+  return { recorded: res[0].meta.changes + res[1].meta.changes, completed: res[4].meta.changes === 1 };
+}
+
+export async function cancelHandoff(db, id, me, reason) {
+  const now = nowIso();
+  const r = await db.prepare(`UPDATE trade_handoffs SET status = 'CANCELLED', cancelled_by = ?2, cancel_reason = ?3, updated_at = ?4
+       WHERE id = ?1 AND status = 'AWAITING_EXCHANGE' AND (owner_id = ?2 OR counterparty_id = ?2)`).bind(id, me, reason, now).run();
+  return r.meta.changes;
+}
+
+export async function createReport(db, r) {
+  await db.prepare(`INSERT INTO trade_reports (id, handoff_id, reporter_id, reported_id, reason, details, status, created_at)
+                    VALUES (?1, ?2, ?3, ?4, ?5, ?6, 'OPEN', ?7)`).bind(r.id, r.handoff_id, r.reporter_id, r.reported_id, r.reason, r.details, nowIso()).run();
+}
+export const reportExists = async (db, handoffId, me) => !!(await db.prepare('SELECT 1 FROM trade_reports WHERE handoff_id = ?1 AND reporter_id = ?2').bind(handoffId, me).first());
+
+/* Shape for the two participants only. "you" / "other" are resolved from the session user, never from the request. */
+export function handoffOut(h, me, extra = {}) {
+  if (!h) return null;
+  const iAmOwner = h.owner_id === me;
+  const side = isOwner => {
+    const k = isOwner ? 'owner' : 'cp';
+    return { id: isOwner ? h.owner_id : h.counterparty_id, username: h[k + '_username'], display_name: h[k + '_display_name'],
+      platform: h[k + '_platform'], region: h[k + '_region'], avatar_url: h[k + '_avatar_url'], embark_id: h[k + '_embark_id'] || null,
+      role: isOwner ? 'TRADE_OWNER' : 'OFFER_SENDER', confirmed_at: (isOwner ? h.owner_confirmed_at : h.counterparty_confirmed_at) || null };
+  };
+  const you = side(iAmOwner), other = side(!iAmOwner);
+  if (h.status === 'CANCELLED') other.embark_id = null;          // a cancelled exchange no longer reveals the other Raider's ID
+  const ownerGives = h.trade_offered_item_name ? { item_id: h.trade_offered_item_id, name: h.trade_offered_item_name, quantity: h.trade_offered_quantity || 1 } : null;
+  const senderGives = h.offer_item_name ? { item_id: h.offer_item_id, name: h.offer_item_name, quantity: null } : null;
+  return {
+    id: h.id, status: h.status, created_at: h.created_at, updated_at: h.updated_at, completed_at: h.completed_at,
+    cancelled: h.status === 'CANCELLED' ? { by_you: h.cancelled_by === me, reason: h.cancel_reason } : null,
+    trade: { id: h.trade_post_id, status: h.trade_status, platform: h.trade_platform, region: h.trade_region, created_at: h.trade_created_at,
+             wanted: { item_id: h.wanted_item_id, name: h.wanted_item_name, quantity: h.wanted_quantity } },
+    offer: { id: h.offer_id, status: h.offer_status, message: h.offer_message },
+    /* What each side agreed to hand over, as recorded. null = not specified in the trade/offer (nothing is invented). */
+    agreed: { owner_gives: ownerGives, sender_gives: senderGives, owner_wants: { item_id: h.wanted_item_id, name: h.wanted_item_name, quantity: h.wanted_quantity } },
+    you, other, your_role: iAmOwner ? 'TRADE_OWNER' : 'OFFER_SENDER',
+    unseen: !(iAmOwner ? h.owner_seen_at : h.counterparty_seen_at),
+    can_confirm: h.status === 'AWAITING_EXCHANGE' && !you.confirmed_at,
+    can_cancel: h.status === 'AWAITING_EXCHANGE',
+    ...extra,
+  };
 }

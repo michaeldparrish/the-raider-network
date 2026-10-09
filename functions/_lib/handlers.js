@@ -7,14 +7,14 @@ import { reference } from './reference.js';
 import * as v from './validate.js';
 import * as repo from './repo.js';
 
-export const API_VERSION = '6.0';
+export const API_VERSION = '6.2';
 
 /* ---------------------------------------------------------------- health */
 export async function health(ctx) {
   await ctx.db.prepare('SELECT 1 AS ok').first();
-  const t = await ctx.db.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name IN ('users','sessions','trade_posts','trade_offers','rate_limits')").all();
+  const t = await ctx.db.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name IN ('users','sessions','trade_posts','trade_offers','rate_limits','trade_handoffs','trade_reports')").all();
   const tables = (t.results || []).map(r => r.name);
-  const migrated = tables.length === 5;
+  const migrated = tables.length === 7;   // v6.2 needs migration 0002 (trade_handoffs, trade_reports)
   return json({ ok: migrated, api: API_VERSION, database: 'connected', migrated, ...(migrated ? {} : { hint: 'Run the D1 migrations (see docs/CLOUDFLARE-BACKEND-SETUP.md).' }) }, migrated ? 200 : 503);
 }
 
@@ -40,7 +40,7 @@ export async function register(ctx) {
   const avatar_url = v.avatar(body.avatar_url) || 'raiders/raider-solo-scout.webp';
   const region = v.oneOf(body.region || null, ref.regions, { field: 'region', label: 'Region', required: false });
   const platform = v.oneOf(body.platform || null, ref.platforms, { field: 'platform', label: 'Platform', required: false });
-  const raider_tag = v.text(body.raider_tag, { field: 'raider_tag', label: 'Raider tag', max: 50 });
+  const raider_tag = v.embarkId(body.raider_tag);
 
   if (await repo.usernameTaken(db, username)) throw conflict('That username is already taken.', 'username');
   if (await repo.emailTaken(db, email)) throw conflict('An account with that email already exists. Try logging in.', 'email');
@@ -107,7 +107,7 @@ export async function updateMe(ctx) {
     avatar_url: body.avatar_url !== undefined ? (v.avatar(body.avatar_url) || me.avatar_url) : me.avatar_url,
     region: body.region !== undefined ? v.oneOf(body.region || null, ref.regions, { field: 'region', label: 'Region', required: false }) : me.region,
     platform: body.platform !== undefined ? v.oneOf(body.platform || null, ref.platforms, { field: 'platform', label: 'Platform', required: false }) : me.platform,
-    raider_tag: body.raider_tag !== undefined ? v.text(body.raider_tag, { field: 'raider_tag', label: 'Raider tag', max: 50 }) : me.raider_tag,
+    raider_tag: body.raider_tag !== undefined && String(body.raider_tag ?? '').trim() !== (me.raider_tag || '') ? v.embarkId(body.raider_tag) : me.raider_tag,
   };
   const u = await repo.updateUserProfile(ctx.db, me.id, patch);
   return json({ user: repo.selfUser(u) });
@@ -199,6 +199,7 @@ export async function updateTrade(ctx) {
   const t = await ownedTrade(ctx, me);
   const editing = Object.keys(body).some(k => k !== 'status');
   if (t.status === 'COMPLETED') throw conflict('Completed trades can no longer be changed.');
+  if (await repo.activeHandoffForTrade(ctx.db, t.id)) throw conflict('This trade has an accepted offer awaiting the in-game exchange. Both Raiders confirm it in the trade handoff, or cancel the handoff first.');
   const f = editing ? tradeFields(body, await reference(ctx.env, ctx.request), t) : {
     wanted_item_id: t.wanted_item_id, wanted_item_name: t.wanted_item_name, wanted_quantity: t.wanted_quantity, offered_item_id: t.offered_item_id,
     offered_item_name: t.offered_item_name, offered_quantity: t.offered_quantity, open_to_offers: !!t.open_to_offers, region: t.region, platform: t.platform,
@@ -218,6 +219,7 @@ export async function updateTrade(ctx) {
 export async function deleteTrade(ctx) {
   const me = await requireUser(ctx);
   const t = await ownedTrade(ctx, me);
+  if (await repo.activeHandoffForTrade(ctx.db, t.id)) throw conflict('This trade has an accepted offer awaiting the in-game exchange. Cancel the handoff before deleting the trade.');
   const n = await repo.deleteTrade(ctx.db, t.id, me.id);
   if (!n) throw forbidden();
   return json({ ok: true, deleted: t.id });
@@ -264,8 +266,106 @@ export async function updateOffer(ctx) {
     status = 'WITHDRAWN';
   } else throw bad('Action must be accept, decline or withdraw.', 'action');
   if (o.status !== 'PENDING') throw conflict(`This offer is already ${o.status.toLowerCase()}.`);
+  if (status === 'ACCEPTED') {
+    if (await repo.activeHandoffForTrade(ctx.db, o.trade_post_id)) throw conflict('You already accepted an offer on this trade. Finish or cancel that trade handoff before accepting another.');
+    let ok = false;
+    try { ok = await repo.acceptOfferWithHandoff(ctx.db, o.id, me.id, randomId('hnd')); }
+    catch (e) { if (/UNIQUE/i.test(String(e.message))) throw conflict('Another offer on this trade was just accepted.'); throw e; }
+    if (!ok) throw conflict('This offer was already answered.');
+    const h = await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id);
+    return json({ offer: repo.offerOut(await repo.offerById(ctx.db, o.id)), handoff: h ? { id: h.id, status: h.status } : null });
+  }
   if (!(await repo.setOfferStatus(ctx.db, o.id, status))) throw conflict('This offer was already answered.');
   return json({ offer: repo.offerOut(await repo.offerById(ctx.db, o.id)) });
+}
+
+/* ---------------------------------------------------------------- trade handoffs (v6.2)
+ * Participant-only. A non-participant gets 404 (the same as "does not exist") so handoff IDs reveal nothing.
+ * The acting Raider always comes from the session cookie; the role (owner / offer sender) is derived in SQL. */
+const HANDOFF_404 = 'That trade handoff was not found.';
+const CANCEL_REASONS = ['no_show', 'could_not_connect', 'changed_mind', 'wrong_item', 'other'];
+const REPORT_REASONS = ['no_show', 'did_not_deliver', 'scam_attempt', 'abusive', 'other'];
+
+async function participantHandoff(ctx, me) {
+  const h = await repo.handoffForParticipant(ctx.db, ctx.params.id, me.id);
+  if (!h) throw notFound(HANDOFF_404);
+  return h;
+}
+
+export async function listHandoffs(ctx) {
+  const me = await requireUser(ctx);
+  const [rows, legacy] = await Promise.all([repo.handoffsForUser(ctx.db, me.id), repo.acceptedOffersWithoutHandoff(ctx.db, me.id)]);
+  /* Offers accepted before v6.2 are listed so they can be opened; no Embark ID is included until the handoff is opened. */
+  const pending = legacy.map(o => ({ id: null, offer_id: o.id, status: 'NOT_OPENED', trade: { id: o.trade_post_id, status: o.trade_status, wanted: { item_id: o.trade_wanted_item_id, name: o.trade_wanted_name } },
+    other: o.trade_owner_id === me.id ? { username: o.from_username, display_name: o.from_display_name } : { username: o.trade_owner_username, display_name: o.trade_owner_display_name },
+    your_role: o.trade_owner_id === me.id ? 'TRADE_OWNER' : 'OFFER_SENDER', updated_at: o.updated_at }));
+  const list = rows.map(h => { const x = repo.handoffOut(h, me.id); delete x.you.embark_id; delete x.other.embark_id; return x; });   // IDs only on the detail view
+  return json({ handoffs: list, not_opened: pending, unseen: list.filter(x => x.unseen && x.status === 'AWAITING_EXCHANGE').map(x => x.id) });
+}
+
+export async function getHandoff(ctx) {
+  const me = await requireUser(ctx);
+  return json({ handoff: repo.handoffOut(await participantHandoff(ctx, me), me.id) });
+}
+
+/* Open (or create, for an offer accepted before v6.2) the handoff for an accepted offer. Only the two people on the
+   offer can do this. Nothing about the trade or offer is changed; COMPLETED/CLOSED trades get a read-only handoff. */
+export async function openHandoffForOffer(ctx) {
+  const me = await requireUser(ctx);
+  const o = await repo.offerById(ctx.db, ctx.params.id);
+  if (!o || (o.from_user_id !== me.id && o.trade_owner_id !== me.id)) throw notFound(HANDOFF_404);
+  if (o.status !== 'ACCEPTED') throw conflict('A trade handoff opens once the offer has been accepted.');
+  let h = await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id);
+  if (!h) {
+    await rateLimit(ctx.db, 'handoff-open:' + me.id, 60, 3600, tooMany);
+    const live = o.trade_status === 'OPEN' && !(await repo.activeHandoffForTrade(ctx.db, o.trade_post_id));
+    try { await repo.createHandoffForAcceptedOffer(ctx.db, { id: randomId('hnd'), offerId: o.id, status: live ? 'AWAITING_EXCHANGE' : 'HISTORICAL' }); }
+    catch (e) { if (!/UNIQUE/i.test(String(e.message))) throw e; await repo.createHandoffForAcceptedOffer(ctx.db, { id: randomId('hnd'), offerId: o.id, status: 'HISTORICAL' }); }
+    h = await repo.handoffByOfferForParticipant(ctx.db, o.id, me.id);
+    if (!h) throw notFound(HANDOFF_404);
+  }
+  return json({ handoff: repo.handoffOut(h, me.id) });
+}
+
+export async function seenHandoff(ctx) {
+  const me = await requireUser(ctx);
+  await participantHandoff(ctx, me);
+  await repo.markHandoffSeen(ctx.db, ctx.params.id, me.id);
+  return json({ ok: true });
+}
+
+export async function confirmHandoff(ctx) {
+  const me = await requireUser(ctx);
+  const h = await participantHandoff(ctx, me);
+  if (h.status !== 'AWAITING_EXCHANGE') throw conflict(h.status === 'COMPLETED' ? 'This trade is already completed.' : 'This trade handoff can no longer be confirmed.');
+  await rateLimit(ctx.db, 'handoff-act:' + me.id, 60, 3600, tooMany);
+  const r = await repo.confirmHandoff(ctx.db, h.id, me.id);
+  const fresh = await repo.handoffForParticipant(ctx.db, h.id, me.id);
+  return json({ handoff: repo.handoffOut(fresh, me.id), completed: r.completed });
+}
+
+export async function cancelHandoff(ctx) {
+  const me = await requireUser(ctx), body = await readJson(ctx.request);
+  const h = await participantHandoff(ctx, me);
+  const reason = String(body.reason || '').toLowerCase();
+  if (!CANCEL_REASONS.includes(reason)) throw bad('Choose a reason for cancelling.', 'reason');
+  if (h.status !== 'AWAITING_EXCHANGE') throw conflict('Only a trade that is awaiting the exchange can be cancelled.');
+  await rateLimit(ctx.db, 'handoff-act:' + me.id, 60, 3600, tooMany);
+  if (!(await repo.cancelHandoff(ctx.db, h.id, me.id, reason))) throw conflict('This trade handoff can no longer be cancelled.');
+  return json({ handoff: repo.handoffOut(await repo.handoffForParticipant(ctx.db, h.id, me.id), me.id) });
+}
+
+export async function reportHandoff(ctx) {
+  const me = await requireUser(ctx), body = await readJson(ctx.request);
+  const h = await participantHandoff(ctx, me);
+  const reason = String(body.reason || '').toLowerCase();
+  if (!REPORT_REASONS.includes(reason)) throw bad('Choose what went wrong.', 'reason');
+  const details = v.text(body.details, { field: 'details', label: 'Details', max: 500, multiline: true });
+  await rateLimit(ctx.db, 'report:' + me.id, 10, 86400, tooMany);
+  if (await repo.reportExists(ctx.db, h.id, me.id)) throw conflict('You have already reported this trade. Our team will review it.');
+  try { await repo.createReport(ctx.db, { id: randomId('rpt'), handoff_id: h.id, reporter_id: me.id, reported_id: h.owner_id === me.id ? h.counterparty_id : h.owner_id, reason, details }); }
+  catch (e) { if (/UNIQUE/i.test(String(e.message))) throw conflict('You have already reported this trade.'); throw e; }
+  return json({ ok: true }, 201);
 }
 
 /* ---------------------------------------------------------------- stats */
