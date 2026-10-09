@@ -220,13 +220,17 @@ def run(base, srv):
     check(d['trade']['pending_offers'] == 1, 'pending offer count shown on the trade')
     code, d, _ = A.patch(f'/offers/{oid}', {'action': 'accept'})
     check(code == 200 and d['offer']['status'] == 'ACCEPTED', 'owner accepts the offer')
+    hid = (d.get('handoff') or {}).get('id')   # v6.2: accepting opens a private trade handoff
     code, d, _ = B.patch(f'/offers/{oid}', {'action': 'withdraw'})
     check(code == 409, 'an answered offer cannot be withdrawn')
     code, d, _ = B.get('/me/offers')
     check(code == 200 and any(o['id'] == oid for o in d['sent']), 'sender sees the offer in My offers')
 
     code, d, _ = A.patch('/trades/' + tid, {'status': 'COMPLETED'})
-    check(code == 200 and d['trade']['status'] == 'COMPLETED', 'user A marks own trade completed')
+    check(code == 409, 'v6.2: owner cannot mark an accepted trade completed alone')
+    A.post(f'/handoffs/{hid}/confirm'); code, d, _ = B.post(f'/handoffs/{hid}/confirm')
+    code, d, _ = A.get('/trades/' + tid)
+    check(code == 200 and d['trade']['status'] == 'COMPLETED', 'trade completed after both Raiders confirm the exchange')
     code, d, _ = A.patch('/trades/' + tid, {'notes': 'changed after completion'})
     check(code == 409, 'completed trades are locked')
     code, d, _ = B.post(f'/trades/{tid}/offers', {'message': 'late offer'})

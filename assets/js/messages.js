@@ -87,6 +87,11 @@
     if (TRN.mode === 'server' && TRN.handoffs) {   // v6.2: the Messages page is the Trade Handoffs inbox (not a chat)
       $('.messages-shell').classList.add('hidden');
       $('#handoffInbox').classList.remove('hidden');
+      if (to) {   // arrived from "Message Raider" (e.g. a Loot Hunt): chat is not live, say so instead of a silent redirect
+        const n = $('#messagesNotice');
+        n.innerHTML = `${TRN.icon('warning')}<div><strong>Private chat isn't live yet.</strong> You can't message ${esc(toName)} here. For trades, make an offer on the <a href="trade.html">Trade Board</a>; once an offer is accepted you both get a private trade handoff with each other's Embark ID, listed below.</div>`;
+        n.classList.remove('hidden');
+      }
       $('.page-banner__copy p') && ($('.page-banner__copy p').textContent = 'Your accepted trades in one place: open one to get the other Raider\'s Embark ID and confirm the exchange.');
       try {
         const d = await TRN.handoffs.listAll();

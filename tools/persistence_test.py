@@ -5,7 +5,7 @@
   3. A brand-new browser context (no cookies, no localStorage) sees the trade logged out, then logs in as A.
   4. Clearing localStorage does not lose anything; the account and trade are server-side.
   5. User B (another fresh context) sees A's trade, cannot manage it, and makes an offer.
-  6. A edits, sees and accepts the offer, closes and deletes the trade through the UI.
+  6. A edits the trade, accepts the offer (private handoff opens), cancels the handoff, closes and deletes the trade through the UI.
 Usage: python3 tools/persistence_test.py   (needs Node.js + wrangler, and Playwright with Chromium)"""
 import sys, uuid
 from playwright.sync_api import sync_playwright
@@ -100,8 +100,6 @@ def main():
             check(c2.locator('.count-pill').inner_text() == '1', 'A sees 1 pending offer on the card')
             c2.locator('[data-offers]').click(); pg2.wait_for_selector('.offer-panel .offer-row')
             check('Can trade tonight' in c2.locator('.offer-panel').inner_text(), "A can read B's offer")
-            c2.locator('[data-offer-act=accept]').click(); pg2.wait_for_timeout(800)
-            c2 = pg2.locator(f'.trade-card:has-text("{note}")')
             c2.locator('[data-edit]').click(); pg2.wait_for_selector('#tradeModal:not(.hidden)')
             check(pg2.input_value('#tradeForm [name=notes]') == note, 'edit form is pre-filled with the stored trade')
             pg2.fill('#tradeForm [name=notes]', note + ' (edited)'); pg2.click('#tradeSubmit')
@@ -109,6 +107,10 @@ def main():
             check(True, 'A edits the trade through the UI')
             pg3.goto(B + 'trade.html', wait_until='networkidle')
             check(pg3.locator(f'.trade-card:has-text("{note} (edited)")').count() == 1, "B sees A's edit")
+            c2 = pg2.locator(f'.trade-card:has-text("{note} (edited)")')
+            if not c2.locator('.offer-panel .offer-row').count(): c2.locator('[data-offers]').click(); pg2.wait_for_selector('.offer-panel .offer-row')
+            c2.locator('[data-offer-act=accept]').click(); pg2.wait_for_url('**/handoff*id=*', timeout=15000); pg2.wait_for_selector('.hp-head')
+            check('AWAITING EXCHANGE' in pg2.inner_text('.hp-head').upper(), 'v6.2: accepting opens the private trade handoff')
             check(srv.sql(f"SELECT o.status FROM trade_offers o JOIN trade_posts t ON t.id = o.trade_post_id WHERE t.notes = '{note} (edited)'")[0]['status'] == 'ACCEPTED', 'offer accepted in D1')
             # B tries to change A's trade from the browser console: the server refuses
             tid = pg3.locator(f'.trade-card:has-text("{note} (edited)")').get_attribute('id')
@@ -116,6 +118,9 @@ def main():
             check(res.startswith('403'), f"B cannot close A's trade even by calling the API directly ({res})")
             res = pg3.evaluate("async id => { try { await TRN.store.deleteTrade(id); return 'deleted'; } catch (e) { return String(e.status); } }", tid)
             check(res == '403', "B cannot delete A's trade even by calling the API directly")
+            # v6.2: A cancels the trade handoff in the UI, which returns the trade to the open board
+            pg2.locator('.hp-actions .hp-more summary').click(); pg2.select_option('#cancelForm select', 'changed_mind'); pg2.click('#cancelForm button'); pg2.wait_for_selector('text=This trade was cancelled')
+            pg2.goto(B + 'trade.html', wait_until='networkidle')
             c2 = pg2.locator(f'#{tid}')
             c2.locator('[data-set-status][data-to=closed]').click(); pg2.wait_for_timeout(800)
             pg2.select_option('#tradeStatus', 'closed'); pg2.wait_for_timeout(200)

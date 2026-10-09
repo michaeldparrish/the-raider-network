@@ -20,7 +20,7 @@ PAGES = [
     ('map.html?id=stella-montis', '.mv-stage'), ('map.html?id=pendola-pass', '.cond-card'), ('map.html?id=dam-battlegrounds', '#mvImg'), ('loot.html?map=spaceport', '.loot-map-banner'), ('item.html?id=leaper-pulse-unit', '.where-panel'), ('map.html?id=riven-tides', '.poi-card'), ('projects.html', '.project-full'),
     ('hunts.html', '#huntGrid .hunt-card'), ('trade.html', '#tradeRequestGrid .trade-card'), ('auth.html', '#loginForm'),
     ('loot.html?quest=with-a-view', '#lootResults .item-card'), ('item.html?id=does-not-exist', '.empty-state'),
-    ('LOGIN', None), ('profile.html', '#profileForm'), ('messages.html?to=perisher&name=Perisher&tradeId=pt1&itemId=wolfpack-blueprint&intent=trade', '#chatRegarding'),
+    ('LOGIN', None), ('profile.html', '#profileForm'), ('messages.html?to=perisher&name=Perisher&tradeId=pt1&itemId=wolfpack-blueprint&intent=trade', '#chatRegarding, #handoffInbox:not(.hidden)'),
 ]
 problems = []
 with sync_playwright() as p:
