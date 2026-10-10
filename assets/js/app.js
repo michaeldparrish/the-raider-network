@@ -7,7 +7,7 @@
   const NAV = [['home', 'index.html', 'Home'], ['loot', 'loot.html', 'Loot Intel'], ['maps', 'maps.html', 'Maps'], ['hunts', 'hunts.html', 'Loot Hunts'],
     ['trade', 'trade.html', 'Trade Board'], ['messages', 'messages.html', 'Messages'], ['profile', 'profile.html', 'My Profile']];
   const NAV2 = [['projects', 'projects.html', 'Projects'], ['routes', 'maps.html#routes', 'Routes'], ['guides', 'maps.html#routes', 'Guides']];
-  const ACTIVE = { item: 'loot', map: 'maps', auth: '' };
+  const ACTIVE = { item: 'loot', map: 'maps', auth: '', trails: 'hunts' };
   function renderShell() {
     const cur = ACTIVE[page] ?? page;
     const h = $('#siteHeader');
@@ -152,7 +152,7 @@
     loot: ['items', 'maps', 'projects', 'quests', 'users', 'hunts', 'trades'], item: ['items', 'maps', 'projects', 'quests', 'users', 'hunts', 'trades', 'workshop'],
     maps: ['items', 'maps', 'routes', 'conditions', 'users', 'hunts', 'projects', 'quests'], map: ['items', 'maps', 'projects', 'quests', 'routes', 'arcs', 'conditions', 'users', 'hunts', 'trades', 'inventory', 'mapIndex'],
     projects: ['items', 'projects', 'quests', 'maps'], hunts: ['items', 'maps', 'users', 'hunts', 'projects', 'quests'], trade: ['items', 'maps', 'users', 'trades', 'inventory', 'projects', 'quests'],
-    messages: ['items', 'maps', 'users', 'hunts', 'trades', 'projects', 'quests'], profile: ['items', 'maps', 'users', 'hunts', 'trades', 'inventory', 'projects', 'quests'], auth: ['users', 'items', 'maps', 'projects', 'quests']
+    messages: ['items', 'maps', 'users', 'hunts', 'trades', 'projects', 'quests'], profile: ['items', 'maps', 'users', 'hunts', 'trades', 'inventory', 'projects', 'quests'], trails: ['items', 'maps'], auth: ['users', 'items', 'maps', 'projects', 'quests']
   };
   /* Show which backend is active. Production (server mode) shows nothing; local demo and outages are labelled. */
   function paintMode() {
@@ -176,7 +176,7 @@
     syncNav();
     const run = { home: renderHome, loot: TRN.loot.setupLootPage, item: TRN.loot.setupItemPage, maps: TRN.maps.setupMapsPage, map: TRN.maps.setupMapPage,
       projects: TRN.projects.setupProjectsPage, hunts: TRN.hunts.setupHuntsPage, trade: TRN.trades.setupTradeBoard, messages: TRN.messages.setupMessages,
-      profile: TRN.auth.setupProfilePage, auth: TRN.auth.setupAuthPage, handoff: TRN.handoffs?.setupHandoffPage }[page];
+      profile: TRN.auth.setupProfilePage, auth: TRN.auth.setupAuthPage, handoff: TRN.handoffs?.setupHandoffPage, trails: TRN.trails?.setupTrailsPage }[page];
     try { await run?.(); } catch (e) { console.error(e); TRN.toast('Something went wrong rendering this page.'); }
     document.body.classList.add('ready');
   });

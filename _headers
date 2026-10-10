@@ -20,3 +20,9 @@
 # v6.2: private trade handoff page (content is loaded per participant from the API; nothing to index)
 /handoff.html
   X-Robots-Tag: noindex
+
+# v6.3: Loot Trails are private by default (content is loaded per member from the API; nothing to index)
+/trails.html
+  X-Robots-Tag: noindex
+/trails
+  X-Robots-Tag: noindex

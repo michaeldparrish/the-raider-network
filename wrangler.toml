@@ -12,3 +12,8 @@ binding = "DB"                                   # the code reads env.DB — do 
 database_name = "raider-network-db"
 database_id = "dfdc5167-c168-4dd0-bacc-bffa252447e1" # from: npx wrangler d1 create raider-network-db
 migrations_dir = "migrations"
+
+# v6.3 Loot Trails — private screenshot storage
+[[r2_buckets]]
+binding = "TRAIL_IMAGES"
+bucket_name = "raider-network-trail-images"

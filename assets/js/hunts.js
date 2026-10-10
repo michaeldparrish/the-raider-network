@@ -82,6 +82,7 @@
     $('#closeHuntModal').onclick = () => modal.classList.add('hidden');
     modal.onclick = e => { if (e.target === modal) modal.classList.add('hidden'); };
     document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.add('hidden'); });
+    TRN.trails?.wireHuntChooser?.(modal);   // v6.3: Quick Hunt (unchanged) or Loot Trail
     f.onsubmit = async e => {
       e.preventDefault(); const msg = $('#huntFormMsg'), fd = new FormData(f); msg.textContent = 'Publishing…';
       try {
