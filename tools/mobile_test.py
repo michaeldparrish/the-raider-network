@@ -17,7 +17,7 @@ SHOTS = sys.argv[sys.argv.index('--shots') + 1] if '--shots' in sys.argv else No
 WIDTHS = [(390, 844), (393, 852), (430, 932), (768, 1024), (1440, 900), (1920, 1080)]
 PAGES = ['index.html', 'loot.html', 'loot.html?map=stella-montis', 'item.html?id=rotary-encoder', 'item.html?id=kinetic-converter',
          'maps.html', 'map.html?id=dam-battlegrounds', 'map.html?id=stella-montis', 'map.html?id=riven-tides', 'map.html?id=pendola-pass',
-         'projects.html', 'hunts.html', 'trade.html', 'auth.html', 'LOGIN', 'profile.html', 'messages.html',
+         'projects.html', 'hunts.html', 'trade.html', 'auth.html', 'LOGIN', 'profile.html', 'messages.html', 'trails.html',
          'messages.html?to=perisher&name=Perisher&tradeId=pt1&itemId=wolfpack-blueprint&intent=trade']
 INTENTIONAL_SCROLLERS = ['gallery-strip']
 OFFENDERS = '''(()=>{const W=document.documentElement.clientWidth;const out=[];

@@ -2,8 +2,27 @@
 import { json, errorResponse, assertSameOrigin, ApiError } from './http.js';
 import { currentSession } from './session.js';
 import * as h from './handlers.js';
+import * as trails from './trails/handlers.js';
+import * as trailImages from './trails/images.js';
 
 const ROUTES = [
+  ['POST', '/api/trails', trails.createTrail],
+  ['POST', '/api/trails/:id/invitations', trails.inviteTrailMember],
+  ['POST', '/api/trails/:id/invitations/respond', trails.respondToInvitation],
+  ['POST', '/api/trails/:id/sessions', trails.createTrailSession],
+  ['POST', '/api/trails/:id/discoveries', trails.createTrailDiscovery],
+  ['POST', '/api/trails/:id/discoveries/:discoveryId/review', trails.reviewTrailDiscovery],
+  ['POST', '/api/trails/:id/discoveries/:discoveryId/images/:imageType', trailImages.uploadTrailImage],
+  ['GET', '/api/trails/:id/discoveries/:discoveryId/images/:imageType', trailImages.getTrailImage],
+  ['DELETE', '/api/trails/:id/discoveries/:discoveryId/images/:imageType', trailImages.deleteTrailImage],
+  ['POST', '/api/trails/:id/sessions/:sessionId/end', trails.endTrailSession],
+  ['POST', '/api/trails/:id/members/remove', trails.removeTrailMember],
+  ['GET', '/api/me/trail-invitations', trails.myTrailInvitations],
+  ['POST', '/api/trails/:id/discoveries/:discoveryId/publish', trails.publishTrailDiscovery],
+  ['POST', '/api/trails/:id/visibility', trails.setTrailVisibility],
+  ['POST', '/api/trails/:id/discoveries/:discoveryId/progress', trails.setTrailProgress],
+  ['GET', '/api/trails', trails.listTrails],
+  ['GET', '/api/trails/:id', trails.getTrail],
   ['GET', '/api/health', h.health],
   ['POST', '/api/auth/register', h.register],
   ['POST', '/api/auth/login', h.login],

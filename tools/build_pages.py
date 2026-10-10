@@ -37,6 +37,7 @@ FOOT = '''
 <script defer src="assets/js/trades.js"></script>
 <script defer src="assets/js/messages.js"></script>
 <script defer src="assets/js/handoff.js"></script>
+<script defer src="assets/js/trails.js"></script>
 <script defer src="assets/js/app.js"></script>
 </body>
 </html>
@@ -220,7 +221,7 @@ PAGES['hunts.html'] = ('hunts', 'Loot Hunts — The Raider Network', 'Find Raide
   <img src="assets/images/heroes/loot-hunt-squad.webp" alt="">
   <div class="page-banner__shade"></div>
   <div class="page-banner__copy"><span class="eyebrow">{I('squad')} COMMUNITY RUN BOARD</span><h1>Loot Hunts</h1><p>Find Raiders chasing the same item or objective, then coordinate the run through private messages.</p>
-    <div class="btn-row"><button class="btn btn-primary btn-lg" id="openHuntModal">+ Start a Loot Hunt</button></div>
+    <div class="btn-row"><button class="btn btn-primary btn-lg" id="openHuntModal">+ Start a Loot Hunt</button><a class="btn btn-ghost btn-lg" href="trails.html">My Loot Trails</a></div>
     <div class="banner-stats"><span><b id="statOpenHunts">—</b> open hunts</span><span><b id="statSlots">—</b> open squad slots</span><span><b id="statHuntItems">—</b> items targeted</span></div></div>
   <img class="banner-side-art" src="assets/images/raiders/raider-squad-lineup.webp" alt="">
 </section>
@@ -241,6 +242,11 @@ PAGES['hunts.html'] = ('hunts', 'Loot Hunts — The Raider Network', 'Find Raide
 <div class="modal hidden" id="huntModal" role="dialog" aria-modal="true" aria-labelledby="huntModalTitle"><div class="modal-card">
   <button class="modal-close" id="closeHuntModal" aria-label="Close">×</button>
   <span class="eyebrow">NEW HUNT</span><h2 id="huntModalTitle">Start a Loot Hunt</h2>
+  <div class="hunt-mode" role="radiogroup" aria-label="Hunt type">
+    <button type="button" class="hunt-mode__opt on" data-hunt-mode="quick" role="radio" aria-checked="true"><strong>Quick Hunt</strong><small>Find Raiders for one run, right now. Same as before.</small></button>
+    <button type="button" class="hunt-mode__opt" data-hunt-mode="trail" role="radio" aria-checked="false"><strong>Loot Trail</strong><small>A private, long-term squad project: pins, screenshots and progress saved across sessions.</small></button>
+  </div>
+  <div id="huntTrailPane" class="hidden"></div>
   <form id="huntForm" class="form-grid">
     <label class="full">What are you hunting?<input class="input" name="itemName" list="itemNames" required maxlength="100" placeholder="Start typing — e.g. Rotary Encoder" autocomplete="off"></label>
     <datalist id="itemNames"></datalist>
@@ -348,6 +354,10 @@ PAGES['messages.html'] = ('messages', 'Messages — The Raider Network', 'Privat
 
 PAGES['handoff.html'] = ('handoff', 'Trade Handoff — The Raider Network', 'Private trade handoff between two Raiders.', f'''
 <div class="page-shell handoff-shell" id="handoffRoot"><p class="muted">Loading trade…</p></div>
+''')
+
+PAGES['trails.html'] = ('trails', 'Loot Trails — The Raider Network', 'Private, long-term squad projects: record ARC Raiders loot discoveries on the map across many sessions.', f'''
+<div id="trailsRoot" class="trails-root"><div class="page-shell"><p class="muted">Loading Loot Trails…</p></div></div>
 ''')
 
 PAGES['profile.html'] = ('profile', 'My Profile — The Raider Network', 'Your Raider profile.', f'''
