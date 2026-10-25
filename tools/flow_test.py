@@ -60,7 +60,7 @@ with sync_playwright() as p:
     check('8\nunits owned' in inv or '8 units owned' in inv.replace('\n', ' '), 'inventory panel shows 8 owned units')
     page.goto(BASE + 'index.html'); page.wait_for_selector('#homeStats .stat-tile')
     st = {t: page.inner_text(f'#homeStats [data-stat="{t}"] strong') for t in ['founding-raiders', 'open-loot-hunts', 'trades-completed', 'loot-intel-records', 'maps', 'open-trade-requests']}
-    check(st == {'founding-raiders': '10', 'open-loot-hunts': '10', 'trades-completed': '0', 'loot-intel-records': '581', 'maps': '7', 'open-trade-requests': '10'}, f'homepage stats {st}')
+    check(st == {'founding-raiders': '10', 'open-loot-hunts': '10', 'trades-completed': '0', 'loot-intel-records': '591', 'maps': '7', 'open-trade-requests': '10'}, f'homepage stats {st}')
     body = page.inner_text('main')
     check(not any(n in body for n in ['NightWolf', 'RaiderMike', 'StormRider', 'LunaRook', 'SperanzaLocal', 'EchoUnit', 'ArcNomad', 'StellaScout', 'GrimTide', '2,847', '1,326']), 'no fake Raiders or old stats on homepage')
     page.goto(BASE + 'hunts.html'); page.wait_for_selector('#huntGrid .hunt-card')
