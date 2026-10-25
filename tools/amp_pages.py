@@ -127,7 +127,7 @@ def hunt_body(I):
   <div class="amp-hero__copy">
     <span class="eyebrow">{I('route')} MISSION PLANNER · NEW</span>
     <h1>Amplification Hunt</h1>
-    <p>Pick a weapon and the upgrades you want. We total the materials, show where Raiders report finding them, and hand off to a Loot Hunt or one of your Loot Trails.</p>
+    <p>Select a weapon, tell us whether it is already amplified and choose the enhancements you want. We build the full material plan, show where Raiders report finding each part, and track it in a Loot Hunt or one of your Loot Trails.</p>
     <p class="amp-hero__legend"><a class="text-btn" href="amplification.html">How amplification works → Guide</a></p>
   </div>
 </section>

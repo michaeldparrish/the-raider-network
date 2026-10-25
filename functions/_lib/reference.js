@@ -18,3 +18,19 @@ export async function reference(env, request) {
   };
   return cache;
 }
+
+/* v6.4: amplification data (tiers, weapons, upgrade trees and costs), used to calculate plan requirements
+   server-side so the browser can never submit its own quantities. */
+let ampCache = null;
+export async function ampReference(env, request) {
+  if (ampCache) return ampCache;
+  const r = await env.ASSETS.fetch(new Request(new URL('/data/amplification.json', request.url)));
+  if (!r.ok) throw new Error('amplification data unavailable');
+  const d = await r.json();
+  ampCache = {
+    asOf: d.meta?.asOf || '',
+    tiers: new Map(d.tiers.map(t => [t.id, t])),
+    weapons: new Map(d.weapons.map(w => [w.id, w])),
+  };
+  return ampCache;
+}

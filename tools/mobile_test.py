@@ -19,7 +19,7 @@ PAGES = ['index.html', 'loot.html', 'loot.html?map=stella-montis', 'item.html?id
          'maps.html', 'map.html?id=dam-battlegrounds', 'map.html?id=stella-montis', 'map.html?id=riven-tides', 'map.html?id=pendola-pass',
          'projects.html', 'hunts.html', 'trade.html', 'auth.html', 'LOGIN', 'profile.html', 'messages.html', 'trails.html', 'amplification.html', 'amplification/hunt.html?weapon=equalizer&upgrade=ramping-damage',
          'messages.html?to=perisher&name=Perisher&tradeId=pt1&itemId=wolfpack-blueprint&intent=trade']
-INTENTIONAL_SCROLLERS = ['gallery-strip', 'amp-toc', 'amp-tree__wrap']
+INTENTIONAL_SCROLLERS = ['gallery-strip', 'amp-toc', 'amp-tree__wrap', 'amp-table-wrap']
 OFFENDERS = '''(()=>{const W=document.documentElement.clientWidth;const out=[];
  for(const e of document.querySelectorAll('body *')){const r=e.getBoundingClientRect();if(!r.width||r.right<=W+0.5)continue;
   if(getComputedStyle(e).position==='fixed')continue;

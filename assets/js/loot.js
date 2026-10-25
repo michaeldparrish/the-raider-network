@@ -118,7 +118,7 @@
     if (!it) { root.innerHTML = `<div class="page-shell"><div class="empty-state big">${TRN.icon('warning')}<h1>Item not found</h1><p>No record for “${esc(TRN.param('id') || '')}”.</p><a class="btn btn-primary" href="loot.html">Search Loot Intel</a></div></div>`; return; }
     document.title = `${it.name} — Loot Intel — The Raider Network`;
     const [hunts, trades] = await Promise.all([TRN.store.listHunts(), TRN.store.listTrades()]);
-    const myHunts = hunts.filter(h => h.itemId === it.id && h.status !== 'completed');
+    const myHunts = hunts.filter(h => (h.itemId === it.id || (h.items || []).some(x => x.itemId === it.id)) && h.status !== 'completed');
     const myTrades = trades.filter(t => t.status === 'open' && (t.lookingFor.some(l => l.itemId === it.id) || t.offering.some(o => o.itemId === it.id)));
     const reco = myTrades.length && !it.recommendation ? 'TRADE INTEREST' : it.recommendation;
     const [sR, sD, sQ, sP, sRec, sC, sDiff, sV] = it.scores;

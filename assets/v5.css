@@ -1281,7 +1281,7 @@ body.amp-modal-open{overflow:hidden}
 .amp-stepn{display:grid;place-items:center;width:34px;height:34px;border:1.5px solid var(--orange);color:var(--orange2);font:800 16px Inter;box-shadow:0 0 12px rgba(255,106,26,.35)}
 .amp-tierrow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .amp-tierrow>header{display:flex;gap:10px;align-items:center}.amp-tierrow__mod{width:44px;height:auto}.amp-tierrow>header strong{display:block;font:800 22px/1 "Barlow Condensed";color:#ffc35a}.amp-tierrow>header small{color:var(--muted);font-size:12px}
-.amp-wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:8px}
+.amp-wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr));gap:8px}
 .amp-wbtn{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;align-items:center;padding:8px;text-align:left;background:#0a161b;border:1px solid var(--line2);color:inherit;font:inherit;cursor:pointer;min-height:56px}
 .amp-wbtn img{width:70px;height:38px;object-fit:contain}.amp-wbtn span{display:grid;gap:2px;min-width:0}.amp-wbtn strong{font:700 18px/1 "Barlow Condensed";text-transform:uppercase;color:#fff}.amp-wbtn small{color:var(--muted);font-size:12px}
 .amp-wbtn:hover{border-color:var(--orange)}.amp-wbtn.on{border-color:var(--orange);background:rgba(255,106,26,.1);box-shadow:0 0 14px rgba(255,106,26,.3),inset 0 -2px 0 rgba(63,208,122,.5)}
@@ -1331,5 +1331,66 @@ body.amp-modal-open{overflow:hidden}
 @media (max-width:760px){.amp-act{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:480px){.subbar{letter-spacing:1px}.subbar nav{gap:10px}.subbar .demo-pill{padding:2px 5px}}
 @media (max-width:420px){.subbar nav a[data-sub=guides]{display:none}}
-.amp-wbtn strong,.amp-wbtn small{overflow-wrap:anywhere}@media (max-width:640px){.amp-wbtn{grid-template-columns:52px minmax(0,1fr)}.amp-wbtn img{width:52px}.amp-wgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.amp-wbtn small{overflow-wrap:anywhere}.amp-wbtn strong{overflow-wrap:normal;word-break:normal}@media (max-width:640px){.amp-wbtn{grid-template-columns:52px minmax(0,1fr)}.amp-wbtn img{width:52px}.amp-wgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.amp-wbtn{grid-template-columns:minmax(0,1fr);justify-items:start;gap:4px}.amp-wbtn img{width:70px;height:30px}.amp-wbtn strong{font-size:16px;overflow-wrap:normal}}
+
+/* ================= v6.4 multi-material plans ================= */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.amp-ask{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.amp-ask__opt{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;align-items:center;padding:14px;text-align:left;background:#0a161b;border:1px solid var(--line2);color:inherit;font:inherit;cursor:pointer}
+.amp-ask__opt img{width:56px;height:56px;object-fit:cover;border:1px solid #6b4a12}.amp-ask__opt span{display:grid;gap:3px;min-width:0}.amp-ask__opt strong{font:700 19px "Barlow Condensed";text-transform:uppercase;color:#fff}.amp-ask__opt small{color:var(--muted);line-height:1.45}
+.amp-ask__done{display:grid!important;place-items:center;width:56px;height:56px;border:1px solid #21603a;color:#5ee08f}.amp-ask__done .svg-ico{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:2.2}
+.amp-ask__opt:hover{border-color:var(--orange)}.amp-ask__opt.on{border-color:var(--orange);background:rgba(255,106,26,.1);box-shadow:0 0 14px rgba(255,106,26,.3),inset 0 -2px 0 rgba(63,208,122,.5)}
+.amp-pl{display:grid;gap:8px;padding:12px 0;border-top:1px solid var(--line)}.amp-pl:first-of-type{border-top:0;padding-top:0}
+.amp-pl h3{display:flex;align-items:center;gap:10px;margin:0;font:700 21px "Barlow Condensed";text-transform:uppercase;color:#fff}
+.amp-pl__n{display:inline-grid;place-items:center;width:26px;height:26px;border:1px solid #6b4a12;color:#ffc35a;font:800 13px Inter;flex:0 0 auto}
+.amp-pl--skip p{margin:0}
+.amp-pl__row{display:grid;grid-template-columns:44px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:6px 8px;border:1px solid var(--line);background:#0a161b}
+.amp-pl__row img{width:44px;height:44px;object-fit:cover}.amp-pl__row span{display:grid;gap:1px;min-width:0}.amp-pl__row strong{color:#fff;font-size:14px}.amp-pl__row small{color:var(--muted);font-size:12px}
+.amp-pl__row b{font:800 20px "Barlow Condensed";color:#ffc35a;min-width:40px;text-align:right}
+.amp-pl__enh{display:grid;gap:6px;padding:8px;border:1px dashed var(--line2)}.amp-pl__enh header{display:flex;gap:8px;align-items:center}.amp-pl__enh header strong{font:700 17px "Barlow Condensed";text-transform:uppercase;color:#fff}.amp-pl__enh em{font-style:normal;font-size:12px}
+#planEnhancements{grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}#planEnhancements>h3,#planEnhancements>p{grid-column:1/-1}
+.amp-pl__tools{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}.amp-pl__tools .text-btn{color:var(--teal);font-size:13.5px}
+.amp-table-wrap{overflow-x:auto;max-width:100%}
+.amp-combined,.plan-mats{min-width:640px}.amp-combined td,.amp-combined th,.plan-mats td,.plan-mats th{vertical-align:middle}
+.amp-combined tr.is-skipped>*:not(:first-child),.plan-mats tr.is-skipped>*{opacity:.5}.amp-combined tr.is-research th strong{font-weight:500}
+.amp-combined input[type=checkbox],.plan-mats input[type=checkbox]{width:18px;height:18px;accent-color:var(--orange)}
+.amp-cm{display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;align-items:center}.amp-cm img{width:40px;height:40px;object-fit:cover;border:1px solid var(--line)}.amp-cm span{display:grid;gap:1px;min-width:0}.amp-cm small{color:var(--muted);font-weight:400;font-size:12px}
+.amp-cm__q,.amp-cm__o{font:800 18px "Barlow Condensed";color:#ffc35a;white-space:nowrap}.amp-done{color:#5ee08f;font:700 12px Inter;letter-spacing:1px;text-transform:uppercase}
+.amp-have{width:74px;padding:6px 8px}
+.amp-pl__where{border-top:1px solid var(--line);padding-top:10px}.amp-pl__where>summary{cursor:pointer;color:var(--teal);font-size:14px;margin-bottom:10px}
+.amp-track{display:grid;gap:14px}.amp-track__go{justify-self:start;gap:10px}.amp-track__go b{font-weight:800}
+.amp-track__choice{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px}
+.amp-track__opt{display:grid;gap:10px;align-content:start;padding:14px;border:1px solid var(--line2);background:#0a161b}
+.amp-track__opt h3{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;font:700 21px "Barlow Condensed";text-transform:uppercase;color:#fff}.amp-track__opt h3 .ico{width:20px;height:20px}.amp-track__opt p{margin:0;color:#c6d2d6;line-height:1.5}
+.amp-track__opt--trail{border-color:#21603a;background:linear-gradient(160deg,rgba(63,208,122,.07),#0a161b 60%)}
+.amp-track__trail label{display:grid;gap:6px;font-size:12px;color:#95a8ae}.amp-track__trail .btn{justify-self:start}.amp-track__opt>.btn{justify-self:start}
+.amp-track__single{border-top:1px solid var(--line);padding-top:10px}.amp-track__single>summary{cursor:pointer;color:var(--muted);font-size:14px;margin-bottom:10px}
+/* Quick Hunt plan */
+.hunt-plan{display:grid;gap:6px;padding:12px;border:1px solid #7a4a1c;background:rgba(255,106,26,.06)}.hunt-plan strong{font:700 20px "Barlow Condensed";text-transform:uppercase;color:#fff}.hunt-plan small{color:var(--muted)}.hunt-plan .text-btn{justify-self:start;color:var(--teal);font-size:13px}
+.hunt-mats{list-style:none;margin:4px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr));gap:4px 10px}
+.hunt-mats li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13px}.hunt-mats img{width:28px;height:28px;object-fit:cover;border:1px solid var(--line)}.hunt-mats b{color:#ffc35a}
+.hunt-card--multi .hunt-card__body h3 a:hover{color:var(--orange)}
+/* Loot Trail plan cards */
+.trail-plans{display:grid;gap:14px}.trail-plans>header{margin-bottom:0}
+.plan-card{display:grid;gap:12px;padding:14px;border:1px solid #6b4a12;background:linear-gradient(170deg,rgba(255,176,32,.07),#0a161b 50%);scroll-margin-top:110px}
+.plan-card.is-complete{border-color:#21603a}
+.plan-card__head{display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:12px;align-items:center}.plan-card__head img{width:80px;height:44px;object-fit:contain}
+.plan-card__head h3{margin:2px 0;font:700 22px/1.1 "Barlow Condensed";text-transform:uppercase;color:#fff;overflow-wrap:anywhere}.plan-card__head small{color:var(--muted)}.plan-card__head .text-btn{color:var(--teal);font-size:13px}
+.plan-join{display:grid;gap:8px;padding:12px;border:1px dashed #7a4a1c}
+.plan-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:12px}
+.plan-stage{display:grid;gap:8px;align-content:start;padding:10px;border:1px solid var(--line);background:#071014}
+.plan-stage h4{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;font:700 18px "Barlow Condensed";text-transform:uppercase;color:#fff}.plan-stage h4 .muted{font:400 13px Inter;text-transform:none}
+.plan-stage p{margin:0;font-size:13.5px}.plan-stage .btn,.plan-stage>.text-btn{justify-self:start}.plan-stage .text-btn{color:var(--teal);font-size:13px}
+.plan-enh{list-style:none;margin:0;padding:0;display:grid;gap:6px}.plan-enh li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}.plan-enh strong{color:#fff}.plan-enh em{font-style:normal;font-size:12px}
+.plan-step{display:inline-flex;align-items:center;gap:6px}.plan-step b{min-width:22px;text-align:center;color:#fff}.plan-step .icon-btn{width:30px;height:30px;display:grid;place-items:center;background:#0a161b;border:1px solid var(--line2);color:#fff;cursor:pointer}
+.plan-mats tr.is-done th strong a,.plan-mats tr.is-done th strong{color:#5ee08f}
+.plan-st{font-size:11px!important}.plan-st--conflict{color:#ff8a80!important}.plan-st--reported{color:#ffb15a!important}.plan-st--confirmed{color:#5ee08f!important}
+.plan-squad summary{cursor:pointer;color:var(--teal);font-size:14px}.plan-squad ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}.plan-squad li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:8px;border:1px solid var(--line);font-size:13.5px}.plan-squad small{color:var(--muted)}
+.plan-card__foot{display:flex;flex-wrap:wrap;gap:14px;border-top:1px solid var(--line);padding-top:10px}.plan-card__foot .text-btn{color:var(--muted);font-size:13px}.plan-card__foot .confirming{color:#ff8a80}
+@media (max-width:900px){.amp-track__choice,.plan-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.amp-ask{grid-template-columns:minmax(0,1fr)}.amp-pl__row{grid-template-columns:40px minmax(0,1fr) auto}.amp-pl__row .amp-st{grid-column:2/-1;justify-self:start}.amp-pl__row img{width:40px;height:40px}
+  .plan-card__head{grid-template-columns:56px minmax(0,1fr)}.plan-card__head img{width:56px}.plan-card__head .text-btn{grid-column:1/-1;justify-self:start}.amp-track__go{justify-self:stretch;justify-content:center}}
+.trail-plans,.plan-card{grid-template-columns:minmax(0,1fr);min-width:0}.trail-plans>*,.plan-card>*,.plan-stage{min-width:0}#trailPlansHost{min-width:0}
+.amp-table-wrap{position:relative}
+.btn.is-disabled{opacity:.45;pointer-events:none}

@@ -195,8 +195,8 @@
     home: ['items', 'maps', 'projects', 'quests', 'routes', 'conditions', 'users', 'hunts', 'trades', 'inventory'],
     loot: ['items', 'maps', 'projects', 'quests', 'users', 'hunts', 'trades'], item: ['items', 'maps', 'projects', 'quests', 'users', 'hunts', 'trades', 'workshop'],
     maps: ['items', 'maps', 'routes', 'conditions', 'users', 'hunts', 'projects', 'quests'], map: ['items', 'maps', 'projects', 'quests', 'routes', 'arcs', 'conditions', 'users', 'hunts', 'trades', 'inventory', 'mapIndex'],
-    projects: ['items', 'projects', 'quests', 'maps'], hunts: ['items', 'maps', 'users', 'hunts', 'projects', 'quests'], trade: ['items', 'maps', 'users', 'trades', 'inventory', 'projects', 'quests'],
-    messages: ['items', 'maps', 'users', 'hunts', 'trades', 'projects', 'quests'], amplification: ['items', 'maps', 'amplification'], amphunt: ['items', 'maps', 'amplification'], profile: ['items', 'maps', 'users', 'hunts', 'trades', 'inventory', 'projects', 'quests'], trails: ['items', 'maps'], auth: ['users', 'items', 'maps', 'projects', 'quests']
+    projects: ['items', 'projects', 'quests', 'maps'], hunts: ['items', 'maps', 'users', 'hunts', 'projects', 'quests', 'amplification'], trade: ['items', 'maps', 'users', 'trades', 'inventory', 'projects', 'quests'],
+    messages: ['items', 'maps', 'users', 'hunts', 'trades', 'projects', 'quests'], amplification: ['items', 'maps', 'amplification'], amphunt: ['items', 'maps', 'amplification'], profile: ['items', 'maps', 'users', 'hunts', 'trades', 'inventory', 'projects', 'quests'], trails: ['items', 'maps', 'amplification'], auth: ['users', 'items', 'maps', 'projects', 'quests']
   };
   /* Show which backend is active. Production (server mode) shows nothing; local demo and outages are labelled. */
   function paintMode() {
