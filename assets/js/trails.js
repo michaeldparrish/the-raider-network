@@ -71,6 +71,10 @@
   }
   const errBox = (msg) => `<div class="notice-bar">${TRN.icon('warning')}<div><strong>${esc(msg)}</strong> <a href="trails.html">Back to Loot Trails</a></div></div>`;
 
+  /* v6.4: ?item=<catalog id> (from the Amplification Hunt or an item page) is carried into the discovery form.
+     Only real catalog items are accepted; anything else is ignored. */
+  const carryItem = () => { const id = TRN.param('item'); return id ? TRN.data.item(id) || null : null; };
+
   /* ---------------------------------------------------------------- create form (dashboard + Loot Hunt popup) */
   function createFormHtml(id = 'trailCreateForm') {
     return `<form id="${id}" class="form-grid trail-create">
@@ -88,7 +92,7 @@
       btn.disabled = true; note.textContent = 'Creating…';
       try {
         const d = await A.create({ title: String(fd.get('title') || '').trim(), description: String(fd.get('description') || '').trim(), mapId: fd.get('mapId') });
-        location.href = 'trails.html?id=' + enc(d.trail.id) + '&created=1';
+        location.href = 'trails.html?id=' + enc(d.trail.id) + '&created=1' + (carryItem() ? '&item=' + enc(carryItem().id) : '');
       } catch (err) { note.textContent = err.message; btn.disabled = false; }
     };
   }
@@ -119,6 +123,7 @@
         <p>Record loot discoveries on the map with your squad, over as many sessions as it takes. Private until you decide otherwise.</p>
         <div class="btn-row"><button class="btn btn-primary btn-lg" id="newTrailBtn">+ Start a Loot Trail</button><a class="btn btn-ghost btn-lg" href="hunts.html">Quick Hunts</a></div></div></section>
       <div class="page-shell trails-dash">
+        ${carryItem() ? `<div class="notice-bar notice-bar--carry" id="carryNotice"><img src="${TRN.img(carryItem().image)}" alt=""><div><strong>Add ${esc(carryItem().name)} to a Loot Trail.</strong> Pick one of your trails below, or start a new one. The material is filled in when you record the discovery.</div></div>` : ''}
         <div id="trailInvites"></div>
         <section class="panel"><header class="panel-head"><span class="eyebrow">${TRN.icon('route')} MY LOOT TRAILS</span><span class="muted" id="ownedCount"></span></header><div id="ownedTrails" class="trail-grid"><p class="muted">Loading your trails…</p></div></section>
         <section class="panel"><header class="panel-head"><span class="eyebrow">${TRN.icon('squad')} JOINED TRAILS</span><span class="muted" id="joinedCount"></span></header><div id="joinedTrails" class="trail-grid"><p class="muted">Loading…</p></div></section>
@@ -147,7 +152,7 @@
     const trails = list.value.trails, owned = trails.filter(t => t.myRole === 'OWNER'), joined = trails.filter(t => t.myRole !== 'OWNER');
     const card = t => {
       const s = t.stats, total = Math.max(0, s.active ?? s.discoveries), pct = total ? Math.round((s.myCompleted / total) * 100) : 0;
-      return `<a class="trail-card" href="trails.html?id=${enc(t.id)}"><div class="trail-card__media"><img src="${mapThumb(t.mapId)}" alt="" loading="lazy">${visChip(t.visibility)}</div>
+      return `<a class="trail-card" href="trails.html?id=${enc(t.id)}${carryItem() ? '&item=' + enc(carryItem().id) : ''}"><div class="trail-card__media"><img src="${mapThumb(t.mapId)}" alt="" loading="lazy">${visChip(t.visibility)}</div>
         <div class="trail-card__body"><strong>${esc(t.title)}</strong><span class="muted">${esc(TRN.data.mapName(t.mapId))}${t.myRole === 'OWNER' ? '' : ` · by ${esc(t.owner.displayName)}`}</span>
           <div class="trail-stats"><span><b>${s.discoveries}</b> discoveries</span><span><b>${s.approved}</b> approved</span><span><b>${s.sessions}</b> sessions</span><span><b>${s.squadSize}</b> in squad</span></div>
           <div class="trail-progress" title="Your progress"><i style="width:${pct}%"></i></div><small class="muted">You: ${s.myCompleted} of ${total} completed · updated ${TRN.ageFromIso(t.updatedAt)}</small></div></a>`;
@@ -403,6 +408,7 @@
     paintList();
 
     /* record a discovery */
+    const carry = carryItem();
     $('#addDiscoveryBtn').onclick = () => {
       const host = $('#discoveryFormHost');
       if (!openSessions.length) {
@@ -425,6 +431,7 @@
           <div class="full btn-row"><button class="btn btn-primary" type="submit">Save discovery</button><button class="btn btn-ghost" type="button" id="discCancel">Cancel</button></div>
           <p class="form-note full" role="status" id="discMsg"></p></div></form>`;
       const f = $('#discForm'), files = wireShotPickers(f);
+      if (carry && !f.elements.title.value) { f.elements.title.value = carry.name; }
       let pin = null;
       const lvlSel = f.elements.mapLevel.tagName === 'SELECT' ? f.elements.mapLevel : null;
       if (lvlSel) lvlSel.onchange = () => map.setLevel(lvlSel.value);
@@ -435,13 +442,14 @@
         $('#pinStatus').classList.add('is-set');
       }, lv => { if (lvlSel) lvlSel.value = lv; });
       f.elements.title.oninput = () => { const it = TRN.data.findItemByName(f.elements.title.value); $('#discItemPreview').innerHTML = it ? `<img src="${TRN.img(it.image)}" alt="">${TRN.rarityBadge(it.rarity, 'sm')}<span>Linked to Loot Intel: ${TRN.data.itemLink(it.id)}</span>` : ''; };
+      if (carry) f.elements.title.oninput();
       $('#discCancel').onclick = () => { map.setPicking(false); host.innerHTML = ''; };
       f.onsubmit = async e => {
         e.preventDefault(); const msg = $('#discMsg'), btn = $('button[type=submit]', f), fd = new FormData(f);
         if (!pin) { msg.textContent = 'Place the pin on the map first.'; $('#trailMap').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
         const ferr = validateFiles(files); if (ferr) { msg.textContent = ferr; return; }
         btn.disabled = true; msg.textContent = 'Saving discovery…';
-        const it = TRN.data.findItemByName(fd.get('title'));
+        const it = TRN.data.findItemByName(fd.get('title')) || (carry && String(fd.get('title')).trim().toLowerCase().startsWith(carry.name.toLowerCase()) ? carry : null);
         let disc;
         try {
           disc = (await A.discovery(T.id, { title: String(fd.get('title')).trim(), notes: String(fd.get('notes') || '').trim(), sessionId: fd.get('sessionId'), mapLevel: pin.level, x: pin.x, y: pin.y, ...(it ? { itemId: it.id } : {}) })).discovery;
@@ -458,6 +466,11 @@
         else { TRN.toast('Discovery saved — pending owner review'); renderTrail(root, id); }
       };
     };
+    if (carry && P.canContribute) {   // v6.4: arrived with ?item= -> open the form once with the material filled in
+      try { const u = new URL(location.href); u.searchParams.delete('item'); history.replaceState(null, '', u); } catch { /* old browser */ }
+      $('#trailMap').insertAdjacentHTML('beforebegin', `<div class="notice-bar notice-bar--carry"><img src="${TRN.img(carry.image)}" alt=""><div><strong>Recording ${esc(carry.name)}.</strong> Place the pin where you found it and add your screenshots.</div></div>`);
+      $('#addDiscoveryBtn').click();
+    }
   }
 
   /* ---------------------------------------------------------------- public view (approved + published only) */

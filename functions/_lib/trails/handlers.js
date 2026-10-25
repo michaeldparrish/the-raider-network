@@ -5,6 +5,7 @@
 import { json, readJson, bad, notFound, tooMany, conflict } from '../http.js';
 import { requireUser } from '../session.js';
 import { randomId, rateLimit } from '../security.js';
+import { reference } from '../reference.js';
 import * as repo from './repo.js';
 
 const SUPPORTED_MAPS = new Set([
@@ -481,6 +482,15 @@ export async function createTrailDiscovery(ctx) {
 
   if (itemId.length > 100) {
     throw bad('Item ID is too long.', 'itemId');
+  }
+
+  // v6.4: a linked item must be a real Loot Intel catalog item (same reference data the trade API uses).
+  if (itemId) {
+    let ref = null;
+    try { ref = await reference(ctx.env, ctx.request); } catch (error) { console.error('trail item check skipped', error); }
+    if (ref && !ref.items.has(itemId)) {
+      throw bad('That item is not in the Loot Intel catalog.', 'itemId');
+    }
   }
 
   const session = await ctx.db.prepare(`
