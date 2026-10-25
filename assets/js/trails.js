@@ -508,7 +508,7 @@
     const status = k => { const rs = p.requirements.filter(r => r.itemKey === k).map(r => r.qtyStatus); return ['CONFLICT', 'UNVERIFIED', 'REPORTED', 'CONFIRMED'].find(s => rs.includes(s)) || 'UNVERIFIED'; };
     const ST_LBL = { CONFIRMED: 'Confirmed', REPORTED: 'Reported', UNVERIFIED: 'Unverified', CONFLICT: 'Conflicting' };
     const total = me.materials.reduce((n, m) => n + m.stillRequired, 0), done = me.materials.reduce((n, m) => n + Math.min(m.stillRequired, m.available), 0);
-    const mats = `<div class="plan-stage"><h4><span class="amp-pl__n">3</span>Materials <span class="muted">${done} of ${total} gathered</span></h4>
+    const mats = `<div class="plan-stage"><div class="plan-mats-head"><h4><span class="amp-pl__n">3</span>Materials <span class="muted">${done} of ${total} gathered</span></h4>${saveBadge(p.id)}</div>
       <div class="trail-progress"><i style="width:${total ? Math.round(done / total * 100) : 100}%"></i></div>
       <div class="amp-table-wrap"><table class="amp-table plan-mats"><thead><tr><th scope="col">Material</th><th scope="col">Needed</th><th scope="col">Had</th><th scope="col">Collected</th><th scope="col">Still to hunt</th><th scope="col">Hunting</th><th scope="col"><span class="sr-only">Record</span></th></tr></thead><tbody>
       ${me.materials.map(m => { const k = m.itemKey, real = !k.startsWith('label:'); return `<tr class="${m.hunting ? '' : 'is-skipped'} ${m.outstanding === 0 && !m.unknownQty ? 'is-done' : ''}">
@@ -520,28 +520,82 @@
         <td><input type="checkbox" data-phunt="${esc(p.id)}" data-k="${esc(k)}" ${m.hunting ? 'checked' : ''} aria-label="Hunting ${esc(keyName(k))}" ${P.canContribute ? '' : 'disabled'}></td>
         <td>${real && P.canContribute ? `<a class="text-btn" href="trails.html?id=${enc(T.id)}&item=${enc(k)}">Record discovery</a>` : ''}</td></tr>`; }).join('')}</tbody></table></div></div>`;
     const squad = p.squad ? `<details class="plan-squad"><summary>Squad progress (${p.squad.length})</summary><ul>${p.squad.map(s => `<li><strong>${esc(s.displayName)}</strong> <small>@${esc(s.username)}</small>${TRN.statusChip(ACT[s.activation][0])}<span>${s.installedCount} installed · ${s.outstanding} still to hunt${s.unknownQty ? ' (+ unknown)' : ''}</span></li>`).join('')}</ul></details>` : '';
-    const foot = p.canArchive ? `<div class="plan-card__foot">${p.status === 'COMPLETED' ? `<button class="text-btn" data-pstat="${esc(p.id)}" data-s="ACTIVE">Reopen plan</button>` : `<button class="text-btn" data-pstat="${esc(p.id)}" data-s="COMPLETED">Mark whole plan complete</button>`}<button class="text-btn" data-pstat="${esc(p.id)}" data-s="ARCHIVED">Archive plan</button></div>` : '';
+    // v6.4.2: "Archive plan" is replaced by a Trade Board hand-off (archived records and the status API are kept).
+    const missing = me.materials.filter(m => m.outstanding > 0 || m.unknownQty);
+    const foot = `<div class="plan-card__foot">${P.canContribute ? `<button class="btn btn-ghost btn-xs plan-trade-btn" data-ptrade="${esc(p.id)}" aria-expanded="false" aria-controls="ptrade-${esc(p.id)}" ${missing.length ? '' : 'disabled'}>${TRN.icon('trade')} Find Missing Items on Trade Board</button>` : ''}
+      ${p.canArchive ? (p.status === 'COMPLETED' ? `<button class="text-btn" data-pstat="${esc(p.id)}" data-s="ACTIVE">Reopen plan</button>` : `<button class="text-btn" data-pstat="${esc(p.id)}" data-s="COMPLETED">Mark whole plan complete</button>`) : ''}</div>
+      ${missing.length && P.canContribute ? tradePanel(p, missing) : ''}`;
     return `<article class="plan-card ${p.status === 'COMPLETED' ? 'is-complete' : ''}" id="plan-${esc(p.id)}">${head}<div class="plan-grid">${act}${enh}</div>${mats}${squad}${foot}</article>`;
+  }
+  /* v6.4.2 autosave status, per plan; survives the re-render that follows every confirmed save. */
+  const SAVE = new Map();
+  function saveBadge(pid) {
+    const s = SAVE.get(pid) || { state: 'idle' };
+    const inner = s.state === 'saving' ? '<span class="plan-save__spin" aria-hidden="true"></span>Saving…'
+      : s.state === 'saved' ? `${TRN.svg('check')}Progress Auto Saved`
+      : s.state === 'error' ? `${TRN.icon('warning')}<span>${esc(s.msg || 'Not saved.')}</span>${s.retry ? '<button type="button" class="text-btn plan-save__retry" data-pretry="' + esc(pid) + '">retry</button>' : ''}`
+      : '<span class="muted">Changes save automatically</span>';
+    return `<span class="plan-save plan-save--${s.state}" data-psave="${esc(pid)}" role="${s.state === 'error' ? 'alert' : 'status'}" aria-live="polite">${inner}</span>`;
+  }
+  function paintSave(pid) { const el = document.querySelector(`[data-psave="${CSS.escape(pid)}"]`); if (el) el.outerHTML = saveBadge(pid); }
+  /* Trade Board hand-off: only materials still to hunt; quantities from the server-calculated plan (Trade Board max 99). */
+  function tradePanel(p, missing) {
+    const ST = s => s === 'CONFLICT' ? '<em class="plan-st plan-st--conflict">Conflicting quantity — check in game</em>' : s === 'UNVERIFIED' ? '<em class="plan-st">Unverified quantity</em>' : '';
+    const status = k => { const rs = p.requirements.filter(r => r.itemKey === k).map(r => r.qtyStatus); return ['CONFLICT', 'UNVERIFIED', 'REPORTED', 'CONFIRMED'].find(s => rs.includes(s)) || 'UNVERIFIED'; };
+    return `<div class="plan-trade hidden" id="ptrade-${esc(p.id)}"><header class="plan-trade__head"><div><strong>Missing materials</strong><small>Select materials from your amplification plan to request from other Raiders. You review every request on the Trade Board before anything is posted, and nothing is marked as collected.</small></div>${TRN.icon('trade')}</header>
+      <div class="plan-trade__tools"><button type="button" class="text-btn" data-ptall="${esc(p.id)}">Select all</button><button type="button" class="text-btn" data-ptnone="${esc(p.id)}">Select none</button></div>
+      <ul class="plan-trade__list">${missing.map(m => { const k = m.itemKey, real = !k.startsWith('label:'), q = m.outstanding;
+        return `<li class="${real ? '' : 'is-off'}"><label><input type="checkbox" data-ptsel="${esc(p.id)}" value="${esc(k)}" data-q="${m.unknownQty ? '' : Math.min(99, q)}" data-st="${esc(status(k))}" ${real ? 'checked' : 'disabled'}>
+          <img src="${keyImg(k)}" alt=""><span><strong>${esc(keyName(k))}</strong>
+          ${!real ? '<small>Not in the Loot Intel catalog yet, so it can\'t be requested on the Trade Board.</small>' : m.unknownQty ? '<small>Quantity unknown — you set it before posting.</small>' : q > 99 ? `<small>Still to hunt: ${q} (Trade Board requests go up to 99)</small>` : ''}${ST(status(k))}</span>
+          <b>${!real ? '—' : m.unknownQty ? 'Need ?' : 'Need ' + Math.min(99, q)}</b></label></li>`; }).join('')}</ul>
+      <a class="btn btn-primary plan-trade__go" data-ptgo="${esc(p.id)}" href="#">Create Trade Request</a></div>`;
   }
   async function renderPlans(T, P) {
     const host = $('#trailPlansHost'); if (!host) return;
     let d;
     try { d = await PA.list(T.id); } catch (e) { if (e.status === 503) { host.innerHTML = ''; return; } host.innerHTML = `<section class="panel"><p class="form-note">${esc(e.message)}</p></section>`; return; }
-    const plans = d.plans;
+    const plans = d.plans; PA.lastPlans = new Map(plans.map(p => [p.id, p]));
     host.innerHTML = `<section class="panel trail-plans" id="trailPlans"><header class="panel-head"><span class="eyebrow">${TRN.icon('settings')} AMPLIFICATION PLANS</span><span class="muted">${plans.length}</span>
         ${P.canContribute ? '<a class="text-btn" href="amplification/hunt.html">+ Plan a weapon build</a>' : ''}</header>
       ${plans.length ? plans.map(p => planCard(T, p, P)).join('') : '<p class="empty-note">No weapon plans yet. Use the Amplification Hunt to plan a build and save it here; each Raider then tracks their own materials.</p>'}</section>`;
-    const busy = async (el, fn) => { el.disabled = true; try { await fn(); } catch (err) { TRN.toast(err.message); el.disabled = false; return false; } await renderPlans(T, P); return true; };
-    $$('[data-pjoin]', host).forEach(b => b.onclick = () => busy(b, () => PA.me(T.id, b.dataset.pjoin, { activation: b.dataset.a })));
-    $$('[data-pact]', host).forEach(b => b.onclick = () => busy(b, () => PA.me(T.id, b.dataset.pact, { activation: b.dataset.a })));
-    $$('[data-pinst]', host).forEach(c => c.onchange = () => busy(c, () => PA.me(T.id, c.dataset.pinst, { install: { upgradeId: c.dataset.u, installed: c.checked } })).then(ok => { if (!ok) c.checked = !c.checked; }));
-    $$('[data-pcol]', host).forEach(b => b.onclick = () => busy(b, () => PA.me(T.id, b.dataset.pcol, { progress: [{ itemKey: b.dataset.k, collectedDelta: Number(b.dataset.d) }] })));
-    $$('[data-phad]', host).forEach(i => i.onchange = () => busy(i, () => PA.me(T.id, i.dataset.phad, { progress: [{ itemKey: i.dataset.k, had: Math.max(0, Math.min(999, Math.floor(Number(i.value) || 0))) }] })));
-    $$('[data-phunt]', host).forEach(c => c.onchange = () => busy(c, () => PA.me(T.id, c.dataset.phunt, { progress: [{ itemKey: c.dataset.k, hunting: c.checked }] })));
-    $$('[data-pstat]', host).forEach(b => b.onclick = () => {
-      if (b.dataset.s === 'ARCHIVED' && !b.classList.contains('confirming')) { b.classList.add('confirming'); b.textContent = 'Confirm archive'; return; }
-      busy(b, () => PA.status(T.id, b.dataset.pstat, b.dataset.s));
-    });
+    /* Every change saves immediately. The badge shows Saving… until the server answers, then "Progress Auto Saved".
+       Connection / server errors keep what was typed and offer Retry (the same, idempotent request); a refused
+       change (e.g. a rule like "install the prerequisite first") is shown and the panel reloads the saved state. */
+    const busy = async (el, fn, pid) => {
+      el.disabled = true; SAVE.set(pid, { state: 'saving' }); paintSave(pid);
+      try { await fn(); }
+      catch (err) {
+        const retryable = !err.status || err.status >= 500 || err.status === 408 || err.status === 429;
+        SAVE.set(pid, { state: 'error', msg: retryable ? 'Save failed —' : err.message, retry: retryable ? fn : null });
+        if (retryable) { el.disabled = false; paintSave(pid); wireRetry(); } else await renderPlans(T, P);
+        return false;
+      }
+      SAVE.set(pid, { state: 'saved' }); await renderPlans(T, P); return true;
+    };
+    const wireRetry = () => $$('[data-pretry]', host).forEach(b => b.onclick = () => { const s = SAVE.get(b.dataset.pretry); if (s?.retry) busy(b, s.retry, b.dataset.pretry); });
+    wireRetry();
+    const col = (pid, k) => PA.lastPlans.get(pid)?.me?.materials.find(m => m.itemKey === k)?.collected || 0;
+    $$('[data-pjoin]', host).forEach(b => b.onclick = () => busy(b, () => PA.me(T.id, b.dataset.pjoin, { activation: b.dataset.a }), b.dataset.pjoin));
+    $$('[data-pact]', host).forEach(b => b.onclick = () => busy(b, () => PA.me(T.id, b.dataset.pact, { activation: b.dataset.a }), b.dataset.pact));
+    $$('[data-pinst]', host).forEach(c => c.onchange = () => { const body = { install: { upgradeId: c.dataset.u, installed: c.checked } }; busy(c, () => PA.me(T.id, c.dataset.pinst, body), c.dataset.pinst); });
+    // +/- sends the new absolute count, so a retry after a dropped connection can never add twice
+    $$('[data-pcol]', host).forEach(b => b.onclick = () => { const body = { progress: [{ itemKey: b.dataset.k, collected: Math.max(0, Math.min(999, col(b.dataset.pcol, b.dataset.k) + Number(b.dataset.d))) }] }; busy(b, () => PA.me(T.id, b.dataset.pcol, body), b.dataset.pcol); });
+    $$('[data-phad]', host).forEach(i => i.onchange = () => { const body = { progress: [{ itemKey: i.dataset.k, had: Math.max(0, Math.min(999, Math.floor(Number(i.value) || 0))) }] }; busy(i, () => PA.me(T.id, i.dataset.phad, body), i.dataset.phad); });
+    $$('[data-phunt]', host).forEach(c => c.onchange = () => { const body = { progress: [{ itemKey: c.dataset.k, hunting: c.checked }] }; busy(c, () => PA.me(T.id, c.dataset.phunt, body), c.dataset.phunt); });
+    $$('[data-pstat]', host).forEach(b => b.onclick = () => busy(b, () => PA.status(T.id, b.dataset.pstat, b.dataset.s), b.dataset.pstat));
+    /* Trade Board hand-off panel */
+    $$('[data-ptrade]', host).forEach(b => b.onclick = () => { const pane = $('#ptrade-' + CSS.escape(b.dataset.ptrade)); const open = pane.classList.toggle('hidden') === false; b.setAttribute('aria-expanded', String(open)); });
+    const goCount = pid => { const n = $$(`[data-ptsel="${CSS.escape(pid)}"]:checked`, host).length, a = $(`[data-ptgo="${CSS.escape(pid)}"]`, host); a.textContent = n ? (n === 1 ? 'Create Trade Request' : `Create ${n} Trade Requests`) : 'Select at least one material'; a.classList.toggle('is-disabled', !n); };
+    $$('[data-ptsel]', host).forEach(c => c.onchange = () => goCount(c.dataset.ptsel));
+    $$('[data-ptall]', host).forEach(b => b.onclick = () => { $$(`[data-ptsel="${CSS.escape(b.dataset.ptall)}"]:not([disabled])`, host).forEach(c => (c.checked = true)); goCount(b.dataset.ptall); });
+    $$('[data-ptnone]', host).forEach(b => b.onclick = () => { $$(`[data-ptsel="${CSS.escape(b.dataset.ptnone)}"]`, host).forEach(c => (c.checked = false)); goCount(b.dataset.ptnone); });
+    $$('[data-ptgo]', host).forEach(a => { goCount(a.dataset.ptgo); a.onclick = e => {
+      e.preventDefault(); const pid = a.dataset.ptgo, plan = PA.lastPlans.get(pid);
+      const items = $$(`[data-ptsel="${CSS.escape(pid)}"]:checked`, host).map(c => [c.value, c.dataset.q === '' ? null : Number(c.dataset.q), c.dataset.st]);
+      if (!items.length) return;
+      location.href = 'trade.html?wants=' + TRN.trades.encWants({ v: 1, title: plan?.title || 'Amplification plan', i: items });
+    }; });
     const h = location.hash.match(/^#plan-(.+)$/);
     if (h && !host.dataset.scrolled) { host.dataset.scrolled = '1'; document.getElementById('plan-' + h[1])?.scrollIntoView({ block: 'start' }); }
   }

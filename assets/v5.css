@@ -1394,3 +1394,37 @@ body.amp-modal-open{overflow:hidden}
 .trail-plans,.plan-card{grid-template-columns:minmax(0,1fr);min-width:0}.trail-plans>*,.plan-card>*,.plan-stage{min-width:0}#trailPlansHost{min-width:0}
 .amp-table-wrap{position:relative}
 .btn.is-disabled{opacity:.45;pointer-events:none}
+
+/* ================= v6.4.2 autosave + Trade Board hand-off ================= */
+.plan-mats-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}
+.plan-save{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font:600 12.5px Inter;color:var(--muted);min-height:22px}
+.plan-save .svg-ico{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.6}.plan-save .ico{width:16px;height:16px}
+.plan-save--saved{color:#5ee08f}.plan-save--saving{color:#ffd1b9}.plan-save--error{color:#ff8a80}
+.plan-save__retry{color:var(--teal)!important;font-weight:700;text-decoration:underline}
+.plan-save__spin{width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:planSpin .8s linear infinite}
+@keyframes planSpin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){.plan-save__spin{animation:none}}
+.plan-trade-btn{gap:8px}.plan-trade-btn .ico{width:18px;height:18px}
+.plan-trade{display:grid;gap:10px;padding:12px;border:1px solid #1b5a55;background:rgba(25,211,197,.04)}
+.plan-trade__tools{display:flex;gap:14px}.plan-trade__tools .text-btn{color:var(--teal);font-size:13px}
+.plan-trade__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}.plan-trade__list li+li label{border-top:0}
+.plan-trade__list label{display:grid;grid-template-columns:20px 40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px;border:1px solid var(--line);background:#0a161b;cursor:pointer}
+.plan-trade__list li.is-off label{opacity:.55;cursor:not-allowed}
+.plan-trade__list input{width:18px;height:18px;accent-color:var(--orange)}.plan-trade__list img{width:40px;height:40px;object-fit:cover}
+.plan-trade__list span{display:grid;gap:2px;min-width:0}.plan-trade__list strong{color:#fff;font-size:14px}.plan-trade__list small{color:var(--muted);font-size:12px}.plan-trade__list em{font-style:normal}
+.plan-trade__list b{font:800 18px "Barlow Condensed";color:#ffc35a}
+.plan-trade .btn{justify-self:start}
+.wants-card{width:min(720px,100%)}
+.wants-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.wants-list li{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:10px;align-items:center;padding:8px;border:1px solid var(--line);background:#0a161b}
+.wants-list li.is-dup{opacity:.75;border-style:dashed}
+.wants-pick{display:grid;grid-template-columns:20px 44px minmax(0,1fr);gap:10px;align-items:center;cursor:pointer;font-size:14px!important;color:#dfe8ea!important}
+.wants-pick input{width:18px;height:18px;accent-color:var(--orange)}.wants-pick img{width:44px;height:44px;object-fit:cover}.wants-pick span{display:grid;gap:2px;min-width:0}.wants-pick strong{color:#fff}
+.wants-pick small{color:var(--muted);font-size:12px}.wants-pick small a{color:var(--teal);text-decoration:underline}.wants-warn{color:#ffb15a!important}
+.wants-qty{display:grid;gap:4px;font-size:12px;color:#95a8ae}
+.wants-result{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:6px}.wants-result li{padding:8px 10px;border:1px solid var(--line);background:#0a161b}
+.wants-result li.ok{color:#5ee08f;display:flex;gap:8px;align-items:center}.wants-result li.ok .svg-ico{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.6}.wants-result li.bad{color:#ff8a80}
+@media (max-width:640px){.wants-list li{grid-template-columns:minmax(0,1fr)}.plan-save{margin-left:0}}
+.plan-trade__head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:8px;border-bottom:1px solid var(--line)}.plan-trade__head div{display:grid;gap:3px}
+.plan-trade__head strong{font:700 18px "Barlow Condensed";text-transform:uppercase;color:#fff}.plan-trade__head small{color:var(--muted);font-size:12.5px;line-height:1.45}.plan-trade__head .ico{width:22px;height:22px;opacity:.8}
+.plan-trade__list input{border-radius:50%}.plan-trade__list b{font:600 13px Inter;color:#c6d2d6;white-space:nowrap}
+.plan-trade .plan-trade__go{justify-self:stretch;justify-content:center}
