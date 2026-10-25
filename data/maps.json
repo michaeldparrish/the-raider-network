@@ -6,6 +6,21 @@
     "url": "https://github.com/RaidTheory/arcraiders-data",
     "confidence": "VERIFIED COMMUNITY"
    },
+   "arcraiders-wiki": {
+    "label": "ARC Raiders Wiki (community)",
+    "url": "https://arcraiders.wiki/wiki/Amplified_Weapons",
+    "confidence": "COMMUNITY REPORT"
+   },
+   "arctracker": {
+    "label": "ARC Tracker item database (community)",
+    "url": "https://arctracker.io/",
+    "confidence": "COMMUNITY REPORT"
+   },
+   "amplification-guides": {
+    "label": "Community amplification guides (ArcRaidersHub, timesaver.gg, KeenGamer)",
+    "url": "https://arcraidershub.com/guides/amplified-weapons-guide",
+    "confidence": "COMMUNITY REPORT"
+   },
    "metaforge": {
     "label": "MetaForge community map data",
     "url": "https://metaforge.app/arc-raiders",
@@ -58,7 +73,7 @@
   "sourceCommit": "2a4abebb2486a633070f4e260058bcd5ad4511d6 2026-08-18",
   "source": "https://github.com/RaidTheory/arcraiders-data",
   "counts": {
-   "items": 581,
+   "items": 591,
    "projects": 14,
    "quests": 100,
    "maps": 7,
