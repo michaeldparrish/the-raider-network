@@ -246,6 +246,7 @@
     };
     renderTrades().then(() => { if (TRN.param('offer')) TRN.trades.openOffer?.(TRN.param('offer')); });
     if (TRN.param('new') !== null) open(TRN.param('new') || undefined);
+    else if (TRN.param('wants')) { const w = readWants(); if (w) openWants(w); else TRN.toast('That Trade Board link is not valid.'); }
   }
 
   /* Offer form (server mode). */
@@ -280,5 +281,84 @@
     };
   }
 
-  TRN.trades = { tradeCard, tradeRow, inventoryPanel, prep, wireTradeButtons, setupTradeBoard, renderTrades };
+  /* ---------------------------------------------------------------- v6.4.2: missing plan materials -> Trade Board requests
+     trade.html?wants=<base64 JSON {title, i:[[itemId, qty|null, qtyStatus]]}> opens a review list. Each material becomes one
+     normal Trade Board request through the same createTrade path (same login, validation and server rules). Nothing is posted
+     until the Raider presses Publish; nothing is marked collected; materials with an open request of mine are not re-posted. */
+  const encWants = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  function readWants() {
+    const raw = TRN.param('wants'); if (!raw) return null;
+    try {
+      const o = JSON.parse(decodeURIComponent(escape(atob(raw.replace(/-/g, '+').replace(/_/g, '/')))));
+      const seen = new Set(), items = [];
+      for (const x of Array.isArray(o.i) ? o.i : []) {
+        if (!Array.isArray(x) || !TRN.data.item(x[0]) || seen.has(x[0])) continue;
+        seen.add(x[0]);
+        const q = x[1] == null || x[1] === '' ? null : Math.max(1, Math.min(99, Math.floor(Number(x[1]) || 1)));
+        items.push({ itemId: x[0], qty: q, status: ['CONFIRMED', 'REPORTED', 'UNVERIFIED', 'CONFLICT'].includes(x[2]) ? x[2] : 'UNVERIFIED' });
+        if (items.length >= 30) break;
+      }
+      return items.length ? { title: String(o.title || 'Amplification plan').slice(0, 120), items } : null;
+    } catch { return null; }
+  }
+  async function openWants(w) {
+    const u = await TRN.auth.currentUser();
+    if (!u) { location.href = 'auth.html?next=' + encodeURIComponent('trade.html?wants=' + TRN.param('wants')) + '#login'; return; }
+    const opts = TRN.auth.options, D = TRN.db;
+    const mine = (await TRN.store.listTrades({ fresh: true })).filter(t => (t.isMine || t.userId === (u.user_id || u.id)) && t.status === 'open');
+    const dup = id => mine.find(t => t.lookingFor.some(l => l.itemId === id));
+    let m = $('#wantsModal');
+    if (!m) { m = document.createElement('div'); m.id = 'wantsModal'; m.className = 'modal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-labelledby', 'wantsTitle'); document.body.appendChild(m); }
+    const note = `Looking for these for my ${w.title} build.`.slice(0, 500);
+    m.innerHTML = `<div class="modal-card wants-card"><button class="modal-close" type="button" aria-label="Close">×</button>
+      <span class="eyebrow">FROM YOUR AMPLIFICATION PLAN</span><h2 id="wantsTitle">Review trade requests</h2>
+      <p class="muted">Each material becomes its own Trade Board request. Check the quantities, then press Post Request. Nothing is public until you do, and nothing is marked as collected in your plan.</p>
+      <form id="wantsForm" class="stack">
+        <ul class="wants-list">${w.items.map(x => { const it = TRN.data.item(x.itemId), d = dup(x.itemId); return `<li class="${d ? 'is-dup' : ''}">
+          <label class="wants-pick"><input type="checkbox" name="pick" value="${esc(x.itemId)}" ${d ? 'disabled' : 'checked'}><img src="${TRN.img(it.image)}" alt=""><span><strong>${esc(it.name)}</strong>
+            ${d ? `<small>You already have an open request for this. <a href="trade.html#${encodeURIComponent(d.id)}" target="_blank">View it</a> · it will not be posted again.</small>`
+              : x.qty == null ? '<small class="wants-warn">Quantity unknown in the plan — enter how many you need.</small>'
+              : x.status === 'CONFLICT' ? '<small class="wants-warn">Sources disagree on this quantity — check in game. Prefilled with the higher number.</small>'
+              : x.status === 'UNVERIFIED' ? '<small class="wants-warn">Unverified quantity — check in game.</small>' : '<small>Quantity from your plan (still to hunt).</small>'}</span></label>
+          <label class="wants-qty">Qty<input class="input" type="number" name="qty-${esc(x.itemId)}" min="1" max="99" step="1" value="${x.qty ?? ''}" ${d ? 'disabled' : 'required'} placeholder="?"></label></li>`; }).join('')}</ul>
+        <div class="two-col"><label>Region<select class="input" name="region">${opts(D.regions, u.region || 'NA East')}</select></label><label>Platform<select class="input" name="platform">${opts(D.platforms, u.platform || 'Cross-platform')}</select></label></div>
+        <label>Notes for each request <span class="muted-label">(public)</span><textarea class="input" name="notes" rows="2" maxlength="500">${esc(note)}</textarea></label>
+        <p class="small-note">Requests are posted as "open to offers" so Raiders can suggest what they want in return. You can edit or close each one afterwards.</p>
+        <div class="btn-row"><button class="btn btn-primary" type="submit" id="wantsPublish">Post Request</button><button class="btn btn-ghost" type="button" id="wantsCancel">Cancel</button></div>
+        <div class="form-note" id="wantsMsg" role="status" aria-live="polite"></div></form></div>`;
+    m.classList.remove('hidden');
+    const f = $('#wantsForm', m), close = () => m.classList.add('hidden');
+    $('.modal-close', m).onclick = close; $('#wantsCancel', m).onclick = close;
+    const count = () => { const n = $$('input[name=pick]:checked', f).length; $('#wantsPublish', m).textContent = n ? (n === 1 ? 'Post Request' : `Post ${n} Requests`) : 'Select at least one'; $('#wantsPublish', m).disabled = !n;
+      $$('input[name=pick]', f).forEach(c => { const q = f.elements['qty-' + c.value]; if (q && !c.disabled) q.required = c.checked; }); };
+    $$('input[name=pick]', f).forEach(c => (c.onchange = count)); count();
+    let posting = false;
+    f.onsubmit = async e => {
+      e.preventDefault(); if (posting) return;
+      const picks = $$('input[name=pick]:checked', f).map(c => c.value), msg = $('#wantsMsg', m);
+      for (const id of picks) { const q = Number(f.elements['qty-' + id].value); if (!Number.isInteger(q) || q < 1 || q > 99) { msg.textContent = `Enter a quantity from 1 to 99 for ${TRN.data.itemName(id)}.`; f.elements['qty-' + id].focus(); return; } }
+      posting = true; $('#wantsPublish', m).disabled = true;
+      const fresh = (await TRN.store.listTrades({ fresh: true })).filter(t => (t.isMine || t.userId === (u.user_id || u.id)) && t.status === 'open');
+      const done = [], failed = [], skipped = [];
+      for (const id of picks) {
+        if (fresh.some(t => t.lookingFor.some(l => l.itemId === id))) { skipped.push(id); continue; }   // posted meanwhile (other tab)
+        msg.textContent = `Posting ${done.length + 1} of ${picks.length}…`;
+        try {
+          await TRN.store.createTrade({ lookingFor: [{ itemId: id, name: TRN.data.itemName(id), quantity: Number(f.elements['qty-' + id].value) }], offering: [], openToOffers: true,
+            region: f.elements.region.value, platform: f.elements.platform.value, desiredTime: srv() ? '' : 'Flexible', notes: f.elements.notes.value }, u);
+          done.push(id);
+        } catch (err) { failed.push([id, err.message]); }
+      }
+      posting = false;
+      $('.wants-card', m).innerHTML = `<button class="modal-close" type="button" aria-label="Close">×</button><span class="eyebrow">TRADE BOARD</span><h2 id="wantsTitle">${done.length ? `${done.length} request${done.length === 1 ? '' : 's'} posted` : 'Nothing posted'}</h2>
+        <ul class="wants-result">${done.map(id => `<li class="ok">${TRN.svg('check')} ${esc(TRN.data.itemName(id))}</li>`).join('')}${skipped.map(id => `<li>${esc(TRN.data.itemName(id))}: already had an open request, not posted again</li>`).join('')}${failed.map(([id, e]) => `<li class="bad">${esc(TRN.data.itemName(id))}: ${esc(e)}</li>`).join('')}</ul>
+        <p class="small-note">Your plan's collected counts are unchanged. Update them in your Loot Trail when you actually get the items.</p>
+        <div class="btn-row"><button class="btn btn-primary" type="button" id="wantsDone">View the Trade Board</button></div>`;
+      const fin = () => { close(); history.replaceState(null, '', 'trade.html'); renderTrades(); };
+      $('#wantsDone', m).onclick = fin; $('.modal-close', m).onclick = fin;
+      if (done.length) TRN.toast(`${done.length} trade request${done.length === 1 ? '' : 's'} posted`);
+    };
+  }
+
+  TRN.trades = { tradeCard, tradeRow, inventoryPanel, prep, wireTradeButtons, setupTradeBoard, renderTrades, encWants };
 })();

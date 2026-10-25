@@ -118,7 +118,7 @@
     if (!it) { root.innerHTML = `<div class="page-shell"><div class="empty-state big">${TRN.icon('warning')}<h1>Item not found</h1><p>No record for “${esc(TRN.param('id') || '')}”.</p><a class="btn btn-primary" href="loot.html">Search Loot Intel</a></div></div>`; return; }
     document.title = `${it.name} — Loot Intel — The Raider Network`;
     const [hunts, trades] = await Promise.all([TRN.store.listHunts(), TRN.store.listTrades()]);
-    const myHunts = hunts.filter(h => h.itemId === it.id && h.status !== 'completed');
+    const myHunts = hunts.filter(h => (h.itemId === it.id || (h.items || []).some(x => x.itemId === it.id)) && h.status !== 'completed');
     const myTrades = trades.filter(t => t.status === 'open' && (t.lookingFor.some(l => l.itemId === it.id) || t.offering.some(o => o.itemId === it.id)));
     const reco = myTrades.length && !it.recommendation ? 'TRADE INTEREST' : it.recommendation;
     const [sR, sD, sQ, sP, sRec, sC, sDiff, sV] = it.scores;
@@ -136,13 +136,13 @@
       <div class="item-hero__inner">
         <nav class="crumbs"><a href="loot.html">Loot Intel</a><span>/</span><a href="loot.html?q=${encodeURIComponent(it.category)}">${esc(it.category)}</a><span>/</span><b>${esc(it.name)}</b></nav>
         <div class="item-hero__grid">
-          <figure class="item-art"><img src="${TRN.img(it.image)}" alt="Artwork for ${esc(it.name)}"><figcaption>${{ database: 'Database art · reference silhouette', dedicated: 'Concept art', category: 'Category concept art', premium: 'Raider Network render' }[it.imageKind] || 'Concept art'} · not an in-game render</figcaption>${it.heroImage && it.heroImage !== it.image ? `<img class="feature-inset" src="${TRN.img(it.heroImage)}" alt="" title="Feature art (cinematic concept render)">` : ''}</figure>
+          <figure class="item-art"><img src="${TRN.img(it.image)}" alt="Artwork for ${esc(it.name)}"><figcaption>${{ database: 'Database art · reference silhouette', dedicated: 'Concept art', category: 'Category concept art', premium: 'Raider Network render', illustration: 'Raider Network illustration' }[it.imageKind] || 'Concept art'} · not an in-game render</figcaption>${it.heroImage && it.heroImage !== it.image ? `<img class="feature-inset" src="${TRN.img(it.heroImage)}" alt="" title="Feature art (cinematic concept render)">` : ''}</figure>
           <div class="item-hero__copy">
             <div class="chip-row">${TRN.rarityBadge(it.rarity)}<span class="cat-chip">${esc(it.category)}</span>${TRN.demandChip(it.demand)}</div>
             <h1>${esc(it.name)}</h1>
             ${it.description ? `<p class="lede">${esc(it.description)}</p>` : ''}
             ${it.notes ? `<p class="intel-note">${TRN.icon('loot-intel')}<span>${esc(it.notes)}</span></p>` : ''}
-            <div class="chip-row">${TRN.recoBadge(reco)}${TRN.confChip(D().meta.defaults.coreConfidence)}<span class="conf-label">Record detail: ${esc(it.dataConfidence)}</span></div>
+            <div class="chip-row">${TRN.recoBadge(reco)}${TRN.confChip(it.coreConfidence || D().meta.defaults.coreConfidence)}<span class="conf-label">Record detail: ${esc(it.dataConfidence)}</span></div>
             <div class="hero-actions">
               <a class="btn btn-primary" href="hunts.html?new=${encodeURIComponent(it.id)}">${TRN.icon('squad')} Start a Loot Hunt</a>
               <a class="btn btn-ghost" href="trade.html?new=${encodeURIComponent(it.id)}">${TRN.icon('trade')} Post Trade Request</a>
@@ -154,6 +154,9 @@
     </section>
     <div class="page-shell item-layout">
       <div class="item-main">
+        ${it.amplification ? `<section class="panel amp-item-link"><div><span class="eyebrow">${TRN.icon('settings')} WEAPON AMPLIFICATION · FROZEN TRAIL</span><h2>${esc(it.name)} is an amplification ${{ activation: 'module', upgrade: 'material', repair: 'repair material' }[it.amplification.role] || 'material'}</h2>
+          <p>See which weapons and upgrades use it, how many you need, and where Raiders report finding it. Some details are still being verified.</p></div>
+          <div class="btn-row"><a class="btn btn-ghost" href="${esc(it.amplification.guide)}">Amplification Guide</a>${it.amplification.hunt ? `<a class="btn btn-amp" href="${esc(it.amplification.hunt)}">Plan an Amplification Hunt</a>` : ''}</div></section>` : ''}
         <section class="panel where-panel" id="where">
           <header class="panel-head"><span class="eyebrow">${TRN.icon('location')} WHERE TO FIND</span><h2>Where to find ${esc(it.name)}</h2>${TRN.confChip(it.locationConfidence)}</header>
           ${primary ? `
@@ -228,7 +231,7 @@
         <section class="panel">
           <header class="panel-head"><span class="eyebrow">${TRN.icon('loot-intel')} SOURCES & CONFIDENCE</span></header>
           <ul class="source-list">${it.sources.map(id => { const s = src(id); return `<li>${TRN.confChip(s.confidence)}<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`; }).join('')}</ul>
-          <dl class="kv kv-tight"><div><dt>Core facts</dt><dd>${TRN.confChip(D().meta.defaults.coreConfidence)}</dd></div><div><dt>Locations</dt><dd>${TRN.confChip(it.locationConfidence)}</dd></div><div><dt>Scores</dt><dd>${TRN.confChip('NETWORK ESTIMATE')}</dd></div>
+          <dl class="kv kv-tight"><div><dt>Core facts</dt><dd>${TRN.confChip(it.coreConfidence || D().meta.defaults.coreConfidence)}</dd></div><div><dt>Locations</dt><dd>${TRN.confChip(it.locationConfidence)}</dd></div><div><dt>Scores</dt><dd>${TRN.confChip('NETWORK ESTIMATE')}</dd></div>
           <div><dt>Source updated</dt><dd>${esc(it.sourceUpdated || '—')}</dd></div><div><dt>Added in patch</dt><dd>${esc(it.addedIn || '—')}</dd></div></dl>
           <p class="method-note">${esc(D().meta.defaults.imageNote)}</p>
         </section>

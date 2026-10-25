@@ -6,16 +6,24 @@
   /* ---------------------------------------------------------------- header / footer */
   const NAV = [['home', 'index.html', 'Home'], ['loot', 'loot.html', 'Loot Intel'], ['maps', 'maps.html', 'Maps'], ['hunts', 'hunts.html', 'Loot Hunts'],
     ['trade', 'trade.html', 'Trade Board'], ['messages', 'messages.html', 'Messages'], ['profile', 'profile.html', 'My Profile']];
-  const NAV2 = [['projects', 'projects.html', 'Projects'], ['routes', 'maps.html#routes', 'Routes'], ['guides', 'maps.html#routes', 'Guides']];
-  const ACTIVE = { item: 'loot', map: 'maps', auth: '', trails: 'hunts' };
+  const NAV2 = [['projects', 'projects.html', 'Projects'], ['routes', 'maps.html#routes', 'Routes'], ['guides', 'maps.html#routes', 'Guides'],
+    ['amplification', 'amplification.html', 'Amplification', 'nav-amp']];
+  const ACTIVE = { item: 'loot', map: 'maps', auth: '', trails: 'hunts', amphunt: 'hunts' };
+  /* v6.4: Loot Hunts dropdown. The primary links stay direct children of #mainNav; the menu is a sibling panel. */
+  const HUNTS_MENU = [['hunts.html', 'Loot Hunts', 'Find and track any item', 'hunts', ''],
+    ['amplification/hunt.html', 'Amplification Hunt', 'Find upgrade materials', 'amphunt', 'is-amp']];
+  const huntsMenu = () => `<button class="nav-drop-toggle" type="button" id="navHuntsToggle" aria-expanded="false" aria-controls="navHuntsMenu" aria-label="More Loot Hunts pages"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></button>
+    <div class="nav-drop" id="navHuntsMenu" aria-label="Loot Hunts pages">${HUNTS_MENU.map(([href, t, sub, k, cls]) => `<a class="nav-drop__item ${cls} ${k === page ? 'is-current' : ''}" href="${href}">
+      <span class="nav-drop__icon" aria-hidden="true">${k === 'amphunt' ? '<svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7Z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg>' : '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>'}</span>
+      <span class="nav-drop__text"><strong>${t}${k === 'amphunt' ? ' <em class="new-tag">NEW</em>' : ''}</strong><small>${sub}</small></span></a>`).join('')}</div>`;
   function renderShell() {
     const cur = ACTIVE[page] ?? page;
     const h = $('#siteHeader');
     if (h) h.innerHTML = `
       <div class="topbar">
         <a class="brand" href="index.html" aria-label="The Raider Network home"><img class="brand-logo" src="${TRN.IMG}branding/raider-network-mark.png" alt=""><span><strong>The Raider <em>Network</em></strong><small>FIND · HUNT · TRADE · EXTRACT</small></span></a>
-        <nav class="main-nav" id="mainNav" aria-label="Primary">${NAV.map(([k, href, l]) => `<a class="${k === cur ? 'active' : ''}" href="${href}" data-nav="${k}">${l}</a>`).join('')}
-          <div class="nav-secondary-mobile">${NAV2.map(([k, href, l]) => `<a class="${k === cur ? 'active' : ''}" href="${href}">${l}</a>`).join('')}</div>
+        <nav class="main-nav" id="mainNav" aria-label="Primary">${NAV.map(([k, href, l]) => `<a class="${k === cur ? 'active' : ''}" href="${href}" data-nav="${k}">${l}</a>${k === 'hunts' ? huntsMenu() : ''}`).join('')}
+          <div class="nav-secondary-mobile">${NAV2.map(([k, href, l, cls]) => `<a class="${k === cur ? 'active' : ''} ${cls || ''}" href="${href}">${l}</a>`).join('')}</div>
           <div class="nav-account-mobile" id="navAccountMobile"></div></nav>
         <div class="account-actions">
           <button class="icon-btn" id="openSearch" aria-label="Search">${TRN.icon('search')}</button>
@@ -26,7 +34,7 @@
           <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mainNav" aria-expanded="false">${TRN.svg('menu')}</button>
         </div>
       </div>
-      <div class="subbar"><span class="ticker">FIND IT. <b>HUNT IT.</b> TRADE IT. <b>EXTRACT.</b></span><nav aria-label="Secondary">${NAV2.map(([k, href, l]) => `<a class="${k === cur ? 'active' : ''}" href="${href}">${l}</a>`).join('')}<span class="demo-pill hidden" id="modePill"></span></nav></div>
+      <div class="subbar"><span class="ticker">FIND IT. <b>HUNT IT.</b> TRADE IT. <b>EXTRACT.</b></span><nav aria-label="Secondary">${NAV2.map(([k, href, l, cls]) => `<a class="${k === cur ? 'active' : ''} ${cls || ''}" href="${href}" data-sub="${k}">${l}</a>`).join('')}<span class="demo-pill hidden" id="modePill"></span></nav></div>
       <div class="search-overlay hidden" id="searchOverlay" role="dialog" aria-label="Search the network"><div class="search-overlay__box"><div class="global-search">${TRN.icon('search')}<input id="overlaySearch" placeholder="Search items, maps, projects or quests…" autocomplete="off"></div><button class="icon-btn" id="closeSearch" aria-label="Close search">${TRN.svg('close')}</button><p class="muted">Try “rotary”, “stella”, “trophy” or “with a view”.</p></div></div>`;
     const f = $('#siteFooter');
     if (f) f.innerHTML = `<div class="footer-inner">
@@ -34,12 +42,48 @@
       <nav>${[...NAV.slice(0, 5), ...NAV2.slice(0, 2)].map(([, href, l]) => `<a href="${href}">${l}</a>`).join('')}</nav>
       <p class="mf-attr">Map data sourced in part from <a href="https://metaforge.app/arc-raiders" target="_blank" rel="noopener">MetaForge</a> community data.</p>
       <p>Unofficial fan site. Not affiliated with Embark Studios. ARC Raiders and all game content © Embark Studios AB. Core item data: <a href="https://github.com/RaidTheory/arcraiders-data" target="_blank" rel="noopener">RaidTheory arcraiders-data</a> (MIT). Artwork on this site is concept art, not in-game imagery.</p></div>`;
-    setupMenu();
+    setupMenu(); setupHuntsMenu(); setupBaseHashLinks();
     const ov = $('#searchOverlay');
     const openS = () => { ov.classList.remove('hidden'); $('#overlaySearch').focus(); };
     $('#openSearch')?.addEventListener('click', openS); $('#closeSearch')?.addEventListener('click', () => ov.classList.add('hidden'));
     ov?.addEventListener('click', e => { if (e.target === ov) ov.classList.add('hidden'); });
     document.addEventListener('keydown', e => { if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); openS(); } if (e.key === 'Escape') ov?.classList.add('hidden'); });
+  }
+  /* v6.4 Loot Hunts dropdown: hover or focus on desktop, the chevron button for keyboard and touch, Escape / outside tap closes.
+     Inside the mobile drawer the two entries are always shown (CSS), so the toggle is hidden there. */
+  function setupHuntsMenu() {
+    const t = $('#navHuntsToggle'), m = $('#navHuntsMenu'), link = $('#mainNav > a[data-nav=hunts]');
+    if (!t || !m || !link) return;
+    const items = () => $$('.nav-drop__item', m);
+    const set = open => { m.classList.toggle('open', open); t.setAttribute('aria-expanded', String(open)); };
+    const place = () => { m.style.left = Math.max(0, link.offsetLeft - 8) + 'px'; };
+    let hoverT, hoverAt = 0;
+    t.addEventListener('click', e => { e.preventDefault(); place(); const open = !m.classList.contains('open') || Date.now() - hoverAt < 400; set(open); if (open) items()[0]?.focus(); });
+    const hoverOpen = () => { if (!matchMedia('(min-width:1281px) and (hover:hover)').matches) return; clearTimeout(hoverT); if (!m.classList.contains('open')) hoverAt = Date.now(); place(); set(true); };
+    const hoverClose = () => { clearTimeout(hoverT); hoverT = setTimeout(() => { if (!m.contains(document.activeElement)) set(false); }, 180); };
+    [link, t, m].forEach(el => { el.addEventListener('mouseenter', hoverOpen); el.addEventListener('mouseleave', hoverClose); });
+    link.addEventListener('keydown', e => { if (e.key === 'ArrowDown') { e.preventDefault(); place(); set(true); items()[0]?.focus(); } });
+    m.addEventListener('keydown', e => {
+      const list = items(), i = list.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); list[(i + 1) % list.length].focus(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
+      if (e.key === 'Escape') { e.stopPropagation(); set(false); t.focus(); }
+      if (e.key === 'Tab' && ((!e.shiftKey && i === list.length - 1) || (e.shiftKey && i === 0))) set(false);
+    });
+    document.addEventListener('pointerdown', e => { if (!m.contains(e.target) && !t.contains(e.target) && e.target !== link) set(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('open')) set(false); });
+  }
+  /* Pages served from a sub-folder (amplification/hunt) use <base href="/">, which would send "#id" links to the home page.
+     Keep in-page links in-page. */
+  function setupBaseHashLinks() {
+    if (!document.querySelector('base[href]')) return;
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="#"]'); if (!a) return;
+      const id = a.getAttribute('href').slice(1); e.preventDefault();
+      const el = id ? document.getElementById(id) : null;
+      history.replaceState(null, '', location.pathname + location.search + (id ? '#' + id : ''));
+      if (el) { el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); if (id === 'main' || el.tabIndex >= 0) el.focus?.({ preventScroll: true }); }
+    });
   }
   /* Mobile drawer (≤1280px). State lives in one place (body.nav-open) and is mirrored to aria-expanded / the label. */
   function setupMenu() {
@@ -151,8 +195,8 @@
     home: ['items', 'maps', 'projects', 'quests', 'routes', 'conditions', 'users', 'hunts', 'trades', 'inventory'],
     loot: ['items', 'maps', 'projects', 'quests', 'users', 'hunts', 'trades'], item: ['items', 'maps', 'projects', 'quests', 'users', 'hunts', 'trades', 'workshop'],
     maps: ['items', 'maps', 'routes', 'conditions', 'users', 'hunts', 'projects', 'quests'], map: ['items', 'maps', 'projects', 'quests', 'routes', 'arcs', 'conditions', 'users', 'hunts', 'trades', 'inventory', 'mapIndex'],
-    projects: ['items', 'projects', 'quests', 'maps'], hunts: ['items', 'maps', 'users', 'hunts', 'projects', 'quests'], trade: ['items', 'maps', 'users', 'trades', 'inventory', 'projects', 'quests'],
-    messages: ['items', 'maps', 'users', 'hunts', 'trades', 'projects', 'quests'], profile: ['items', 'maps', 'users', 'hunts', 'trades', 'inventory', 'projects', 'quests'], trails: ['items', 'maps'], auth: ['users', 'items', 'maps', 'projects', 'quests']
+    projects: ['items', 'projects', 'quests', 'maps'], hunts: ['items', 'maps', 'users', 'hunts', 'projects', 'quests', 'amplification'], trade: ['items', 'maps', 'users', 'trades', 'inventory', 'projects', 'quests'],
+    messages: ['items', 'maps', 'users', 'hunts', 'trades', 'projects', 'quests'], amplification: ['items', 'maps', 'amplification'], amphunt: ['items', 'maps', 'amplification'], profile: ['items', 'maps', 'users', 'hunts', 'trades', 'inventory', 'projects', 'quests'], trails: ['items', 'maps', 'amplification'], auth: ['users', 'items', 'maps', 'projects', 'quests']
   };
   /* Show which backend is active. Production (server mode) shows nothing; local demo and outages are labelled. */
   function paintMode() {
@@ -176,7 +220,7 @@
     syncNav();
     const run = { home: renderHome, loot: TRN.loot.setupLootPage, item: TRN.loot.setupItemPage, maps: TRN.maps.setupMapsPage, map: TRN.maps.setupMapPage,
       projects: TRN.projects.setupProjectsPage, hunts: TRN.hunts.setupHuntsPage, trade: TRN.trades.setupTradeBoard, messages: TRN.messages.setupMessages,
-      profile: TRN.auth.setupProfilePage, auth: TRN.auth.setupAuthPage, handoff: TRN.handoffs?.setupHandoffPage, trails: TRN.trails?.setupTrailsPage }[page];
+      profile: TRN.auth.setupProfilePage, auth: TRN.auth.setupAuthPage, handoff: TRN.handoffs?.setupHandoffPage, trails: TRN.trails?.setupTrailsPage, amplification: TRN.amp?.setupGuide, amphunt: TRN.amp?.setupHunt }[page];
     try { await run?.(); } catch (e) { console.error(e); TRN.toast('Something went wrong rendering this page.'); }
     document.body.classList.add('ready');
   });

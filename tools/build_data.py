@@ -329,6 +329,26 @@ def build():
         assert os.path.exists(os.path.join(ROOT, 'assets/images', v['file'])), 'missing premium art file ' + v['file']
     items = []
     SOURCE_REG = {'raidtheory': SNAP_SOURCE}
+    # ---- v6.4: Frozen Trail 2.0 amplification materials that are not in the RaidTheory snapshot yet
+    #      (tools/source-data/amplification.json: hand-researched, every fact carries a source + status).
+    amp_path = os.path.join(SRC, 'amplification.json')
+    amp = json.load(open(amp_path)) if os.path.exists(amp_path) else {'catalogItems': [], 'materials': [], 'sources': {}}
+    snap_ids = {kebab(i['id']) for i in snap['items']}
+    amp_new = {}
+    for a in amp['catalogItems']:
+        if a['id'] in snap_ids:   # never duplicate: once the snapshot has the item, the snapshot record wins
+            print('amplification.json: %s is now in the snapshot - remove it from catalogItems' % a['id'])
+            continue
+        assert os.path.exists(os.path.join(ROOT, 'assets/images', a['image'])), 'missing amplification art ' + a['image']
+        amp_new[a['id']] = a
+        snap['items'].append({'id': a['id'], 'name': a['name'], 'rarity': a['rarity'], 'type': a['type'],
+                              'description': a.get('description'), 'value': a.get('value') or 0,
+                              'weightKg': a.get('weightKg'), 'stackSize': a.get('stackSize'),
+                              'recyclesInto': a.get('recyclesInto') or {}, 'salvagesInto': a.get('salvagesInto') or {},
+                              'foundIn': '', 'addedIn': a.get('addedIn'), 'updatedAt': amp.get('asOf')})
+    amp_materials = {m['id']: m for m in amp['materials']}
+    for k, v in amp.get('sources', {}).items():
+        SOURCE_REG[k] = v
     for it in snap['items']:
         iid = kebab(it['id'])
         rec = [{'itemId': kebab(k), 'quantity': v} for k, v in (it.get('recyclesInto') or {}).items()]
@@ -437,6 +457,15 @@ def build():
         found = [s.strip() for s in (it.get('foundIn') or '').split(',') if s.strip()]
         notes = override.get('notes', '')
         sources = ['raidtheory'] + (['metaforge'] if used_mf else [])
+        a_new = amp_new.get(iid)
+        if a_new:   # v6.4 amplification material added from amplification.json (not RaidTheory)
+            img, img_kind, hero_img = 'assets/images/' + a_new['image'], 'illustration', None
+            locations = [dict(l) for l in a_new.get('locations', [])]
+            loc_conf = a_new.get('locationConfidence', 'UNVERIFIED')
+            maps = list(dict.fromkeys(l['map'] for l in locations if l.get('map')))
+            notes = a_new.get('notes', '')
+            sources = list(a_new.get('sources', []))
+            conf_level = a_new.get('dataConfidence', 'Medium')
         if used_mf: SOURCE_REG['metaforge'] = MF_SOURCE
         for src in (loc_research.get(iid, {}).get('sources') or []):
             key = re.sub(r'[^a-z0-9]+', '-', src['label'].lower()).strip('-')[:40]
@@ -464,6 +493,11 @@ def build():
             'addedIn': it.get('addedIn'), 'sourceUpdated': it.get('updatedAt'),
             'notes': notes, 'sources': sources,
         })
+        if a_new:
+            items[-1]['coreConfidence'] = a_new.get('coreConfidence', 'COMMUNITY REPORT')
+        if iid in amp_materials:   # all 15 amplification materials link to the Amplification Guide
+            items[-1]['amplification'] = {'role': amp_materials[iid]['role'], 'guide': 'amplification.html#item-' + iid,
+                                          **({} if amp_materials[iid]['role'] == 'repair' else {'hunt': 'amplification/hunt.html?material=' + iid})}
     items.sort(key=lambda x: (-x['intelScore'], x['name']))
 
     # ---------------- maps (merge research)
@@ -500,6 +534,25 @@ def build():
     os.makedirs(DATA, exist_ok=True)
     dump = lambda name, obj: json.dump(obj, open(os.path.join(DATA, name), 'w'), separators=(',', ':'), ensure_ascii=False)
     dump('items.json', {'meta': meta, 'items': items})
+    if amp.get('guide'):   # v6.4: Amplification Guide / Hunt data (per-fact source URL lists stay in the source file)
+        g = json.loads(json.dumps(amp['guide']))
+        known = {i['id'] for i in items}
+        for w in g['weapons']:
+            assert w['itemId'] in known, 'amplification weapon not in catalog: ' + w['itemId']
+            for u in w['upgrades']:
+                u.pop('sources', None)
+                for c in u['cost']:
+                    c.pop('sources', None); assert c['itemId'] in known, 'amplification cost item not in catalog: ' + c['itemId']
+                if u.get('research'):
+                    u['research'].pop('sources', None)
+                    for c in u['research'].get('cost', []):
+                        assert c.get('itemId') is None or c['itemId'] in known, c
+        for m in g['materials']:
+            assert m['itemId'] in known, 'amplification material not in catalog: ' + m['itemId']
+            assert os.path.exists(os.path.join(ROOT, 'assets/images', m['card'])), 'missing card ' + m['card']
+        for t in g['tiers']:
+            t.pop('sources', None)
+        dump('amplification.json', {'meta': {**g.pop('meta'), 'generated': AS_OF.isoformat()}, **g})
     dump('projects.json', {'meta': meta, 'projects': projects})
     dump('quests.json', {'meta': meta, 'quests': quests})
     for a in arcs:

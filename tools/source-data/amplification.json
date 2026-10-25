@@ -1,0 +1,3809 @@
+{
+ "_readme": "v6.4 Amplification source data. Hand-researched from community sources (see meta.sources), checked 2026-10-24. Status per fact: CONFIRMED (2+ independent sources or in-game item page), REPORTED (one community source), UNVERIFIED (none found), CONFLICT (sources disagree). catalogItems are merged into data/items.json by tools/build_data.py only while they are missing from the RaidTheory snapshot; everything else is published as data/amplification.json.",
+ "asOf": "2026-10-24",
+ "sources": {
+  "arcraiders-wiki": {
+   "label": "ARC Raiders Wiki (community)",
+   "url": "https://arcraiders.wiki/wiki/Amplified_Weapons",
+   "confidence": "COMMUNITY REPORT"
+  },
+  "arctracker": {
+   "label": "ARC Tracker item database (community)",
+   "url": "https://arctracker.io/",
+   "confidence": "COMMUNITY REPORT"
+  },
+  "amplification-guides": {
+   "label": "Community amplification guides (ArcRaidersHub, timesaver.gg, KeenGamer)",
+   "url": "https://arcraidershub.com/guides/amplified-weapons-guide",
+   "confidence": "COMMUNITY REPORT"
+  }
+ },
+ "catalogItems": [
+  {
+   "id": "amplification-module-mk-i",
+   "name": "Amplification Module Mk. I",
+   "rarity": "Common",
+   "type": "Topside Material",
+   "description": "Advanced ARC technology that unlocks common weapon Amplification.",
+   "value": 7000,
+   "weightKg": 0.5,
+   "stackSize": 1,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/amplification-module-mk-i.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Fallen Emperor interior (key-gated)",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate hull ports and cargo (map condition)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplification activation module (Frozen Trail 2.0). Sources disagree on whether it recycles into 7 Amplified Fragments. See the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "amplification-module-mk-ii",
+   "name": "Amplification Module Mk. II",
+   "rarity": "Uncommon",
+   "type": "Topside Material",
+   "description": "Advanced ARC technology that unlocks uncommon weapon Amplification.",
+   "value": 7000,
+   "weightKg": 0.5,
+   "stackSize": 1,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/amplification-module-mk-ii.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Fallen Emperor interior (key-gated)",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate hull ports and cargo (map condition)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplification activation module (Frozen Trail 2.0). Sources disagree on whether it recycles into 7 Amplified Fragments. See the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "amplification-module-mk-iii",
+   "name": "Amplification Module Mk. III",
+   "rarity": "Rare",
+   "type": "Topside Material",
+   "description": "Advanced ARC technology that unlocks rare weapon Amplification.",
+   "value": 7000,
+   "weightKg": 0.5,
+   "stackSize": 1,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/amplification-module-mk-iii.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Fallen Emperor interior (key-gated)",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate hull ports and cargo (map condition)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplification activation module (Frozen Trail 2.0). Sources disagree on whether it recycles into 7 Amplified Fragments. See the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "amplification-module-mk-iv",
+   "name": "Amplification Module Mk. IV",
+   "rarity": "Epic",
+   "type": "Topside Material",
+   "description": "Advanced ARC technology that unlocks epic weapon Amplification.",
+   "value": 7000,
+   "weightKg": 0.5,
+   "stackSize": 1,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/amplification-module-mk-iv.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Fallen Emperor interior (key-gated)",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate hull ports and cargo (map condition)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplification activation module (Frozen Trail 2.0). Sources disagree on whether it recycles into 7 Amplified Fragments. See the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "amplification-module-mk-v",
+   "name": "Amplification Module Mk. V",
+   "rarity": "Legendary",
+   "type": "Topside Material",
+   "description": "Advanced ARC technology that unlocks legendary weapon Amplification.",
+   "value": 7000,
+   "weightKg": 0.5,
+   "stackSize": 1,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/amplification-module-mk-v.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Fallen Emperor interior (key-gated)",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate hull ports and cargo (map condition)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplification activation module (Frozen Trail 2.0). Sources disagree on whether it recycles into 7 Amplified Fragments. See the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "pressure-regulator",
+   "name": "Pressure Regulator",
+   "rarity": "Epic",
+   "type": "Topside Material",
+   "description": "Used to craft amplified weapons.",
+   "value": 5000,
+   "weightKg": 0.5,
+   "stackSize": 3,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/pressure-regulator.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Emperor Payloads during Redirection",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate containers",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplified-weapon upgrade material (Frozen Trail 2.0). Locations are community reports; see the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "pneumatic-actuator",
+   "name": "Pneumatic Actuator",
+   "rarity": "Epic",
+   "type": "Topside Material",
+   "description": "Used to craft amplified weapons.",
+   "value": 5000,
+   "weightKg": 0.5,
+   "stackSize": 3,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/pneumatic-actuator.webp",
+   "locations": [
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Emperor Payloads during Redirection",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate containers",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplified-weapon upgrade material (Frozen Trail 2.0). Locations are community reports; see the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "fluted-rotor-core",
+   "name": "Fluted Rotor Core",
+   "rarity": "Epic",
+   "type": "Topside Material",
+   "description": "Used to craft amplified weapons.",
+   "value": 5000,
+   "weightKg": 0.5,
+   "stackSize": 3,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/fluted-rotor-core.webp",
+   "locations": [
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate and Fallen Emperor containers (tracker data)",
+     "confidence": "COMMUNITY REPORT"
+    },
+    {
+     "map": "pendola-pass",
+     "areas": [],
+     "method": "Exterior wall hatch (one report)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Amplified-weapon upgrade material (Frozen Trail 2.0). Locations are community reports; see the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "propellant-valve-assembly",
+   "name": "Propellant Valve Assembly",
+   "rarity": "Epic",
+   "type": "Topside Material",
+   "description": "Used to craft amplified weapons.",
+   "value": 5000,
+   "weightKg": 0.5,
+   "stackSize": 3,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/propellant-valve-assembly.webp",
+   "locations": [
+    {
+     "map": null,
+     "areas": [],
+     "method": "ARC Frigate and Fallen Emperor containers (tracker data only)",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Low",
+   "notes": "Amplified-weapon upgrade material (Frozen Trail 2.0). Locations are community reports; see the Amplification Guide.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  },
+  {
+   "id": "amplified-fragments",
+   "name": "Amplified Fragments",
+   "rarity": "Epic",
+   "type": "Topside Material",
+   "description": "Obtained through recycling and used to repair amplified weapons.",
+   "value": 500,
+   "weightKg": 0.5,
+   "stackSize": 50,
+   "recyclesInto": {},
+   "salvagesInto": {},
+   "addedIn": "2.0",
+   "image": "items/amp/amplified-fragments.webp",
+   "locations": [
+    {
+     "map": null,
+     "areas": [],
+     "method": "Recycle or salvage amplified weapons and old Anvil Splitter mods",
+     "confidence": "COMMUNITY REPORT"
+    }
+   ],
+   "locationConfidence": "COMMUNITY REPORT",
+   "coreConfidence": "COMMUNITY REPORT",
+   "dataConfidence": "Medium",
+   "notes": "Repairs amplified weapons (Frozen Trail 2.0). Not found in containers.",
+   "sources": [
+    "arcraiders-wiki",
+    "arctracker",
+    "amplification-guides"
+   ]
+  }
+ ],
+ "guide": {
+  "meta": {
+   "asOf": "2026-10-24",
+   "sources": [
+    {
+     "label": "ARC Raiders Wiki: Amplified Weapons",
+     "url": "https://arcraiders.wiki/wiki/Amplified_Weapons"
+    },
+    {
+     "label": "ARC Raiders Wiki item pages (Amplification Module, Fluted Rotor Core, Pressure Regulator, Pneumatic Actuator, Amplified Fragments)",
+     "url": "https://arcraiders.wiki/wiki/Amplification_Module_Mk._I"
+    },
+    {
+     "label": "ArcRaidersHub: Amplified Weapons Guide",
+     "url": "https://arcraidershub.com/guides/amplified-weapons-guide"
+    },
+    {
+     "label": "ArcRaidersHub: Where to Find Amplification Modules",
+     "url": "https://arcraidershub.com/guides/amplification-module-guide"
+    },
+    {
+     "label": "timesaver.gg: Amplification Module farm",
+     "url": "https://timesaver.gg/blog/arc-raiders-amplification-module-farm"
+    },
+    {
+     "label": "timesaver.gg: Emperor Beacon / Redirection farm",
+     "url": "https://timesaver.gg/blog/arc-raiders-emperor-beacon-farm"
+    },
+    {
+     "label": "KeenGamer: All 15 amplified weapons",
+     "url": "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/"
+    },
+    {
+     "label": "Boosting Factory: Amplified weapons guide",
+     "url": "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+    },
+    {
+     "label": "allthings.how: How amplified weapons work",
+     "url": "https://allthings.how/arc-raiders-frozen-trail-how-amplified-weapons-work/"
+    },
+    {
+     "label": "ARC Tracker item database",
+     "url": "https://arctracker.io/"
+    },
+    {
+     "label": "MetaForge item database",
+     "url": "https://metaforge.app/arc-raiders"
+    },
+    {
+     "label": "Frozen Trail 2.0 patch notes summary",
+     "url": "https://thearcraiders.com/news/frozen-trail-patch-notes/"
+    }
+   ]
+  },
+  "intro": {
+   "summary": "Amplification takes a fully upgraded tier IV weapon one step further, to level V. You spend a matching Amplification Module to activate it, then research and buy upgrades that change how the weapon behaves. This guide explains the system, where Raiders report finding each material, and how sure we are about every number.",
+   "what": [
+    {
+     "text": "Amplification is the level V weapon upgrade added in Frozen Trail 2.0. It raises maximum durability from 130 to 200 and opens a short tree of weapon-specific upgrades such as new fire modes, ammo types, magazines and optics.",
+     "status": "CONFIRMED"
+    },
+    {
+     "text": "Fifteen weapons can be amplified at launch; Stiletto and Bantam cannot. Each weapon needs the module that matches its original rarity, from Mk. I for common weapons to Mk. V for legendary ones.",
+     "status": "CONFIRMED"
+    },
+    {
+     "text": "Amplified weapons are only repaired with Amplified Fragments, and they drop to around 10% durability when you go down, so plan for repairs before you farm.",
+     "status": "REPORTED"
+    }
+   ],
+   "steps": {
+    "activate": "Bring the weapon to tier IV, then spend one matching Amplification Module at the Gunsmith (level IV) to amplify it.",
+    "upgrade": "Each upgrade has a research project (5,000 research points, a task and ARC parts) and an install cost in amplification materials.",
+    "repair": "Repair amplified weapons with Amplified Fragments from recycling amplified gear."
+   },
+   "branches": [
+    {
+     "text": "Some upgrades require another one first; for example, Rattler Drum Mag requires More Reload, and Aphelion Increased Burst requires Charged Burst.",
+     "status": "CONFIRMED"
+    },
+    {
+     "text": "Some upgrades exclude each other. For example, Bettina Bigger Mag and Semi-Auto cannot both be active, and Hairpin Incendiary Rounds closes the Semi-Auto and Tracker Rounds branches.",
+     "status": "CONFIRMED"
+    },
+    {
+     "text": "Upgrade choices are permanent; they cannot be reverted. The Amplification Hunt only lets you pick combinations that can exist together.",
+     "status": "CONFIRMED"
+    }
+   ]
+  },
+  "prerequisites": [
+   {
+    "text": "Unlock the Outpost and expand it to level 4.",
+    "status": "REPORTED"
+   },
+   {
+    "text": "Upgrade the Gunsmith to level IV (3 Radial Press, 3 Magnetic Accelerator, 1 Emperor Modulator).",
+    "status": "CONFIRMED"
+   },
+   {
+    "text": "Upgrade the Research Station to level 4 to open Amplified Research.",
+    "status": "REPORTED"
+   },
+   {
+    "text": "Bring the weapon to tier IV first.",
+    "status": "CONFIRMED"
+   },
+   {
+    "text": "Have the Amplification Module that matches the weapon’s rarity.",
+    "status": "CONFIRMED"
+   }
+  ],
+  "openQuestions": [
+   {
+    "text": "Burletta and Canto Sprint Shooting: 4 Fluted Rotor Core (wiki) vs 3 (Raider Network cheat sheet). The Hunt totals use 4.",
+    "status": "CONFLICT"
+   },
+   {
+    "text": "Do spare Amplification Modules recycle into 7 Amplified Fragments? Four sources say yes; the wiki says modules cannot be recycled.",
+    "status": "CONFLICT"
+   },
+   {
+    "text": "Eight upgrades (e.g. Bigger Mag, More Reload, Full-Auto) list no research project in game-file sources, but an older wiki page names one for each.",
+    "status": "CONFLICT"
+   },
+   {
+    "text": "Mobile-Fire Grip Fittings research (Sprint Shooting): Skulker Drivers vs Skulker Targeters, and the quantity, differ between sources.",
+    "status": "CONFLICT"
+   },
+   {
+    "text": "Some community guides list extra exclusions for Rattler, Renegade and Burletta that the wiki does not.",
+    "status": "CONFLICT"
+   },
+   {
+    "text": "ARC Frigate maps: one source includes Riven Tides, a game-file list excludes it.",
+    "status": "CONFLICT"
+   },
+   {
+    "text": "Propellant Valve Assembly and Fluted Rotor Core locations rest on tracker data and one report each.",
+    "status": "REPORTED"
+   },
+   {
+    "text": "Which maps can roll the Electromagnetic Storm, and where the Matriarch drops its reactor, are not verified.",
+    "status": "UNVERIFIED"
+   },
+   {
+    "text": "Effect descriptions come from the community wiki and guides, not from the game client.",
+    "status": "REPORTED"
+   },
+   {
+    "text": "No source publishes drop rates. We do not show any.",
+    "status": "CONFIRMED"
+   }
+  ],
+  "tiers": [
+   {
+    "id": "mk-i",
+    "short": "Mk. I",
+    "name": "Amplification Module Mk. I",
+    "itemId": "amplification-module-mk-i",
+    "weaponRarity": "Common",
+    "weapons": [
+     "hairpin",
+     "kettle",
+     "rattler"
+    ],
+    "status": "CONFIRMED",
+    "sources": [
+     "https://arcraiders.wiki/wiki/Amplified_Weapons",
+     "https://arcraidershub.com/guides/amplified-weapons-guide",
+     "https://allthings.how/arc-raiders-frozen-trail-how-amplified-weapons-work/"
+    ]
+   },
+   {
+    "id": "mk-ii",
+    "short": "Mk. II",
+    "name": "Amplification Module Mk. II",
+    "itemId": "amplification-module-mk-ii",
+    "weaponRarity": "Uncommon",
+    "weapons": [
+     "burletta",
+     "il-toro"
+    ],
+    "status": "CONFIRMED",
+    "sources": [
+     "https://arcraiders.wiki/wiki/Amplified_Weapons",
+     "https://arcraidershub.com/guides/amplified-weapons-guide",
+     "https://allthings.how/arc-raiders-frozen-trail-how-amplified-weapons-work/"
+    ]
+   },
+   {
+    "id": "mk-iii",
+    "short": "Mk. III",
+    "name": "Amplification Module Mk. III",
+    "itemId": "amplification-module-mk-iii",
+    "weaponRarity": "Rare",
+    "weapons": [
+     "anvil",
+     "canto",
+     "osprey",
+     "rascal",
+     "renegade"
+    ],
+    "status": "CONFIRMED",
+    "sources": [
+     "https://arcraiders.wiki/wiki/Amplified_Weapons",
+     "https://arcraidershub.com/guides/amplified-weapons-guide",
+     "https://allthings.how/arc-raiders-frozen-trail-how-amplified-weapons-work/"
+    ]
+   },
+   {
+    "id": "mk-iv",
+    "short": "Mk. IV",
+    "name": "Amplification Module Mk. IV",
+    "itemId": "amplification-module-mk-iv",
+    "weaponRarity": "Epic",
+    "weapons": [
+     "bettina",
+     "hullcracker"
+    ],
+    "status": "CONFIRMED",
+    "sources": [
+     "https://arcraiders.wiki/wiki/Amplified_Weapons",
+     "https://arcraidershub.com/guides/amplified-weapons-guide",
+     "https://allthings.how/arc-raiders-frozen-trail-how-amplified-weapons-work/"
+    ]
+   },
+   {
+    "id": "mk-v",
+    "short": "Mk. V",
+    "name": "Amplification Module Mk. V",
+    "itemId": "amplification-module-mk-v",
+    "weaponRarity": "Legendary",
+    "weapons": [
+     "aphelion",
+     "equalizer",
+     "jupiter"
+    ],
+    "status": "CONFIRMED",
+    "sources": [
+     "https://arcraiders.wiki/wiki/Amplified_Weapons",
+     "https://arcraidershub.com/guides/amplified-weapons-guide",
+     "https://allthings.how/arc-raiders-frozen-trail-how-amplified-weapons-work/"
+    ]
+   }
+  ],
+  "weapons": [
+   {
+    "id": "hairpin",
+    "name": "Hairpin",
+    "itemId": "hairpin-iv",
+    "tier": "mk-i",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "incendiary-rounds",
+      "name": "Incendiary Rounds",
+      "effect": {
+       "text": "+5/s burn damage, +2s burn duration",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Thermite-Tipped Rounds",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "firefly-burner",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 30 Fireballs with Explosive Mines",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "semi-auto",
+       "tracker-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/",
+       "https://allthings.how/?p=293769"
+      ]
+     },
+     {
+      "id": "semi-auto",
+      "name": "Semi-Auto",
+      "effect": {
+       "text": "150% increased fire rate, 20% reduced headshot multiplier, 40% increased per-shot dispersion",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pneumatic-actuator",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Trigger Reset Systems",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "vaporizer-regulator",
+         "qty": 4,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 5 Skulkers with a Raider Tool",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "incendiary-rounds",
+       "tracker-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+       "https://allthings.how/?p=293769"
+      ]
+     },
+     {
+      "id": "sprint-shooting",
+      "name": "Sprint Shooting",
+      "effect": {
+       "text": "Allows firing while sprinting",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://allthings.how/?p=293769"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Mobile-Fire Grip Fittings",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": null,
+         "label": "Skulker Driver (item name disputed)",
+         "qty": null,
+         "status": "CONFLICT"
+        }
+       ],
+       "objective": "CONFLICT: 'Visit the Electrical Substation'",
+       "status": "CONFLICT",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [
+       "semi-auto"
+      ],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/",
+       "https://allthings.how/?p=293769"
+      ]
+     },
+     {
+      "id": "tracker-rounds",
+      "name": "Tracker Rounds",
+      "effect": {
+       "text": "+5s tracking duration (hit targets revealed for 5 seconds)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "matriarch-reactor",
+        "qty": 1,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+         "https://allthings.how/?p=293769"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "incendiary-rounds",
+       "semi-auto"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+       "https://allthings.how/?p=293769"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "kettle",
+    "name": "Kettle",
+    "itemId": "kettle-iv",
+    "tier": "mk-i",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "x-rounds",
+      "name": "X-Rounds",
+      "effect": {
+       "text": "+6.5 Base Damage, 400% increased damage vs ARC Armor, 15% increased vertical/horizontal recoil, 30% reduced bullet velocity, 20% reduced fire rate, -4 magazine size",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-kettle-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Embedded Blast Engineering",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "rocketeer-driver",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "CONFLICT",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+        "https://timesaver.gg/blog/arc-raiders-kettle-amplification",
+        "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "anti-shield",
+       "full-auto"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-kettle-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     },
+     {
+      "id": "anti-shield",
+      "name": "Anti-Shield",
+      "effect": {
+       "text": "100% increased damage vs Raider Shields, -2 Base Damage",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "assessor-matrix",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-kettle-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Shield Stress Testing",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "matriarch-reactor",
+         "qty": 2,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 700 damage to Raiders",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-kettle-amplification"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "x-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-kettle-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "full-auto",
+      "name": "Full-Auto",
+      "effect": {
+       "text": "15% increased fire rate, 20% reduced headshot multiplier, 30% increased vertical/horizontal recoil, 30% increased max shot dispersion",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pneumatic-actuator",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-kettle-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "x-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-kettle-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     }
+    ],
+    "treeNote": {
+     "text": "X-Rounds also blocks the Magazine mod slot.",
+     "status": "REPORTED"
+    }
+   },
+   {
+    "id": "rattler",
+    "name": "Rattler",
+    "itemId": "rattler-iv",
+    "tier": "mk-i",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "incendiary-rounds",
+      "name": "Incendiary Rounds",
+      "effect": {
+       "text": "+5/s burn damage, +2s burn duration (magazine stays 24)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-rattler-amplification",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Thermite-Tipped Rounds",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "firefly-burner",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 30 Fireballs with Explosive Mines",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-rattler-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+      ]
+     },
+     {
+      "id": "more-reload",
+      "name": "More Reload",
+      "effect": {
+       "text": "+2 bullets loaded at a time",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "propellant-valve-assembly",
+        "qty": 2,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-rattler-amplification",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-rattler-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "drum-mag",
+      "name": "Drum Mag",
+      "effect": {
+       "text": "+40 magazine size (64 total), 50% increased vertical/horizontal recoil, 30% increased max shot/base/ADS dispersion, 10% reduced ADS speed",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 4,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-rattler-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Magazine Geometry 101",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "bastion-cell",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 15,000 damage to a Bastion with a Rattler",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraiders.wiki/wiki/Amplified_Weapons",
+        "https://timesaver.gg/blog/arc-raiders-rattler-amplification"
+       ]
+      },
+      "requires": [
+       "more-reload"
+      ],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-rattler-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.playerauctions.com/arc-raiders-guide/tips-guides/best-weapon-amplification-skill-paths/",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+      ]
+     }
+    ],
+    "treeNote": {
+     "text": "One community guide (aoeah) says Incendiary Rounds cannot be combined with the other two upgrades; the wiki and arcraidershub say it combines with both.",
+     "status": "CONFLICT"
+    }
+   },
+   {
+    "id": "burletta",
+    "name": "Burletta",
+    "itemId": "burletta-iv",
+    "tier": "mk-ii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "sprint-shooting",
+      "name": "Sprint Shooting",
+      "effect": {
+       "text": "Allows firing while sprinting",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 4,
+        "status": "CONFLICT",
+        "note": "Sources say 4; Raider Network cheat sheet says 3. Totals use the higher number.",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Mobile-Fire Grip Fittings",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": null,
+         "label": "Skulker Driver (item name disputed)",
+         "qty": null,
+         "status": "CONFLICT"
+        }
+       ],
+       "objective": "CONFLICT: 'Visit the Electrical Substation'",
+       "status": "CONFLICT",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+      ]
+     },
+     {
+      "id": "full-auto",
+      "name": "Full-Auto",
+      "effect": {
+       "text": "60% increased fire rate, -2 Base Damage, 60% reduced headshot multiplier, 50% increased vertical/horizontal recoil, 100% increased dispersion recovery time, 50% increased base/ADS dispersion",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pneumatic-actuator",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "burst-fire"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://timesaver.gg/blog/arc-raiders-weapon-amplification-guide",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     },
+     {
+      "id": "burst-fire",
+      "name": "Burst Fire",
+      "effect": {
+       "text": "+2 projectiles in burst (3-round burst)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "queen-reactor",
+        "qty": 2,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Burst Assembly Recovery",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "pop-trigger",
+         "qty": 20,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 3 Shredders with a Raider Tool",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "full-auto"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "increased-burst",
+      "name": "Increased Burst",
+      "effect": {
+       "text": "+2 projectiles in burst (5-round), +3 magazine size",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 2,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Extended Burst Cycles",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "comet-igniter",
+         "qty": 10,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 10,000 damage with a Burst Burletta or Charged Burst Aphelion",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification"
+       ]
+      },
+      "requires": [
+       "burst-fire"
+      ],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://timesaver.gg/blog/arc-raiders-weapon-amplification-guide"
+      ]
+     }
+    ],
+    "treeNote": {
+     "text": "One community guide (aoeah) says Burst Fire blocks Sprint Shooting; arcraidershub says Sprint Shooting combines with either Burst Fire or Full-Auto. Sprint Shooting costs 4 Fluted Rotor Core in the wiki and boostingfactory, 3 on the Raider Network cheat sheet.",
+     "status": "CONFLICT"
+    }
+   },
+   {
+    "id": "il-toro",
+    "name": "Il Toro",
+    "itemId": "il-toro-iv",
+    "tier": "mk-ii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "more-reload",
+      "name": "More Reload",
+      "effect": {
+       "text": "+1 shell loaded at a time",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "propellant-valve-assembly",
+        "qty": 2,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "slug-rounds",
+      "name": "Slug Rounds",
+      "effect": {
+       "text": "-8 projectiles per shot, 900% increased projectile damage, 200% increased damage vs ARC Armor, 40% reduced base dispersion, 50% reduced bullet velocity",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "turbine-compressor",
+        "qty": 4,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Solid-Core Casting Tech",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "tick-pod",
+         "qty": 20,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 50 flying ARC with shotguns",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.playerauctions.com/arc-raiders-guide/tips-guides/best-weapon-amplification-skill-paths/"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "anvil",
+    "name": "Anvil",
+    "itemId": "anvil-iv",
+    "tier": "mk-iii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "x-rounds",
+      "name": "X-Rounds",
+      "effect": {
+       "text": "+5 Base Damage, 33% increased damage vs ARC Armor, 10% reduced headshot multiplier, 30% increased vertical/horizontal recoil, 50% reduced bullet velocity",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+         "https://arcraidershub.com/guides/amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Embedded Blast Engineering",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "rocketeer-driver",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "CONFLICT",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+        "https://timesaver.gg/blog/arc-raiders-kettle-amplification",
+        "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "anvil-splitter"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+      ]
+     },
+     {
+      "id": "anvil-splitter",
+      "name": "Anvil Splitter",
+      "effect": {
+       "text": "+3 projectiles per shot, 30% reduced base dispersion, 90% reduced dispersion recovery time, 40% increased ADS dispersion, 70% reduced projectile damage, 40% reduced headshot multiplier",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "turbine-compressor",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+         "https://timesaver.gg/blog/arc-raiders-weapon-amplification-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "x-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.talkesport.com/news/arc-raiders-frozen-trail-patch-notes/"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "canto",
+    "name": "Canto",
+    "itemId": "canto-iv",
+    "tier": "mk-iii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "incendiary-rounds",
+      "name": "Incendiary Rounds",
+      "effect": {
+       "text": "+5/s burn damage, +2s burn duration",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Thermite-Tipped Rounds",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "firefly-burner",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 30 Fireballs with Explosive Mines",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "carbine-conversion",
+      "name": "Carbine Conversion",
+      "effect": {
+       "text": "50% reduced ADS recoil, 20% reduced max shot/per-shot/base dispersion, 10% reduced fire rate, 20% increased equip/unequip time",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "propellant-valve-assembly",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "sprint-shooting"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     },
+     {
+      "id": "sprint-shooting",
+      "name": "Sprint Shooting",
+      "effect": {
+       "text": "Allows firing while sprinting",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 4,
+        "status": "CONFLICT",
+        "note": "Sources say 4; Raider Network cheat sheet says 3. Totals use the higher number.",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Mobile-Fire Grip Fittings",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": null,
+         "label": "Skulker Driver (item name disputed)",
+         "qty": null,
+         "status": "CONFLICT"
+        }
+       ],
+       "objective": "CONFLICT: 'Visit the Electrical Substation'",
+       "status": "CONFLICT",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "carbine-conversion"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+      ]
+     }
+    ],
+    "treeNote": {
+     "text": "Sprint Shooting costs 4 Fluted Rotor Core on the wiki, 3 on the Raider Network cheat sheet. Carbine Conversion and Sprint Shooting also block the Stock mod slot.",
+     "status": "CONFLICT"
+    }
+   },
+   {
+    "id": "osprey",
+    "name": "Osprey",
+    "itemId": "osprey-iv",
+    "tier": "mk-iii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "ergonomic-bolt",
+      "name": "Ergonomic Bolt",
+      "effect": {
+       "text": "Allows bolt-action while scoped (also called 'Straight Bolt')",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-osprey-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Action Economy",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "sentinel-firing-core",
+         "qty": 8,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 1,000 damage with a Hairpin",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-osprey-amplification",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-osprey-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "tracker-rounds",
+      "name": "Tracker Rounds",
+      "effect": {
+       "text": "+5s tracking duration, 60% reduced bullet velocity",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "matriarch-reactor",
+        "qty": 2,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-osprey-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "anti-weak-point"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-osprey-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.playerauctions.com/arc-raiders-guide/tips-guides/best-weapon-amplification-skill-paths/"
+      ]
+     },
+     {
+      "id": "anti-weak-point",
+      "name": "Anti-Weak Point",
+      "effect": {
+       "text": "100% increased damage vs ARC Weak Points (reduced vs ARC armor plating)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "assessor-matrix",
+        "qty": 2,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-osprey-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Targeted Component Trial",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "fireball-burner",
+         "qty": 20,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 40 thrusters on flying ARC",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-osprey-amplification"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "tracker-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-osprey-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.playerauctions.com/arc-raiders-guide/tips-guides/best-weapon-amplification-skill-paths/"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "rascal",
+    "name": "Rascal",
+    "itemId": "rascal-iv",
+    "tier": "mk-iii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "high-velocity",
+      "name": "High Velocity",
+      "effect": {
+       "text": "100% increased projectile velocity, 50% reduced ADS dispersion",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pneumatic-actuator",
+        "qty": 2,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "sprint-shooting",
+      "name": "Sprint Shooting",
+      "effect": {
+       "text": "Allows firing while sprinting",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 2,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Mobile-Fire Grip Fittings",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": null,
+         "label": "Skulker Driver (item name disputed)",
+         "qty": null,
+         "status": "CONFLICT"
+        }
+       ],
+       "objective": "CONFLICT: 'Visit the Electrical Substation'",
+       "status": "CONFLICT",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "incendiary-grenades",
+      "name": "Incendiary Grenades",
+      "effect": {
+       "text": "+11.25/s burn damage, +5s burn duration, 40% reduced projectile damage, 15% reduced projectile velocity",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Compact Combustion Charges",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "bombardier-cell",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 3,000 damage with Blaze Grenades",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "renegade",
+    "name": "Renegade",
+    "itemId": "renegade-iv",
+    "tier": "mk-iii",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "more-reload",
+      "name": "More Reload",
+      "effect": {
+       "text": "+1 bullet loaded at a time (capacity stays 8)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "propellant-valve-assembly",
+        "qty": 2,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-renegade-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-renegade-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "scoped",
+      "name": "Scoped",
+      "effect": {
+       "text": "Adds a scope",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 4,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-renegade-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Top Mounted Optics Retrofittings",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "snitch-scanner",
+         "qty": 14,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Visit Pilgrim's Peak on The Blue Gate",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-renegade-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+      ]
+     }
+    ],
+    "treeNote": {
+     "text": "One community guide (aoeah) says More Reload and Scoped are either/or; the wiki and arcraidershub list no exclusion.",
+     "status": "CONFLICT"
+    }
+   },
+   {
+    "id": "bettina",
+    "name": "Bettina",
+    "itemId": "bettina-iv",
+    "tier": "mk-iv",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "bigger-mag",
+      "name": "Bigger Mag",
+      "effect": {
+       "text": "+15 magazine size (22 to 37)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-bettina-amplification-build"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [
+       "semi-auto",
+       "x-rounds"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-bettina-amplification-build",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     },
+     {
+      "id": "semi-auto",
+      "name": "Semi-Auto",
+      "effect": {
+       "text": "+3 Base Damage, 20% reduced max shot dispersion, 20% reduced fire rate",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pneumatic-actuator",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-bettina-amplification-build"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Trigger Reset Systems",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "vaporizer-regulator",
+         "qty": 4,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 5 Skulkers with a Raider Tool",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "bigger-mag"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-bettina-amplification-build",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     },
+     {
+      "id": "x-rounds",
+      "name": "X-Rounds",
+      "effect": {
+       "text": "+3 Base Damage, 25% increased damage vs ARC Armor, 20% increased vertical/horizontal recoil, 30% reduced bullet velocity, -4 magazine size",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-bettina-amplification-build"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Embedded Blast Engineering",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "rocketeer-driver",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "CONFLICT",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://arcraidershub.com/guides/amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-anvil-amplification",
+        "https://timesaver.gg/blog/arc-raiders-kettle-amplification",
+        "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+       ]
+      },
+      "requires": [
+       "semi-auto"
+      ],
+      "excludes": [
+       "bigger-mag"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-bettina-amplification-build",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hullcracker",
+    "name": "Hullcracker",
+    "itemId": "hullcracker-iv",
+    "tier": "mk-iv",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "incendiary-grenades",
+      "name": "Incendiary Grenades",
+      "effect": {
+       "text": "+11.25/s burn damage, +5s burn duration, 40% reduced projectile damage, 50% reduced projectile velocity",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Compact Combustion Charges",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "bombardier-cell",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 3,000 damage with Blaze Grenades",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.playerauctions.com/arc-raiders-guide/tips-guides/best-weapon-amplification-skill-paths/"
+      ]
+     },
+     {
+      "id": "mag-reload",
+      "name": "Mag Reload",
+      "effect": {
+       "text": "Removes the need to reload one projectile at a time",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "propellant-valve-assembly",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.playerauctions.com/arc-raiders-guide/tips-guides/best-weapon-amplification-skill-paths/"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "aphelion",
+    "name": "Aphelion",
+    "itemId": "aphelion",
+    "tier": "mk-v",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "bigger-mag",
+      "name": "Bigger Mag",
+      "effect": {
+       "text": "+6 magazine size",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-aphelion-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "incendiary-rounds",
+      "name": "Incendiary Rounds",
+      "effect": {
+       "text": "+5/s burn damage, +2s burn duration",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fossilized-lightning",
+        "qty": 3,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-aphelion-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Thermite-Tipped Rounds",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "firefly-burner",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 30 Fireballs with Explosive Mines",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "charged-burst",
+      "name": "Charged Burst",
+      "effect": {
+       "text": "+2 max projectiles in burst, +2 magazine size, -2.5 Base Damage, 60% increased vertical/horizontal recoil (hold to charge)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "queen-reactor",
+        "qty": 2,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-aphelion-amplification"
+        ]
+       }
+      ],
+      "research": {
+       "name": "High-Voltage Exposure",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "leaper-pulse-unit",
+         "qty": 5,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 5 ARC Turbines",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://timesaver.gg/blog/arc-raiders-weapon-amplification-guide"
+      ]
+     },
+     {
+      "id": "increased-burst",
+      "name": "Increased Burst",
+      "effect": {
+       "text": "+2 max projectiles in burst",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 2,
+        "status": "CONFIRMED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons",
+         "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+         "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Extended Burst Cycles",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "comet-igniter",
+         "qty": 10,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 10,000 damage with a Burst Burletta or Charged Burst Aphelion",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-aphelion-amplification"
+       ]
+      },
+      "requires": [
+       "charged-burst"
+      ],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-aphelion-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "equalizer",
+    "name": "Equalizer",
+    "itemId": "equalizer",
+    "tier": "mk-v",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "bigger-mag",
+      "name": "Bigger Mag",
+      "effect": {
+       "text": "+30 magazine size",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "ramping-damage",
+      "name": "Ramping Damage",
+      "effect": {
+       "text": "Damage increases gradually while the laser stays on a valid target",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "queen-reactor",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Beam Resonance Tech",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "queen-reactor",
+         "qty": 2,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 1,500 damage to Vaporizers with an Equalizer in one round",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "anti-weak-point"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     },
+     {
+      "id": "anti-weak-point",
+      "name": "Anti-Weak Point",
+      "effect": {
+       "text": "67% increased damage vs ARC Weak Points, 60% reduced damage vs ARC Armor",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "assessor-matrix",
+        "qty": 2,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Targeted Component Trial",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "fireball-burner",
+         "qty": 20,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Destroy 40 thrusters on flying ARC",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-osprey-amplification"
+       ]
+      },
+      "requires": [],
+      "excludes": [
+       "ramping-damage"
+      ],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://arcraidershub.com/guides/amplified-weapons-guide",
+       "https://www.aoeah.com/news/4872--arc-raiders-weapon-amplification-list--best-amplified-weapons-20-frozen-trail",
+       "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "jupiter",
+    "name": "Jupiter",
+    "itemId": "jupiter",
+    "tier": "mk-v",
+    "status": "REPORTED",
+    "upgrades": [
+     {
+      "id": "bigger-mag",
+      "name": "Bigger Mag",
+      "effect": {
+       "text": "+5 magazine size (5 to 10)",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "pressure-regulator",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": null,
+       "status": "CONFLICT",
+       "note": "Most sources (game files, current wiki) list no research project for this upgrade; an older wiki page names one."
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-jupiter-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "scoped",
+      "name": "Scoped",
+      "effect": {
+       "text": "Adds a scope",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Top Mounted Optics Retrofittings",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "snitch-scanner",
+         "qty": 14,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Visit Pilgrim's Peak on The Blue Gate",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://checkpointguides.com/arc-raiders-amplified-weapons-tier-list/"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-jupiter-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     },
+     {
+      "id": "ergonomic-bolt",
+      "name": "Ergonomic Bolt",
+      "effect": {
+       "text": "Allows bolt-action while scoped (also called 'Straight Bolt')",
+       "status": "REPORTED"
+      },
+      "cost": [
+       {
+        "itemId": "fluted-rotor-core",
+        "qty": 3,
+        "status": "REPORTED",
+        "sources": [
+         "https://arcraiders.wiki/wiki/Amplified_Weapons"
+        ]
+       }
+      ],
+      "research": {
+       "name": "Action Economy",
+       "points": 5000,
+       "cost": [
+        {
+         "itemId": "sentinel-firing-core",
+         "qty": 8,
+         "status": "CONFIRMED"
+        }
+       ],
+       "objective": "Deal 1,000 damage with a Hairpin",
+       "status": "CONFIRMED",
+       "sources": [
+        "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+        "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/",
+        "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-amplified-weapons-guide",
+        "https://timesaver.gg/blog/arc-raiders-osprey-amplification",
+        "https://arcraidershub.com/guides/amplified-weapons-guide"
+       ]
+      },
+      "requires": [],
+      "excludes": [],
+      "sources": [
+       "https://arcraiders.wiki/wiki/Amplified_Weapons",
+       "https://timesaver.gg/blog/arc-raiders-jupiter-amplification",
+       "https://arcraidershub.com/guides/amplified-weapons-guide"
+      ]
+     }
+    ]
+   }
+  ],
+  "materials": [
+   {
+    "itemId": "amplification-module-mk-i",
+    "role": "activation",
+    "card": "amplification/cards/amplification-module-mk-i.webp",
+    "purpose": "Spent once to activate amplification on one tier IV common weapon: Hairpin, Kettle, Rattler.",
+    "description": {
+     "value": "Advanced ARC technology that unlocks common weapon Amplification.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Common",
+      "status": "REPORTED"
+     },
+     "category": {
+      "value": "Topside Material (tag: Amplified)",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 7000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Sources disagree: 4 say a spare module recycles into 7 Amplified Fragments; the wiki says it cannot be recycled.",
+      "status": "CONFLICT"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Hull Breach & Search ports and cargo containers",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior wall panels, carrier hatches and hangar containers",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "All five Marks are reported to share the same drop chance; none appear in regular loot tables.",
+      "status": "REPORTED"
+     }
+    ],
+    "thumb": "items/amp/amplification-module-mk-i.webp"
+   },
+   {
+    "itemId": "amplification-module-mk-ii",
+    "role": "activation",
+    "card": "amplification/cards/amplification-module-mk-ii.webp",
+    "purpose": "Spent once to activate amplification on one tier IV uncommon weapon: Burletta, Il Toro.",
+    "description": {
+     "value": "Advanced ARC technology that unlocks uncommon weapon Amplification.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Uncommon",
+      "status": "REPORTED"
+     },
+     "category": {
+      "value": "Topside Material (tag: Amplified)",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 7000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Sources disagree: 4 say a spare module recycles into 7 Amplified Fragments; the wiki says it cannot be recycled.",
+      "status": "CONFLICT"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Hull Breach & Search ports and cargo containers",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior wall panels, carrier hatches and hangar containers",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "All five Marks are reported to share the same drop chance; none appear in regular loot tables.",
+      "status": "REPORTED"
+     }
+    ],
+    "thumb": "items/amp/amplification-module-mk-ii.webp"
+   },
+   {
+    "itemId": "amplification-module-mk-iii",
+    "role": "activation",
+    "card": "amplification/cards/amplification-module-mk-iii.webp",
+    "purpose": "Spent once to activate amplification on one tier IV rare weapon: Anvil, Canto, Osprey, Rascal, Renegade.",
+    "description": {
+     "value": "Advanced ARC technology that unlocks rare weapon Amplification.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Rare",
+      "status": "REPORTED"
+     },
+     "category": {
+      "value": "Topside Material (tag: Amplified)",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 7000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Sources disagree: 4 say a spare module recycles into 7 Amplified Fragments; the wiki says it cannot be recycled.",
+      "status": "CONFLICT"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Hull Breach & Search ports and cargo containers",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior wall panels, carrier hatches and hangar containers",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "All five Marks are reported to share the same drop chance; none appear in regular loot tables.",
+      "status": "REPORTED"
+     }
+    ],
+    "thumb": "items/amp/amplification-module-mk-iii.webp"
+   },
+   {
+    "itemId": "amplification-module-mk-iv",
+    "role": "activation",
+    "card": "amplification/cards/amplification-module-mk-iv.webp",
+    "purpose": "Spent once to activate amplification on one tier IV epic weapon: Bettina, Hullcracker.",
+    "description": {
+     "value": "Advanced ARC technology that unlocks epic weapon Amplification.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "REPORTED"
+     },
+     "category": {
+      "value": "Topside Material (tag: Amplified)",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 7000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Sources disagree: 4 say a spare module recycles into 7 Amplified Fragments; the wiki says it cannot be recycled.",
+      "status": "CONFLICT"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Hull Breach & Search ports and cargo containers",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior wall panels, carrier hatches and hangar containers",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "All five Marks are reported to share the same drop chance; none appear in regular loot tables.",
+      "status": "REPORTED"
+     }
+    ],
+    "thumb": "items/amp/amplification-module-mk-iv.webp"
+   },
+   {
+    "itemId": "amplification-module-mk-v",
+    "role": "activation",
+    "card": "amplification/cards/amplification-module-mk-v.webp",
+    "purpose": "Spent once to activate amplification on one tier IV legendary weapon: Aphelion, Equalizer, Jupiter.",
+    "description": {
+     "value": "Advanced ARC technology that unlocks legendary weapon Amplification.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Legendary",
+      "status": "REPORTED"
+     },
+     "category": {
+      "value": "Topside Material (tag: Amplified)",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 7000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Sources disagree: 4 say a spare module recycles into 7 Amplified Fragments; the wiki says it cannot be recycled.",
+      "status": "CONFLICT"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Hull Breach & Search ports and cargo containers",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior wall panels, carrier hatches and hangar containers",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "All five Marks are reported to share the same drop chance; none appear in regular loot tables.",
+      "status": "REPORTED"
+     }
+    ],
+    "thumb": "items/amp/amplification-module-mk-v.webp"
+   },
+   {
+    "itemId": "pressure-regulator",
+    "role": "upgrade",
+    "card": "amplification/cards/pressure-regulator.webp",
+    "purpose": "Magazine and burst upgrades: Bigger Mag, Drum Mag and Increased Burst.",
+    "description": {
+     "value": "Used to craft amplified weapons.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Topside Material",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 5000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 3,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Cannot be recycled or salvaged",
+      "status": "REPORTED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "redirection",
+      "detail": "Payload main container",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "arc-frigate",
+      "detail": "Frigate-area containers (some need a breach)",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior containers (some need a breach)",
+      "status": "REPORTED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "The wiki item page names a \"Harvester Payload\" as the source; most guides say Emperor Payloads during Redirection.",
+      "status": "CONFLICT"
+     }
+    ],
+    "thumb": "items/amp/pressure-regulator.webp"
+   },
+   {
+    "itemId": "pneumatic-actuator",
+    "role": "upgrade",
+    "card": "amplification/cards/pneumatic-actuator.webp",
+    "purpose": "Fire-mode upgrades: Semi-Auto, Full-Auto and High Velocity.",
+    "description": {
+     "value": "Used to craft amplified weapons.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Topside Material",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 5000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 3,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Cannot be recycled or salvaged",
+      "status": "REPORTED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "redirection",
+      "detail": "Payload main container",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "arc-frigate",
+      "detail": "Frigate cargo and nearby containers",
+      "status": "CONFIRMED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior containers (some need a breach)",
+      "status": "REPORTED"
+     }
+    ],
+    "notes": [],
+    "thumb": "items/amp/pneumatic-actuator.webp"
+   },
+   {
+    "itemId": "fluted-rotor-core",
+    "role": "upgrade",
+    "card": "amplification/cards/fluted-rotor-core.webp",
+    "purpose": "Handling and optics upgrades: Sprint Shooting, Scoped and Ergonomic Bolt.",
+    "description": {
+     "value": "Used to craft amplified weapons.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Topside Material",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 5000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 3,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Cannot be recycled or salvaged",
+      "status": "REPORTED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Frigate containers (one tracker lists it; one guide had not yet seen it)",
+      "status": "REPORTED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior containers (tracker data)",
+      "status": "REPORTED"
+     },
+     {
+      "locationId": "pendola-pass",
+      "detail": "Sealed exterior wall hatch on a high ledge (one report)",
+      "status": "REPORTED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "Burletta and Canto Sprint Shooting cost 4 on the wiki and 3 on the Raider Network cheat sheet.",
+      "status": "CONFLICT"
+     }
+    ],
+    "thumb": "items/amp/fluted-rotor-core.webp"
+   },
+   {
+    "itemId": "propellant-valve-assembly",
+    "role": "upgrade",
+    "card": "amplification/cards/propellant-valve-assembly.webp",
+    "purpose": "Reload and handling upgrades: More Reload, Mag Reload and Carbine Conversion.",
+    "description": {
+     "value": "Used to craft amplified weapons.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Topside Material",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 5000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 3,
+      "status": "CONFIRMED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-frigate",
+      "detail": "Frigate containers (tracker data only)",
+      "status": "REPORTED"
+     },
+     {
+      "locationId": "fallen-emperor",
+      "detail": "Interior containers (tracker data only)",
+      "status": "REPORTED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "No in-game sighting was confirmed by the sources we checked, and the wiki page did not load during research.",
+      "status": "UNVERIFIED"
+     }
+    ],
+    "thumb": "items/amp/propellant-valve-assembly.webp"
+   },
+   {
+    "itemId": "fossilized-lightning",
+    "role": "upgrade",
+    "card": "amplification/cards/fossilized-lightning.webp",
+    "purpose": "Incendiary and explosive upgrades: Incendiary Rounds, X-Rounds and Incendiary Grenades (3 each).",
+    "description": {
+     "value": "Can be recycled into crafting materials.",
+     "status": "REPORTED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Nature",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 4000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.25,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Recycles into Explosive Compound (3 when recycled, 2 when salvaged per one database)",
+      "status": "REPORTED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "electromagnetic-storm",
+      "detail": "Lightning strike craters, not containers",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "Our catalog lists Fossilized Lightning as a Topside Material; one database lists it as Nature.",
+      "status": "CONFLICT"
+     }
+    ],
+    "existing": true,
+    "thumb": "items/amp/fossilized-lightning.webp"
+   },
+   {
+    "itemId": "assessor-matrix",
+    "role": "upgrade",
+    "card": "amplification/cards/assessor-matrix.webp",
+    "purpose": "Anti-Shield and Anti-Weak Point upgrades.",
+    "description": {
+     "value": "Can be recycled into crafting materials.",
+     "status": "REPORTED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Recyclable",
+      "status": "REPORTED"
+     },
+     "sellValue": {
+      "value": 5000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Advanced Mechanical Components + 3 or 4 Advanced ARC Powercells (sources differ)",
+      "status": "CONFLICT"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-assessor",
+      "detail": "Assessor containers only (not Probes or Couriers)",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "One database also lists it for the High-Gain Antenna project; the wiki lists no current project use.",
+      "status": "CONFLICT"
+     }
+    ],
+    "existing": true,
+    "thumb": "items/amp/assessor-matrix.webp"
+   },
+   {
+    "itemId": "turbine-compressor",
+    "role": "upgrade",
+    "card": "amplification/cards/turbine-compressor.webp",
+    "purpose": "Anvil Splitter (3) and Il Toro Slug Rounds (4).",
+    "description": {
+     "value": "Can be recycled into crafting materials.",
+     "status": "REPORTED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Recyclable / Material",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 5000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 3,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "ARC Motion Core + ARC Circuitry",
+      "status": "REPORTED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "arc-turbine",
+      "detail": "Remains of a destroyed ARC Turbine",
+      "status": "REPORTED"
+     }
+    ],
+    "notes": [],
+    "existing": true,
+    "thumb": "items/amp/turbine-compressor.webp"
+   },
+   {
+    "itemId": "queen-reactor",
+    "role": "upgrade",
+    "card": "amplification/cards/queen-reactor.webp",
+    "purpose": "Burst Fire, Charged Burst and Ramping Damage, plus the Beam Resonance Tech research.",
+    "description": {
+     "value": "Can be recycled into crafting materials.",
+     "status": "REPORTED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Legendary",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Recyclable",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 11000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 10.0,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "REPORTED"
+     },
+     "recycling": {
+      "value": "Power Rod + Magnetic Accelerator",
+      "status": "CONFIRMED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "queen",
+      "detail": "Wreck and leg loot",
+      "status": "CONFIRMED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "Research costs (2) and install costs are listed separately by different sources; we show both.",
+      "status": "REPORTED"
+     }
+    ],
+    "existing": true,
+    "thumb": "items/amp/queen-reactor.webp"
+   },
+   {
+    "itemId": "matriarch-reactor",
+    "role": "upgrade",
+    "card": "amplification/cards/matriarch-reactor.webp",
+    "purpose": "Tracker Rounds, plus the Shield Stress Testing research.",
+    "description": {
+     "value": "Can be recycled into crafting materials.",
+     "status": "REPORTED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Legendary",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Recyclable",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 11000,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 10.0,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 1,
+      "status": "REPORTED"
+     },
+     "recycling": {
+      "value": "Power Rod + Magnetic Accelerator",
+      "status": "CONFIRMED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "matriarch",
+      "detail": "Wreck loot (exact part not stated)",
+      "status": "REPORTED"
+     }
+    ],
+    "notes": [
+     {
+      "text": "Research costs (2) and install costs are listed separately by different sources; we show both.",
+      "status": "REPORTED"
+     }
+    ],
+    "existing": true,
+    "thumb": "items/amp/matriarch-reactor.webp"
+   },
+   {
+    "itemId": "amplified-fragments",
+    "role": "repair",
+    "card": "amplification/cards/amplified-fragments.webp",
+    "purpose": "Repairs amplified (level V) weapons; normal repair materials cannot. Cost grows with the number of upgrades installed.",
+    "description": {
+     "value": "Obtained through recycling and used to repair amplified weapons.",
+     "status": "CONFIRMED"
+    },
+    "facts": {
+     "rarity": {
+      "value": "Epic",
+      "status": "CONFIRMED"
+     },
+     "category": {
+      "value": "Topside Material",
+      "status": "CONFIRMED"
+     },
+     "sellValue": {
+      "value": 500,
+      "status": "CONFIRMED"
+     },
+     "weight": {
+      "value": 0.5,
+      "status": "CONFIRMED"
+     },
+     "stackSize": {
+      "value": 50,
+      "status": "CONFIRMED"
+     },
+     "recycling": {
+      "value": "Cannot be recycled or salvaged",
+      "status": "CONFIRMED"
+     }
+    },
+    "locations": [
+     {
+      "locationId": "recycling",
+      "detail": "Recycle or salvage amplified weapons, old Anvil Splitter mods, or (disputed) spare modules",
+      "status": "CONFIRMED"
+     }
+    ],
+    "usesNote": "Used to repair amplified weapons rather than to buy upgrades. Reported examples: 7 fragments to repair a base Rattler or Hairpin to 50%, 30 for a Burletta with two upgrades.",
+    "notes": [
+     {
+      "text": "No source states a fixed repair cost; examples vary by weapon, upgrades installed and damage taken.",
+      "status": "REPORTED"
+     }
+    ],
+    "thumb": "items/amp/amplified-fragments.webp"
+   }
+  ],
+  "locations": [
+   {
+    "id": "arc-frigate",
+    "name": "ARC Frigate",
+    "kind": "boss",
+    "kindLabel": "High-end encounter · map condition",
+    "status": "CONFIRMED",
+    "maps": [],
+    "what": "A huge airborne ARC vessel added in Frozen Trail 2.0. It is a PvPvE encounter guarded by Hydra turrets, and its hull and cargo are the main confirmed source of Amplification Modules.",
+    "facts": {
+     "Where": {
+      "text": "Appears as a rotating map condition. Sources disagree on Riven Tides: one lists it, a game-file list excludes it. Neither lists Stella Montis.",
+      "status": "CONFLICT"
+     },
+     "Access": {
+      "text": "No key needed. Board by riding one of the smaller Reclaimers up to the ship. The squad pulls three levers to raise the core, shoots the exposed Power Cores, then opens Cargo.",
+      "status": "REPORTED"
+     },
+     "Loot": {
+      "text": "Breach & Search ports on the hull and interior, plus the dropped cargo canister. Ports are picked clean quickly by other squads.",
+      "status": "REPORTED"
+     },
+     "Tips": {
+      "text": "Bring a squad and a grappling tool. The condition removes locked doors and Raider Hatches and lowers ground loot value. No drop rates are published.",
+      "status": "REPORTED"
+     }
+    },
+    "sources": [
+     "https://arcraidershub.com/guides/amplification-module-guide",
+     "https://timesaver.gg/blog/arc-raiders-amplification-module-farm",
+     "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/",
+     "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-frigate-guide"
+    ]
+   },
+   {
+    "id": "fallen-emperor",
+    "name": "Fallen Emperor",
+    "kind": "boss",
+    "kindLabel": "Key-gated interior · Pendola Pass",
+    "status": "CONFIRMED",
+    "maps": [
+     "pendola-pass"
+    ],
+    "what": "The downed ARC Emperor is the biggest landmark on Pendola Pass. Its interior is a key-gated run of randomized trial rooms ending in a hangar, and it is the second confirmed source of Amplification Modules.",
+    "facts": {
+     "Where": {
+      "text": "Western side of Pendola Pass.",
+      "status": "REPORTED"
+     },
+     "Access": {
+      "text": "Insert an Emperor Gateway Conduit (single-use key) into the socket at the base hatch. The conduit is crafted from its blueprint plus three ARC couplers that come from Redirection payloads.",
+      "status": "CONFIRMED"
+     },
+     "Inside": {
+      "text": "Around a dozen randomized trial rooms with breachable wall panels and carrier hatches; the final hangar has more containers. Opening the hatch is loud and a timer warning plays at 10 minutes left.",
+      "status": "REPORTED"
+     },
+     "Also drops": {
+      "text": "Emperor Modulator, needed for the Gunsmith IV upgrade that unlocks amplification.",
+      "status": "CONFIRMED"
+     }
+    },
+    "sources": [
+     "https://arcraidershub.com/guides/amplification-module-guide",
+     "https://timesaver.gg/blog/arc-raiders-amplification-module-farm",
+     "https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-emperor-dungeon-guide",
+     "https://allthings.how/?p=259206"
+    ]
+   },
+   {
+    "id": "redirection",
+    "name": "Emperor Payloads & Redirection",
+    "kind": "event",
+    "kindLabel": "Map condition · Pendola Pass",
+    "status": "CONFIRMED",
+    "maps": [
+     "pendola-pass"
+    ],
+    "what": "During the Redirection condition on Pendola Pass, Raiders search Damaged Emperor Relays for an Emperor Beacon and use it to call down a payload. The payload’s main container is the confirmed source of Pneumatic Actuators and Pressure Regulators.",
+    "facts": {
+     "How it works": {
+      "text": "Find an active Damaged Emperor Relay (shown on the map), take the Emperor Beacon from it, then call in the payload and defend it while it opens.",
+      "status": "REPORTED"
+     },
+     "Name": {
+      "text": "Most guides call it an Emperor Payload; two call it a Harvester Payload, and the wiki item page says Harvester Payload.",
+      "status": "CONFLICT"
+     },
+     "Also drops": {
+      "text": "Emperor Gateway Conduit blueprint and the ARC couplers used to craft the Fallen Emperor key (not guaranteed).",
+      "status": "CONFIRMED"
+     },
+     "Watch out": {
+      "text": "Sources disagree on whether the couplers can be stored between raids. An Emperor Beacon is worthless after extraction.",
+      "status": "CONFLICT"
+     }
+    },
+    "sources": [
+     "https://timesaver.gg/blog/arc-raiders-emperor-beacon-farm",
+     "https://timesaver.gg/blog/arc-raiders-pneumatic-actuator-pressure-regulator-farm",
+     "https://arcraidershub.com/guides/amplification-module-guide",
+     "https://gamingpromax.com/arc-raiders-amplified-weapons-guide/"
+    ]
+   },
+   {
+    "id": "pendola-pass",
+    "name": "Pendola Pass",
+    "kind": "map",
+    "kindLabel": "Frozen Trail map",
+    "status": "CONFIRMED",
+    "maps": [
+     "pendola-pass"
+    ],
+    "what": "The frozen mountain map added in Frozen Trail 2.0. It hosts the Fallen Emperor and the Redirection payloads, and one report places a Fluted Rotor Core in an exterior hatch.",
+    "facts": {
+     "Name": {
+      "text": "The in-game name is Pendola Pass.",
+      "status": "CONFIRMED"
+     },
+     "Exterior find": {
+      "text": "One guide found a Fluted Rotor Core in a sealed round wall hatch (Breach & Search) on a high exterior ledge above the snowy valley.",
+      "status": "REPORTED"
+     },
+     "Doors": {
+      "text": "Some doors are frozen shut and open with a fire source.",
+      "status": "REPORTED"
+     },
+     "Storms": {
+      "text": "Whether the Electromagnetic Storm can occur here is not verified.",
+      "status": "UNVERIFIED"
+     }
+    },
+    "sources": [
+     "https://thearcraiders.com/news/frozen-trail-patch-notes/",
+     "https://allthings.how/arc-raiders-fluted-rotor-core-location-in-pendola-pass/"
+    ]
+   },
+   {
+    "id": "electromagnetic-storm",
+    "name": "Electromagnetic Storm",
+    "kind": "event",
+    "kindLabel": "Weather map condition",
+    "status": "CONFIRMED",
+    "maps": [],
+    "what": "A weather condition with lightning strikes. Fossilized Lightning can appear at the strike point; it is not a container drop.",
+    "facts": {
+     "How": {
+      "text": "Watch for blue sparks a few seconds before a strike, then search the impact crater for a jagged stone.",
+      "status": "REPORTED"
+     },
+     "Chance": {
+      "text": "Community reports describe the chance per strike as low; no number is published.",
+      "status": "REPORTED"
+     },
+     "Maps": {
+      "text": "Which maps can roll the storm is not verified.",
+      "status": "UNVERIFIED"
+     },
+     "Danger": {
+      "text": "Strikes can strip shields.",
+      "status": "REPORTED"
+     }
+    },
+    "sources": [
+     "https://arcraiders.wiki/wiki/Fossilized_Lightning",
+     "https://metaforge.app/arc-raiders/database/item/fossilized-lightning"
+    ]
+   },
+   {
+    "id": "arc-assessor",
+    "name": "ARC Assessor",
+    "kind": "event",
+    "kindLabel": "Close Scrutiny map condition",
+    "status": "CONFIRMED",
+    "maps": [
+     "dam-battlegrounds",
+     "spaceport",
+     "buried-city",
+     "the-blue-gate"
+    ],
+    "what": "A large three-legged ARC landing platform that appears during the Close Scrutiny condition. Its containers are the only confirmed source of Assessor Matrix.",
+    "facts": {
+     "Maps": {
+      "text": "Dam Battlegrounds, Spaceport, Buried City and The Blue Gate.",
+      "status": "CONFIRMED"
+     },
+     "Loot": {
+      "text": "Three breachable containers; only one can be breached at a time. Breaching sounds an alarm that brings Vaporizers and Rocketeers, and the Assessor flies off if you wait too long.",
+      "status": "REPORTED"
+     }
+    },
+    "sources": [
+     "https://arcraiders.wiki/wiki/Assessor_Matrix",
+     "https://metaforge.app/arc-raiders/database/item/assessor-matrix",
+     "https://www.keengamer.com/articles/guides/arc-raiders-all-15-amplified-weapons-how-to-unlock/"
+    ]
+   },
+   {
+    "id": "queen",
+    "name": "The Queen",
+    "kind": "boss",
+    "kindLabel": "Boss ARC · Harvester event",
+    "status": "CONFIRMED",
+    "maps": [
+     "dam-battlegrounds",
+     "spaceport",
+     "the-blue-gate"
+    ],
+    "what": "Boss-class ARC that appears during Harvester events and drops the Queen Reactor.",
+    "facts": {
+     "Loot": {
+      "text": "Queen Reactors come from the wreck and leg loot. Frozen Trail moved higher-tier loot from the leg armor plates into the legs themselves.",
+      "status": "CONFIRMED"
+     },
+     "Maps": {
+      "text": "Our catalog lists Dam Battlegrounds, Spaceport and The Blue Gate from community drop tables.",
+      "status": "CONFIRMED"
+     }
+    },
+    "sources": [
+     "https://arcraiders.wiki/wiki/Queen_Reactor",
+     "https://metaforge.app/arc-raiders/database/item/queen-reactor",
+     "https://thearcraiders.com/news/frozen-trail-patch-notes/"
+    ]
+   },
+   {
+    "id": "matriarch",
+    "name": "Matriarch",
+    "kind": "boss",
+    "kindLabel": "Boss ARC · map condition",
+    "status": "CONFIRMED",
+    "maps": [
+     "dam-battlegrounds",
+     "spaceport",
+     "the-blue-gate"
+    ],
+    "what": "Boss-class ARC that drops the Matriarch Reactor. Destroy the frontal faceplates to expose the core, then loot the wreck quickly.",
+    "facts": {
+     "Loot": {
+      "text": "Exactly which part drops the reactor is not stated by our sources.",
+      "status": "UNVERIFIED"
+     },
+     "Maps": {
+      "text": "Our catalog lists Dam Battlegrounds, Spaceport and The Blue Gate from community drop tables.",
+      "status": "CONFIRMED"
+     }
+    },
+    "sources": [
+     "https://arcraiders.wiki/wiki/Matriarch_Reactor",
+     "https://metaforge.app/arc-raiders/database/item/matriarch-reactor"
+    ]
+   },
+   {
+    "id": "arc-turbine",
+    "name": "ARC Turbine",
+    "kind": "other",
+    "kindLabel": "Flying ARC",
+    "status": "REPORTED",
+    "maps": [],
+    "what": "A flying ARC that lands mid-raid on three legs, exposing yellow canisters as weak points. Its remains are the reported source of Turbine Compressor.",
+    "facts": {
+     "Loot": {
+      "text": "Scavenge the destroyed Turbine. One tracker also lists ARC Courier and Harvester containers.",
+      "status": "REPORTED"
+     },
+     "Maps": {
+      "text": "Not fixed to one map.",
+      "status": "REPORTED"
+     }
+    },
+    "sources": [
+     "https://arcraiders.wiki/wiki/Turbine_Compressor",
+     "https://arctracker.io/items/turbine_compressor"
+    ]
+   },
+   {
+    "id": "recycling",
+    "name": "Recycling amplified gear",
+    "kind": "other",
+    "kindLabel": "At the Workshop",
+    "status": "CONFIRMED",
+    "maps": [],
+    "what": "Amplified Fragments do not drop from containers. They come from recycling or salvaging amplified gear.",
+    "facts": {
+     "Sources": {
+      "text": "Recycling or salvaging an amplified weapon (a fully built Aphelion reportedly recycles to 35), or recycling an old Anvil Splitter mod (retired in 2.0).",
+      "status": "CONFIRMED"
+     },
+     "Spare modules": {
+      "text": "Four sources say a spare Amplification Module recycles into 7 Amplified Fragments; the wiki module pages say modules cannot be recycled.",
+      "status": "CONFLICT"
+     }
+    },
+    "sources": [
+     "https://arcraiders.wiki/wiki/Amplified_Fragments",
+     "https://arctracker.io/items/amplified_fragments",
+     "https://arcraidershub.com/guides/amplified-weapons-guide"
+    ]
+   }
+  ]
+ },
+ "materials": [
+  {
+   "id": "amplification-module-mk-i",
+   "role": "activation"
+  },
+  {
+   "id": "amplification-module-mk-ii",
+   "role": "activation"
+  },
+  {
+   "id": "amplification-module-mk-iii",
+   "role": "activation"
+  },
+  {
+   "id": "amplification-module-mk-iv",
+   "role": "activation"
+  },
+  {
+   "id": "amplification-module-mk-v",
+   "role": "activation"
+  },
+  {
+   "id": "pressure-regulator",
+   "role": "upgrade"
+  },
+  {
+   "id": "pneumatic-actuator",
+   "role": "upgrade"
+  },
+  {
+   "id": "fluted-rotor-core",
+   "role": "upgrade"
+  },
+  {
+   "id": "propellant-valve-assembly",
+   "role": "upgrade"
+  },
+  {
+   "id": "fossilized-lightning",
+   "role": "upgrade"
+  },
+  {
+   "id": "assessor-matrix",
+   "role": "upgrade"
+  },
+  {
+   "id": "turbine-compressor",
+   "role": "upgrade"
+  },
+  {
+   "id": "queen-reactor",
+   "role": "upgrade"
+  },
+  {
+   "id": "matriarch-reactor",
+   "role": "upgrade"
+  },
+  {
+   "id": "amplified-fragments",
+   "role": "repair"
+  }
+ ]
+}

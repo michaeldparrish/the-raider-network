@@ -4,6 +4,7 @@ import { currentSession } from './session.js';
 import * as h from './handlers.js';
 import * as trails from './trails/handlers.js';
 import * as trailImages from './trails/images.js';
+import * as trailPlans from './trails/plans.js';
 
 const ROUTES = [
   ['POST', '/api/trails', trails.createTrail],
@@ -18,6 +19,10 @@ const ROUTES = [
   ['POST', '/api/trails/:id/sessions/:sessionId/end', trails.endTrailSession],
   ['POST', '/api/trails/:id/members/remove', trails.removeTrailMember],
   ['GET', '/api/me/trail-invitations', trails.myTrailInvitations],
+  ['GET', '/api/trails/:id/plans', trailPlans.listPlans],
+  ['POST', '/api/trails/:id/plans', trailPlans.createPlan],
+  ['POST', '/api/trails/:id/plans/:planId/me', trailPlans.updateMyPlan],
+  ['POST', '/api/trails/:id/plans/:planId/status', trailPlans.setPlanStatus],
   ['POST', '/api/trails/:id/discoveries/:discoveryId/publish', trails.publishTrailDiscovery],
   ['POST', '/api/trails/:id/visibility', trails.setTrailVisibility],
   ['POST', '/api/trails/:id/discoveries/:discoveryId/progress', trails.setTrailProgress],

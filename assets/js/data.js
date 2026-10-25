@@ -15,7 +15,7 @@
   /* ---------------- reference data ---------------- */
   const FILES = { items: 'items.json', maps: 'maps.json', projects: 'projects.json', quests: 'quests.json', routes: 'routes.json',
     arcs: 'arcs.json', conditions: 'map-conditions.json', users: 'users.json', hunts: 'hunts.json', trades: 'trades.json',
-    inventory: 'trade-inventory.json', workshop: 'workshop.json', mapIndex: 'maps/index.json' };
+    inventory: 'trade-inventory.json', workshop: 'workshop.json', mapIndex: 'maps/index.json', amplification: 'amplification.json' };
   const cache = {};
   const fetchJson = name => (cache[name] ||= fetch('data/' + FILES[name]).then(r => { if (!r.ok) throw new Error('Could not load ' + FILES[name]); return r.json(); }));
 
@@ -37,6 +37,7 @@
       if (n === 'workshop') { DB.workshop = d.stations; }
       if (n === 'inventory') { DB.inventory = d; }
       if (n === 'mapIndex') { DB.mapIndex = d; }
+      if (n === 'amplification') { DB.amp = d; }
     });
     return DB;
   }

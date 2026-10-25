@@ -3,12 +3,13 @@ Page bodies live in this file; header/footer markup is injected at runtime by as
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+AMP_SVG = '<svg class="amp-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7Z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg>'
 HEAD = '''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title}</title>
+{base}<title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#071014">
 <link rel="icon" href="assets/images/branding/raider-network-mark-small.png">
@@ -16,7 +17,7 @@ HEAD = '''<!doctype html>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/v5.css">
-</head>
+{canonical}</head>
 <body data-page="{page}">
 <a class="skip-link" href="#main">Skip to content</a>
 <header id="siteHeader" class="site-header"></header>
@@ -38,7 +39,7 @@ FOOT = '''
 <script defer src="assets/js/messages.js"></script>
 <script defer src="assets/js/handoff.js"></script>
 <script defer src="assets/js/trails.js"></script>
-<script defer src="assets/js/app.js"></script>
+{extra}<script defer src="assets/js/app.js"></script>
 </body>
 </html>
 '''
@@ -221,7 +222,7 @@ PAGES['hunts.html'] = ('hunts', 'Loot Hunts — The Raider Network', 'Find Raide
   <img src="assets/images/heroes/loot-hunt-squad.webp" alt="">
   <div class="page-banner__shade"></div>
   <div class="page-banner__copy"><span class="eyebrow">{I('squad')} COMMUNITY RUN BOARD</span><h1>Loot Hunts</h1><p>Find Raiders chasing the same item or objective, then coordinate the run through private messages.</p>
-    <div class="btn-row"><button class="btn btn-primary btn-lg" id="openHuntModal">+ Start a Loot Hunt</button><a class="btn btn-ghost btn-lg" href="trails.html">My Loot Trails</a></div>
+    <div class="btn-row hunts-actions"><button class="btn btn-primary btn-lg" id="openHuntModal">+ Start a Loot Hunt</button><a class="btn btn-ghost btn-lg btn-trails" href="trails.html">{I('route')} My Loot Trails</a><a class="btn btn-lg btn-amp" href="amplification/hunt.html">{AMP_SVG} Amplification Hunt <em class="new-tag">NEW</em></a></div>
     <div class="banner-stats"><span><b id="statOpenHunts">—</b> open hunts</span><span><b id="statSlots">—</b> open squad slots</span><span><b id="statHuntItems">—</b> items targeted</span></div></div>
   <img class="banner-side-art" src="assets/images/raiders/raider-squad-lineup.webp" alt="">
 </section>
@@ -418,7 +419,25 @@ PAGES['auth.html'] = ('auth', 'Join — The Raider Network', 'Create a Raider pr
 </section>
 ''')
 
+# v6.4: Amplification Guide + Hunt (bodies rendered from data/amplification.json by tools/amp_pages.py)
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import amp_pages
+PAGES['amplification.html'] = ('amplification', 'Amplification Guide — The Raider Network',
+    'ARC Raiders weapon amplification explained: Amplification Modules Mk. I–V, supported weapons, upgrade trees and quantities, and where Raiders report farming all 15 materials.',
+    amp_pages.guide_body(I))
+PAGES['amplification/hunt.html'] = ('amphunt', 'Amplification Hunt — The Raider Network',
+    'Plan an ARC Raiders weapon amplification: pick a weapon and upgrades, get the full material checklist and where to hunt it, then start a Loot Hunt or Loot Trail.',
+    amp_pages.hunt_body(I))
+
+# v6.4: per-page extras. Pages in a sub-folder get <base href="/"> so the shared relative links keep working.
+EXTRA_JS = {'amplification.html': ['amplification.js'], 'amplification/hunt.html': ['amplification.js']}
+CANONICAL = {'amplification.html': 'amplification', 'amplification/hunt.html': 'amplification/hunt'}
 for fn, (page, title, desc, body) in PAGES.items():
+    os.makedirs(os.path.dirname(os.path.join(ROOT, fn)), exist_ok=True)
+    base = '<base href="/">\n' if '/' in fn else ''
+    extra = ''.join(f'<script defer src="assets/js/{js}"></script>\n' for js in EXTRA_JS.get(fn, []))
+    canon = f'<link rel="canonical" href="https://raider-net.com/{CANONICAL[fn]}">\n' if fn in CANONICAL else ''
     with open(os.path.join(ROOT, fn), 'w') as f:
-        f.write(HEAD.format(title=title, desc=desc, page=page) + body.strip('\n') + FOOT)
+        f.write(HEAD.format(title=title, desc=desc, page=page, base=base, canonical=canon) + body.strip('\n') + FOOT.replace('{extra}', extra))
 print('wrote', len(PAGES), 'pages')
